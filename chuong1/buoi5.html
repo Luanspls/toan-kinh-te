@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong1" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 5 · Không gian véctơ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 1" data-unit="Buổi 5 · Không gian véctơ" data-prev="buoi4.html" data-next="buoi6.html" data-home="index.html">
+<div class="stage">
+
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 5">
+  <div class="num"><small>Chương 1 · Cơ sở của Toán kinh tế</small>Buổi 5</div>
+  <h1>Luyện tập hệ phương trình · Không gian véctơ</h1>
+  <div class="meta"><span class="chip">3 tiết</span><span class="chip bt">Bài tập 1 tiết</span><span class="chip lt">Lý thuyết 2 tiết</span><span class="chip">Mục 1.2 (BT) · 1.3 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#bt122"><span>BT</span>Hệ chứa tham số, hệ thuần nhất</a>
+    <a href="#dinh-nghia"><span>1.3.1</span>Định nghĩa và tính chất</a>
+    <a href="#to-hop"><span>1.3.2</span>Độc lập tuyến tính – phụ thuộc tuyến tính</a>
+    <a href="#co-so"><span>1.3.3</span>Cơ sở và số chiều</a>
+    <a href="#toa-do"><span>1.3.4</span>Tọa độ của một véctơ</a>
+    <a href="#tong-ket"><span>KẾT</span>Tổng kết và nhiệm vụ</a>
+  </div>
+  <aside class="tuhoc"><p>Phần đầu hoàn thành bài tập hệ phương trình còn lại của Buổi 4; phần sau là lý thuyết không gian véctơ.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 5</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Trình bày được định nghĩa không gian véctơ; nhận biết các ví dụ $\mathbb R^n$, $\mathcal M_{m\times n}$, $P_n$.</li>
+      <li>Phát biểu khái niệm tổ hợp tuyến tính, độc lập/phụ thuộc tuyến tính, cơ sở, số chiều, tọa độ.</li>
+      <li>Nêu được tiêu chuẩn độc lập tuyến tính qua hạng và định thức.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Biện luận hệ phương trình chứa tham số; tìm hệ nghiệm cơ bản.</li>
+      <li>Xét được tính độc lập tuyến tính của một hệ véctơ trong $\mathbb R^n$.</li>
+      <li>Tìm tọa độ của véctơ đối với một cơ sở bằng cách giải hệ phương trình.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Khái quát hóa:</b> nhận ra cấu trúc chung của "giỏ hàng", ma trận, đa thức.</li>
+      <li><b>Chuyển đổi ngôn ngữ:</b> đưa câu hỏi về véctơ thành bài toán hạng/hệ phương trình.</li>
+      <li><b>Trực quan hóa:</b> giải thích độc lập tuyến tính trong $\mathbb R^2$ bằng hình học.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Lời giải BT 1.22, 1.24a; trả lời đúng các câu hỏi kiểm tra nhanh về độc lập tuyến tính và cơ sở.</span></div>
+  <aside class="tuhoc"><p>Không gian véctơ là phần trừu tượng nhất chương — mỗi khi bế tắc, hãy quy về ma trận và hệ phương trình.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 3 tiết × 45 phút</div><h2>Từ tập nghiệm của hệ thuần nhất đến khái niệm không gian véctơ</h2></div>
+  <div class="plan">
+    <div class="p bt"><div class="t">Tiết 1<small>Bài tập</small></div><div class="c"><b>Hệ chứa tham số · Hệ thuần nhất</b><span>BT 1.22 20' · BT 1.24a, 1.25a 25'</span></div><div class="m">Cặp đôi, lên bảng</div></div>
+    <div class="p lt"><div class="t">Tiết 2<small>Lý thuyết</small></div><div class="c"><b>Không gian véctơ · Tổ hợp tuyến tính · Độc lập tuyến tính</b><span>Khởi động 5' · định nghĩa, ví dụ 15' · tổ hợp tuyến tính 10' · độc lập tuyến tính 15'</span></div><div class="m">Vấn đáp, trực quan $\mathbb R^2$</div></div>
+    <div class="p lt"><div class="t">Tiết 3<small>Lý thuyết</small></div><div class="c"><b>Cơ sở · Số chiều · Tọa độ</b><span>Tiêu chuẩn thực hành 10' · cơ sở, số chiều 15' · tọa độ, ma trận chuyển 15' · tổng kết 5'</span></div><div class="m">Thuyết trình, công cụ tương tác</div></div>
+  </div>
+</section>
+
+<!-- ============ TIẾT 1: BÀI TẬP HPT ============ -->
+<section class="slide" id="bt122" data-kind="bai-tap" data-sec="Bài tập hệ phương trình">
+  <div class="head"><div class="eyebrow">BT 1.22 · Hệ chứa tham số</div><h2>Tìm $a$ để hệ có nghiệm</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      $$\begin{cases}2x_1-x_2+x_3+x_4=a\\ x_1+2x_2-x_3+4x_4=5\\ x_1+7x_2-4x_3+11x_4=-12\\ 4x_1-4x_2-3x_3-3x_4=-7\end{cases}$$
+      <div class="step">$d_1\leftrightarrow d_2$, rồi khử cột 1:
+        $$\left(\begin{array}{rrrr|r}1 & 2 & -1 & 4 & 5\\ 0 & -5 & 3 & -7 & a-10\\ 0 & 5 & -3 & 7 & -17\\ 0 & -12 & 1 & -19 & -27\end{array}\right)$$</div>
+    </div>
+    <div class="stack small">
+      <div class="step">$d_3\to d_3+d_2$: dòng 3 thành $(0\ 0\ 0\ 0\,|\,a-27)$; $\ d_4\to5d_4-12d_2$: $(0\ 0\ {-31}\ {-11}\,|\,\dots)$</div>
+      <div class="step">Vậy $r(A)=3$ với mọi $a$; $\ r(\overline{A})=3\iff a-27=0$.</div>
+      <div class="step box key">Hệ có nghiệm $\iff\boxed{a=27}$ (khi đó vô số nghiệm, 1 tham số).</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Hướng dẫn trong giáo trình ghi $r(A)=2$; thực tế $r(A)=3$ (vì $d_1-3d_2+d_3=0$ nhưng $d_4$ độc lập). Đáp số $a=27$ không đổi.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ý tưởng then chốt: tìm tổ hợp dòng triệt tiêu vế trái ($d_1-3d_2+d_3=0$) — khi đó vế phải tương ứng $a-15-12$ phải bằng 0, tức $a=27$.</p></aside>
+</section>
+
+<section class="slide" id="bt124" data-kind="bai-tap" data-sec="Bài tập hệ phương trình">
+  <div class="head"><div class="eyebrow">BT 1.24a và BT 1.25a · Hệ thuần nhất</div><h2>Nghiệm tổng quát và hệ nghiệm cơ bản</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>1.24a)</b> $\begin{cases}x_1+2x_2+x_3-x_4=0\\ 3x_1-2x_2+2x_3-3x_4=0\\ x_1-4x_2+x_3+5x_4=0\end{cases}$</p>
+      <div data-widget="elim" data-matrix="1 2 1 -1 0; 3 -2 2 -3 0; 1 -4 1 5 0" data-mode="solve"></div>
+      <div class="box warn tiny" data-tag="Đính chính">Giáo trình ghi $(3c,c,-4c,c)$: thay vào phương trình 2 được $-4c\ne0$. Đáp số đúng $(7c;\,c;\,-8c;\,c)$.</div>
+    </div>
+    <div class="stack small">
+      <p><b>1.25a)</b> $\begin{cases}2x_1-x_2-x_3+x_4=0\\ x_1-x_2-x_3-2x_4=0\\ 5x_1-x_2-3x_3-2x_4=0\end{cases}$</p>
+      <div class="step">$r(A)=3,\ n=4$ ⇒ $\dim S=1$.</div>
+      <div class="step">Nghiệm: $(-3c;\,c;\,-6c;\,c)$. Cho $c=1$:</div>
+      <div class="step box key">Hệ nghiệm cơ bản $\{(-3;\,1;\,-6;\,1)\}$, $\ \dim S=1$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Nhận xét: cộng hai nghiệm của hệ thuần nhất vẫn là nghiệm, nhân nghiệm với một số vẫn là nghiệm. Tập có tính chất này gọi là <b>không gian véctơ</b> — nội dung tiếp theo.</p></aside>
+</section>
+
+<!-- ============ 1.3.1 ============ -->
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="1.3.1 Định nghĩa">
+  <div class="head"><div class="eyebrow">Khởi động · Véctơ trong kinh tế</div><h2>Giỏ hàng, bảng số, đa thức chi phí — chung một cấu trúc</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Giỏ hàng <small>$\mathbb R^3$</small></h4>$\alpha=(2;\,1;\,5)$: 2 kg gạo, 1 kg thịt, 5 kg rau.<span>Gộp hai giỏ: <b>cộng</b> từng thành phần. Mua gấp 3: <b>nhân số</b>.</span></div>
+    <div class="card"><h4>Bảng doanh số <small>$\mathcal M_{2\times3}$</small></h4>Doanh số quý 1 + quý 2 = cộng ma trận; tăng 10% = nhân $1{,}1$.<span>Đã gặp ở Buổi 1.</span></div>
+    <div class="card"><h4>Hàm chi phí <small>$P_2$</small></h4>$C(q)=500+20q+0{,}1q^2$.<span>Cộng hai hàm chi phí, nhân với hệ số — vẫn là đa thức bậc $\le2$.</span></div>
+  </div>
+  <div class="step box key" data-tag="Điểm chung">Có phép <b>cộng</b> và phép <b>nhân với số</b>, kết quả vẫn nằm trong tập, và tuân theo cùng một bộ quy tắc ⇒ gọi chung là <span class="hl">không gian véctơ</span>.</div>
+  <aside class="tuhoc"><p>Tự nêu thêm ví dụ véctơ trong kinh tế: bảng chấm công, véctơ giá… Tập nghiệm của hệ thuần nhất có phải một ví dụ không?</p></aside>
+</section>
+
+<section class="slide" id="dinh-nghia" data-kind="ly-thuyet" data-sec="1.3.1 Định nghĩa">
+  <div class="head"><div class="eyebrow">1.3.1 · Định nghĩa không gian véctơ</div><h2>Tập $V$ cùng hai phép toán thỏa 8 tiên đề</h2></div>
+  <p class="small">Trên $V$ có phép cộng $\vec\alpha+\vec\beta\in V$ và phép nhân số $r\vec\alpha\in V$ ($r\in\mathbb R$). Với mọi $\vec\alpha,\vec\beta,\vec\gamma\in V$, $r,s\in\mathbb R$:</p>
+  <div class="cols">
+    <div class="box small" data-tag="Phép cộng">
+      <ol><li>$(\vec\alpha+\vec\beta)+\vec\gamma=\vec\alpha+(\vec\beta+\vec\gamma)$</li><li>$\vec\alpha+\vec\beta=\vec\beta+\vec\alpha$</li><li>Có $\vec0$: $\vec\alpha+\vec0=\vec\alpha$</li><li>Có $-\vec\alpha$: $\vec\alpha+(-\vec\alpha)=\vec0$</li></ol></div>
+    <div class="box small" data-tag="Phép nhân với số">
+      <ol start="5"><li>$r(\vec\alpha+\vec\beta)=r\vec\alpha+r\vec\beta$</li><li>$(r+s)\vec\alpha=r\vec\alpha+s\vec\alpha$</li><li>$(rs)\vec\alpha=r(s\vec\alpha)$</li><li>$1\cdot\vec\alpha=\vec\alpha$</li></ol></div>
+  </div>
+  <div class="box tip small" data-tag="Hệ quả">$\vec0$ và $-\vec\alpha$ là duy nhất; $\ r\vec\alpha=\vec0\iff r=0$ hoặc $\vec\alpha=\vec0$; $\ (-r)\vec\alpha=-(r\vec\alpha)$.</div>
+  <aside class="tuhoc"><p>Không cần chứng minh từng tiên đề; trọng tâm là nhận ra cấu trúc và nhớ các ví dụ chuẩn.</p></aside>
+</section>
+
+<section class="slide" id="vi-du" data-kind="vi-du" data-sec="1.3.1 Định nghĩa">
+  <div class="head"><div class="eyebrow">1.3.1 · Ví dụ và phản ví dụ</div><h2>Không gian véctơ quen thuộc</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box"><b>$\mathbb R^n$</b> $=\{(a_1,\dots,a_n)\}$, cộng và nhân số theo từng thành phần.</div>
+      <div class="box"><b>$\mathcal M_{m\times n}(\mathbb R)$</b> với phép cộng ma trận và nhân số.</div>
+      <div class="box"><b>$P_n$</b> (hay $\mathbb R_n[x]$): đa thức bậc $\le n$, kể cả đa thức 0.</div>
+      <div class="box"><b>Không gian nghiệm</b> của hệ thuần nhất $Ax=0$ ($n$ ẩn) — một không gian con của $\mathbb R^n$.</div>
+    </div>
+    <div class="quiz" data-widget="quiz" data-answer="2">
+      <p class="q">Tập nào sau đây là không gian véctơ (với phép toán thông thường)?</p>
+      <ol class="opts one">
+        <li>$\{(x;y)\in\mathbb R^2: x\ge0\}$</li>
+        <li>$\{(x;y;z)\in\mathbb R^3: x+y-2z=0\}$</li>
+        <li>$\{(x;1): x\in\mathbb R\}$</li>
+        <li>$\{(x;y)\in\mathbb R^2: x+y=1\}$</li></ol>
+      <p class="explain">B là tập nghiệm của một phương trình thuần nhất. A: nhân với $-1$ ra khỏi tập. C, D: không chứa $\vec0$.</p>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Mẹo kiểm tra nhanh: tập không chứa véctơ $\vec0$ thì chắc chắn không phải không gian véctơ.</p></aside>
+</section>
+
+<section class="slide" id="kg-con" data-kind="ly-thuyet" data-sec="1.3.1 Định nghĩa">
+  <div class="head"><div class="eyebrow">1.3.1 · Không gian con và không gian sinh</div><h2>Tập con "đóng" với hai phép toán</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Không gian con">$W\subset V$, $W\ne\varnothing$ là không gian con của $V$ $\iff$ với mọi $\vec\alpha,\vec\beta\in W$, $r\in\mathbb R$: $\ \vec\alpha+\vec\beta\in W$ và $r\vec\alpha\in W$.</div>
+      <div class="box" data-tag="Ví dụ">$W=\{(a_1;a_2;0;0)\}\subset\mathbb R^4$; không gian nghiệm $S$ của $Ax=0$.</div>
+    </div>
+    <div class="stack small">
+      <div class="box key" data-tag="Không gian sinh">Tập mọi tổ hợp tuyến tính của $\vec\alpha_1,\dots,\vec\alpha_m$:
+        $$\langle\vec\alpha_1,\dots,\vec\alpha_m\rangle=\{r_1\vec\alpha_1+\dots+r_m\vec\alpha_m\}$$
+        là không gian con nhỏ nhất chứa các véctơ đó; $\{\vec\alpha_i\}$ gọi là <b>hệ sinh</b>.</div>
+      <div class="box eco" data-tag="Kinh tế">Các "giỏ hàng" tạo được bằng cách phối trộn một số giỏ cơ bản theo tỷ lệ tùy ý.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Khái niệm không gian con cần cho BT 1.16 (tìm cơ sở của không gian con) ở Buổi 6.</p></aside>
+</section>
+
+<!-- ============ 1.3.2 ============ -->
+<section class="slide" id="to-hop" data-kind="vi-du" data-sec="1.3.2 Độc lập tuyến tính">
+  <div class="head"><div class="eyebrow">1.3.2 · Tổ hợp tuyến tính</div><h2>Biểu thị tuyến tính = giải một hệ phương trình</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Định nghĩa">$\vec\beta$ <b>biểu thị tuyến tính</b> qua $\vec\alpha_1,\dots,\vec\alpha_m$ nếu có các số $r_i$ sao cho $\vec\beta=r_1\vec\alpha_1+\dots+r_m\vec\alpha_m$.</div>
+      <p><b>BT 1.9.1:</b> Biểu thị $\vec\beta=(5;-2;1)$ qua $\vec\alpha_1=(2;0;3)$, $\vec\alpha_2=(0;2;-1)$, $\vec\alpha_3=(1;2;3)$.</p>
+      <div class="step">So sánh từng tọa độ của $r_1\vec\alpha_1+r_2\vec\alpha_2+r_3\vec\alpha_3=\vec\beta$:
+        $$\begin{cases}2r_1+r_3=5\\ 2r_2+2r_3=-2\\ 3r_1-r_2+3r_3=1\end{cases}$$</div>
+    </div>
+    <div class="stack small">
+      <div class="step box tip" data-tag="Mấu chốt">Các véctơ $\vec\alpha_j$ viết thành <b>cột</b> của ma trận hệ số, $\vec\beta$ là cột tự do.</div>
+      <div class="step" data-widget="elim" data-matrix="2 0 1 5; 0 2 2 -2; 3 -1 3 1" data-mode="solve"></div>
+      <div class="step box key">$\vec\beta=4\vec\alpha_1+2\vec\alpha_2-3\vec\alpha_3$</div>
+      <a class="xref back" href="buoi4.html#gauss">Phương pháp Gauss (Buổi 4)</a>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Thử lại: $4(2;0;3)+2(0;2;-1)-3(1;2;3)=(5;-2;1)$ ✓. Nếu hệ vô nghiệm thì $\vec\beta$ không biểu thị tuyến tính được qua hệ đã cho.</p></aside>
+</section>
+
+<section class="slide" id="dltt" data-kind="ly-thuyet" data-sec="1.3.2 Độc lập tuyến tính">
+  <div class="head"><div class="eyebrow">1.3.2 · Sự độc lập tuyến tính – phụ thuộc tuyến tính</div><h2>Có véctơ nào "thừa" trong hệ không?</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <div class="box key" data-tag="Định nghĩa">Hệ $\{\vec\alpha_1,\dots,\vec\alpha_m\}$ <b>phụ thuộc tuyến tính</b> (PTTT) nếu có $r_1,\dots,r_m$ <b>không đồng thời bằng 0</b> sao cho
+        $$r_1\vec\alpha_1+\dots+r_m\vec\alpha_m=\vec0.$$
+        Ngược lại (đẳng thức trên kéo theo mọi $r_i=0$): hệ <b>độc lập tuyến tính</b> (ĐLTT).</div>
+      <div class="box tip" data-tag="Hiểu bằng lời">PTTT $\iff$ có một véctơ biểu thị tuyến tính được qua các véctơ còn lại (véctơ "thừa").</div>
+    </div>
+    <div data-widget="vec2" data-u="2,1" data-v="1,3"></div>
+  </div>
+  <aside class="tuhoc"><p>Kéo $\vec v$ về cùng phương với $\vec u$ (ví dụ $(4;2)$ hoặc $(-2;-1)$): hình bình hành "dẹt", định thức bằng 0 ⇒ phụ thuộc tuyến tính. Trong $\mathbb R^2$: hai véctơ ĐLTT $\iff$ không cùng phương.</p></aside>
+</section>
+
+<section class="slide" id="tieu-chuan" data-kind="vi-du" data-sec="1.3.2 Độc lập tuyến tính">
+  <div class="head"><div class="eyebrow">1.3.2 · Tiêu chuẩn thực hành trong $\mathbb R^n$</div><h2>Xếp véctơ thành dòng của ma trận rồi tính hạng</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Tiêu chuẩn">Hệ $m$ véctơ trong $\mathbb R^n$, $A$ là ma trận có các dòng là tọa độ các véctơ:
+        <ul><li>ĐLTT $\iff r(A)=m$</li><li>$m=n$: ĐLTT $\iff\det A\ne0$</li><li>$m\gt n$: luôn PTTT</li></ul></div>
+      <div class="row"><a class="xref back" href="buoi1.html#hang">Hạng (Buổi 1)</a><a class="xref back" href="buoi2.html#dinh-nghia">Định thức (Buổi 2)</a></div>
+      <div class="box tip" data-tag="Tính chất">Hệ chứa $\vec0$ thì PTTT · Hệ con của hệ ĐLTT là ĐLTT · Thêm vào hệ ĐLTT một véctơ không biểu thị được qua hệ ⇒ vẫn ĐLTT.</div>
+    </div>
+    <div class="stack small">
+      <p><b>BT 1.11</b> — hệ nào ĐLTT trong $\mathbb R^3$?</p>
+      <table class="tbl">
+        <tr><th>Hệ</th><th class="c">$\det$</th><th>Kết luận</th></tr>
+        <tr><td>a) $(1;0;1),(2;0;1),(1;2;1)$</td><td class="c step">2</td><td class="step">ĐLTT</td></tr>
+        <tr><td>b) $(1;2;3),(4;5;6),(5;7;9)$</td><td class="c step">0</td><td class="step">PTTT: $\vec\alpha_3=\vec\alpha_1+\vec\alpha_2$</td></tr>
+        <tr><td>c) $(1;2;3),(4;5;6),(9;8;7)$</td><td class="c step">0</td><td class="step">PTTT: $13\vec\alpha_1-10\vec\alpha_2+3\vec\alpha_3=\vec0$</td></tr>
+        <tr><td>d) $(1;2;3),(4;5;6),(2;-1;0)$</td><td class="c step">$-12$</td><td class="step">ĐLTT</td></tr>
+      </table>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu b nhìn ra ngay $\vec\alpha_3=\vec\alpha_1+\vec\alpha_2$. Hệ thức phụ thuộc của câu c tìm bằng cách giải hệ thuần nhất có các cột là véctơ: $13\vec\alpha_1-10\vec\alpha_2+3\vec\alpha_3=\vec0$ — thử lại từng tọa độ.</p></aside>
+</section>
+
+<!-- ============ 1.3.3 ============ -->
+<section class="slide" id="co-so" data-kind="ly-thuyet" data-sec="1.3.3 Cơ sở, số chiều">
+  <div class="head"><div class="eyebrow">1.3.3 · Cơ sở và số chiều của không gian véctơ</div><h2>Cơ sở = hệ sinh "không thừa véctơ nào"</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Định nghĩa">Hệ $\mathcal E$ là <b>cơ sở</b> của $V$ nếu: (1) $\mathcal E$ độc lập tuyến tính và (2) $\mathcal E$ là hệ sinh của $V$.<br>Mọi cơ sở của $V$ có cùng số véctơ, gọi là <b>số chiều</b> $\dim V$.</div>
+      <div class="box tip" data-tag="Quy tắc vàng">Trong không gian $n$ chiều: mọi hệ gồm <b>đúng $n$</b> véctơ ĐLTT đều là cơ sở. (Không cần kiểm tra hệ sinh.)</div>
+    </div>
+    <div class="stack small">
+      <table class="tbl">
+        <tr><th>Không gian</th><th>Cơ sở chính tắc</th><th class="c">dim</th></tr>
+        <tr><td>$\mathbb R^n$</td><td>$\vec e_1=(1;0;\dots;0),\dots,\vec e_n$</td><td class="c">$n$</td></tr>
+        <tr><td>$\mathcal M_{2\times2}$</td><td>4 ma trận có một số 1, còn lại 0</td><td class="c">4</td></tr>
+        <tr><td>$P_n$</td><td>$1,x,x^2,\dots,x^n$</td><td class="c">$n+1$</td></tr>
+        <tr><td>Nghiệm của $Ax=0$</td><td>Hệ nghiệm cơ bản</td><td class="c">$n-r(A)$</td></tr>
+      </table>
+      <div class="quiz" data-widget="quiz" data-answer="3">
+        <p class="q small">Hệ $\{(1;1;0),(0;1;1),(1;0;1)\}$ trong $\mathbb R^3$:</p>
+        <ol class="opts"><li>PTTT</li><li>ĐLTT nhưng không là cơ sở</li><li>là một cơ sở</li><li>là hệ sinh nhưng PTTT</li></ol>
+        <p class="explain">$\det=2\ne0$: 3 véctơ ĐLTT trong không gian 3 chiều ⇒ cơ sở.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Dòng cuối bảng nối với Buổi 4: hệ nghiệm cơ bản chính là một cơ sở của không gian nghiệm.</p></aside>
+</section>
+
+<section class="slide" id="co-so-con" data-kind="ly-thuyet" data-sec="1.3.3 Cơ sở, số chiều">
+  <div class="head"><div class="eyebrow">1.3.3 · Cơ sở và số chiều của không gian sinh</div><h2>$\dim\langle\vec\alpha_1,\dots,\vec\alpha_m\rangle=r\big(\{\vec\alpha_i\}\big)$</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Định lý">Mỗi hệ con ĐLTT tối đại của $\{\vec\alpha_1,\dots,\vec\alpha_m\}$ là một cơ sở của $W=\langle\vec\alpha_1,\dots,\vec\alpha_m\rangle$; $\ \dim W=$ hạng của ma trận có các dòng là $\vec\alpha_i$.</div>
+      <p><b>BT 1.16a:</b> $U=\langle(1;1;1),(3;2;1),(0;1;2)\rangle$.</p>
+      <div class="step box">$r=2$ ⇒ $\dim U=2$. Cơ sở: $\{(1;1;1),(3;2;1)\}$ (vì $(0;1;2)=3(1;1;1)-(3;2;1)$).</div>
+    </div>
+    <div data-widget="elim" data-matrix="1 1 1; 3 2 1; 0 1 2" data-mode="rank" data-name="U"></div>
+  </div>
+  <aside class="tuhoc"><p>Biến đổi dòng làm thay đổi từng véctơ nhưng không đổi không gian sinh — các dòng khác 0 của dạng bậc thang cũng là một cơ sở.</p></aside>
+</section>
+
+<!-- ============ 1.3.4 ============ -->
+<section class="slide" id="toa-do" data-kind="ly-thuyet" data-sec="1.3.4 Tọa độ">
+  <div class="head"><div class="eyebrow">1.3.4 · Tọa độ của một véctơ</div><h2>Mỗi véctơ có đúng một "địa chỉ" đối với một cơ sở</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <div class="box key" data-tag="Định nghĩa">$(\varepsilon)=\{\vec\varepsilon_1,\dots,\vec\varepsilon_n\}$ là cơ sở của $V$. Mỗi $\vec\alpha\in V$ viết <b>duy nhất</b>: $\vec\alpha=a_1\vec\varepsilon_1+\dots+a_n\vec\varepsilon_n$.<br>$(a_1;\dots;a_n)$ là <b>tọa độ</b> của $\vec\alpha$ đối với $(\varepsilon)$.</div>
+      <div class="box" data-tag="Ví dụ 1.39">$(\xi)$: $\vec\xi_1=(1;1;0),\ \vec\xi_2=(0;1;1),\ \vec\xi_3=(1;0;1)$. $\vec\alpha=2\vec\xi_1-5\vec\xi_2+\vec\xi_3=(3;-3;-4)$ có tọa độ $(2;-5;1)$ đối với $(\xi)$.</div>
+      <div class="box tip" data-tag="Cách tìm">Tìm tọa độ = giải hệ có các <b>cột</b> là véctơ cơ sở, cột tự do là $\vec\alpha$.</div>
+    </div>
+    <div data-widget="vec2" data-mode="coords" data-u="2,1" data-v="1,3" data-w="5,5"></div>
+  </div>
+  <aside class="tuhoc"><p>Trên công cụ: $\vec w=(5;5)=2\vec u+1\vec v$ nên tọa độ của $\vec w$ đối với cơ sở $(\vec u,\vec v)$ là $(2;1)$, khác tọa độ $(5;5)$ đối với cơ sở chính tắc. Kéo $\vec w$ để thấy tọa độ thay đổi.</p></aside>
+</section>
+
+<section class="slide" id="ma-tran-chuyen" data-kind="ly-thuyet" data-sec="1.3.4 Tọa độ">
+  <div class="head"><div class="eyebrow">1.3.4 · Đổi cơ sở</div><h2>Ma trận chuyển và công thức đổi tọa độ</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Ma trận chuyển">$T$ chuyển từ cơ sở $(\varepsilon)$ sang $(\xi)$: <b>cột $j$ của $T$ là tọa độ của $\vec\xi_j$ đối với $(\varepsilon)$</b>.</div>
+      <div class="box key" data-tag="Công thức đổi tọa độ">$x$, $y$: tọa độ (cột) của $\vec\alpha$ đối với $(\varepsilon)$, $(\xi)$:
+        $$x=T\,y\qquad\Longleftrightarrow\qquad y=T^{-1}x$$</div>
+    </div>
+    <div class="stack small">
+      <p><b>Ví dụ 1.40:</b> $(\varepsilon)$ chính tắc của $\mathbb R^3$; $(\xi)$ như ví dụ 1.39.</p>
+      <div class="step">$\vec\xi_1=\vec\varepsilon_1+\vec\varepsilon_2,\ \vec\xi_2=\vec\varepsilon_2+\vec\varepsilon_3,\ \vec\xi_3=\vec\varepsilon_1+\vec\varepsilon_3$</div>
+      <div class="step">$$T=\begin{pmatrix}1 & 0 & 1\\ 1 & 1 & 0\\ 0 & 1 & 1\end{pmatrix},\quad T^{-1}=\frac12\begin{pmatrix}1 & 1 & -1\\ -1 & 1 & 1\\ 1 & -1 & 1\end{pmatrix}$$</div>
+      <div class="step">Kiểm tra: $T\begin{pmatrix}2\\-5\\1\end{pmatrix}=\begin{pmatrix}3\\-3\\-4\end{pmatrix}$ ✓ (đúng tọa độ chính tắc của $\vec\alpha$).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Lỗi hay gặp: viết tọa độ của $\vec\xi_j$ thành dòng thay vì cột. Ma trận chuyển ngược lại là $T^{-1}$ (xem Buổi 2).</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="1.3.4 Tọa độ">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 4 phút</div><h2>Đúng hay sai?</h2></div>
+  <ul class="tf" data-widget="tf">
+    <li data-ans="d" data-why="4 véctơ trong không gian 3 chiều: $r\le3\lt4$.">Mọi hệ 4 véctơ trong $\mathbb R^3$ đều phụ thuộc tuyến tính.</li>
+    <li data-ans="s" data-why="Hệ chứa véctơ 0 luôn PTTT: $1\cdot\vec0=\vec0$ với hệ số khác 0.">Hệ $\{(1;2),(0;0)\}$ độc lập tuyến tính.</li>
+    <li data-ans="d" data-why="$\det\begin{pmatrix}1 & 2\\ 3 & 4\end{pmatrix}=-2\ne0$: 2 véctơ ĐLTT trong $\mathbb R^2$.">$\{(1;2),(3;4)\}$ là một cơ sở của $\mathbb R^2$.</li>
+    <li data-ans="s" data-why="$\dim P_3=4$: cơ sở $1,x,x^2,x^3$.">$\dim P_3=3$.</li>
+    <li data-ans="d" data-why="Tọa độ đối với một cơ sở là duy nhất.">Một véctơ không thể có hai bộ tọa độ khác nhau đối với cùng một cơ sở.</li>
+  </ul>
+  <div data-widget="timer" data-min="4" data-label="Kiểm tra nhanh"></div>
+  <aside class="tuhoc"><p>Câu 4 là lỗi phổ biến — đọc kỹ phần giải thích.</p></aside>
+</section>
+
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 5</div><h2>Mọi câu hỏi về véctơ trong $\mathbb R^n$ đều quy về ma trận</h2></div>
+  <table class="tbl">
+    <tr><th>Câu hỏi</th><th>Lập ma trận</th><th>Công cụ</th></tr>
+    <tr><td>$\vec\beta$ có biểu thị qua $\vec\alpha_1,\dots,\vec\alpha_m$?</td><td>Cột $\vec\alpha_j$ | cột $\vec\beta$</td><td>Giải hệ (Gauss)</td></tr>
+    <tr><td>Hệ có độc lập tuyến tính?</td><td>Dòng là các véctơ</td><td>Hạng $=m$? (hoặc $\det\ne0$ khi $m=n$)</td></tr>
+    <tr><td>Hệ có là cơ sở của $\mathbb R^n$?</td><td>Ma trận vuông cấp $n$</td><td>$\det\ne0$</td></tr>
+    <tr><td>Cơ sở, số chiều của $\langle\vec\alpha_i\rangle$?</td><td>Dòng là các véctơ</td><td>Bậc thang: dòng khác 0, hạng</td></tr>
+    <tr><td>Tọa độ của $\vec\alpha$ đối với $(\xi)$?</td><td>Cột $\vec\xi_j$ | cột $\vec\alpha$</td><td>Giải hệ, hoặc $y=T^{-1}x$</td></tr>
+  </table>
+  <aside class="tuhoc"><p>Bảng này là "chìa khóa" cho toàn bộ bài tập Buổi 6 — hãy chép vào vở.</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 6: Luyện tập không gian véctơ và ôn tập chương</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>BT 1.9.2, 1.10, 1.12, 1.14, 1.15.</li>
+        <li>BT 1.16 (b, d), 1.17, 1.18.</li>
+        <li>BT 1.25b: tìm hệ nghiệm cơ bản (đáp số: $\{(-3;0;-1;2)\}$, $\dim S=1$).</li>
+      </ul></div>
+    <div class="box key" data-tag="Ôn tập chương">
+      <ul class="small">
+        <li>Tự lập sơ đồ tư duy toàn Chương 1 (mang đến Buổi 6).</li>
+        <li>Xem lại các slide "Tổng kết" của Buổi 1 – 5.</li>
+        <li>Chuẩn bị cho kiểm tra thường xuyên (30 phút).</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref back" href="buoi4.html">Buổi 4</a><a class="xref" href="buoi6.html">Sang Buổi 6 · Luyện tập và ôn tập</a><a class="xref back" href="index.html">Trang chương</a></div>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

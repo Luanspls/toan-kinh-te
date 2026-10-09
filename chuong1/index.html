@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong1" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Toán kinh tế · Chương 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<style>
+  /* Trang chương: một trang vở dài, lề đỏ bên trái, các khối kiến thức theo ô li */
+  html, body { height: auto; }
+  body { overflow: auto; background-color: var(--paper);
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-block: 28px 64px; padding-inline: 16px; }
+  .sheet { position: relative; padding-left: 28px; display: grid; gap: 44px; }
+  .sheet::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--pen); }
+  .k { font-family: var(--f-mono); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--pen); }
+  h1 { font-family: var(--f-display); font-size: clamp(34px, 6vw, 64px); line-height: 1.02; margin: 6px 0 10px; letter-spacing: -.015em; text-wrap: balance; }
+  h1 span { color: var(--pen); }
+  h2.sec { font-family: var(--f-display); font-size: clamp(24px, 3.2vw, 32px); margin: 0 0 4px; text-wrap: balance; }
+  .lead { font-size: 17px; line-height: 1.6; max-width: 66ch; color: var(--ink-2); margin: 0; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .cta a { text-decoration: none; font-weight: 600; font-size: 15px; padding: 10px 16px; border-radius: 6px; border: 2px solid var(--ink); color: var(--ink); background: var(--surface); }
+  .cta a.main { background: var(--ink); color: var(--surface); }
+  .cta a:hover { border-color: var(--blue); color: var(--blue); }
+  .cta a.main:hover { background: var(--blue); color: #fff; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: 14px; color: var(--ink-2); }
+  .facts b { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* Lộ trình 6 buổi */
+  .route { display: grid; gap: 10px; }
+  .bu { display: grid; grid-template-columns: 92px minmax(0, 1fr) 210px; gap: 18px; align-items: start; background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .bu .n { font-family: var(--f-display); font-weight: 700; font-size: 40px; line-height: 1; color: var(--pen); }
+  .bu .n small { display: block; font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; color: var(--ink-2); text-transform: uppercase; margin-bottom: 4px; }
+  .bu h3 { font-family: var(--f-display); font-size: 20px; margin: 0 0 4px; }
+  .bu p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+  .bu .mt { margin-top: 6px; font-size: 13.5px; color: var(--ink); }
+  .bu .mt b { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; color: var(--pen); margin-right: 6px; }
+  .bu .side { display: grid; gap: 10px; justify-items: start; }
+  .tiet { display: flex; gap: 4px; }
+  .tiet i { width: 22px; height: 22px; border: 2px solid; border-radius: 3px; display: grid; place-items: center; font: 600 10px var(--f-mono); font-style: normal; }
+  .tiet i.l { border-color: var(--blue); color: var(--blue); }
+  .tiet i.b { border-color: var(--pen); color: var(--pen); background: color-mix(in srgb, var(--pen) 10%, transparent); }
+  .bu .open { text-decoration: none; font-weight: 600; font-size: 14px; color: var(--surface); background: var(--ink); padding: 7px 12px; border-radius: 6px; }
+  .bu .open:hover { background: var(--blue); }
+  .bu .links { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; font-size: 13px; }
+  .bu .links a { color: var(--blue); text-decoration: none; border-bottom: 1px dotted var(--blue); }
+  .legend { display: flex; gap: 16px; font-size: 13px; color: var(--ink-2); align-items: center; flex-wrap: wrap; }
+  .legend .tiet i { width: 16px; height: 16px; }
+  @media (max-width: 760px) { .bu { grid-template-columns: 1fr; gap: 8px; } .bu .n { font-size: 30px; } }
+
+  /* Bản đồ kiến thức */
+  .map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+  .node { background: var(--surface); border: 2px solid var(--ink); border-radius: 8px; padding: 12px 14px; display: grid; gap: 6px; align-content: start; position: relative; margin-right: 26px; }
+  .node:last-child { margin-right: 0; }
+  .node:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 18px; color: var(--pen); font-weight: 700; font-size: 20px; }
+  .node h3 { margin: 0; font-family: var(--f-display); font-size: 19px; }
+  .node .when { font-family: var(--f-mono); font-size: 11px; color: var(--pen); letter-spacing: .06em; text-transform: uppercase; }
+  .node ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; font-size: 14px; }
+  .node a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--line); }
+  .node a:hover { color: var(--blue); border-color: var(--blue); }
+  .thread { margin-top: 14px; background: var(--surface); border: 2px dashed var(--pen); border-radius: 8px; padding: 12px 16px; font-size: 15px; overflow-x: auto; }
+  .thread .k { display: block; margin-bottom: 4px; }
+  @media (max-width: 900px) { .map { grid-template-columns: 1fr 1fr; gap: 14px; } .node { margin-right: 0; } .node::after { display: none; } }
+  @media (max-width: 520px) { .map { grid-template-columns: 1fr; } }
+
+  /* Mục tiêu, cấu trúc */
+  .tri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .tri > div { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .tri h3 { margin: 0 0 6px; font-family: var(--f-display); font-size: 18px; }
+  .tri ul { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.55; display: grid; gap: 4px; }
+  .tri li::marker { color: var(--pen); }
+  @media (max-width: 820px) { .tri { grid-template-columns: 1fr; } }
+  .flowline { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 14px; }
+  .flowline span { background: var(--surface); border: 1.5px solid var(--ink); border-radius: 999px; padding: 5px 12px; }
+  .flowline em { font-style: normal; color: var(--pen); font-weight: 700; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+  @media (max-width: 820px) { .two { grid-template-columns: 1fr; } }
+  table.tbl { font-size: 14px; }
+  .tblwrap { overflow-x: auto; }
+  details.err { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 12px 16px; }
+  details.err summary { cursor: pointer; font-weight: 700; font-size: 16px; }
+  details.err[open] summary { margin-bottom: 10px; }
+  .refs { font-size: 14.5px; line-height: 1.6; margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+  footer { font-size: 13px; color: var(--ink-2); border-top: 1.5px solid var(--line); padding-top: 12px; }
+  .pg { font-size: 12.5px; color: var(--ink-2); display: flex; align-items: center; }
+  .pg.done .ptxt::after { content: " ✓"; color: var(--ok); font-weight: 700; }
+  .themebtn { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 5; background: var(--surface); }
+</style>
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+  <header>
+    <div class="k">Toán kinh tế · Mã C10.KT06 · Cao đẳng Kế toán</div>
+    <h1>Chương 1 · <span>Cơ sở</span> của Toán kinh tế</h1>
+    <p class="lead" data-aud="hv">Bài giảng tự học theo 6 buổi: ma trận, định thức, hệ phương trình tuyến tính và không gian véctơ. Mỗi buổi có mục tiêu, lộ trình tự học, lý thuyết cô đọng với công cụ tương tác, ví dụ và bài tập có lời giải từng bước, câu hỏi tự kiểm tra và nhiệm vụ sau buổi học.</p>
+    <p class="lead" data-aud="gv">Bài giảng điện tử theo từng buổi học 3 – 4 tiết: ma trận, định thức, hệ phương trình tuyến tính và không gian véctơ. Mỗi buổi mở đầu bằng mục tiêu về kiến thức, kỹ năng và năng lực người học; các phần liên kết chéo với nhau và với Phòng tính ma trận.</p>
+    <div class="cta" data-aud="gv"><a class="main" href="buoi1.html">Trình chiếu Buổi 1</a><a href="lab.html">Phòng tính ma trận</a><a href="#lo-trinh">Xem lộ trình 6 buổi</a></div>
+    <div class="cta" data-aud="hv"><a class="main" href="buoi1.html" data-resume>Bắt đầu học Buổi 1</a><a href="lab.html">Phòng tính ma trận</a><a href="#lo-trinh">Lộ trình 6 buổi</a><a href="../index.html">← Cổng học tập</a></div>
+    <div class="facts"><span><b>21</b> giờ</span><span><b>7</b> lý thuyết</span><span><b>14</b> bài tập, thảo luận</span><span><b>6</b> buổi</span><span><b>118</b> slide</span><span><b>14</b> loại công cụ tương tác</span></div>
+  </header>
+
+  <section id="lo-trinh">
+    <div class="k">Lộ trình</div>
+    <h2 class="sec">Sáu buổi học, phân bổ đúng 21 giờ của chương trình</h2>
+    <div class="legend"><span class="tiet"><i class="l">L</i></span> Tiết lý thuyết <span class="tiet"><i class="b">B</i></span> Tiết bài tập, thảo luận</div>
+    <div class="route" style="margin-top:12px">
+      <article class="bu">
+        <div class="n"><small>4 tiết</small>01</div>
+        <div><h3>Ma trận: khái niệm, phép toán và hạng</h3>
+          <p>1.1.1 · Khái niệm, ma trận đặc biệt · Cộng, nhân số, chuyển vị, nhân ma trận · Biến đổi sơ cấp · Hạng. BT 1.1 – 1.4.</p>
+          <p class="mt"><b>TRỌNG TÂM</b>Nhân ma trận "dòng × cột"; tìm và biện luận hạng.</p>
+          <div class="links"><a href="buoi1.html#muc-tieu">Mục tiêu</a><a href="buoi1.html#khoi-dong">Khởi động: doanh thu</a><a href="buoi1.html#phep-nhan">Máy nhân ma trận</a><a href="buoi1.html#hang-vd">Tìm hạng từng bước</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="b">B</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi1.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi1.html" data-total="24"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>3 tiết</small>02</div>
+        <div><h3>Định thức và ma trận nghịch đảo</h3>
+          <p>1.1.2 · Định nghĩa, Sarrus · 7 tính chất · Phần bù đại số, khai triển Laplace · Ma trận phụ hợp, nghịch đảo (2 cách). BT 1.5a, 1.6.1, 1.7 (a, b).</p>
+          <p class="mt"><b>TRỌNG TÂM</b>$A$ khả nghịch $\iff\det A\ne0$.</p>
+          <div class="links"><a href="buoi2.html#sarrus">Sarrus từng đường chéo</a><a href="buoi2.html#laplace">Khai triển Laplace</a><a href="buoi2.html#nghich-dao-gauss">Gauss – Jordan</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="l">L</i><i class="b">B</i></div><a class="open" href="buoi2.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi2.html" data-total="20"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>3 tiết</small>03</div>
+        <div><h3>Luyện tập định thức, nghịch đảo và ứng dụng</h3>
+          <p>5 dạng bài: định thức cấp cao, tham số, nghịch đảo, phương trình ma trận, chứng minh · Mô hình cân đối liên ngành Leontief · Kiểm tra 10 phút. BT 1.2, 1.5 – 1.8.</p>
+          <p class="mt"><b>ỨNG DỤNG</b>Sản lượng $x=(I-A)^{-1}d$.</p>
+          <div class="links"><a href="buoi3.html#ban-do">Bảng chọn phương pháp</a><a href="buoi3.html#dang4">Phương trình ma trận</a><a href="buoi3.html#leontief">Mô hình Leontief</a></div></div>
+        <div class="side"><div class="tiet"><i class="b">B</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi3.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi3.html" data-total="16"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>4 tiết</small>04</div>
+        <div><h3>Hệ phương trình tuyến tính</h3>
+          <p>1.2 · Dạng tổng quát, dạng ma trận · Hệ Cramer · Phương pháp Gauss · Kronecker – Capelli · Hệ thuần nhất. BT 1.21, 1.23, bài toán phân xưởng.</p>
+          <p class="mt"><b>TRỌNG TÂM</b>Giải mọi hệ bằng Gauss; đọc số nghiệm từ $r(A)$, $r(\overline A)$.</p>
+          <div class="links"><a href="buoi4.html#khoi-dong">Cân bằng thị trường</a><a href="buoi4.html#hinh-hoc">Hình học hệ 2 ẩn</a><a href="buoi4.html#kronecker">Sơ đồ Kronecker – Capelli</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="l">L</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi4.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi4.html" data-total="23"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>3 tiết</small>05</div>
+        <div><h3>Luyện tập hệ phương trình · Không gian véctơ</h3>
+          <p>BT 1.22, 1.24, 1.25 · 1.3 · Định nghĩa, ví dụ · Tổ hợp tuyến tính · Độc lập tuyến tính · Cơ sở, số chiều · Tọa độ, ma trận chuyển.</p>
+          <p class="mt"><b>TRỌNG TÂM</b>Quy mọi câu hỏi về véctơ về hạng và hệ phương trình.</p>
+          <div class="links"><a href="buoi5.html#dltt">Véctơ kéo thả trong ℝ²</a><a href="buoi5.html#toa-do">Tọa độ đối với cơ sở</a><a href="buoi5.html#tong-ket">Bảng tra cứu</a></div></div>
+        <div class="side"><div class="tiet"><i class="b">B</i><i class="l">L</i><i class="l">L</i></div><a class="open" href="buoi5.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi5.html" data-total="19"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>4 tiết</small>06</div>
+        <div><h3>Luyện tập không gian véctơ · Ôn tập chương</h3>
+          <p>BT 1.9 – 1.18 theo 5 dạng · Sơ đồ chương · 8 sai lầm thường gặp · Trò chơi "Rung chuông vàng" · Đề kiểm tra thường xuyên 30 phút tham khảo.</p>
+          <p class="mt"><b>KẾT NỐI</b>Chương 1 là công cụ cho quy hoạch tuyến tính (Chương 2).</p>
+          <div class="links"><a href="buoi6.html#so-do">Sơ đồ chương</a><a href="buoi6.html#tro-choi">Rung chuông vàng</a><a href="buoi6.html#de-kttx">Đề KTTX tham khảo</a></div></div>
+        <div class="side"><div class="tiet"><i class="b">B</i><i class="b">B</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi6.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi6.html" data-total="16"></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="ban-do">
+    <div class="k">Bản đồ kiến thức</div>
+    <h2 class="sec">Mỗi khối dùng lại khối trước — bấm để mở đúng slide</h2>
+    <div class="map" style="margin-top:12px">
+      <div class="node"><span class="when">Buổi 1</span><h3>Ma trận</h3><ul>
+        <li><a href="buoi1.html#dinh-nghia">Khái niệm, $a_{ij}$</a></li><li><a href="buoi1.html#phep-nhan">Nhân dòng × cột</a></li><li><a href="buoi1.html#bdsc">Biến đổi sơ cấp</a></li><li><a href="buoi1.html#hang">Hạng $r(A)$</a></li></ul></div>
+      <div class="node"><span class="when">Buổi 2 – 3</span><h3>Định thức</h3><ul>
+        <li><a href="buoi2.html#tinh-chat">7 tính chất</a></li><li><a href="buoi2.html#laplace">Khai triển Laplace</a></li><li><a href="buoi2.html#phu-hop">$A^{-1}=\frac{1}{\det A}A^*$</a></li><li><a href="buoi3.html#leontief">Leontief</a></li></ul></div>
+      <div class="node"><span class="when">Buổi 4 – 5</span><h3>Hệ phương trình</h3><ul>
+        <li><a href="buoi4.html#cramer">Cramer $x_j=D_j/D$</a></li><li><a href="buoi4.html#gauss">Khử Gauss</a></li><li><a href="buoi4.html#kronecker">$r(A)=r(\overline A)$</a></li><li><a href="buoi4.html#thuan-nhat">Hệ thuần nhất</a></li></ul></div>
+      <div class="node"><span class="when">Buổi 5 – 6</span><h3>Không gian véctơ</h3><ul>
+        <li><a href="buoi5.html#dltt">Độc lập tuyến tính</a></li><li><a href="buoi5.html#co-so">Cơ sở, số chiều</a></li><li><a href="buoi5.html#toa-do">Tọa độ</a></li><li><a href="buoi5.html#ma-tran-chuyen">Ma trận chuyển</a></li></ul></div>
+    </div>
+    <div class="thread"><span class="k">Sợi chỉ xuyên suốt</span>Với $A$ vuông cấp $n$: $\ \det A\ne0\iff r(A)=n\iff A$ khả nghịch $\iff Ax=b$ có nghiệm duy nhất $\iff$ các dòng của $A$ độc lập tuyến tính.</div>
+  </section>
+
+  <section id="muc-tieu">
+    <div class="k">Mục tiêu chương (theo chương trình môn học)</div>
+    <h2 class="sec">Người học đạt được gì sau 21 giờ?</h2>
+    <div class="tri" style="margin-top:12px">
+      <div><h3>Kiến thức</h3><ul>
+        <li>Trình bày khái niệm ma trận, ma trận nghịch đảo, định thức của ma trận vuông.</li>
+        <li>Hiểu các phép toán ma trận và tính chất của định thức cấp $n$; các phép khai triển.</li>
+        <li>Hiểu không gian véctơ, độc lập – phụ thuộc tuyến tính, cơ sở, số chiều, tọa độ.</li></ul></div>
+      <div><h3>Kỹ năng</h3><ul>
+        <li>Xác định hạng; thành thạo phép toán ma trận, định thức cấp 2, 3.</li>
+        <li>Tìm ma trận nghịch đảo; xác định điều kiện có nghiệm, giải hệ bằng Gauss.</li>
+        <li>Chứng tỏ hệ véctơ ĐLTT, tìm cơ sở, xác định tọa độ đối với một cơ sở.</li></ul></div>
+      <div><h3>Năng lực tự chủ và trách nhiệm</h3><ul>
+        <li>Mô hình hóa bài toán kinh tế (doanh thu, cân bằng thị trường, phân bổ nguồn lực, Leontief) bằng ma trận và hệ phương trình.</li>
+        <li>Lựa chọn công cụ tính toán phù hợp, tự kiểm tra kết quả.</li>
+        <li>Hợp tác nhóm, trình bày và hướng dẫn người khác cách giải.</li></ul></div>
+    </div>
+  </section>
+
+  <section id="cach-dung">
+    <div class="k">Cấu trúc và cách sử dụng</div>
+    <h2 class="sec">Mỗi buổi đi theo cùng một nhịp</h2>
+    <div class="flowline" style="margin-top:12px"><span data-aud="gv">Mục tiêu bài dạy</span><span data-aud="hv">Mục tiêu bài học</span><em>→</em><span data-aud="gv">Tiến trình theo tiết</span><span data-aud="hv">Lộ trình tự học</span><em>→</em><span>Khởi động (tình huống kinh tế)</span><em>→</em><span>Nội dung cô đọng</span><em>→</em><span>Kiểm tra nhanh</span><em>→</em><span>Luyện tập theo dạng</span><em>→</em><span>Tổng kết</span><em>→</em><span>Nhiệm vụ, liên kết buổi sau</span></div>
+    <div class="two" style="margin-top:16px">
+      <div class="tblwrap"><table class="tbl">
+        <tr><th>Phím</th><th>Chức năng</th></tr>
+        <tr><td><kbd>→</kbd> <kbd>Space</kbd></td><td>Hiện bước tiếp theo / sang slide sau</td></tr>
+        <tr><td><kbd>←</kbd></td><td>Ẩn bước vừa hiện / về slide trước</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Mục lục buổi học, liên kết sang buổi khác</td></tr>
+        <tr data-aud="gv"><td><kbd>N</kbd></td><td>Ghi chú giảng viên (câu hỏi gợi mở, lỗi hay gặp, đáp số)</td></tr>
+        <tr data-aud="hv"><td><kbd>N</kbd></td><td>Gợi ý tự học (mẹo, lỗi hay gặp, đáp số để tự kiểm tra)</td></tr>
+        <tr><td><kbd>F</kbd> · <kbd>R</kbd> · <kbd>T</kbd></td><td>Toàn màn hình · Chế độ đọc (cuộn) · Giao diện sáng/tối</td></tr>
+      </table></div>
+      <div class="tblwrap"><table class="tbl">
+        <tr><th>Công cụ tương tác</th><th>Ở đâu</th></tr>
+        <tr><td>Chọn phần tử, máy nhân ma trận</td><td><a href="buoi1.html#dinh-nghia">B1</a>, <a href="buoi1.html#phep-nhan">B1</a></td></tr>
+        <tr><td>Biến đổi sơ cấp từng bước (hạng, định thức, nghịch đảo, Gauss)</td><td>B1 – B6, <a href="lab.html">Phòng tính</a></td></tr>
+        <tr><td>Sarrus, Laplace, Cramer</td><td><a href="buoi2.html#sarrus">B2</a>, <a href="buoi4.html#cramer">B4</a></td></tr>
+        <tr><td>Leontief, đồ thị hệ 2 ẩn, Kronecker – Capelli</td><td><a href="buoi3.html#leontief">B3</a>, <a href="buoi4.html#hinh-hoc">B4</a></td></tr>
+        <tr><td>Véctơ kéo thả, tọa độ; trắc nghiệm, đúng/sai, đồng hồ, trò chơi</td><td><a href="buoi5.html#dltt">B5</a>, <a href="buoi6.html#tro-choi">B6</a></td></tr>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="dinh-chinh">
+    <div class="k"><span data-aud="gv">Ghi chú cho giảng viên</span><span data-aud="hv">Lưu ý khi dùng giáo trình</span></div>
+    <h2 class="sec">Đính chính đáp số trong giáo trình</h2>
+    <p class="lead">Khi soạn bài, mọi đáp số đã được tính lại bằng phân số chính xác. Các chỗ sau trong giáo trình in khác kết quả đúng; slide tương ứng đã ghi chú.<span data-aud="hv"> Khi tự làm bài tập trong giáo trình, hãy đối chiếu với bảng này.</span></p>
+    <details class="err" style="margin-top:12px" open>
+      <summary>12 vị trí cần lưu ý</summary>
+      <div class="tblwrap"><table class="tbl">
+        <tr><th>Vị trí</th><th>Giáo trình in</th><th>Kết quả đúng</th><th>Slide</th></tr>
+        <tr><td>Ví dụ 1.21 (Sarrus)</td><td>$=44$</td><td>$=54$</td><td><a href="buoi2.html#sarrus">B2</a></td></tr>
+        <tr><td>BT 1.2a</td><td>$x_{23}=\frac83$</td><td>$x_{23}=4$</td><td><a href="buoi1.html#bt12-13">B1</a></td></tr>
+        <tr><td>BT 1.2 (b, c)</td><td>Đáp số không thỏa phương trình</td><td>c) $X=A^{-1}B$; b) $X=A^{-1}B-C$ (xem slide)</td><td><a href="buoi3.html#dang4">B3</a></td></tr>
+        <tr><td>BT 1.6.2</td><td>$m\ne4$</td><td>$m\ne-4$ ($\det A=-m-4$)</td><td><a href="buoi3.html#dang2">B3</a></td></tr>
+        <tr><td>BT 1.14a</td><td>"Chứng minh là cơ sở"</td><td>$\det=0$: không là cơ sở</td><td><a href="buoi6.html#dang3">B6</a></td></tr>
+        <tr><td>BT 1.16c</td><td>Lời giải dùng véctơ khác đề</td><td><span data-aud="gv">Cần sửa đề trước khi giao</span><span data-aud="hv">Đề in chưa khớp — có thể bỏ qua</span></td><td><a href="buoi6.html#dang4">B6</a></td></tr>
+        <tr><td>BT 1.21b</td><td>Vô số nghiệm</td><td>Vô nghiệm</td><td><a href="buoi4.html#bt121b">B4</a></td></tr>
+        <tr><td>BT 1.22 (hướng dẫn)</td><td>$r(A)=2$</td><td>$r(A)=3$; đáp số $a=27$ vẫn đúng</td><td><a href="buoi5.html#bt122">B5</a></td></tr>
+        <tr><td>BT 1.23b</td><td>Vô số nghiệm</td><td>Vô nghiệm</td><td><a href="buoi4.html#bt123">B4 (ghi chú)</a></td></tr>
+        <tr><td>BT 1.23c</td><td>$x_4=1-\frac17c_1$</td><td>$x_4=1-\frac{11}7c_1$</td><td><a href="buoi4.html#bt123">B4 (ghi chú)</a></td></tr>
+        <tr><td>BT 1.24a</td><td>$(3c,c,-4c,c)$</td><td>$(7c,c,-8c,c)$</td><td><a href="buoi5.html#bt124">B5</a></td></tr>
+        <tr><td>BT 1.4a</td><td>Đề in dạng "$(\dots)^n$"</td><td>Nên bỏ hoặc sửa đề</td><td>—</td></tr>
+      </table></div>
+    </details>
+  </section>
+
+  <section id="tai-lieu">
+    <div class="k">Học liệu</div>
+    <h2 class="sec">Tài liệu tham khảo</h2>
+    <ol class="refs" style="margin-top:10px">
+      <li>Nguyễn Cao Luận (chủ biên), Hoàng Văn Linh, <i>Toán kinh tế</i>, NXB Đại học Thái Nguyên, 2021 — tài liệu học tập chính.</li>
+      <li>Nguyễn Quang Dong, Ngô Văn Thứ, Hoàng Đình Tuấn, <i>Toán kinh tế</i>, NXB Thống kê, 2006.</li>
+      <li>Nguyễn Đình Trí, <i>Toán học cao cấp</i> (tập 1), NXB Giáo dục, 2005; <i>Bài tập Toán cao cấp</i> (tập 1), 2006.</li>
+      <li>Chương trình môn học Toán kinh tế (C10.KT06), Trường Cao đẳng Sư phạm Lạng Sơn, 2024.</li>
+    </ol>
+  </section>
+
+  <footer>Bài giảng điện tử Chương 1 · Toán kinh tế · Trình độ cao đẳng, ngành Kế toán. Mở được không cần Internet (công thức dùng thư viện KaTeX đi kèm trong thư mục <code>lib</code>; phông chữ tự thay thế khi ngoại tuyến).</footer>
+</div>
+</div>
+<button class="ib themebtn" type="button" id="themeBtn" aria-label="Đổi giao diện sáng tối" title="Sáng / tối"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 000 16z" fill="currentColor"/></svg></button>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/deck.js"></script>
+<script>
+document.getElementById('themeBtn').addEventListener('click', function () {
+  var r = document.documentElement;
+  var dark = r.getAttribute('data-theme') === 'dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  var t = dark ? 'light' : 'dark'; r.setAttribute('data-theme', t);
+  try { localStorage.setItem('tkt-theme', t); } catch (e) {}
+});
+</script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong1" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 1 · Ma trận</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 1" data-unit="Buổi 1 · Ma trận" data-next="buoi2.html" data-home="index.html">
+<div class="stage">
+
+<!-- ============ MỞ ĐẦU ============ -->
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 1">
+  <div class="num"><small>Chương 1 · Cơ sở của Toán kinh tế</small>Buổi 1</div>
+  <h1>Ma trận: khái niệm, phép toán và hạng</h1>
+  <div class="meta"><span class="chip">4 tiết</span><span class="chip lt">Lý thuyết 1 tiết</span><span class="chip bt">Bài tập 3 tiết</span><span class="chip">Mục 1.1.1 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#dinh-nghia"><span>1.1.1.1</span>Một số khái niệm</a>
+    <a href="#phep-toan"><span>1.1.1.2</span>Các phép toán trên ma trận</a>
+    <a href="#bdsc"><span>1.1.1.3</span>Các phép biến đổi sơ cấp</a>
+    <a href="#hang"><span>1.1.1.4</span>Hạng của ma trận</a>
+    <a href="#bt-dang"><span>BT</span>Luyện tập: BT 1.1 – 1.4</a>
+    <a href="#tong-ket"><span>KẾT</span>Tổng kết và nhiệm vụ</a>
+  </div>
+  <aside class="tuhoc"><p>Đánh giá môn học: 1 bài kiểm tra thường xuyên 30 phút (ma trận, định thức, hệ phương trình), 1 bài kiểm tra định kỳ 45 phút, thi kết thúc học phần tự luận 60 phút.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 1</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Trình bày được khái niệm ma trận và các dạng đặc biệt: vuông, chéo, đơn vị, tam giác, bậc thang.</li>
+      <li>Phát biểu được quy tắc và điều kiện của phép cộng, nhân số, chuyển vị, nhân hai ma trận.</li>
+      <li>Nêu được ba phép biến đổi sơ cấp và định nghĩa hạng của ma trận.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Thực hiện thành thạo các phép toán; xác định nhanh cấp của ma trận tích.</li>
+      <li>Dùng biến đổi sơ cấp đưa ma trận về dạng bậc thang, tính được hạng.</li>
+      <li>Biện luận được hạng của ma trận chứa tham số đơn giản.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Mô hình hóa:</b> chuyển bảng số liệu bán hàng thành ma trận, dùng phép nhân để tính doanh thu.</li>
+      <li><b>Hợp tác:</b> giải bài theo cặp/nhóm, trình bày lời giải trên bảng.</li>
+      <li><b>Tự chủ:</b> tự kiểm tra kết quả bằng Phòng tính ma trận, chọn cách biến đổi ít phân số nhất.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Lời giải BT 1.1, 1.3, 1.4 trên bảng hoặc phiếu học tập; trả lời đúng ít nhất 2/3 câu kiểm tra nhanh.</span></div>
+  <aside class="tuhoc"><p>Hai kỹ năng trọng tâm của buổi: <b>nhân ma trận</b> và <b>tính hạng</b> — sẽ dùng lại ở định thức, hệ phương trình và Chương 2. Học xong, quay lại slide này tự đánh giá từng mục.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 4 tiết × 45 phút</div><h2>Học đến đâu, luyện đến đó</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Khởi động · Khái niệm · Phép toán · Biến đổi sơ cấp · Hạng</b><span>Tình huống doanh thu 5' · khái niệm 10' · phép toán 15' · BĐSC và hạng 15'</span></div><div class="m">Thuyết trình, vấn đáp, công cụ tương tác</div></div>
+    <div class="p bt"><div class="t">Tiết 2<small>Bài tập</small></div><div class="c"><b>Phép toán trên ma trận</b><span>BT 1.1 (a–d), BT 1.2a</span></div><div class="m">Cặp đôi, lên bảng</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Tích và lũy thừa ma trận</b><span>BT 1.3 · Thử thách lũy thừa · Kiểm tra nhanh</span></div><div class="m">Nhóm 4 người</div></div>
+    <div class="p bt"><div class="t">Tiết 4<small>Bài tập</small></div><div class="c"><b>Hạng của ma trận</b><span>BT 1.4 (b, c, d) · Tổng kết · Giao nhiệm vụ</span></div><div class="m">Cá nhân, chữa chung</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · Tình huống kinh tế</div><h2>Hai cửa hàng, ba mặt hàng: doanh thu bao nhiêu?</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <table class="tbl">
+        <tr><th>Số lượng bán/tuần</th><th class="c">Áo sơ mi</th><th class="c">Quần âu</th><th class="c">Mũ</th></tr>
+        <tr><td>Cửa hàng 1</td><td class="c">20</td><td class="c">15</td><td class="c">10</td></tr>
+        <tr><td>Cửa hàng 2</td><td class="c">25</td><td class="c">12</td><td class="c">8</td></tr>
+        <tr><th>Đơn giá (nghìn đồng)</th><td class="c">150</td><td class="c">200</td><td class="c">60</td></tr>
+      </table>
+      <p class="small"><b>Câu hỏi:</b> Doanh thu một tuần của mỗi cửa hàng? Có cách viết gọn cho mọi cửa hàng cùng lúc không?</p>
+      <div data-widget="timer" data-min="2" data-label="Suy nghĩ"></div>
+    </div>
+    <div class="stack">
+      <div class="step box"><p class="small">Viết bảng số lượng và đơn giá thành các <b>bảng số</b>:</p>
+        $$Q=\begin{pmatrix}20 & 15 & 10\\ 25 & 12 & 8\end{pmatrix},\qquad p=\begin{pmatrix}150\\200\\60\end{pmatrix}$$</div>
+      <div class="step box"><p class="small">Doanh thu = "dòng số lượng" nhân "cột đơn giá":</p>
+        $$Q\,p=\begin{pmatrix}20\cdot150+15\cdot200+10\cdot60\\ 25\cdot150+12\cdot200+8\cdot60\end{pmatrix}=\begin{pmatrix}6600\\6630\end{pmatrix}$$</div>
+      <div class="step box key" data-tag="Thông điệp">Bảng số liệu ↔ <span class="hl">ma trận</span>; tính doanh thu ↔ <span class="hl">phép nhân ma trận</span>. Kế toán làm việc với bảng số mỗi ngày!</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự tính tay doanh thu trước khi xem lời giải (đáp số: 6 600 và 6 630 nghìn đồng). Thử nghĩ: nếu có 50 cửa hàng và 200 mặt hàng thì viết thế nào cho gọn?</p></aside>
+</section>
+
+<!-- ============ 1.1.1.1 KHÁI NIỆM ============ -->
+<section class="slide" id="dinh-nghia" data-kind="ly-thuyet" data-sec="1.1.1.1 Khái niệm">
+  <div class="head"><div class="eyebrow">1.1.1.1 · Một số khái niệm</div><h2>Ma trận là một bảng số chữ nhật</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key" data-tag="Định nghĩa">Bảng gồm $m\cdot n$ số thực xếp thành <b>$m$ dòng</b> và <b>$n$ cột</b> gọi là ma trận cấp $m\times n$:
+        $$A=(a_{ij})_{m\times n}=\begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\ a_{21} & a_{22} & \cdots & a_{2n}\\ \vdots & \vdots & & \vdots\\ a_{m1} & a_{m2} & \cdots & a_{mn}\end{pmatrix}$$</div>
+      <p class="small">$a_{ij}$: phần tử ở <span class="hl">dòng $i$, cột $j$</span> — luôn đọc <b>dòng trước, cột sau</b>.<br>Tập các ma trận cấp $m\times n$: $\mathcal M_{m\times n}(\mathbb R)$.</p>
+    </div>
+    <div class="stack">
+      <p class="small muted">Bấm vào từng ô của ma trận số lượng $Q$:</p>
+      <div data-widget="pick" data-matrix="20 15 10; 25 12 8" data-name="q" data-sel="2,3"></div>
+      <div class="box eco small" data-tag="Đọc theo kinh tế">$q_{23}=8$: cửa hàng 2 bán được 8 chiếc mũ. Dòng ↔ cửa hàng, cột ↔ mặt hàng.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự kiểm tra: $Q$ cấp mấy? $q_{12}=?$ (Đáp: $2\times3$; $15$). Lỗi hay gặp: đọc $a_{ij}$ thành cột trước — luôn đọc <b>dòng trước, cột sau</b>.</p></aside>
+</section>
+
+<section class="slide" id="dac-biet" data-kind="ly-thuyet" data-sec="1.1.1.1 Khái niệm">
+  <div class="head"><div class="eyebrow">1.1.1.1 · Một số khái niệm</div><h2>Những ma trận có tên riêng</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Ma trận vuông <small>m = n</small></h4>$$\begin{pmatrix}\htmlClass{hlrow}{1} & 4 & 6\\ 0 & \htmlClass{hlrow}{3} & -2\\ 2 & 5 & \htmlClass{hlrow}{-3}\end{pmatrix}$$<span class="muted">Cấp $n$; có <b>đường chéo chính</b> $a_{11},\dots,a_{nn}$.</span></div>
+    <div class="card"><h4>Ma trận chéo <small>a<sub>ij</sub> = 0, i ≠ j</small></h4>$$\begin{pmatrix}1 & 0 & 0\\ 0 & -3 & 0\\ 0 & 0 & 2\end{pmatrix}$$<span class="muted">Ngoài đường chéo chính toàn số 0.</span></div>
+    <div class="card"><h4>Ma trận đơn vị <small>I<sub>n</sub></small></h4>$$I_3=\begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1\end{pmatrix}$$<span class="muted">Đóng vai trò "số 1": $AI=IA=A$.</span></div>
+    <div class="card"><h4>Tam giác trên / dưới</h4>$$\begin{pmatrix}a & b & c\\ 0 & d & e\\ 0 & 0 & f\end{pmatrix}\ \begin{pmatrix}a & 0 & 0\\ b & d & 0\\ c & e & f\end{pmatrix}$$<span class="muted">Trên: $a_{ij}=0$ khi $i\gt j$. Dưới: khi $i\lt j$.</span></div>
+    <div class="card"><h4>Ma trận không <small>O</small></h4>$$O_{2\times3}=\begin{pmatrix}0 & 0 & 0\\ 0 & 0 & 0\end{pmatrix}$$<span class="muted">Đóng vai trò "số 0": $A+O=A$.</span></div>
+    <div class="card"><h4>Ma trận dòng / cột</h4>$$\begin{pmatrix}2 & -6 & 5 & 1\end{pmatrix},\ \begin{pmatrix}3\\1\\-6\end{pmatrix}$$<span class="muted">Cấp $1\times n$ và $m\times1$ — chính là <b>véctơ</b> (Buổi 5).</span></div>
+  </div>
+  <aside class="tuhoc"><p>Tự cho một ví dụ cho mỗi loại. Lưu ý: ma trận đơn vị là ma trận chéo đặc biệt; ma trận chéo vừa là tam giác trên vừa là tam giác dưới.</p></aside>
+</section>
+
+<section class="slide" id="bac-thang" data-kind="ly-thuyet" data-sec="1.1.1.1 Khái niệm">
+  <div class="head"><div class="eyebrow">1.1.1.1 · Một số khái niệm</div><h2>Ma trận bậc thang — "đích đến" của mọi phép biến đổi</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key small" data-tag="Định nghĩa">Phần tử khác 0 đầu tiên (tính từ trái) của một dòng là <b>phần tử cơ sở</b>. Ma trận khác 0 là <b>bậc thang</b> nếu:
+        <ol><li>Dòng không (nếu có) nằm dưới các dòng khác không;</li><li>Phần tử cơ sở của dòng dưới nằm <b>bên phải</b> phần tử cơ sở của dòng trên.</li></ol></div>
+      $$E=\begin{pmatrix}\boxed{1} & -1 & 4 & 3\\ 0 & \boxed{2} & -2 & 1\\ 0 & 0 & \boxed{-5} & 0\\ 0 & 0 & 0 & \boxed{6}\end{pmatrix}\quad F=\begin{pmatrix}\boxed{1} & 2 & -1\\ 0 & \boxed{3} & 2\end{pmatrix}$$
+      <p class="small muted"><b>Bậc thang rút gọn:</b> mọi phần tử cơ sở bằng 1, các phần tử khác trên cột của nó bằng 0.</p>
+    </div>
+    <div class="quiz" data-widget="quiz" data-answer="3">
+      <p class="q">Ma trận nào <b>không</b> phải ma trận bậc thang?</p>
+      <ol class="opts">
+        <li>$\begin{pmatrix}2 & 1 & 0\\ 0 & 0 & 7\end{pmatrix}$</li>
+        <li>$\begin{pmatrix}1 & 5\\ 0 & 1\\ 0 & 0\end{pmatrix}$</li>
+        <li>$\begin{pmatrix}1 & -1 & 3\\ 0 & 0 & 0\\ 0 & 0 & 2\end{pmatrix}$</li>
+        <li>$\begin{pmatrix}0 & 3 & 1\\ 0 & 0 & 4\end{pmatrix}$</li>
+      </ol>
+      <p class="explain">Đáp án C: dòng không (dòng 2) nằm <b>trên</b> một dòng khác không — vi phạm điều kiện 1. Đây là ma trận $M$ trong giáo trình.</p>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Nối các phần tử cơ sở bằng nét bút: nếu được một "bậc thang" đi xuống sang phải thì là ma trận bậc thang. Phương án D vẫn là bậc thang (cột đầu toàn số 0 không vi phạm điều kiện nào).</p></aside>
+</section>
+
+<!-- ============ 1.1.1.2 PHÉP TOÁN ============ -->
+<section class="slide" id="phep-toan" data-kind="ly-thuyet" data-sec="1.1.1.2 Phép toán">
+  <div class="head"><div class="eyebrow">1.1.1.2 · Các phép toán trên ma trận</div><h2>Bằng nhau, cộng, nhân số, chuyển vị</h2></div>
+  <div class="cols w64">
+    <table class="tbl">
+      <tr><th>Phép toán</th><th>Điều kiện</th><th>Quy tắc</th></tr>
+      <tr><td>Bằng nhau $A=B$</td><td>Cùng cấp</td><td>$a_{ij}=b_{ij}$ với mọi $i,j$</td></tr>
+      <tr><td>Cộng, trừ $A\pm B$</td><td>Cùng cấp</td><td>$(a_{ij}\pm b_{ij})$ — cộng các phần tử cùng vị trí</td></tr>
+      <tr><td>Nhân số $kA$</td><td>Không</td><td>$(k\,a_{ij})$ — nhân $k$ vào <b>mọi</b> phần tử</td></tr>
+      <tr><td>Chuyển vị $A^T$</td><td>Không</td><td>Đổi dòng thành cột: $(A^T)_{ij}=a_{ji}$; cấp $n\times m$</td></tr>
+    </table>
+    <div class="stack small">
+      <div class="step">Ví dụ: $A=\begin{pmatrix}-2 & 3\\ 1 & 5\end{pmatrix},\ B=\begin{pmatrix}5 & 3\\ -2 & 1\end{pmatrix}$
+        $$2A+3B=\begin{pmatrix}-4 & 6\\ 2 & 10\end{pmatrix}+\begin{pmatrix}15 & 9\\ -6 & 3\end{pmatrix}=\begin{pmatrix}11 & 15\\ -4 & 13\end{pmatrix}$$</div>
+      <div class="step">$$\begin{pmatrix}1 & -3 & 2\\ 3 & 4 & 5\end{pmatrix}^T=\begin{pmatrix}1 & 3\\ -3 & 4\\ 2 & 5\end{pmatrix}$$</div>
+      <div class="step box tip" data-tag="Tính chất chuyển vị">$(A\pm B)^T=A^T\pm B^T,\ (kA)^T=kA^T,\ (A^T)^T=A$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Phép cộng và nhân số có các tính chất giống phép toán trên số (giao hoán, kết hợp, phân phối). Tự kiểm tra: $A$ cấp $2\times3$ có cộng được với $A^T$ không? (Không — khác cấp.)</p></aside>
+</section>
+
+<section class="slide" id="phep-nhan" data-kind="ly-thuyet" data-sec="1.1.1.2 Phép toán">
+  <div class="head"><div class="eyebrow">1.1.1.2 · Phép nhân hai ma trận</div><h2>Dòng nhân cột: $c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\dots+a_{ir}b_{rj}$</h2></div>
+  <div class="cols">
+    <div class="box key" data-tag="Điều kiện về cấp"><div class="row" style="justify-content:space-around"><span style="font-size:1.25em">$\displaystyle\underset{m\times \htmlClass{hlrow}{r}}{A}\cdot\underset{\htmlClass{hlrow}{r}\times n}{B}=\underset{m\times n}{C}$</span><p class="small center">Số cột của $A$ = số dòng của $B$.<br><b>"Trong khớp — ngoài lấy"</b></p></div></div>
+    <div class="box eco small" data-tag="Ý nghĩa kinh tế">$Q$: số lượng bán (phần khởi động). Cột 1 của $P$: giá bán lẻ; cột 2: giá bán buôn (nghìn đồng). Khi đó $c_{ij}$ là doanh thu của cửa hàng $i$ theo bảng giá $j$.</div>
+  </div>
+  <div data-widget="mxmul" data-a="20 15 10; 25 12 8" data-b="150 130; 200 180; 60 50" data-names="Q,P"></div>
+  <aside class="tuhoc"><p>Bấm lần lượt từng ô của ma trận tích: dòng tô xanh của $Q$ nhân cột tô đỏ của $P$. Tự trả lời: $c_{22}=5810$ nghĩa là gì? (Doanh thu cửa hàng 2 nếu bán theo giá buôn.) Tính được $P\cdot Q$ không? (Được, cấp $3\times3$, nhưng không có ý nghĩa doanh thu.)</p></aside>
+</section>
+
+<section class="slide" id="tinh-chat-nhan" data-kind="ly-thuyet" data-sec="1.1.1.2 Phép toán">
+  <div class="head"><div class="eyebrow">1.1.1.2 · Tính chất của phép nhân</div><h2>Giống số ở nhiều chỗ — nhưng có ba cái bẫy</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box tip small" data-tag="Đúng như với số">
+        <ul><li>$A(BC)=(AB)C$ — kết hợp</li><li>$A(B\pm C)=AB\pm AC;\ (B\pm C)A=BA\pm CA$</li><li>$k(AB)=(kA)B=A(kB)$</li><li>$AI_n=I_mA=A$</li></ul></div>
+      <div class="box warn small" data-tag="Bẫy">
+        <ol><li><b>$AB\ne BA$</b> nói chung (có khi $BA$ còn không tồn tại).</li>
+          <li><b>$AB=O$ không suy ra</b> $A=O$ hoặc $B=O$:
+            $\begin{pmatrix}1 & 1\\ 1 & 1\end{pmatrix}\begin{pmatrix}1 & -1\\ -1 & 1\end{pmatrix}=\begin{pmatrix}0 & 0\\ 0 & 0\end{pmatrix}$</li>
+          <li><b>$(AB)^T=B^TA^T$</b> — đảo thứ tự.</li></ol></div>
+    </div>
+    <div class="stack">
+      <p class="small"><b>Đúng hay sai?</b> ($A,B$ vuông cùng cấp)</p>
+      <ul class="tf" data-widget="tf">
+        <li data-ans="s" data-why="$(A+B)^2=A^2+AB+BA+B^2$; chỉ bằng $A^2+2AB+B^2$ khi $AB=BA$.">$(A+B)^2=A^2+2AB+B^2$</li>
+        <li data-ans="d" data-why="Phân phối hai phía, giữ đúng thứ tự.">$(A+B)(A-B)=A^2-AB+BA-B^2$</li>
+        <li data-ans="s" data-why="Đúng là $(AB)^T=B^TA^T$.">$(AB)^T=A^TB^T$</li>
+        <li data-ans="d" data-why="$A\cdot I=A$ với mọi $A$ vuông cùng cấp.">$AI=IA$</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu 1 là lỗi phổ biến nhất trong bài thi: dùng hằng đẳng thức của số cho ma trận. Hằng đẳng thức chỉ đúng khi $AB=BA$.</p></aside>
+</section>
+
+<section class="slide" id="luy-thua" data-kind="vi-du" data-sec="1.1.1.2 Phép toán">
+  <div class="head"><div class="eyebrow">1.1.1.2 · Lũy thừa ma trận vuông</div><h2>$A^0=I_n,\quad A^{k+1}=A^k\cdot A$</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <p>Ví dụ: $A=\begin{pmatrix}1 & -1\\ 0 & 1\end{pmatrix}$. Tính $A^2, A^3$ rồi dự đoán $A^n$.</p>
+      <div class="step">$$A^2=\begin{pmatrix}1 & -1\\ 0 & 1\end{pmatrix}\begin{pmatrix}1 & -1\\ 0 & 1\end{pmatrix}=\begin{pmatrix}1 & -2\\ 0 & 1\end{pmatrix}$$</div>
+      <div class="step">$$A^3=A^2A=\begin{pmatrix}1 & -2\\ 0 & 1\end{pmatrix}\begin{pmatrix}1 & -1\\ 0 & 1\end{pmatrix}=\begin{pmatrix}1 & -3\\ 0 & 1\end{pmatrix}$$</div>
+    </div>
+    <div class="stack">
+      <div class="step box key" data-tag="Dự đoán và chứng minh">$$A^n=\begin{pmatrix}1 & -n\\ 0 & 1\end{pmatrix}$$<p class="small">Quy nạp: giả sử đúng với $n=k$, thì $A^{k+1}=A^kA=\begin{pmatrix}1 & -k-1\\ 0 & 1\end{pmatrix}$.</p></div>
+      <div class="step box eco small" data-tag="Ứng dụng">Lũy thừa ma trận mô tả quá trình lặp nhiều kỳ: chuyển dịch thị phần, tồn kho qua các tháng… (học sâu hơn ở các môn sau).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Chỉ ma trận <b>vuông</b> mới có lũy thừa, vì phải nhân được $A\cdot A$. Thử tự chứng minh bằng quy nạp trước khi xem bước cuối.</p></aside>
+</section>
+
+<!-- ============ 1.1.1.3 BĐSC ============ -->
+<section class="slide" id="bdsc" data-kind="ly-thuyet" data-sec="1.1.1.3 Biến đổi sơ cấp">
+  <div class="head"><div class="eyebrow">1.1.1.3 · Các phép biến đổi sơ cấp</div><h2>Ba thao tác "an toàn" trên dòng (cột)</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Đổi chỗ hai dòng <small>loại 1</small></h4>$$d_i\leftrightarrow d_j$$<span>$\begin{pmatrix}0 & 2\\ 1 & 5\end{pmatrix}\xrightarrow{d_1\leftrightarrow d_2}\begin{pmatrix}1 & 5\\ 0 & 2\end{pmatrix}$</span></div>
+    <div class="card"><h4>Nhân một dòng với số $k\ne0$ <small>loại 2</small></h4>$$d_i\to k\,d_i$$<span>$\begin{pmatrix}2 & 4\\ 3 & 1\end{pmatrix}\xrightarrow{d_1\to\frac12 d_1}\begin{pmatrix}1 & 2\\ 3 & 1\end{pmatrix}$</span></div>
+    <div class="card"><h4>Cộng vào một dòng bội của dòng khác <small>loại 3</small></h4>$$d_i\to d_i+k\,d_j$$<span>$\begin{pmatrix}1 & 2\\ 3 & 1\end{pmatrix}\xrightarrow{d_2\to d_2-3d_1}\begin{pmatrix}1 & 2\\ 0 & -5\end{pmatrix}$</span></div>
+  </div>
+  <div class="box key small" data-tag="Định lý">Mọi ma trận khác không đều đưa được về dạng <b>bậc thang</b> (thậm chí bậc thang rút gọn) bằng các phép biến đổi sơ cấp.</div>
+  <div class="row"><span class="small muted">Sẽ dùng lại ở:</span><a class="xref" href="buoi2.html#bdsc-dinh-thuc">Tính định thức (Buổi 2)</a><a class="xref" href="buoi2.html#nghich-dao-gauss">Tìm ma trận nghịch đảo (Buổi 2)</a><a class="xref" href="buoi4.html#gauss">Phương pháp Gauss (Buổi 4)</a></div>
+  <aside class="tuhoc"><p>Biến đổi sơ cấp <b>không làm thay đổi hạng</b>. Ký hiệu dùng thống nhất: $d_i$ là dòng $i$, $c_j$ là cột $j$. Khi biến đổi, nối các ma trận bằng mũi tên "→", không viết dấu "=".</p></aside>
+</section>
+
+<!-- ============ 1.1.1.4 HẠNG ============ -->
+<section class="slide" id="hang" data-kind="ly-thuyet" data-sec="1.1.1.4 Hạng ma trận">
+  <div class="head"><div class="eyebrow">1.1.1.4 · Hạng của ma trận</div><h2>Hạng = số dòng khác không của dạng bậc thang</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key" data-tag="Định nghĩa">Nếu $A=O$ thì $r(A)=0$. Nếu $A\ne O$, <b>hạng</b> của $A$, ký hiệu $r(A)$ hay $\operatorname{rank}(A)$, là số dòng khác không của một dạng bậc thang của $A$.</div>
+      <p class="small">Với $A$ cấp $m\times n$: $\ 0\le r(A)\le\min(m,n)$.</p>
+      <div class="box tip small" data-tag="Mẹo">Chọn dòng có phần tử đầu bằng $\pm1$ làm dòng trụ (đổi chỗ nếu cần) để tránh phân số.</div>
+    </div>
+    <div class="stack">
+      <p class="small"><b>Thuật toán tìm hạng</b></p>
+      <div class="flow">
+        <div class="n"><b>B1</b>Chọn dòng trụ, đưa lên đầu</div><div class="a">→</div>
+        <div class="n"><b>B2</b>Khử các phần tử dưới trụ về 0</div><div class="a">→</div>
+        <div class="n"><b>B3</b>Lặp lại với ma trận con còn lại</div><div class="a">→</div>
+        <div class="n"><b>B4</b>Đếm số dòng khác 0</div>
+      </div>
+      <div class="quiz" data-widget="quiz" data-answer="2">
+        <p class="q small">Ma trận cấp $3\times5$ có hạng tối đa bằng bao nhiêu?</p>
+        <ol class="opts"><li>5</li><li>3</li><li>8</li><li>15</li></ol>
+        <p class="explain">$r(A)\le\min(3,5)=3$.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Có thể hiểu hạng là "số thông tin thực sự độc lập" trong bảng số. Khái niệm này gặp lại ở hệ phương trình (định lý Kronecker – Capelli) và không gian véctơ.</p></aside>
+</section>
+
+<section class="slide" id="hang-vd" data-kind="vi-du" data-sec="1.1.1.4 Hạng ma trận">
+  <div class="head"><div class="eyebrow">1.1.1.4 · Ví dụ (giáo trình, ví dụ 1.11)</div><h2>Tìm hạng của ma trận $A$ bằng biến đổi sơ cấp</h2></div>
+  <div class="big" data-widget="elim" data-matrix="1 1 1 1; 1 2 3 4; 2 3 4 6" data-mode="rank"></div>
+  <div class="row"><a class="xref" href="lab.html">Tự nhập ma trận khác trong Phòng tính ma trận</a></div>
+  <aside class="tuhoc"><p>Trước mỗi lần bấm "Bước tiếp", hãy tự nói ra phép biến đổi cần làm rồi so sánh. Dòng tô đỏ là dòng vừa thay đổi. Kết quả $r(A)=3$.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="1.1.1.4 Hạng ma trận">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 3 phút</div><h2>Bạn đã nắm được chưa?</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="4">
+      <p class="q">$A$ cấp $2\times3$, $B$ cấp $3\times4$. Khẳng định nào đúng?</p>
+      <ol class="opts one"><li>$AB$ cấp $3\times3$</li><li>$BA$ cấp $2\times4$</li><li>$A+B^T$ xác định</li><li>$AB$ cấp $2\times4$, còn $BA$ không xác định</li></ol>
+      <p class="explain">$(2\times\underline3)(\underline3\times4)=2\times4$. Còn $BA$: $(3\times\underline4)(\underline2\times3)$ — không khớp.</p>
+    </div>
+    <div class="quiz" data-widget="quiz" data-answer="1">
+      <p class="q">Hạng của $\begin{pmatrix}1 & 2 & 3\\ 2 & 4 & 6\\ -1 & -2 & -3\end{pmatrix}$ bằng</p>
+      <ol class="opts"><li>1</li><li>2</li><li>3</li><li>0</li></ol>
+      <p class="explain">$d_2=2d_1,\ d_3=-d_1$ ⇒ sau khi khử chỉ còn 1 dòng khác 0.</p>
+    </div>
+  </div>
+  <div data-widget="timer" data-min="3" data-label="Kiểm tra nhanh"></div>
+  <aside class="tuhoc"><p>Nếu sai câu 1, ôn lại quy tắc "trong khớp – ngoài lấy" ở slide <a href="#phep-nhan">Phép nhân</a> trước khi làm bài tập.</p></aside>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt-dang" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Luyện tập · Tiết 2 – 4</div><h2>Bốn dạng bài của buổi hôm nay</h2></div>
+  <div class="cards" style="--n:4">
+    <div class="card"><h4>Dạng 1 <small>BT 1.1</small></h4><b>Tính biểu thức ma trận</b><span class="muted">Kiểm tra cấp trước khi tính; tính từng khối.</span><a class="xref" href="#bt11">Tới bài</a></div>
+    <div class="card"><h4>Dạng 2 <small>BT 1.2a</small></h4><b>Tìm ma trận chưa biết</b><span class="muted">Biến đổi như phương trình số khi chỉ có cộng, nhân số.</span><a class="xref" href="#bt12-13">Tới bài</a></div>
+    <div class="card"><h4>Dạng 3 <small>BT 1.3</small></h4><b>Ma trận giao hoán, lũy thừa</b><span class="muted">Đặt ẩn cho phần tử, cân bằng từng vị trí.</span><a class="xref" href="#bt-luy-thua">Tới bài</a></div>
+    <div class="card"><h4>Dạng 4 <small>BT 1.4</small></h4><b>Tìm và biện luận hạng</b><span class="muted">Đưa về bậc thang; với tham số: xét các trường hợp.</span><a class="xref" href="#bt14">Tới bài</a></div>
+  </div>
+  <div class="box small" data-tag="Cách tổ chức" data-aud="gv">Mỗi bài: 3–5 phút làm theo cặp → 1 cặp lên bảng → cả lớp nhận xét → giảng viên chốt trên slide (bấm → để hiện từng bước).</div>
+  <div class="box small" data-tag="Cách tự luyện" data-aud="hv">Mỗi bài: tự làm 5–10 phút ra giấy → bấm → (hoặc nút "Bước tiếp") để đối chiếu từng bước → ghi lỗi sai vào vở.</div>
+  <aside class="tuhoc"><p>BT 1.2 (b, c, d) cần ma trận nghịch đảo nên được chữa ở Buổi 3 (Dạng 4).</p></aside>
+</section>
+
+<section class="slide" id="bt11" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.1 (a, b) · Dạng 1</div><h2>Tính biểu thức ma trận</h2></div>
+  <div class="given"><b>Cho</b> $A=\begin{pmatrix}1 & 2\\ -2 & 3\end{pmatrix},\ B=\begin{pmatrix}-1 & 2 & 0\\ 2 & 0 & -3\end{pmatrix},\ C=\begin{pmatrix}-3 & -2 & 2\\ 0 & 3 & 5\end{pmatrix}$</div>
+  <div class="cols">
+    <div class="stack">
+      <p><b>a)</b> $A^2-3A$</p>
+      <div class="step">$$A^2=\begin{pmatrix}1-4 & 2+6\\ -2-6 & -4+9\end{pmatrix}=\begin{pmatrix}-3 & 8\\ -8 & 5\end{pmatrix}$$</div>
+      <div class="step">$$A^2-3A=\begin{pmatrix}-3 & 8\\ -8 & 5\end{pmatrix}-\begin{pmatrix}3 & 6\\ -6 & 9\end{pmatrix}=\boxed{\begin{pmatrix}-6 & 2\\ -2 & -4\end{pmatrix}}$$</div>
+    </div>
+    <div class="stack">
+      <p><b>b)</b> $B^TA-B^T$ <span class="small muted">— kiểm tra cấp: $(3\times2)(2\times2)=3\times2$ ✓</span></p>
+      <div class="step">$$B^TA=\begin{pmatrix}-1 & 2\\ 2 & 0\\ 0 & -3\end{pmatrix}\begin{pmatrix}1 & 2\\ -2 & 3\end{pmatrix}=\begin{pmatrix}-5 & 4\\ 2 & 4\\ 6 & -9\end{pmatrix}$$</div>
+      <div class="step">$$B^TA-B^T=\boxed{\begin{pmatrix}-4 & 2\\ 0 & 4\\ 6 & -6\end{pmatrix}}$$</div>
+      <div class="step box tip small" data-tag="Cách gọn hơn">$B^TA-B^T=B^T(A-I)$ — chỉ cần một phép nhân.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu b có thể đặt nhân tử chung: $B^TA-B^T=B^T(A-I_2)$ — chú ý phải là ma trận $I_2$, không phải số 1.</p></aside>
+</section>
+
+<section class="slide" id="bt11cd" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.1 (c, d) · Dạng 1</div><h2>c) $A(B+C)$ &nbsp; d) $A-BC^T$</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <p class="small muted">$A=\begin{pmatrix}1 & 2\\ -2 & 3\end{pmatrix},\ B=\begin{pmatrix}-1 & 2 & 0\\ 2 & 0 & -3\end{pmatrix},\ C=\begin{pmatrix}-3 & -2 & 2\\ 0 & 3 & 5\end{pmatrix}$</p>
+      <div class="step">$$B+C=\begin{pmatrix}-4 & 0 & 2\\ 2 & 3 & 2\end{pmatrix}$$</div>
+      <div class="step">$$A(B+C)=\begin{pmatrix}-4+4 & 0+6 & 2+4\\ 8+6 & 0+9 & -4+6\end{pmatrix}=\boxed{\begin{pmatrix}0 & 6 & 6\\ 14 & 9 & 2\end{pmatrix}}$$</div>
+    </div>
+    <div class="stack small">
+      <div class="step">$$BC^T=\begin{pmatrix}-1 & 2 & 0\\ 2 & 0 & -3\end{pmatrix}\begin{pmatrix}-3 & 0\\ -2 & 3\\ 2 & 5\end{pmatrix}=\begin{pmatrix}-1 & 6\\ -12 & -15\end{pmatrix}$$</div>
+      <div class="step">$$A-BC^T=\boxed{\begin{pmatrix}2 & -4\\ 10 & 18\end{pmatrix}}$$</div>
+      <div class="step box warn small" data-tag="Lỗi hay gặp">Tính $B\,C$ (cấp $2\times3$ nhân $2\times3$) — không xác định! Phải chuyển vị $C$ trước.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự kiểm tra câu c bằng cách khác: $A(B+C)=AB+AC$ — hai cách phải cho cùng kết quả.</p></aside>
+</section>
+
+<section class="slide" id="bt12-13" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.2a và BT 1.3 · Dạng 2, 3</div><h2>Tìm ma trận thỏa mãn điều kiện</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <p><b>1.2a)</b> Tìm $X$: $\ B+2X=C$ <span class="small muted">($B, C$ như BT 1.1)</span></p>
+      <div class="step">$$X=\tfrac12(C-B)=\tfrac12\begin{pmatrix}-2 & -4 & 2\\ -2 & 3 & 8\end{pmatrix}$$</div>
+      <div class="step">$$X=\boxed{\begin{pmatrix}-1 & -2 & 1\\ -1 & \tfrac32 & 4\end{pmatrix}}$$</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Đáp số in trong giáo trình ghi phần tử $x_{23}=\tfrac83$; tính lại: $\tfrac{5-(-3)}{2}=4$.</div>
+    </div>
+    <div class="stack small">
+      <p><b>1.3)</b> $A=\begin{pmatrix}1 & 2\\ 3 & 4\end{pmatrix},\ B=\begin{pmatrix}a & b\\ c & d\end{pmatrix}$. Tìm điều kiện để $AB=BA$.</p>
+      <div class="step">$$AB=\begin{pmatrix}a+2c & b+2d\\ 3a+4c & 3b+4d\end{pmatrix},\ BA=\begin{pmatrix}a+3b & 2a+4b\\ c+3d & 2c+4d\end{pmatrix}$$</div>
+      <div class="step small">Cân bằng 4 vị trí: $2c=3b;\ \ 2d=2a+3b;\ \ 3a+3c=3d;\ \ 3b=2c$</div>
+      <div class="step box key" data-tag="Kết luận">$AB=BA\iff a+c=d$ và $2c=3b$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>BT 1.3 cho thấy giao hoán là hiếm: chỉ một họ ma trận $B$ thỏa mãn. Ví dụ cụ thể: $a=0,\ b=2,\ c=3,\ d=3$ — thử nhân lại để kiểm chứng.</p></aside>
+</section>
+
+<section class="slide" id="bt-luy-thua" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Thử thách nhóm · Dạng 3</div><h2>Cho $A=\begin{pmatrix}0 & 0\\ 1 & 0\end{pmatrix}$. Tính $(I_2-A)^{2026}$</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="row"><div data-widget="timer" data-min="5" data-label="Nhóm 4 người" data-label-hv="Tự làm"></div></div>
+      <div class="step">Đặt $B=I_2-A=\begin{pmatrix}1 & 0\\ -1 & 1\end{pmatrix}$.</div>
+      <div class="step">$$B^2=\begin{pmatrix}1 & 0\\ -2 & 1\end{pmatrix},\quad B^3=B^2B=\begin{pmatrix}1 & 0\\ -3 & 1\end{pmatrix}$$</div>
+      <div class="step">Quy nạp: $B^n=\begin{pmatrix}1 & 0\\ -n & 1\end{pmatrix}$ ⇒ $\boxed{(I_2-A)^{2026}=\begin{pmatrix}1 & 0\\ -2026 & 1\end{pmatrix}}$</div>
+    </div>
+    <div class="stack">
+      <div class="step box tip small" data-tag="Cách 2 — nhanh">Vì $A^2=O$ và $I_2A=AI_2$ (giao hoán) nên dùng được nhị thức Newton:
+        $$(I_2-A)^n=I_2-nA+\underbrace{\tbinom n2A^2-\dots}_{=\,O}=I_2-nA$$</div>
+      <div class="step box warn small" data-tag="Chú ý">Nhị thức Newton chỉ dùng được khi hai ma trận <b>giao hoán</b> — ở đây $I_2$ giao hoán với mọi ma trận.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Cách 2 dùng nhị thức Newton — chỉ hợp lệ vì $I_2$ giao hoán với mọi ma trận. Liên hệ lại "bẫy" $(A+B)^2$ ở slide <a href="#tinh-chat-nhan">tính chất phép nhân</a>.</p></aside>
+</section>
+
+<section class="slide" id="bt14" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.4 (b, d) · Dạng 4</div><h2>Tìm hạng của ma trận</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <p><b>b)</b> $A=\begin{pmatrix}2 & 6 & -1\\ 7 & -3 & 4\\ 5 & 2 & -1\end{pmatrix}$</p>
+      <div data-widget="elim" data-matrix="2 6 -1; 7 -3 4; 5 2 -1" data-mode="rank"></div>
+    </div>
+    <div class="stack">
+      <p><b>d)</b> $A=\begin{pmatrix}1 & 2 & 3 & 6\\ 2 & -5 & -12 & -4\\ -3 & 8 & 19 & 3\end{pmatrix}$</p>
+      <div data-widget="elim" data-matrix="1 2 3 6; 2 -5 -12 -4; -3 8 19 3" data-mode="rank"></div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu b không có phần tử $\pm1$ ở cột đầu: công cụ dùng phép $d_i\to a\,d_i-b\,d_1$ để giữ số nguyên (vẫn là biến đổi sơ cấp). Bạn có thể làm cách khác, ví dụ $d_1\leftrightarrow d_3$ rồi $d_1\to d_1-d_3$. Đáp số: b) $r=3$; d) $r=3$.</p></aside>
+</section>
+
+<section class="slide" id="bt14c" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.4c · Biện luận theo tham số</div><h2>Hạng của ma trận chứa tham số $m$</h2></div>
+  <div class="given"><b>Tìm hạng của</b> $A=\begin{pmatrix}m & 1 & 1\\ 1 & m & 1\\ 1 & 1 & m\end{pmatrix}$ theo $m$.</div>
+  <div class="cols w64">
+    <div class="stack">
+      <div class="step">Đưa dòng không chứa tham số ở đầu lên trên: $d_1\leftrightarrow d_3$
+        $$\begin{pmatrix}1 & 1 & m\\ 1 & m & 1\\ m & 1 & 1\end{pmatrix}\xrightarrow[d_3\to d_3-m\,d_1]{d_2\to d_2-d_1}\begin{pmatrix}1 & 1 & m\\ 0 & m-1 & 1-m\\ 0 & 1-m & 1-m^2\end{pmatrix}$$</div>
+      <div class="step">$$\xrightarrow{d_3\to d_3+d_2}\begin{pmatrix}1 & 1 & m\\ 0 & m-1 & 1-m\\ 0 & 0 & (1-m)(m+2)\end{pmatrix}$$</div>
+    </div>
+    <div class="stack">
+      <table class="tbl step">
+        <tr><th>Trường hợp</th><th>Dạng bậc thang</th><th class="c">$r(A)$</th></tr>
+        <tr><td>$m=1$</td><td>Chỉ dòng 1 khác 0</td><td class="c"><b>1</b></td></tr>
+        <tr><td>$m=-2$</td><td>Dòng 3 bằng 0</td><td class="c"><b>2</b></td></tr>
+        <tr><td>$m\ne1,\ m\ne-2$</td><td>Ba dòng khác 0</td><td class="c"><b>3</b></td></tr>
+      </table>
+      <div class="step box tip small" data-tag="Nguyên tắc biện luận">Không chia cho biểu thức chứa tham số khi chưa xét nó khác 0. Tách trường hợp tại các giá trị làm phần tử cơ sở bằng 0.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Sau Buổi 2 có thể kiểm tra lại: $\det A=(m-1)^2(m+2)$, khác 0 khi và chỉ khi $r(A)=3$.</p></aside>
+</section>
+
+<!-- ============ TỔNG KẾT ============ -->
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 1</div><h2>Ba điều cần mang theo sang buổi sau</h2></div>
+  <div class="flow">
+    <div class="n"><b>KHÁI NIỆM</b>Ma trận $m\times n$, $a_{ij}$: dòng $i$ cột $j$</div><div class="a">→</div>
+    <div class="n"><b>PHÉP TOÁN</b>Cộng, nhân số, chuyển vị, <span class="hl">nhân: dòng × cột</span></div><div class="a">→</div>
+    <div class="n"><b>BIẾN ĐỔI SƠ CẤP</b>Đổi chỗ, nhân $k\ne0$, cộng bội dòng</div><div class="a">→</div>
+    <div class="n"><b>HẠNG</b>Số dòng khác 0 của dạng bậc thang</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>1 · Nhân ma trận</h4>Trong khớp — ngoài lấy. $AB\ne BA$ nói chung.</div>
+    <div class="card"><h4>2 · Biến đổi sơ cấp</h4>Dùng mũi tên "→", ghi rõ phép biến đổi trên mũi tên.</div>
+    <div class="card"><h4>3 · Hạng</h4>$0\le r(A)\le\min(m,n)$; biện luận: tách trường hợp, không chia cho tham số.</div>
+  </div>
+  <aside class="tuhoc"><p>Tự tóm tắt buổi học bằng lời của mình hoặc vẽ sơ đồ tư duy vào vở, rồi so sánh với slide này.</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 2: Định thức</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>Hoàn thiện BT 1.1 – 1.4 vào vở bài tập.</li>
+        <li>Tự đặt một bảng số liệu bán hàng (3 cửa hàng × 3 mặt hàng) và tính doanh thu bằng phép nhân ma trận.</li>
+        <li>Kiểm tra kết quả hạng bằng <a href="lab.html">Phòng tính ma trận</a>.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình mục 1.2: Định thức (định nghĩa, tính chất, khai triển).</li>
+        <li>Ôn lại: $\begin{vmatrix}a & b\\ c & d\end{vmatrix}=ad-bc$.</li>
+        <li>Câu hỏi suy nghĩ: <i>Ma trận vuông nào có "nghịch đảo" giống như số $a\ne0$ có $\frac1a$?</i></li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref" href="buoi2.html">Sang Buổi 2 · Định thức và ma trận nghịch đảo</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Bài kiểm tra thường xuyên 30 phút diễn ra sau khi học xong Hệ phương trình tuyến tính (Buổi 4).</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

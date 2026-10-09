@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong1" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 2 · Định thức</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 1" data-unit="Buổi 2 · Định thức và ma trận nghịch đảo" data-prev="buoi1.html" data-next="buoi3.html" data-home="index.html">
+<div class="stage">
+
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 2">
+  <div class="num"><small>Chương 1 · Cơ sở của Toán kinh tế</small>Buổi 2</div>
+  <h1>Định thức và ma trận nghịch đảo</h1>
+  <div class="meta"><span class="chip">3 tiết</span><span class="chip lt">Lý thuyết 2 tiết</span><span class="chip bt">Bài tập 1 tiết</span><span class="chip">Mục 1.1.2 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#dinh-nghia"><span>1.1.2.1</span>Định nghĩa định thức</a>
+    <a href="#tinh-chat"><span>1.1.2.2</span>Tính chất cơ bản của định thức</a>
+    <a href="#phan-bu"><span>1.1.2.3</span>Phần bù đại số, khai triển Laplace</a>
+    <a href="#nghich-dao"><span>1.1.2.4</span>Ma trận nghịch đảo</a>
+    <a href="#bt17"><span>BT</span>Luyện tập: BT 1.5a, 1.6.1, 1.7 (a, b)</a>
+    <a href="#tong-ket"><span>KẾT</span>Tổng kết và nhiệm vụ</a>
+  </div>
+  <aside class="tuhoc"><p>Ôn bài cũ trước khi học: tính $\begin{pmatrix}1 & 2\\ 3 & 4\end{pmatrix}\begin{pmatrix}2 & 0\\ 1 & 1\end{pmatrix}$ (đáp số $\begin{pmatrix}4 & 2\\ 10 & 4\end{pmatrix}$) và nêu 3 phép biến đổi sơ cấp.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 2</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Trình bày được định nghĩa định thức cấp $n$; quy tắc tính định thức cấp 2, cấp 3.</li>
+      <li>Nêu được 7 tính chất cơ bản và ảnh hưởng của từng phép biến đổi sơ cấp lên định thức.</li>
+      <li>Định nghĩa được phần bù đại số, ma trận phụ hợp, ma trận nghịch đảo; phát biểu điều kiện khả nghịch.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Tính thành thạo định thức cấp 2, 3 (Sarrus, khai triển Laplace).</li>
+      <li>Tính định thức cấp $\ge4$ bằng cách kết hợp biến đổi sơ cấp và khai triển.</li>
+      <li>Tìm ma trận nghịch đảo bằng hai cách: ma trận phụ hợp và Gauss – Jordan.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Lựa chọn công cụ:</b> chọn dòng/cột khai triển, chọn cách tìm nghịch đảo phù hợp với từng ma trận.</li>
+      <li><b>Lập luận:</b> giải thích vì sao $\det A=0$ thì $A$ không khả nghịch.</li>
+      <li><b>Giao tiếp toán học:</b> trình bày đúng ký hiệu $|\cdot|$, ghi rõ phép biến đổi.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Tính đúng định thức BT 1.7 (a, b); tìm được $A^{-1}$ của BT 1.5a và tự kiểm tra $AA^{-1}=I$.</span></div>
+  <aside class="tuhoc"><p>Định thức là "chìa khóa" của cả chương: điều kiện khả nghịch, hệ Cramer, độc lập tuyến tính đều quy về $\det A\ne0$.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 3 tiết × 45 phút</div><h2>Từ "con số của ma trận vuông" đến ma trận nghịch đảo</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Khởi động · Định nghĩa · Cấp 2, 3 · Tính chất</b><span>Khởi động 5' · định nghĩa và Sarrus 15' · 7 tính chất 15' · tính định thức bằng biến đổi sơ cấp 10'</span></div><div class="m">Vấn đáp, công cụ Sarrus</div></div>
+    <div class="p lt"><div class="t">Tiết 2<small>Lý thuyết</small></div><div class="c"><b>Phần bù đại số · Laplace · Ma trận nghịch đảo</b><span>Khai triển 15' · nghịch đảo bằng phụ hợp 15' · Gauss – Jordan 10' · kiểm tra nhanh 5'</span></div><div class="m">Thuyết trình, so sánh hai phương pháp</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Luyện tập tại lớp</b><span>BT 1.7 (a, b) · BT 1.6.1 · BT 1.5a · tổng kết</span></div><div class="m">Cặp đôi, lên bảng</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động</div><h2>Khi nào "chia" được cho một ma trận?</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box">Với số: $\ a\,x=b$ có nghiệm duy nhất $x=a^{-1}b$ <b>khi và chỉ khi $a\ne0$</b>.</div>
+      <div class="step box">Với ma trận vuông: $\ A\,x=b\ \Rightarrow\ x=A^{-1}b$ — nhưng <b>khi nào $A^{-1}$ tồn tại?</b></div>
+      <div class="step box eco small" data-tag="Bối cảnh kinh tế">Cân bằng thị trường hai mặt hàng, mô hình cân đối liên ngành… đều dẫn tới $Ax=b$. Cần biết trước: bài toán có lời giải duy nhất hay không.</div>
+    </div>
+    <div class="stack">
+      <p class="small">Thử với ma trận cấp 2: tính $ad-bc$</p>
+      $$A=\begin{pmatrix}2 & 1\\ 3 & 2\end{pmatrix}\ \to\ 2\cdot2-1\cdot3=1$$
+      $$B=\begin{pmatrix}2 & 1\\ 4 & 2\end{pmatrix}\ \to\ 2\cdot2-1\cdot4=0$$
+      <div class="step small">$A^{-1}=\begin{pmatrix}2 & -1\\ -3 & 2\end{pmatrix}$ (kiểm tra: $AA^{-1}=I$), còn $B$ có hai dòng tỉ lệ — không có nghịch đảo.</div>
+      <div class="step box key" data-tag="Ý tưởng">Mỗi ma trận vuông có một con số đặc trưng — <span class="hl">định thức</span> — đóng vai trò như "$a\ne0$".</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự kiểm tra $AA^{-1}=I$ bằng phép nhân (ôn Buổi 1). Nhìn ma trận $B$ có gì đặc biệt? (Dòng 2 gấp đôi dòng 1.)</p></aside>
+</section>
+
+<!-- ============ 1.1.2.1 ĐỊNH NGHĨA ============ -->
+<section class="slide" id="dinh-nghia" data-kind="ly-thuyet" data-sec="1.1.2.1 Định nghĩa">
+  <div class="head"><div class="eyebrow">1.1.2.1 · Định nghĩa định thức của ma trận vuông</div><h2>Định thức: tổng có dấu của các tích "mỗi dòng một phần tử, mỗi cột một phần tử"</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key small" data-tag="Định nghĩa">Cho $A=(a_{ij})_n$. Định thức của $A$, ký hiệu $\det A$ hay $|A|$:
+        $$\det A=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)\,a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}$$
+        <span class="muted">$\sigma$ chạy qua $n!$ hoán vị của $\{1,\dots,n\}$; $\operatorname{sgn}(\sigma)=\pm1$ tùy số nghịch thế chẵn hay lẻ.</span></div>
+      <table class="tbl"><tr><th>Cấp</th><th class="c">1</th><th class="c">2</th><th class="c">3</th><th class="c">4</th><th class="c">5</th></tr><tr><td>Số hạng $n!$</td><td class="c">1</td><td class="c">2</td><td class="c">6</td><td class="c">24</td><td class="c">120</td></tr></table>
+    </div>
+    <div class="stack">
+      <div class="step box"><b>Cấp 1:</b> $\ |a_{11}|=a_{11}$</div>
+      <div class="step box"><b>Cấp 2:</b> chéo chính trừ chéo phụ
+        $$\begin{vmatrix}a & b\\ c & d\end{vmatrix}=ad-bc,\qquad \begin{vmatrix}3 & -2\\ 5 & 4\end{vmatrix}=12+10=22$$</div>
+      <div class="step box warn small" data-tag="Lưu ý">Ma trận viết trong ngoặc tròn $(\ )$ là một bảng số; định thức viết giữa hai gạch $|\ |$ là <b>một số</b>. Chỉ ma trận vuông mới có định thức.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Định nghĩa có $n!$ số hạng — tăng rất nhanh, nên thực hành không tính theo định nghĩa khi $n\ge4$ mà dùng tính chất và khai triển. Phần hoán vị chỉ cần đọc hiểu nguồn gốc công thức.</p></aside>
+</section>
+
+<section class="slide" id="sarrus" data-kind="ly-thuyet" data-sec="1.1.2.1 Định nghĩa">
+  <div class="head"><div class="eyebrow">1.1.2.1 · Định thức cấp 3 — quy tắc Sarrus</div><h2>Ba đường chéo xuôi cộng, ba đường chéo ngược trừ</h2></div>
+  <div class="small">$$\begin{vmatrix}a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\\ a_{31} & a_{32} & a_{33}\end{vmatrix}=\htmlClass{blue}{a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}}\ \htmlClass{hlrow}{-\,a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}}$$</div>
+  <div class="cols w46">
+    <div class="stack small">
+      <div class="box warn tiny" data-tag="Đính chính">Ví dụ 1.21 trong giáo trình (ma trận bên cạnh) in kết quả 44; tính lại theo đúng các số hạng đã viết: $36-8+0-0+30-4=\mathbf{54}$.</div>
+      <div class="box tip tiny" data-tag="Chỉ cho cấp 3">Sarrus <b>không</b> áp dụng cho định thức cấp 4 trở lên.</div>
+    </div>
+    <div data-widget="sarrus" data-matrix="2 1 0; -5 3 1; -8 2 6"></div>
+  </div>
+  <aside class="tuhoc"><p>Đọc tích của mỗi đường chéo trước khi bấm hiện. Nút "Đề mới" tạo ma trận ngẫu nhiên — tự tính rồi bấm hết để đối chiếu; luyện đến khi đúng 3 lần liên tiếp.</p></aside>
+</section>
+
+<!-- ============ 1.1.2.2 TÍNH CHẤT ============ -->
+<section class="slide" id="tinh-chat" data-kind="ly-thuyet" data-sec="1.1.2.2 Tính chất">
+  <div class="head"><div class="eyebrow">1.1.2.2 · Một số tính chất cơ bản của định thức</div><h2>Bảy tính chất — công cụ để tính nhanh</h2></div>
+  <div class="cards" style="--n:4;font-size:.95em">
+    <div class="card"><h4>TC1 <small>chuyển vị</small></h4>$\det A^T=\det A$<span class="muted">Dòng và cột bình đẳng: tính chất nào đúng với dòng thì đúng với cột.</span></div>
+    <div class="card"><h4>TC2 <small>tách tổng</small></h4>Dòng $i$ có dạng $a'_{ij}+a''_{ij}$ ⇒ $D=D'+D''$<span class="muted">Tách theo <b>một</b> dòng.</span></div>
+    <div class="card"><h4>TC3 <small>thừa số chung</small></h4>Đưa thừa số chung của <b>một dòng</b> ra ngoài.<span class="pen">⇒ $\det(\lambda A)=\lambda^n\det A$</span></div>
+    <div class="card"><h4>TC4 <small>đổi chỗ</small></h4>Đổi chỗ hai dòng ⇒ định thức <b>đổi dấu</b>.</div>
+    <div class="card"><h4>TC5 <small>bằng 0</small></h4>$D=0$ nếu có: một dòng toàn số 0, hai dòng bằng nhau, hoặc hai dòng tỉ lệ.</div>
+    <div class="card"><h4>TC6 <small>không đổi</small></h4>Cộng vào một dòng bội của dòng khác (hoặc tổ hợp tuyến tính các dòng khác) ⇒ $D$ <b>không đổi</b>.</div>
+    <div class="card"><h4>TC7 <small>tích</small></h4>$\det(AB)=\det A\cdot\det B$<span class="muted">Hệ quả: $\det(A^k)=(\det A)^k$.</span></div>
+    <div class="card"><h4>Không có <small>bẫy</small></h4><span class="pen">$\det(A+B)\ne\det A+\det B$</span><span class="muted">nói chung — định thức không "cộng tính".</span></div>
+  </div>
+  <aside class="tuhoc"><p>Tự kiểm tra: $A$ cấp 3, $\det A=5$ thì $\det(2A)=?$ (Đáp: $2^3\cdot5=40$, không phải 10.)</p></aside>
+</section>
+
+<section class="slide" id="bdsc-dinh-thuc" data-kind="ly-thuyet" data-sec="1.1.2.2 Tính chất">
+  <div class="head"><div class="eyebrow">1.1.2.2 · Biến đổi sơ cấp và định thức</div><h2>Mỗi phép biến đổi sơ cấp tác động lên định thức thế nào?</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <table class="tbl">
+        <tr><th>Phép biến đổi</th><th>Định thức</th></tr>
+        <tr><td>$d_i\leftrightarrow d_j$</td><td><b class="pen">Đổi dấu</b> (TC4)</td></tr>
+        <tr><td>$d_i\to k\,d_i\ (k\ne0)$</td><td><b>Nhân với $k$</b> (TC3)</td></tr>
+        <tr><td>$d_i\to d_i+k\,d_j$</td><td><b class="blue">Không đổi</b> (TC6)</td></tr>
+      </table>
+      <div class="box key small" data-tag="Chiến lược">Chỉ dùng phép loại 3 (và đổi chỗ) để đưa về <b>dạng tam giác</b>, khi đó $\det=$ tích các phần tử trên đường chéo chính.</div>
+      <a class="xref back" href="buoi1.html#bdsc">Ôn lại: ba phép biến đổi sơ cấp (Buổi 1)</a>
+    </div>
+    <div class="stack">
+      <p class="small">Ví dụ (giáo trình, ví dụ 1.44): tính $D$ cấp 4</p>
+      <div class="big" data-widget="elim" data-matrix="1 1 3 4; 1 1 5 2; 2 1 3 2; 2 3 11 5" data-mode="det" data-name="D"></div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Chú ý dấu trừ mỗi lần đổi chỗ hai dòng. Kết quả $D=-14$ được dùng lại ở hệ Cramer (Buổi 4).</p></aside>
+</section>
+
+<!-- ============ 1.1.2.3 PHẦN BÙ, KHAI TRIỂN ============ -->
+<section class="slide" id="phan-bu" data-kind="ly-thuyet" data-sec="1.1.2.3 Khai triển">
+  <div class="head"><div class="eyebrow">1.1.2.3 · Phần bù đại số</div><h2>Xóa dòng $i$, cột $j$ — rồi gắn dấu bàn cờ</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key small" data-tag="Định nghĩa">
+        <b>Định thức con bù</b> $M_{ij}$: định thức cấp $n-1$ thu được khi xóa dòng $i$, cột $j$ của $A$.<br>
+        <b>Phần bù đại số</b> của $a_{ij}$: $\quad A_{ij}=(-1)^{i+j}M_{ij}$</div>
+      <div class="row"><span class="small">Dấu $(-1)^{i+j}$:</span>$\begin{pmatrix}+ & - & +\\ - & + & -\\ + & - & +\end{pmatrix}$</div>
+    </div>
+    <div class="stack small">
+      <p>Ví dụ: $A=\begin{pmatrix}2 & -1 & 0\\ 1 & 3 & 5\\ 0 & 1 & 4\end{pmatrix}$</p>
+      <div class="step">$A_{11}=+\begin{vmatrix}3 & 5\\ 1 & 4\end{vmatrix}=7,\quad A_{12}=-\begin{vmatrix}1 & 5\\ 0 & 4\end{vmatrix}=-4$</div>
+      <div class="step">$A_{13}=+\begin{vmatrix}1 & 3\\ 0 & 1\end{vmatrix}=1,\quad A_{23}=-\begin{vmatrix}2 & -1\\ 0 & 1\end{vmatrix}=-2$</div>
+      <div class="step">$A_{22}=+\begin{vmatrix}2 & 0\\ 0 & 4\end{vmatrix}=8,\quad A_{33}=+\begin{vmatrix}2 & -1\\ 1 & 3\end{vmatrix}=7$</div>
+      <div class="step box tip" data-tag="Thử ngay">$a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}=2\cdot7+(-1)(-4)+0\cdot1=18=\det A$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Lỗi hay gặp: quên dấu $(-1)^{i+j}$, hoặc nhầm định thức con $M_{ij}$ với phần bù đại số $A_{ij}$.</p></aside>
+</section>
+
+<section class="slide" id="laplace" data-kind="ly-thuyet" data-sec="1.1.2.3 Khai triển">
+  <div class="head"><div class="eyebrow">1.1.2.3 · Công thức khai triển Laplace</div><h2>Khai triển theo dòng (cột) có nhiều số 0 nhất</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <div class="box key small" data-tag="Định lý Laplace">Với mọi dòng $i$ và mọi cột $j$:
+        $$\det A=\sum_{j=1}^n a_{ij}A_{ij}=\sum_{i=1}^n a_{ij}A_{ij}$$</div>
+      <div class="box tip small" data-tag="Hệ quả">
+        <ul><li>$A$ tam giác ⇒ $\det A=a_{11}a_{22}\cdots a_{nn}$</li><li>Dòng $i$ chỉ có $a_{ij}\ne0$ ⇒ $\det A=a_{ij}A_{ij}$</li></ul></div>
+    </div>
+    <div data-widget="laplace" data-matrix="2 1 -1; 0 3 0; -4 4 5" data-start="d1"></div>
+  </div>
+  <aside class="tuhoc"><p>Bấm "Dòng 1" rồi "Dòng 2": khai triển theo dòng có nhiều số 0 chỉ cần tính ít định thức con. Kết quả 18.</p></aside>
+</section>
+
+<section class="slide" id="chien-luoc" data-kind="vi-du" data-sec="1.1.2.3 Khai triển">
+  <div class="head"><div class="eyebrow">1.1.2.3 · Tổng hợp</div><h2>Chiến lược tính định thức cấp $n$</h2></div>
+  <div class="flow">
+    <div class="n"><b>QUAN SÁT</b>Có dòng/cột 0, hai dòng tỉ lệ? ⇒ $D=0$</div><div class="a">→</div>
+    <div class="n"><b>TẠO SỐ 0</b>Dùng $d_i\to d_i+k\,d_j$ trên một dòng/cột chứa số $\pm1$</div><div class="a">→</div>
+    <div class="n"><b>KHAI TRIỂN</b>Theo dòng/cột vừa tạo nhiều số 0 ⇒ giảm cấp</div><div class="a">→</div>
+    <div class="n"><b>CẤP 3, 2</b>Sarrus hoặc $ad-bc$</div>
+  </div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>Ví dụ:</b> $\begin{vmatrix}-6 & 1 & 7\\ 5 & -2 & 3\\ -3 & 4 & 5\end{vmatrix}$ — cột 2 có số $1$ ở trên cùng.</p>
+      <div class="step">$\xrightarrow[d_3\to d_3-4d_1]{d_2\to d_2+2d_1}\ \begin{vmatrix}-6 & 1 & 7\\ -7 & 0 & 17\\ 21 & 0 & -23\end{vmatrix}$</div>
+      <div class="step">$=1\cdot(-1)^{1+2}\begin{vmatrix}-7 & 17\\ 21 & -23\end{vmatrix}=-(161-357)=\boxed{196}$</div>
+    </div>
+    <div class="quiz" data-widget="quiz" data-answer="2">
+      <p class="q small">$\begin{vmatrix}2 & 7 & -1\\ 0 & -3 & 5\\ 0 & 0 & 4\end{vmatrix}=\ ?$</p>
+      <ol class="opts"><li>$3$</li><li>$-24$</li><li>$24$</li><li>$-8$</li></ol>
+      <p class="explain">Tam giác trên: tích đường chéo $2\cdot(-3)\cdot4=-24$.</p>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ví dụ chính là BT 1.7b — hãy tự làm trước rồi mới hiện lời giải.</p></aside>
+</section>
+
+<!-- ============ 1.1.2.4 MA TRẬN NGHỊCH ĐẢO ============ -->
+<section class="slide" id="nghich-dao" data-kind="ly-thuyet" data-sec="1.1.2.4 Nghịch đảo">
+  <div class="head"><div class="eyebrow">1.1.2.4 · Ma trận nghịch đảo</div><h2>$A^{-1}$: ma trận "khử" được $A$</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key small" data-tag="Định nghĩa">$A$ vuông cấp $n$ gọi là <b>khả nghịch</b> nếu có $B$ cấp $n$ thỏa $AB=BA=I_n$. Khi đó $B=A^{-1}$ là <b>ma trận nghịch đảo</b> của $A$ (duy nhất).</div>
+      <div class="box key" data-tag="Định lý">$$A\ \text{khả nghịch}\iff\det A\ne0$$</div>
+      <p class="small muted">Ma trận có $\det A\ne0$ còn gọi là <b>không suy biến</b>.</p>
+    </div>
+    <div class="stack">
+      <div class="box tip small" data-tag="Tính chất">
+        <ul><li>$(A^{-1})^{-1}=A,\quad (A^T)^{-1}=(A^{-1})^T$</li>
+          <li>$(AB)^{-1}=B^{-1}A^{-1}$ — <b>đảo thứ tự</b></li>
+          <li>$(kA)^{-1}=\frac1k A^{-1}\ (k\ne0)$</li>
+          <li>$\det(A^{-1})=\dfrac1{\det A}$</li></ul></div>
+      <div class="step small"><b>Vì sao $\det A=0$ thì không khả nghịch?</b> Nếu có $A^{-1}$ thì $\det A\cdot\det A^{-1}=\det I=1$ (TC7), nên $\det A\ne0$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự chứng minh $(AB)^{-1}=B^{-1}A^{-1}$ bằng phép nhân: $(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=I$.</p></aside>
+</section>
+
+<section class="slide" id="phu-hop" data-kind="vi-du" data-sec="1.1.2.4 Nghịch đảo">
+  <div class="head"><div class="eyebrow">1.1.2.4 · Cách 1: ma trận phụ hợp</div><h2>$A^{-1}=\dfrac1{\det A}\,A^*$</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key small" data-tag="Ma trận phụ hợp">$$A^*=\begin{pmatrix}A_{11} & A_{21} & \cdots & A_{n1}\\ A_{12} & A_{22} & \cdots & A_{n2}\\ \vdots & & & \vdots\\ A_{1n} & A_{2n} & \cdots & A_{nn}\end{pmatrix}=\big[(A_{ij})\big]^T$$</div>
+      <div class="box warn small" data-tag="Bẫy">Phần bù của <b>dòng</b> $i$ được viết vào <b>cột</b> $i$ — đừng quên chuyển vị.</div>
+      <div class="box tip small" data-tag="Cấp 2 — nhớ nhanh">$\begin{pmatrix}a & b\\ c & d\end{pmatrix}^{-1}=\dfrac1{ad-bc}\begin{pmatrix}d & -b\\ -c & a\end{pmatrix}$<br>Đổi chỗ chéo chính, đổi dấu chéo phụ.</div>
+    </div>
+    <div class="stack small">
+      <p><b>Ví dụ:</b> $A=\begin{pmatrix}1 & 3\\ -1 & -5\end{pmatrix}$</p>
+      <div class="step">$\det A=-5+3=-2\ne0$ ⇒ khả nghịch.</div>
+      <div class="step">$A_{11}=-5,\ A_{12}=1,\ A_{21}=-3,\ A_{22}=1$ ⇒ $A^*=\begin{pmatrix}-5 & -3\\ 1 & 1\end{pmatrix}$</div>
+      <div class="step">$$A^{-1}=\frac{1}{-2}\begin{pmatrix}-5 & -3\\ 1 & 1\end{pmatrix}=\begin{pmatrix}\tfrac52 & \tfrac32\\ -\tfrac12 & -\tfrac12\end{pmatrix}$$</div>
+      <div class="step box tip" data-tag="Luôn kiểm tra">$AA^{-1}=\begin{pmatrix}\tfrac52-\tfrac32 & \tfrac32-\tfrac32\\ -\tfrac52+\tfrac52 & -\tfrac32+\tfrac52\end{pmatrix}=I_2$ ✓</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Với ma trận cấp 3 cần tính 9 phần bù đại số — rất dễ nhầm dấu; khi đó cách 2 (Gauss – Jordan) thường nhanh hơn.</p></aside>
+</section>
+
+<section class="slide" id="nghich-dao-gauss" data-kind="ly-thuyet" data-sec="1.1.2.4 Nghịch đảo">
+  <div class="head"><div class="eyebrow">1.1.2.4 · Cách 2: Gauss – Jordan</div><h2>$(A\,|\,I_n)\ \xrightarrow{\text{biến đổi sơ cấp dòng}}\ (I_n\,|\,A^{-1})$</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <div class="box key" data-tag="Thuật toán">
+        <ol><li>Ghép $I_n$ vào bên phải $A$.</li><li>Chỉ dùng biến đổi sơ cấp <b>trên dòng</b> đưa vế trái về dạng bậc thang rút gọn.</li><li>Vế trái là $I_n$ ⇒ vế phải là $A^{-1}$. Vế trái có dòng 0 ⇒ $A$ không khả nghịch.</li></ol></div>
+      <p>Ví dụ (giáo trình, ví dụ 1.12): $A=\begin{pmatrix}0 & 1 & 1\\ 1 & 0 & 1\\ 1 & 1 & 0\end{pmatrix}$</p>
+      <a class="xref" href="lab.html">Thử với ma trận khác — Phòng tính ma trận</a>
+    </div>
+    <div data-widget="elim" data-matrix="0 1 1; 1 0 1; 1 1 0" data-mode="inverse"></div>
+  </div>
+  <aside class="tuhoc"><p>Bước đầu phải đổi chỗ dòng vì $a_{11}=0$. Kết quả $A^{-1}=\frac12\begin{pmatrix}-1 & 1 & 1\\ 1 & -1 & 1\\ 1 & 1 & -1\end{pmatrix}$ — tự nhân thử $AA^{-1}$.</p></aside>
+</section>
+
+<section class="slide" id="so-sanh" data-kind="ly-thuyet" data-sec="1.1.2.4 Nghịch đảo">
+  <div class="head"><div class="eyebrow">1.1.2.4 · So sánh</div><h2>Chọn cách nào để tìm $A^{-1}$?</h2></div>
+  <table class="tbl">
+    <tr><th></th><th>Cách 1 · Ma trận phụ hợp</th><th>Cách 2 · Gauss – Jordan</th></tr>
+    <tr><td><b>Hợp với</b></td><td>Cấp 2; cấp 3 có nhiều số 0; ma trận <b>chứa tham số</b></td><td>Cấp 3 trở lên với số cụ thể</td></tr>
+    <tr><td><b>Khối lượng</b></td><td>1 định thức cấp $n$ + $n^2$ định thức cấp $n-1$</td><td>Khoảng $n^3$ phép tính, có hệ thống</td></tr>
+    <tr><td><b>Phát hiện không khả nghịch</b></td><td>Ngay từ đầu: $\det A=0$</td><td>Khi vế trái xuất hiện dòng 0</td></tr>
+    <tr><td><b>Lỗi hay gặp</b></td><td>Sai dấu phần bù, quên chuyển vị</td><td>Biến đổi cả cột, quên áp dụng cho vế phải</td></tr>
+  </table>
+  <div class="quiz" data-widget="quiz" data-answer="3">
+    <p class="q small">Với giá trị nào của $m$ thì $A=\begin{pmatrix}m & 1 & m+1\\ 0 & m-1 & 1\\ 0 & 0 & m-2\end{pmatrix}$ khả nghịch?</p>
+    <ol class="opts"><li>$m\ne0$</li><li>$m\in\{0;1;2\}$</li><li>$m\notin\{0;1;2\}$</li><li>Mọi $m$</li></ol>
+    <p class="explain">Ma trận tam giác: $\det A=m(m-1)(m-2)\ne0\iff m\ne0,\ m\ne1,\ m\ne2$ (giáo trình, ví dụ 1.23).</p>
+  </div>
+  <aside class="tuhoc"><p>Với ma trận chứa tham số, luôn xét $\det A$ trước.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="1.1.2.4 Nghịch đảo">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 4 phút</div><h2>Đúng hay sai?</h2></div>
+  <ul class="tf" data-widget="tf">
+    <li data-ans="s" data-why="TC3 áp dụng cho từng dòng: $\det(3A)=3^3\det A=27\cdot2=54$.">$A$ cấp 3, $\det A=2$ thì $\det(3A)=6$.</li>
+    <li data-ans="d" data-why="TC7: $\det(AB)=\det A\det B=\det B\det A=\det(BA)$ dù $AB\ne BA$.">Với $A,B$ vuông cùng cấp: $\det(AB)=\det(BA)$.</li>
+    <li data-ans="s" data-why="Phép $d_1\to d_1+5d_2$ không làm đổi định thức (TC6).">Phép $d_1\to d_1+5d_2$ làm định thức nhân lên 5 lần.</li>
+    <li data-ans="d" data-why="$\det A\ne0\iff A$ khả nghịch.">Ma trận có hai cột tỉ lệ thì không khả nghịch.</li>
+    <li data-ans="s" data-why="$(AB)^{-1}=B^{-1}A^{-1}$.">$(AB)^{-1}=A^{-1}B^{-1}$.</li>
+  </ul>
+  <div data-widget="timer" data-min="4" data-label="Kiểm tra nhanh"></div>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt17" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.7 (a, b) · Tiết 3</div><h2>Tính định thức cấp 3 bằng hai cách</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>a)</b> $D=\begin{vmatrix}3 & 5 & -8\\ 4 & 12 & -1\\ 2 & 5 & -3\end{vmatrix}$ — dùng Sarrus</p>
+      <div class="step">$=3\cdot12\cdot(-3)+5\cdot(-1)\cdot2+(-8)\cdot4\cdot5$</div>
+      <div class="step">$\ \ -(-8)\cdot12\cdot2-5\cdot4\cdot(-3)-3\cdot(-1)\cdot5$</div>
+      <div class="step">$=-108-10-160+192+60+15=\boxed{-11}$</div>
+    </div>
+    <div class="stack small">
+      <p><b>b)</b> $D=\begin{vmatrix}-6 & 1 & 7\\ 5 & -2 & 3\\ -3 & 4 & 5\end{vmatrix}$ — biến đổi rồi khai triển</p>
+      <div class="step">Tạo số 0 ở cột 2 (dùng $a_{12}=1$): $d_2\to d_2+2d_1,\ d_3\to d_3-4d_1$</div>
+      <div class="step">$D=\begin{vmatrix}-6 & 1 & 7\\ -7 & 0 & 17\\ 21 & 0 & -23\end{vmatrix}=-\begin{vmatrix}-7 & 17\\ 21 & -23\end{vmatrix}=\boxed{196}$</div>
+      <div class="step box tip" data-tag="Tự kiểm tra">Làm lại câu a bằng khai triển, câu b bằng Sarrus — kết quả phải trùng.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu a theo Sarrus dễ sai dấu số hạng thứ tư ($-a_{13}a_{22}a_{31}$ với $a_{13}=-8$ âm). Làm cả hai cách để tự kiểm tra.</p></aside>
+</section>
+
+<section class="slide" id="bt15" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.6.1 và BT 1.5a</div><h2>Ma trận nghịch đảo cấp 2</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>1.6.1)</b> Tìm điều kiện để $A=\begin{pmatrix}a & b\\ c & d\end{pmatrix}$ khả nghịch và tìm $A^{-1}$.</p>
+      <div class="step">$\det A=ad-bc$. Khả nghịch $\iff ad\ne bc$.</div>
+      <div class="step">$A_{11}=d,\ A_{12}=-c,\ A_{21}=-b,\ A_{22}=a$</div>
+      <div class="step">$$A^{-1}=\frac1{ad-bc}\begin{pmatrix}d & -b\\ -c & a\end{pmatrix}$$</div>
+    </div>
+    <div class="stack small">
+      <p><b>1.5a)</b> Tìm $A^{-1}$ với $A=\begin{pmatrix}-3 & 2\\ 0 & 1\end{pmatrix}$</p>
+      <div class="step">$\det A=-3\ne0$; áp dụng công thức vừa tìm:</div>
+      <div class="step">$$A^{-1}=\frac1{-3}\begin{pmatrix}1 & -2\\ 0 & -3\end{pmatrix}=\boxed{\begin{pmatrix}-\tfrac13 & \tfrac23\\ 0 & 1\end{pmatrix}}$$</div>
+      <div class="step box tip" data-tag="Kiểm tra">$\begin{pmatrix}-3 & 2\\ 0 & 1\end{pmatrix}\begin{pmatrix}-\tfrac13 & \tfrac23\\ 0 & 1\end{pmatrix}=\begin{pmatrix}1 & 0\\ 0 & 1\end{pmatrix}$ ✓</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Các bài BT 1.5 (b, c), 1.6.2, 1.6.3, 1.7 (c, d), 1.8 được chữa ở Buổi 3.</p></aside>
+</section>
+
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 2</div><h2>Định thức trả lời câu hỏi "có nghịch đảo không?"</h2></div>
+  <div class="flow">
+    <div class="n"><b>ĐỊNH THỨC</b>Cấp 2: $ad-bc$; cấp 3: Sarrus</div><div class="a">→</div>
+    <div class="n"><b>TÍNH CHẤT</b>Đổi chỗ: đổi dấu; cộng bội dòng: không đổi</div><div class="a">→</div>
+    <div class="n"><b>KHAI TRIỂN</b>$\det A=\sum_j a_{ij}A_{ij}$</div><div class="a">→</div>
+    <div class="n"><b>NGHỊCH ĐẢO</b>$\det A\ne0$; $A^{-1}=\frac1{\det A}A^*$ hoặc Gauss – Jordan</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Nhớ</h4>$\det(\lambda A)=\lambda^n\det A$; $\det(AB)=\det A\det B$.</div>
+    <div class="card"><h4>Tránh</h4>Quên dấu $(-1)^{i+j}$; quên chuyển vị khi lập $A^*$.</div>
+    <div class="card"><h4>Thói quen</h4>Tìm xong $A^{-1}$ luôn kiểm tra $AA^{-1}=I$.</div>
+  </div>
+  <aside class="tuhoc"><p>Tự trả lời: ba cách tính định thức cấp 3 là gì? (Sarrus, khai triển Laplace, biến đổi về dạng tam giác.)</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 3: Luyện tập định thức và nghịch đảo</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>BT 1.5 (b, c); BT 1.6 (2, 3); BT 1.7 (c, d); BT 1.8.</li>
+        <li>BT 1.2 (b, c, d): giải phương trình ma trận — gợi ý: nhân hai vế với $A^{-1}$ <b>đúng phía</b>.</li>
+        <li>Kiểm tra định thức và nghịch đảo bằng <a href="lab.html">Phòng tính ma trận</a>.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc thêm">
+      <ul class="small">
+        <li>Mô hình cân đối liên ngành (Input – Output) của Leontief: vì sao sản lượng $x=(I-A)^{-1}d$?</li>
+        <li>Tìm hiểu ý nghĩa: $a_{ij}$ là giá trị sản phẩm ngành $i$ cần để làm ra 1 đồng sản phẩm ngành $j$.</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref back" href="buoi1.html">Buổi 1 · Ma trận</a><a class="xref" href="buoi3.html">Sang Buổi 3 · Luyện tập và ứng dụng</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Buổi 3 luyện tập theo 5 dạng — chuẩn bị bằng cách tự làm thử mỗi dạng một bài.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

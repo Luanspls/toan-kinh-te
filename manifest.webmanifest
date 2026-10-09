@@ -1,0 +1,35 @@
+{
+  "name": "Toán kinh tế · Tự học",
+  "short_name": "Toán KT",
+  "lang": "vi",
+  "description": "Bài giảng tự học môn Toán kinh tế (C10.KT06), trình độ cao đẳng ngành Kế toán.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fafbfd",
+  "theme_color": "#1b2a4a",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

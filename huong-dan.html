@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="vi" data-mode="hv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hướng dẫn tự học · Toán kinh tế</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="lib/katex/katex.min.css">
+<link rel="stylesheet" href="assets/deck.css">
+<style>
+  html, body { height: auto; }
+  body { overflow: auto; background-color: var(--paper);
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding-block: 28px 72px; padding-inline: 16px; }
+  .sheet { position: relative; padding-left: 28px; display: grid; gap: 40px; }
+  .sheet::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--pen); }
+  @media (max-width: 520px) { .sheet { padding-left: 16px; } }
+  .k { font-family: var(--f-mono); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--pen); }
+  h1 { font-family: var(--f-display); font-size: clamp(32px, 5.5vw, 54px); line-height: 1.05; margin: 6px 0 12px; text-wrap: balance; }
+  h2 { font-family: var(--f-display); font-size: clamp(22px, 3vw, 30px); margin: 0 0 10px; text-wrap: balance; }
+  p, li { font-size: 16px; line-height: 1.6; }
+  .lead { font-size: 17px; color: var(--ink-2); max-width: 66ch; margin: 0; }
+  nav.top { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .steps3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .steps3 > div { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+  .steps3 b.n { font-family: var(--f-display); font-size: 34px; color: var(--pen); line-height: 1; display: block; }
+  @media (max-width: 760px) { .steps3 { grid-template-columns: 1fr; } }
+  .tblwrap { overflow-x: auto; }
+  table.tbl { font-size: 14.5px; }
+  .tbl td { line-height: 1.5; }
+  ol.flow5 { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  ol.flow5 li { counter-increment: s; background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 14px 10px 52px; position: relative; }
+  ol.flow5 li::before { content: counter(s); position: absolute; left: 14px; top: 10px; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: var(--surface); display: grid; place-items: center; font: 700 14px var(--f-mono); }
+  .rule { border: 2px dashed var(--pen); border-radius: 8px; padding: 12px 16px; background: var(--surface); }
+  .ptools { display: grid; gap: 10px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .ptools textarea { width: 100%; min-height: 70px; font: 12px/1.4 var(--f-mono); padding: 8px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); word-break: break-all; }
+  .ptools .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ptools .btn { font-size: 14px; padding: 8px 12px; }
+  #pmsg { font-size: 14px; color: var(--ok); min-height: 1.4em; }
+  details { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+  details + details { margin-top: 8px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0 2px; }
+  footer { font-size: 13px; color: var(--ink-2); border-top: 1.5px solid var(--line); padding-top: 12px; }
+  .themebtn { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 5; background: var(--surface); border-color: var(--line); }
+</style>
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+  <header>
+    <nav class="top"><a class="xref back" href="index.html">Cổng học tập</a><a class="xref" href="chuong1/index.html">Chương 1</a></nav>
+    <div class="k">Toán kinh tế · Hướng dẫn tự học</div>
+    <h1>Tự học hiệu quả với bài giảng điện tử</h1>
+    <p class="lead">Bài giảng được thiết kế để bạn tự học trọn vẹn từng buổi: có mục tiêu, lộ trình, gợi ý, lời giải từng bước và câu hỏi tự kiểm tra. Trang này giúp bạn bắt đầu trên đúng thiết bị và học theo đúng cách.</p>
+  </header>
+
+  <section>
+    <div class="k">Bắt đầu</div>
+    <h2>Ba bước để bắt đầu</h2>
+    <div class="steps3">
+      <div><b class="n">1</b><b>Mở cổng học tập</b><p>Mở đường link giảng viên gửi, hoặc giải nén tệp ZIP rồi mở <code>index.html</code> bằng Chrome/Edge.</p></div>
+      <div><b class="n">2</b><b>Chọn buổi học</b><p>Học theo thứ tự Buổi 1 → 6. Mỗi buổi tương ứng một tuần học trên lớp.</p></div>
+      <div><b class="n">3</b><b>Học theo lộ trình</b><p>Slide thứ ba của mỗi buổi là <b>Lộ trình tự học</b>: các phần cần học và dấu ✓ những slide đã xem.</p></div>
+    </div>
+  </section>
+
+  <section id="thiet-bi">
+    <div class="k">Thiết bị</div>
+    <h2>Học trên thiết bị nào cũng được</h2>
+    <div class="tblwrap"><table class="tbl">
+      <tr><th>Thiết bị</th><th>Cách mở</th><th>Hiển thị</th></tr>
+      <tr><td><b>Máy tính, laptop</b></td><td>Mở đường link; hoặc giải nén tệp <code>TKT_TuHoc_v….zip</code> (chuột phải → <i>Extract All</i>), mở <code>TKT_TuHoc/index.html</code> bằng <b>Chrome</b> hoặc <b>Edge</b>. Không mở trực tiếp bên trong tệp ZIP.</td><td>Dạng trình chiếu 16:9; bấm <kbd>R</kbd> để chuyển sang dạng đọc cuộn.</td></tr>
+      <tr><td><b>Điện thoại</b></td><td>Mở đường link bằng Chrome (Android) hoặc Safari (iPhone). Nên <b>cài làm ứng dụng</b> (bên dưới) để mở nhanh và học khi không có mạng.</td><td>Tự chuyển sang dạng đọc cuộn, chữ cỡ lớn; lời giải ẩn sau nút <b>Hiện bước tiếp</b>.</td></tr>
+      <tr><td><b>Máy tính bảng</b></td><td>Như điện thoại.</td><td>Màn hình ngang: trình chiếu, vuốt trái/phải để chuyển slide. Màn hình dọc: dạng đọc.</td></tr>
+      <tr><td><b>Học trên giấy</b></td><td>Dùng các tệp PDF từng buổi (nếu giảng viên gửi kèm), hoặc mở một buổi rồi bấm <kbd>Ctrl</kbd>+<kbd>P</kbd> để in/lưu PDF.</td><td>Bản in hiện đủ mọi bước lời giải, đáp án trắc nghiệm.</td></tr>
+    </table></div>
+    <h2 style="margin-top:22px;font-size:22px">Cài làm ứng dụng trên điện thoại (cần mở bằng đường link web)</h2>
+    <div class="tblwrap"><table class="tbl">
+      <tr><th>Android · Chrome</th><th>iPhone, iPad · Safari</th></tr>
+      <tr><td>Bấm nút <b>Cài làm ứng dụng</b> ở cổng học tập, hoặc menu <b>⋮</b> → <b>Thêm vào màn hình chính</b> / <b>Cài đặt ứng dụng</b>.</td>
+          <td>Bấm nút <b>Chia sẻ</b> (ô vuông có mũi tên lên) → <b>Thêm vào MH chính</b> → <b>Thêm</b>.</td></tr>
+    </table></div>
+    <p>Sau lần mở đầu tiên có Internet, toàn bộ bài giảng (khoảng 2 MB) được lưu trên máy: bạn học được cả khi mất mạng. Khi có bản cập nhật, ứng dụng tự tải về ở lần mở tiếp theo có mạng.</p>
+  </section>
+
+  <section id="cach-hoc">
+    <div class="k">Phương pháp</div>
+    <h2>Học một buổi theo năm bước</h2>
+    <ol class="flow5">
+      <li><b>Đọc mục tiêu</b> (slide 2): biết sau buổi học mình phải làm được gì. Cuối buổi quay lại tự đánh giá.</li>
+      <li><b>Khởi động</b>: một tình huống kinh tế. Thử tự giải trước — chưa cần đúng, chỉ cần suy nghĩ.</li>
+      <li><b>Lý thuyết</b>: đọc khung <span class="pen">Định nghĩa</span>, <span class="pen">Định lý</span>; thao tác trên các công cụ tương tác; khi cần, mở <b>Gợi ý</b> (nút bóng đèn hoặc phím <kbd>N</kbd>) để xem mẹo, lỗi hay gặp, đáp số.</li>
+      <li><b>Ví dụ và bài tập</b>: chép đề ra giấy, tự làm, rồi mới hiện lời giải <b>từng bước</b> để đối chiếu. Ghi lỗi sai vào vở.</li>
+      <li><b>Kiểm tra nhanh, tổng kết</b>: trả lời các câu trắc nghiệm, đúng/sai; câu sai thì mở lại slide lý thuyết qua <b>Mục lục</b> (<kbd>M</kbd>). Làm phần <b>Nhiệm vụ sau buổi học</b>.</li>
+    </ol>
+    <p class="rule" style="margin-top:14px"><b>Quy tắc vàng:</b> luôn tự làm trước khi xem lời giải. Xem lời giải ngay thì dễ "tưởng là hiểu" — chỉ khi tự làm ra giấy bạn mới biết mình vướng ở bước nào.</p>
+  </section>
+
+  <section id="dieu-khien">
+    <div class="k">Điều khiển</div>
+    <h2>Phím tắt và thao tác</h2>
+    <div class="tblwrap"><table class="tbl">
+      <tr><th>Máy tính</th><th>Cảm ứng</th><th>Chức năng</th></tr>
+      <tr><td><kbd>→</kbd> <kbd>Space</kbd></td><td>Vuốt sang trái / nút ›</td><td>Hiện bước tiếp theo, sang slide sau</td></tr>
+      <tr><td><kbd>←</kbd></td><td>Vuốt sang phải / nút ‹</td><td>Ẩn bước vừa hiện, về slide trước</td></tr>
+      <tr><td><kbd>M</kbd></td><td>Nút Mục lục (☰)</td><td>Danh sách slide, dấu ✓ đã xem, chuyển buổi</td></tr>
+      <tr><td><kbd>N</kbd></td><td>Nút bóng đèn</td><td>Gợi ý tự học cho slide đang xem (chấm đỏ: slide có gợi ý)</td></tr>
+      <tr><td><kbd>R</kbd></td><td>Nút sách</td><td>Chuyển giữa dạng trình chiếu và dạng đọc cuộn</td></tr>
+      <tr><td><kbd>T</kbd> · <kbd>F</kbd></td><td>Nút nửa vầng tròn</td><td>Giao diện sáng/tối · toàn màn hình</td></tr>
+    </table></div>
+  </section>
+
+  <section id="cong-cu">
+    <div class="k">Công cụ</div>
+    <h2>Công cụ tương tác trong bài giảng</h2>
+    <div class="tblwrap"><table class="tbl">
+      <tr><th>Công cụ</th><th>Dùng để</th></tr>
+      <tr><td>Chọn phần tử, máy nhân ma trận</td><td>Thấy rõ dòng nào nhân cột nào (Buổi 1)</td></tr>
+      <tr><td>Biến đổi sơ cấp từng bước</td><td>Đối chiếu từng phép biến đổi khi tìm hạng, định thức, nghịch đảo, giải hệ</td></tr>
+      <tr><td>Sarrus, Laplace, Cramer</td><td>Tính định thức, giải hệ Cramer theo từng bước (Buổi 2, 4)</td></tr>
+      <tr><td>Leontief, đồ thị hệ 2 ẩn, sơ đồ Kronecker – Capelli</td><td>Kéo thanh trượt, đổi hệ số để quan sát (Buổi 3, 4)</td></tr>
+      <tr><td>Véctơ kéo thả trong ℝ²</td><td>Độc lập tuyến tính, cơ sở, tọa độ (Buổi 5)</td></tr>
+      <tr><td><b>Phòng tính ma trận</b></td><td>Tự nhập ma trận bất kỳ để kiểm tra bài làm: định thức, hạng, nghịch đảo, giải hệ — có đầy đủ các bước. <a href="chuong1/lab.html">Mở Phòng tính</a></td></tr>
+    </table></div>
+  </section>
+
+  <section id="ke-hoach">
+    <div class="k">Kế hoạch</div>
+    <h2>Lịch học gợi ý theo tuần</h2>
+    <div class="tblwrap"><table class="tbl">
+      <tr><th>Tuần</th><th>Nội dung</th><th>Việc cần làm</th></tr>
+      <tr><td>1</td><td>Buổi 1 · Ma trận, phép toán, hạng</td><td>Học bài, làm BT 1.1 – 1.4</td></tr>
+      <tr><td>2</td><td>Buổi 2 · Định thức, ma trận nghịch đảo</td><td>Học bài, làm BT 1.5a, 1.6.1, 1.7 (a, b)</td></tr>
+      <tr><td>3</td><td>Buổi 3 · Luyện tập định thức, nghịch đảo, Leontief</td><td>Làm 5 dạng bài, phiếu kiểm tra 10 phút</td></tr>
+      <tr><td>4</td><td>Buổi 4 · Hệ phương trình tuyến tính</td><td>Học bài, làm BT 1.21, 1.23</td></tr>
+      <tr><td>5</td><td>Buổi 5 · Luyện tập hệ phương trình, không gian véctơ</td><td>Làm BT 1.22, 1.24, 1.25; học lý thuyết véctơ</td></tr>
+      <tr><td>6</td><td>Buổi 6 · Luyện tập không gian véctơ, ôn tập chương</td><td>Làm BT 1.9 – 1.18, trò chơi ôn tập, <b>đề kiểm tra 30 phút tham khảo</b></td></tr>
+      <tr><td>7 – 15</td><td>Chương 2 · Quy hoạch tuyến tính và ứng dụng</td><td>Bài giảng đang biên soạn — sẽ được cập nhật vào hệ thống</td></tr>
+    </table></div>
+    <p>Mỗi buổi cần khoảng <b>3 – 5 giờ tự học</b>: 1,5 – 2 giờ cho lý thuyết và ví dụ, phần còn lại cho bài tập.</p>
+  </section>
+
+  <section id="tien-do">
+    <div class="k">Tiến độ</div>
+    <h2>Tiến độ học tập của bạn</h2>
+    <p>Hệ thống tự ghi lại slide bạn đã xem (sau khoảng 3 giây trên mỗi slide) và kết quả <b>lần trả lời đầu tiên</b> của mỗi câu trắc nghiệm. Dữ liệu chỉ lưu trong trình duyệt trên thiết bị này, không gửi đi đâu. Nếu xóa dữ liệu duyệt web, dùng chế độ ẩn danh hoặc đổi trình duyệt, tiến độ sẽ không còn.</p>
+    <div class="ptools">
+      <b>Chuyển tiến độ sang thiết bị khác</b>
+      <p style="margin:0;font-size:14px;color:var(--ink-2)">Trên thiết bị cũ: bấm <b>Tạo mã</b>, gửi mã cho chính mình (Zalo, email…). Trên thiết bị mới: mở trang này, dán mã vào ô rồi bấm <b>Nhập mã</b>.</p>
+      <label for="pcode" class="k" style="color:var(--ink-2)">Mã tiến độ</label>
+      <textarea id="pcode" spellcheck="false" placeholder="TKT1:…"></textarea>
+      <div class="row"><button class="btn primary" type="button" id="pexport">Tạo mã</button><button class="btn" type="button" id="pimport">Nhập mã</button><button class="btn" type="button" id="pclear">Xóa tiến độ</button></div>
+      <div id="pmsg" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="hoi-dap">
+    <div class="k">Hỏi đáp</div>
+    <h2>Khi gặp trục trặc</h2>
+    <details><summary class="nomath">Công thức hiện thành ký hiệu lạ như $\det A$</summary><p>Tải lại trang. Nếu mở từ tệp ZIP, hãy giải nén toàn bộ thư mục trước — trang cần thư mục <code>lib</code> đi kèm.</p></details>
+    <details><summary>Chữ trông khác so với trên lớp</summary><p>Khi không có Internet, bài giảng dùng phông chữ có sẵn trên máy. Nội dung không thay đổi.</p></details>
+    <details><summary>Cổng học tập không hiện tiến độ dù tôi đã học</summary><p>Hãy dùng cùng một trình duyệt. Khi mở bằng tệp trên máy tính, nên dùng Chrome hoặc Edge (Firefox lưu riêng tiến độ cho từng trang). Bản web và bản tệp có tiến độ riêng.</p></details>
+    <details><summary>Tôi muốn xem lời giải ngay trên điện thoại</summary><p>Bấm <b>Hiện tất cả</b> ở cuối slide. Nhưng hãy thử tự làm trước!</p></details>
+    <details><summary>Đáp số trong giáo trình khác với bài giảng</summary><p>Một số đáp số in trong giáo trình đã được tính lại và đính chính. Xem bảng <a href="chuong1/index.html#dinh-chinh">Đính chính đáp số</a> ở trang Chương 1.</p></details>
+  </section>
+
+  <footer>Phiên bản 1.0 · đóng gói ngày 2026-10-09 · <a href="index.html">Về cổng học tập</a></footer>
+</div>
+</div>
+<button class="ib themebtn" type="button" id="themeBtn" aria-label="Đổi giao diện sáng tối" title="Sáng / tối"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 000 16z" fill="currentColor"/></svg></button>
+<script src="lib/katex/katex.min.js"></script>
+<script src="lib/katex/auto-render.min.js"></script>
+<script src="assets/khoa-hoc.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/cong.js"></script>
+<script src="assets/pwa.js"></script>
+</body>
+</html>

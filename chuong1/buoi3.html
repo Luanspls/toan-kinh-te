@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong1" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 3 · Luyện tập định thức</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 1" data-unit="Buổi 3 · Luyện tập định thức, nghịch đảo" data-prev="buoi2.html" data-next="buoi4.html" data-home="index.html">
+<div class="stage">
+
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 3">
+  <div class="num"><small>Chương 1 · Cơ sở của Toán kinh tế</small>Buổi 3</div>
+  <h1>Luyện tập: định thức, ma trận nghịch đảo và ứng dụng</h1>
+  <div class="meta"><span class="chip">3 tiết</span><span class="chip bt">Bài tập 3 tiết</span><span class="chip">Mục 1.1.2 · BT 1.2, 1.5 – 1.8</span></div>
+  <div class="toc-mini">
+    <a href="#dang1"><span>Dạng 1</span>Tính định thức cấp cao</a>
+    <a href="#dang2"><span>Dạng 2</span>Định thức chứa tham số</a>
+    <a href="#dang3"><span>Dạng 3</span>Tìm ma trận nghịch đảo</a>
+    <a href="#dang4"><span>Dạng 4</span>Phương trình ma trận</a>
+    <a href="#dang5"><span>Dạng 5</span>Chứng minh đẳng thức định thức</a>
+    <a href="#leontief"><span>ỨNG DỤNG</span>Mô hình cân đối liên ngành Leontief</a>
+  </div>
+  <aside class="tuhoc"><p>Buổi luyện tập. Với mỗi dạng: đọc lại phương pháp (2 phút) → tự làm ra giấy (5–7 phút) → đối chiếu lời giải từng bước.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 3</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Hệ thống được các phương pháp tính định thức và tìm ma trận nghịch đảo.</li>
+      <li>Nêu được quy tắc giải phương trình ma trận $AX=B$, $XA=B$.</li>
+      <li>Hiểu ý nghĩa của ma trận $(I-A)^{-1}$ trong mô hình cân đối liên ngành.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Tính định thức cấp 4, 5 có cấu trúc (tam giác, khối, nhiều số 0).</li>
+      <li>Tìm điều kiện tham số để ma trận khả nghịch; tìm $A^{-1}$ và kiểm tra lại.</li>
+      <li>Giải phương trình ma trận; chứng minh đẳng thức định thức đơn giản.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Giải quyết vấn đề:</b> nhận dạng bài và chọn phương pháp nhanh nhất.</li>
+      <li><b>Mô hình hóa:</b> lập và giải mô hình Leontief 2 ngành, giải thích kết quả bằng ngôn ngữ kinh tế.</li>
+      <li><b>Tự đánh giá:</b> dùng phép thử $AA^{-1}=I$ và Phòng tính ma trận để tự kiểm tra.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Lời giải các dạng 1 – 4 trên bảng; bài kiểm tra 10 phút cuối buổi đạt từ 5 điểm trở lên.</span></div>
+  <aside class="tuhoc"><p>Bài kiểm tra thường xuyên 30 phút gồm ma trận, định thức, hệ phương trình — buổi này là phần trọng tâm.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 3 tiết × 45 phút</div><h2>Năm dạng bài và một mô hình kinh tế</h2></div>
+  <div class="plan">
+    <div class="p bt"><div class="t">Tiết 1<small>Bài tập</small></div><div class="c"><b>Khởi động · Dạng 1 · Dạng 2</b><span>Đúng/sai 5' · BT 1.7 (c, d) 15' · BT 1.6 (2, 3) 25'</span></div><div class="m">Cá nhân → cặp đôi</div></div>
+    <div class="p bt"><div class="t">Tiết 2<small>Bài tập</small></div><div class="c"><b>Dạng 3 · Dạng 4</b><span>BT 1.5 (b, c) 20' · BT 1.2 (b, c, d) 20' · chữa lỗi 5'</span></div><div class="m">Nhóm 4, trình bày</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Dạng 5 · Ứng dụng Leontief · Kiểm tra 10'</b><span>BT 1.8 10' · mô hình Input – Output 20' · kiểm tra 10' · giao nhiệm vụ 5'</span></div><div class="m">Thảo luận, công cụ tương tác</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · 5 phút</div><h2>Ôn nhanh tính chất: đúng hay sai?</h2></div>
+  <ul class="tf" data-widget="tf">
+    <li data-ans="d" data-why="Đổi chỗ $d_1\leftrightarrow d_2$ làm đổi dấu, đổi tiếp $d_2\leftrightarrow d_3$ đổi dấu lần nữa.">Đổi chỗ hai lần liên tiếp (hai cặp dòng khác nhau) thì định thức không đổi.</li>
+    <li data-ans="s" data-why="$\det(-A)=(-1)^n\det A$; với $n$ chẵn thì bằng $\det A$.">Với mọi ma trận vuông $A$: $\det(-A)=-\det A$.</li>
+    <li data-ans="d" data-why="$AA^{-1}=I\Rightarrow\det A\cdot\det A^{-1}=1$.">Nếu $A$ khả nghịch thì $\det(A^{-1})=\dfrac1{\det A}$.</li>
+    <li data-ans="s" data-why="Ví dụ $A=I_2,\ B=-I_2$: $\det(A+B)=0$ nhưng $\det A+\det B=2$.">$\det(A+B)=\det A+\det B$.</li>
+    <li data-ans="d" data-why="Định thức của ma trận tam giác bằng tích đường chéo; có phần tử chéo bằng 0 thì $\det=0$.">Ma trận tam giác có một phần tử trên đường chéo bằng 0 thì không khả nghịch.</li>
+  </ul>
+  <div data-widget="timer" data-min="5" data-label="Khởi động"></div>
+  <aside class="tuhoc"><p>Trả lời Đ/S cho tất cả các câu trước rồi mới bấm xem đáp án.</p></aside>
+</section>
+
+<section class="slide" id="ban-do" data-kind="on-tap" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Hệ thống phương pháp</div><h2>Gặp bài nào — dùng công cụ nào?</h2></div>
+  <table class="tbl">
+    <tr><th>Dấu hiệu của đề</th><th>Công cụ nên dùng</th><th>Ôn lại</th></tr>
+    <tr><td>Định thức cấp 2, cấp 3 số cụ thể</td><td>$ad-bc$; Sarrus</td><td><a class="xref back" href="buoi2.html#sarrus">Sarrus</a></td></tr>
+    <tr><td>Ma trận tam giác, hoặc có dòng/cột nhiều số 0</td><td>Tích đường chéo; khai triển Laplace</td><td><a class="xref back" href="buoi2.html#laplace">Laplace</a></td></tr>
+    <tr><td>Định thức cấp $\ge4$ số "lộn xộn"</td><td>Biến đổi sơ cấp tạo số 0 → khai triển</td><td><a class="xref back" href="buoi2.html#chien-luoc">Chiến lược</a></td></tr>
+    <tr><td>Ma trận chứa tham số, hỏi điều kiện khả nghịch</td><td>Tính $\det A$, giải $\det A\ne0$</td><td><a class="xref back" href="buoi2.html#nghich-dao">Định lý</a></td></tr>
+    <tr><td>Tìm $A^{-1}$ cấp 3 số cụ thể</td><td>Gauss – Jordan $(A|I)\to(I|A^{-1})$</td><td><a class="xref back" href="buoi2.html#nghich-dao-gauss">Gauss – Jordan</a></td></tr>
+    <tr><td>Phương trình $AX=B$, $XA=B$</td><td>Nhân $A^{-1}$ đúng phía</td><td><a class="xref" href="#dang4">Dạng 4</a></td></tr>
+  </table>
+  <aside class="tuhoc"><p>Có thể in bảng này làm phiếu tóm tắt. Các nút bên phải mở lại đúng slide lý thuyết ở Buổi 2.</p></aside>
+</section>
+
+<!-- ============ DẠNG 1 ============ -->
+<section class="slide" id="dang1" data-kind="bai-tap" data-sec="Dạng 1 – 2: Định thức">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 1.7 (c, d)</div><h2>Định thức cấp 5 có cấu trúc</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>c)</b> $D=\begin{vmatrix}2 & -3 & 1 & 4 & 0\\ 0 & 3 & -1 & 5 & 16\\ 0 & 0 & -4 & 10 & 8\\ 0 & 0 & 0 & -7 & 5\\ 0 & 0 & 0 & 0 & 4\end{vmatrix}$</p>
+      <div class="step">Ma trận tam giác trên ⇒ tích đường chéo chính:</div>
+      <div class="step">$D=2\cdot3\cdot(-4)\cdot(-7)\cdot4=\boxed{672}$</div>
+    </div>
+    <div class="stack small">
+      <p><b>d)</b> $D=\begin{vmatrix}1 & 2 & 0 & 0 & 0\\ 3 & 4 & 0 & 5 & 0\\ 0 & 0 & 2 & 1 & 5\\ 0 & 0 & 6 & 1 & 6\\ 0 & 0 & 0 & 0 & 9\end{vmatrix}$</p>
+      <div class="step">Dòng 5 chỉ có $a_{55}=9$: $\ D=9\cdot A_{55}=9\begin{vmatrix}1 & 2 & 0 & 0\\ 3 & 4 & 0 & 5\\ 0 & 0 & 2 & 1\\ 0 & 0 & 6 & 1\end{vmatrix}$</div>
+      <div class="step">Khai triển theo dòng 1: $\ 1\cdot\begin{vmatrix}4 & 0 & 5\\ 0 & 2 & 1\\ 0 & 6 & 1\end{vmatrix}-2\begin{vmatrix}3 & 0 & 5\\ 0 & 2 & 1\\ 0 & 6 & 1\end{vmatrix}=4(-4)-2\cdot3(-4)=8$</div>
+      <div class="step">$D=9\cdot8=\boxed{72}$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu d: hai định thức cấp 3 đều khai triển theo cột 1 (chỉ có một phần tử khác 0).</p></aside>
+</section>
+
+<section class="slide" id="dang2" data-kind="bai-tap" data-sec="Dạng 1 – 2: Định thức">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 1.6.2</div><h2>Tìm $m$ để ma trận khả nghịch, rồi tìm nghịch đảo</h2></div>
+  <div class="given"><b>Cho</b> $A=\begin{pmatrix}1 & 1 & 2\\ 2 & 1 & 1\\ 1 & -1 & m\end{pmatrix}$</div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="step">$\det A=1(m+1)-1(2m-1)+2(-2-1)=-m-4$</div>
+      <div class="step box key">$A$ khả nghịch $\iff -m-4\ne0\iff \boxed{m\ne-4}$</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Đáp số in trong giáo trình ghi "$m\ne4$"; công thức $A^{-1}=\frac{-1}{m+4}(\dots)$ ở đó cho thấy đúng là $m\ne-4$.</div>
+    </div>
+    <div class="stack small">
+      <div class="step">Các phần bù đại số: $A_{11}=m+1,\ A_{12}=1-2m,\ A_{13}=-3$; $A_{21}=-m-2,\ A_{22}=m-2,\ A_{23}=2$; $A_{31}=-1,\ A_{32}=3,\ A_{33}=-1$</div>
+      <div class="step">$$A^{-1}=\frac{-1}{m+4}\begin{pmatrix}m+1 & -m-2 & -1\\ 1-2m & m-2 & 3\\ -3 & 2 & -1\end{pmatrix}$$</div>
+      <div class="step box tip tiny" data-tag="Thử lại">Cho $m=0$: $\det A=-4$, kiểm tra $AA^{-1}=I$ bằng Phòng tính ma trận.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ma trận chứa tham số → nên dùng ma trận phụ hợp; Gauss – Jordan với tham số dễ chia nhầm cho biểu thức bằng 0.</p></aside>
+</section>
+
+<section class="slide" id="dang2b" data-kind="bai-tap" data-sec="Dạng 1 – 2: Định thức">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 1.6.3</div><h2>Hạng, định thức và ma trận phụ hợp</h2></div>
+  <div class="given"><b>Cho</b> $A=\begin{pmatrix}1 & 2 & 1\\ 2 & 3 & -1\\ 1 & 1 & m\end{pmatrix}$. a) Tìm $m$ để $r(A)=2$. b) Tìm $m$ để $A^*$ khả nghịch, tìm $(A^*)^{-1}$.</div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="step">$\det A=1(3m+1)-2(2m+1)+1(2-3)=-m-2$</div>
+      <div class="step">a) $r(A)\le2\iff\det A=0\iff m=-2$. Hai dòng đầu không tỉ lệ nên $r(A)\ge2$.</div>
+      <div class="step box key">$r(A)=2\iff m=-2$</div>
+    </div>
+    <div class="stack small">
+      <div class="step">b) Từ $AA^*=(\det A)\,I$ ⇒ $\det A\cdot\det A^*=(\det A)^3$ ⇒ $\det A^*=(\det A)^2$.</div>
+      <div class="step">$A^*$ khả nghịch $\iff\det A\ne0\iff m\ne-2$.</div>
+      <div class="step">$A^*\cdot\dfrac{A}{\det A}=I$ ⇒ $\boxed{(A^*)^{-1}=\dfrac{1}{\det A}A=\dfrac{-1}{m+2}\begin{pmatrix}1 & 2 & 1\\ 2 & 3 & -1\\ 1 & 1 & m\end{pmatrix}}$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ba khái niệm liên kết với nhau: với $A$ vuông cấp $n$, $\ r(A)=n\iff\det A\ne0\iff A$ khả nghịch.</p></aside>
+</section>
+
+<!-- ============ DẠNG 3 ============ -->
+<section class="slide" id="dang3" data-kind="bai-tap" data-sec="Dạng 3 – 4: Nghịch đảo">
+  <div class="head"><div class="eyebrow">Dạng 3 · BT 1.5b</div><h2>Tìm ma trận nghịch đảo cấp 3</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <p>$A=\begin{pmatrix}4 & 1 & 2\\ 3 & -1 & 0\\ 3 & 5 & 5\end{pmatrix}$</p>
+      <div class="box">Bước 0: $\det A=1\ne0$ ⇒ khả nghịch (và $A^{-1}$ sẽ có toàn số nguyên).</div>
+      <div class="box tip" data-tag="Kết quả">$$A^{-1}=\begin{pmatrix}-5 & 5 & 2\\ -15 & 14 & 6\\ 18 & -17 & -7\end{pmatrix}$$</div>
+      <div class="box small" data-tag="BT 1.5c — tự luyện">$\begin{pmatrix}1 & -1 & 6\\ 5 & 7 & 1\\ -2 & 4 & 5\end{pmatrix}$ có $\det=262\ne0$: khả nghịch, $A^{-1}=\frac1{262}A^*$ — làm ở nhà, kiểm tra bằng <a href="lab.html">Phòng tính ma trận</a>.</div>
+    </div>
+    <div data-widget="elim" data-matrix="4 1 2; 3 -1 0; 3 5 5" data-mode="inverse"></div>
+  </div>
+  <aside class="tuhoc"><p>Làm bài bằng cả hai cách (phụ hợp và Gauss – Jordan), so sánh thời gian và kết quả.</p></aside>
+</section>
+
+<section class="slide" id="dang4" data-kind="bai-tap" data-sec="Dạng 3 – 4: Nghịch đảo">
+  <div class="head"><div class="eyebrow">Dạng 4 · Phương trình ma trận</div><h2>Nhân $A^{-1}$ vào đúng phía của ẩn $X$</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <table class="tbl">
+        <tr><th>Phương trình</th><th>Nghiệm (khi $A,B$ khả nghịch)</th></tr>
+        <tr><td>$AX=B$</td><td>$X=A^{-1}B$ — nhân <b>trái</b></td></tr>
+        <tr><td>$XA=B$</td><td>$X=BA^{-1}$ — nhân <b>phải</b></td></tr>
+        <tr><td>$AXB=C$</td><td>$X=A^{-1}CB^{-1}$</td></tr>
+      </table>
+      <div class="box warn small" data-tag="Bẫy">$X=\dfrac BA$ là <b>vô nghĩa</b>; và $A^{-1}B\ne BA^{-1}$ nói chung.</div>
+    </div>
+    <div class="stack small">
+      <p>BT 1.2: $A=\begin{pmatrix}1 & 2\\ -2 & 3\end{pmatrix},\ B=\begin{pmatrix}-1 & 2 & 0\\ 2 & 0 & -3\end{pmatrix},\ C=\begin{pmatrix}-3 & -2 & 2\\ 0 & 3 & 5\end{pmatrix}$</p>
+      <div class="step">$\det A=7$, $\ A^{-1}=\frac17\begin{pmatrix}3 & -2\\ 2 & 1\end{pmatrix}$</div>
+      <div class="step"><b>c)</b> $AX=B\Rightarrow X=A^{-1}B=\begin{pmatrix}-1 & \tfrac67 & \tfrac67\\ 0 & \tfrac47 & -\tfrac37\end{pmatrix}$</div>
+      <div class="step"><b>b)</b> $A(X+C)=B\Rightarrow X=A^{-1}B-C=\begin{pmatrix}2 & \tfrac{20}7 & -\tfrac87\\ 0 & -\tfrac{17}7 & -\tfrac{38}7\end{pmatrix}$</div>
+      <div class="step"><b>d)</b> $XC=A$: $C$ cấp $2\times3$ nên $XC$ cấp $\cdot\times3$, không thể bằng $A$ cấp $2\times2$ ⇒ <b>không tồn tại $X$</b>.</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Đáp số câu b, c in trong giáo trình không thỏa phương trình; các kết quả trên đã được kiểm tra lại bằng phép nhân $AX$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Luôn thử lại: ở câu c, tính $A\cdot X$ phải ra $B$. Câu d: kiểm tra cấp trước khi tính.</p></aside>
+</section>
+
+<!-- ============ DẠNG 5 ============ -->
+<section class="slide" id="dang5" data-kind="bai-tap" data-sec="Dạng 5: Chứng minh">
+  <div class="head"><div class="eyebrow">Dạng 5 · BT 1.8</div><h2>Chứng minh đẳng thức định thức ($A,B$ vuông cấp $n$)</h2></div>
+  <div class="cols c3">
+    <div class="box small" data-tag="a) det(kA) = kⁿ det A">
+      <p>$kA$ có <b>mọi</b> dòng nhân với $k$.</p>
+      <p class="step">Áp dụng TC3 cho từng dòng trong $n$ dòng: mỗi lần đưa ra một thừa số $k$.</p>
+      <p class="step">$\det(kA)=\underbrace{k\cdots k}_{n}\det A=k^n\det A$.</p>
+    </div>
+    <div class="box small" data-tag="b) det(AB) = det A · det B">
+      <p>Đây là TC7. Ý chứng minh (giáo trình): xét định thức cấp $2n$</p>
+      <p class="step">$D=\begin{vmatrix}A & O\\ -I & B\end{vmatrix}=\det A\cdot\det B$ (Laplace theo $n$ dòng đầu).</p>
+      <p class="step">Biến đổi sơ cấp đưa khối $B$ về $O$, khối trên phải thành $AB$ ⇒ $D=\det(AB)$.</p>
+    </div>
+    <div class="box small" data-tag="c) det A* = (det A)ⁿ⁻¹">
+      <p>Biết $AA^*=(\det A)I_n$ (từ định lý Laplace).</p>
+      <p class="step">Lấy định thức hai vế (TC7 và câu a): $\det A\cdot\det A^*=(\det A)^n$.</p>
+      <p class="step">Chia cho $\det A\ne0$: $\det A^*=(\det A)^{n-1}$.</p>
+    </div>
+  </div>
+  <div class="box tip small" data-tag="Áp dụng nhanh">$A$ cấp 3, $\det A=-2$: $\ \det(2A)=-16$, $\ \det(A^{-1})=-\tfrac12$, $\ \det A^*=4$, $\ \det(A^TA)=4$.</div>
+  <aside class="tuhoc"><p>Câu a, c là dạng hay ra trong bài kiểm tra (tính nhanh); câu b chỉ cần nắm ý tưởng.</p></aside>
+</section>
+
+<!-- ============ ỨNG DỤNG ============ -->
+<section class="slide" id="leontief-mo-hinh" data-kind="vi-du" data-sec="Ứng dụng kinh tế">
+  <div class="head"><div class="eyebrow">Ứng dụng · Mô hình cân đối liên ngành (Input – Output)</div><h2>Mỗi ngành vừa bán cho thị trường, vừa "mua" của các ngành khác</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box eco" data-tag="Bài toán">Nền kinh tế có $n$ ngành. $x_i$: tổng sản lượng (giá trị) ngành $i$; $d_i$: cầu cuối cùng (tiêu dùng, xuất khẩu) với ngành $i$; $a_{ij}$: giá trị sản phẩm ngành $i$ cần để sản xuất <b>1 đồng</b> sản phẩm ngành $j$ — <b>hệ số chi phí trực tiếp</b>.</div>
+      <div class="step">Sản lượng ngành $i$ = phần dùng cho các ngành + cầu cuối:
+        $$x_i=a_{i1}x_1+a_{i2}x_2+\dots+a_{in}x_n+d_i$$</div>
+    </div>
+    <div class="stack">
+      <div class="step box key" data-tag="Dạng ma trận">$$x=Ax+d\iff(I-A)x=d$$ $$\iff\boxed{x=(I-A)^{-1}d}$$</div>
+      <div class="step small"><b>Ý nghĩa:</b> phần tử $(i,j)$ của $(I-A)^{-1}$ cho biết ngành $i$ phải sản xuất thêm bao nhiêu khi cầu cuối của ngành $j$ tăng 1 đơn vị — <span class="hl">hệ số chi phí toàn bộ</span>.</div>
+      <div class="step box tip small" data-tag="Liên hệ chương">Cần: nhân ma trận (Buổi 1), $\det(I-A)\ne0$ và nghịch đảo (Buổi 2), giải hệ (Buổi 4).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Wassily Leontief nhận giải Nobel Kinh tế năm 1973 cho mô hình này. Bảng I – O của Việt Nam do cơ quan thống kê lập định kỳ.</p></aside>
+</section>
+
+<section class="slide" id="leontief" data-kind="vi-du" data-sec="Ứng dụng kinh tế">
+  <div class="head"><div class="eyebrow">Ứng dụng · Mô hình Leontief 2 ngành</div><h2>Cầu cuối thay đổi, sản lượng phải thay đổi bao nhiêu?</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <p>Ngành 1 (nông nghiệp), ngành 2 (công nghiệp). Ma trận hệ số chi phí trực tiếp và cầu cuối (tỷ đồng):</p>
+      $$A=\begin{pmatrix}0{,}2 & 0{,}3\\ 0{,}4 & 0{,}1\end{pmatrix},\quad d=\begin{pmatrix}100\\200\end{pmatrix}$$
+      <div class="step">$\det(I-A)=0{,}8\cdot0{,}9-0{,}3\cdot0{,}4=0{,}6$</div>
+      <div class="step">$(I-A)^{-1}=\frac1{0{,}6}\begin{pmatrix}0{,}9 & 0{,}3\\ 0{,}4 & 0{,}8\end{pmatrix}=\begin{pmatrix}1{,}5 & 0{,}5\\ \tfrac23 & \tfrac43\end{pmatrix}$</div>
+      <div class="step box key">$x=\begin{pmatrix}1{,}5\cdot100+0{,}5\cdot200\\ \tfrac23\cdot100+\tfrac43\cdot200\end{pmatrix}=\begin{pmatrix}250\\ \approx333{,}3\end{pmatrix}$</div>
+    </div>
+    <div class="stack">
+      <div data-widget="leontief" id="leo1"></div>
+      <p class="tiny muted">Kéo thanh trượt cầu cuối, hoặc sửa hệ số $a_{ij}$ (công cụ dùng dấu chấm thập phân).</p>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự trả lời: cầu cuối ngành 1 tăng thêm 10 tỷ thì sản lượng mỗi ngành tăng bao nhiêu? (Cột 1 của $(I-A)^{-1}$ nhân 10: ngành 1 tăng 15, ngành 2 tăng khoảng 6,67.) Cho $a_{11}$ tăng dần tới 0,9 để thấy khi nào mô hình mất ý nghĩa kinh tế.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra" data-kind="kiem-tra" data-sec="Kiểm tra">
+  <div class="head"><div class="eyebrow">Kiểm tra 10 phút · cá nhân</div><h2>Phiếu kiểm tra nhanh</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box"><b>Câu 1 (5 điểm).</b> Cho $A=\begin{pmatrix}2 & 1\\ 5 & 3\end{pmatrix},\ B=\begin{pmatrix}1 & 2\\ 0 & 1\end{pmatrix}$. Tìm ma trận $X$ thỏa $AX=B$.</div>
+      <div class="box"><b>Câu 2 (5 điểm).</b> Tính $D=\begin{vmatrix}1 & 0 & 2 & 0\\ 0 & 3 & 0 & 1\\ 2 & 0 & 5 & 0\\ 0 & 1 & 0 & 1\end{vmatrix}$</div>
+      <div data-widget="timer" data-min="10" data-label="Làm bài"></div>
+    </div>
+    <div class="stack">
+      <button class="reveal-btn" data-for="kt-da">Xem đáp án</button>
+      <div class="ans small" id="kt-da">
+        <p><b>Câu 1.</b> $\det A=1$, $A^{-1}=\begin{pmatrix}3 & -1\\ -5 & 2\end{pmatrix}$ (2đ); $X=A^{-1}B=\begin{pmatrix}3 & 5\\ -5 & -8\end{pmatrix}$ (2đ); thử lại $AX=B$ (1đ).</p>
+        <p><b>Câu 2.</b> $d_3\to d_3-2d_1$ cho dòng 3 là $(0,0,1,0)$ (2đ); khai triển theo dòng 3 rồi theo cột 1 (2đ): $D=1\cdot1\cdot\begin{vmatrix}3 & 1\\ 1 & 1\end{vmatrix}=\boxed{2}$ (1đ).</p>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự làm trong 10 phút như bài kiểm tra thật, rồi mới xem đáp án và tự chấm theo thang điểm.</p></aside>
+</section>
+
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 3</div><h2>Năm dạng bài — một sợi chỉ: $\det A\ne0$</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Dạng 1 <small>tính định thức</small></h4>Tạo số 0, khai triển, đưa về tam giác.</div>
+    <div class="card"><h4>Dạng 2 <small>tham số</small></h4>Khả nghịch $\iff\det A\ne0$; $r(A)=n\iff\det A\ne0$.</div>
+    <div class="card"><h4>Dạng 3 <small>nghịch đảo</small></h4>Phụ hợp hoặc Gauss – Jordan; luôn thử lại.</div>
+    <div class="card"><h4>Dạng 4 <small>phương trình</small></h4>$AX=B\Rightarrow X=A^{-1}B$; $XA=B\Rightarrow X=BA^{-1}$.</div>
+    <div class="card"><h4>Dạng 5 <small>chứng minh</small></h4>$\det(kA)=k^n\det A$; $\det A^*=(\det A)^{n-1}$.</div>
+    <div class="card"><h4>Ứng dụng <small>Leontief</small></h4>$x=(I-A)^{-1}d$: sản lượng cần thiết theo cầu cuối.</div>
+  </div>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 4: Hệ phương trình tuyến tính</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>Hoàn thiện BT 1.5c, 1.6, 1.7, 1.8.</li>
+        <li>Mô hình Leontief: với $A$ như trên, cầu cuối $d=(150;\,250)$, tính sản lượng $x$.</li>
+        <li>Ôn lại: hạng ma trận (Buổi 1), định thức cấp 3 (Buổi 2).</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình mục 1.4: Hệ phương trình tuyến tính.</li>
+        <li>Câu hỏi suy nghĩ: <i>Hai đường thẳng trên mặt phẳng có thể có bao nhiêu điểm chung? Điều đó nói gì về số nghiệm của hệ 2 ẩn?</i></li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref back" href="buoi2.html">Buổi 2 · Định thức</a><a class="xref" href="buoi4.html">Sang Buổi 4 · Hệ phương trình tuyến tính</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Đáp số bài Leontief về nhà để tự kiểm tra: $x=(1{,}5\cdot150+0{,}5\cdot250;\ \tfrac23\cdot150+\tfrac43\cdot250)=(350;\ 433{,}3)$.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong1" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 4 · Hệ phương trình tuyến tính</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 1" data-unit="Buổi 4 · Hệ phương trình tuyến tính" data-prev="buoi3.html" data-next="buoi5.html" data-home="index.html">
+<div class="stage">
+
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 4">
+  <div class="num"><small>Chương 1 · Cơ sở của Toán kinh tế</small>Buổi 4</div>
+  <h1>Hệ phương trình tuyến tính</h1>
+  <div class="meta"><span class="chip">4 tiết</span><span class="chip lt">Lý thuyết 2 tiết</span><span class="chip bt">Bài tập 2 tiết</span><span class="chip">Mục 1.2 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#dang-tong-quat"><span>1.2.1</span>Dạng tổng quát và dạng ma trận</a>
+    <a href="#cramer"><span>1.2.2</span>Hệ Cramer</a>
+    <a href="#gauss"><span>1.2.3</span>Phương pháp khử Gauss</a>
+    <a href="#kronecker"><span>1.2.4</span>Điều kiện có nghiệm (Kronecker – Capelli)</a>
+    <a href="#thuan-nhat"><span>1.2.5</span>Hệ phương trình thuần nhất</a>
+    <a href="#bt-dang"><span>BT</span>Luyện tập: BT 1.21, 1.23 và bài toán thực tế</a>
+  </div>
+  <aside class="tuhoc"><p>Buổi trọng tâm của chương: hệ phương trình là công cụ dùng xuyên suốt Chương 2 (quy hoạch tuyến tính, phương án cực biên, bài toán vận tải).</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 4</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Viết được hệ phương trình ở dạng tổng quát, dạng ma trận $Ax=b$; phân biệt ma trận hệ số và ma trận bổ sung.</li>
+      <li>Phát biểu định nghĩa hệ Cramer, công thức Cramer, định lý Kronecker – Capelli.</li>
+      <li>Nêu được cấu trúc tập nghiệm của hệ thuần nhất, hệ nghiệm cơ bản.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Giải hệ Cramer bằng công thức định thức.</li>
+      <li>Giải thành thạo hệ tổng quát bằng phương pháp khử Gauss; viết nghiệm tổng quát, nghiệm riêng.</li>
+      <li>Xác định được điều kiện có nghiệm; tìm hệ nghiệm cơ bản của hệ thuần nhất.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Mô hình hóa:</b> lập hệ phương trình từ bài toán cân bằng thị trường, phân bổ nguồn lực.</li>
+      <li><b>Lựa chọn công cụ:</b> chọn Cramer hay Gauss tùy cấu trúc hệ.</li>
+      <li><b>Lập luận:</b> giải thích số nghiệm bằng hạng (và bằng hình học với hệ 2 ẩn).</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Giải đúng BT 1.21 (a, b, c), 1.23 (a, d); lập và giải được bài toán phân xưởng.</span></div>
+  <aside class="tuhoc"><p>Kỹ năng giải hệ bằng phương pháp Gauss sẽ được kiểm tra trong bài kiểm tra thường xuyên.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 4 tiết × 45 phút</div><h2>Ba câu hỏi: có nghiệm không? bao nhiêu nghiệm? tìm thế nào?</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Khởi động · Dạng tổng quát · Hệ Cramer · Hình học hệ 2 ẩn</b><span>Cân bằng thị trường 7' · dạng ma trận 8' · Cramer 20' · ba khả năng nghiệm 10'</span></div><div class="m">Vấn đáp, công cụ Cramer</div></div>
+    <div class="p lt"><div class="t">Tiết 2<small>Lý thuyết</small></div><div class="c"><b>Gauss · Kronecker – Capelli · Hệ thuần nhất</b><span>Gauss 20' · điều kiện có nghiệm 10' · thuần nhất, hệ nghiệm cơ bản 15'</span></div><div class="m">Thuyết trình, công cụ khử Gauss</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Giải hệ bằng Cramer và Gauss</b><span>BT 1.21 (a, b, c)</span></div><div class="m">Cặp đôi, lên bảng</div></div>
+    <div class="p bt"><div class="t">Tiết 4<small>Bài tập</small></div><div class="c"><b>Hệ không vuông · Bài toán thực tế</b><span>BT 1.23 (a, d) · bài toán phân xưởng · tổng kết</span></div><div class="m">Nhóm 4 người</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · Cân bằng thị trường hai mặt hàng liên quan</div><h2>Giá nào làm cung bằng cầu cho cả hai mặt hàng?</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <table class="tbl">
+        <tr><th>Mặt hàng</th><th>Hàm cầu</th><th>Hàm cung</th></tr>
+        <tr><td>Hàng 1</td><td>$Q_{d1}=10-2P_1+P_2$</td><td>$Q_{s1}=-2+3P_1$</td></tr>
+        <tr><td>Hàng 2</td><td>$Q_{d2}=18+P_1-P_2$</td><td>$Q_{s2}=-2+2P_2$</td></tr>
+      </table>
+      <p>Hai mặt hàng thay thế nhau: giá hàng này tăng thì cầu hàng kia tăng.</p>
+      <div data-widget="timer" data-min="3" data-label="Lập hệ"></div>
+    </div>
+    <div class="stack">
+      <div class="step box">Cân bằng: $Q_{d1}=Q_{s1},\ Q_{d2}=Q_{s2}$
+        $$\begin{cases}5P_1-P_2=12\\ -P_1+3P_2=20\end{cases}$$</div>
+      <div class="step box">Dạng ma trận: $\begin{pmatrix}5 & -1\\ -1 & 3\end{pmatrix}\begin{pmatrix}P_1\\ P_2\end{pmatrix}=\begin{pmatrix}12\\ 20\end{pmatrix}$</div>
+      <div class="step box key" data-tag="Câu hỏi của buổi học">Hệ có nghiệm không? Có mấy nghiệm? Tìm nghiệm bằng cách nào khi số ẩn lớn?</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự lập hệ từ bảng (3 phút). Đáp số có ở slide Cramer: $P_1=4,\ P_2=8$; lượng cân bằng $Q_1=10,\ Q_2=14$.</p></aside>
+</section>
+
+<!-- ============ 1.2.1 ============ -->
+<section class="slide" id="dang-tong-quat" data-kind="ly-thuyet" data-sec="1.2.1 Dạng tổng quát">
+  <div class="head"><div class="eyebrow">1.2.1 · Dạng tổng quát và ma trận của hệ phương trình tuyến tính</div><h2>$m$ phương trình, $n$ ẩn — một phương trình ma trận $Ax=b$</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      $$\begin{cases}a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n=b_1\\ a_{21}x_1+a_{22}x_2+\dots+a_{2n}x_n=b_2\\ \quad\cdots\\ a_{m1}x_1+a_{m2}x_2+\dots+a_{mn}x_n=b_m\end{cases}$$
+      <p><b>Nghiệm</b>: bộ số $(c_1,\dots,c_n)$ thay vào mọi phương trình đều đúng. Hai hệ <b>tương đương</b> nếu có cùng tập nghiệm.</p>
+    </div>
+    <div class="stack small">
+      <div class="box key" data-tag="Các ma trận của hệ">
+        <p>Ma trận hệ số $A=(a_{ij})_{m\times n}$; cột ẩn $x$; cột tự do $b$.</p>
+        $$\overline{A}=(A\,|\,b)=\left(\begin{array}{cccc|c}a_{11} & a_{12} & \cdots & a_{1n} & b_1\\ \vdots & & & \vdots & \vdots\\ a_{m1} & a_{m2} & \cdots & a_{mn} & b_m\end{array}\right)$$
+        <p><b>Ma trận bổ sung</b> $\overline{A}$ <span class="muted">(giáo trình ký hiệu là $B$)</span> chứa toàn bộ thông tin của hệ.</p></div>
+      <div class="box tip" data-tag="Liên kết">$Ax=b$ chính là phép nhân "dòng × cột" của Buổi 1. <a class="xref back" href="buoi1.html#phep-nhan">Phép nhân ma trận</a></div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự kiểm tra: với hệ ở phần khởi động, $A$ và $\overline{A}$ là gì, cấp bao nhiêu? ($2\times2$ và $2\times3$.)</p></aside>
+</section>
+
+<!-- ============ 1.2.2 CRAMER ============ -->
+<section class="slide" id="cramer" data-kind="ly-thuyet" data-sec="1.2.2 Hệ Cramer">
+  <div class="head"><div class="eyebrow">1.2.2 · Hệ Cramer</div><h2>Số phương trình = số ẩn và $D=\det A\ne0$ ⇒ nghiệm duy nhất</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <div class="box key" data-tag="Công thức Cramer">$$x_j=\frac{D_j}{D},\quad j=1,\dots,n$$
+        $D_j$: định thức thu được từ $D$ bằng cách <b>thay cột $j$ bởi cột tự do $b$</b>.</div>
+      <div class="box">Hệ khởi động: $D=\begin{vmatrix}5 & -1\\ -1 & 3\end{vmatrix}=14\ne0$ — là hệ Cramer.</div>
+      <div class="box eco" data-tag="Kết luận kinh tế">Giá cân bằng $P_1=4,\ P_2=8$; lượng cân bằng $Q_1=-2+3\cdot4=10,\ Q_2=-2+2\cdot8=14$.</div>
+    </div>
+    <div data-widget="cramer" data-matrix="5 -1 12; -1 3 20" data-vars="P_1,P_2"></div>
+  </div>
+  <aside class="tuhoc"><p>Bấm lần lượt D → D₁ → D₂ → Nghiệm; cột tô đỏ là cột vừa thay. Câu hỏi: nếu $D=0$ thì sao? → xem slide hình học.</p></aside>
+</section>
+
+<section class="slide" id="cramer3" data-kind="vi-du" data-sec="1.2.2 Hệ Cramer">
+  <div class="head"><div class="eyebrow">1.2.2 · Ví dụ kinh tế · Sử dụng hết nguyên liệu</div><h2>Sản xuất bao nhiêu sản phẩm để dùng hết nguyên liệu trong kho?</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <table class="tbl">
+        <tr><th>Định mức (kg/sp)</th><th class="c">SP I</th><th class="c">SP II</th><th class="c">SP III</th><th class="c">Tồn kho</th></tr>
+        <tr><td>Nguyên liệu N1</td><td class="c">1</td><td class="c">2</td><td class="c">1</td><td class="c">80</td></tr>
+        <tr><td>Nguyên liệu N2</td><td class="c">2</td><td class="c">1</td><td class="c">3</td><td class="c">130</td></tr>
+        <tr><td>Nguyên liệu N3</td><td class="c">1</td><td class="c">1</td><td class="c">1</td><td class="c">60</td></tr>
+      </table>
+      <div class="step">Gọi $x_1,x_2,x_3$ là số sản phẩm I, II, III:
+        $$\begin{cases}x_1+2x_2+x_3=80\\ 2x_1+x_2+3x_3=130\\ x_1+x_2+x_3=60\end{cases}$$</div>
+      <div class="step box eco" data-tag="Kết luận">Sản xuất 10 sản phẩm I, 20 sản phẩm II, 30 sản phẩm III.</div>
+    </div>
+    <div data-widget="cramer" data-matrix="1 2 1 80; 2 1 3 130; 1 1 1 60"></div>
+  </div>
+  <aside class="tuhoc"><p>$D=1$ nên mỗi $D_j$ chính là nghiệm. Đây là dạng "phân bổ nguồn lực", sẽ mở rộng thành quy hoạch tuyến tính ở Chương 2.</p></aside>
+</section>
+
+<section class="slide" id="hinh-hoc" data-kind="vi-du" data-sec="1.2.2 Hệ Cramer">
+  <div class="head"><div class="eyebrow">Trực quan · Hệ 2 phương trình 2 ẩn</div><h2>Hai đường thẳng: cắt nhau, song song hay trùng nhau</h2></div>
+  <div class="big" data-widget="sys2" id="sys2a"></div>
+  <p class="small muted">Mỗi phương trình $ax+by=c$ là một đường thẳng. Sửa hệ số hoặc chọn mẫu để thấy ba khả năng — và chỉ có <b>ba</b> khả năng: 0, 1 hoặc vô số nghiệm.</p>
+  <aside class="tuhoc"><p>Dự đoán trước khi bấm "Vô nghiệm" và "Vô số nghiệm". Khi $D=0$, Cramer không dùng được — cần phương pháp Gauss và tiêu chuẩn về hạng.</p></aside>
+</section>
+
+<!-- ============ 1.2.3 GAUSS ============ -->
+<section class="slide" id="gauss" data-kind="ly-thuyet" data-sec="1.2.3 Phương pháp Gauss">
+  <div class="head"><div class="eyebrow">1.2.3 · Phương pháp khử của Gauss</div><h2>Biến đổi sơ cấp trên dòng của $\overline{A}$ cho hệ tương đương</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Định lý">Đổi chỗ hai phương trình, nhân một phương trình với số $k\ne0$, cộng vào một phương trình bội của phương trình khác ⇒ được <b>hệ tương đương</b>.</div>
+      <div class="flow">
+        <div class="n"><b>B1</b>Lập $\overline{A}$</div><div class="a">→</div>
+        <div class="n"><b>B2</b>Đưa về bậc thang (chỉ biến đổi dòng)</div><div class="a">→</div>
+        <div class="n"><b>B3</b>Kết luận số nghiệm</div><div class="a">→</div>
+        <div class="n"><b>B4</b>Giải ngược từ dưới lên</div>
+      </div>
+      <a class="xref back" href="buoi1.html#bdsc">Ôn lại: biến đổi sơ cấp (Buổi 1)</a>
+    </div>
+    <div class="stack small">
+      <div class="box warn" data-tag="Bẫy">
+        <ul><li><b>Không</b> biến đổi cột (trừ khi ghi nhớ đổi tên ẩn).</li>
+          <li>Phép biến đổi phải áp dụng cho <b>cả cột tự do</b>.</li>
+          <li>Dòng $(0\ 0\ \cdots\ 0\,|\,c)$ với $c\ne0$ ⇒ phương trình $0=c$ ⇒ <b>vô nghiệm</b>.</li></ul></div>
+      <div class="box tip" data-tag="Ẩn cơ sở – ẩn tự do">Ẩn ứng với phần tử cơ sở của bậc thang là <b>ẩn cơ sở</b>; các ẩn còn lại là <b>ẩn tự do</b>, nhận giá trị tùy ý (tham số).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Gauss áp dụng cho mọi hệ (vuông hay không, $D=0$ hay $D\ne0$) — đây là phương pháp chính của chương.</p></aside>
+</section>
+
+<section class="slide" id="gauss-vd1" data-kind="vi-du" data-sec="1.2.3 Phương pháp Gauss">
+  <div class="head"><div class="eyebrow">1.2.3 · Ví dụ 1 (giáo trình, ví dụ 1.45a)</div><h2>Hệ có nghiệm duy nhất</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      $$\begin{cases}x_1+2x_2+x_3=1\\ 2x_1+5x_2+x_3=6\\ -x_1-4x_2+2x_3=2\end{cases}$$
+      <div class="step">Bậc thang ⇒ hệ tương đương dạng tam giác:
+        $$\begin{cases}x_1+2x_2+x_3=1\\ \quad\ \ x_2-x_3=4\\ \qquad\quad\ \ x_3=11\end{cases}$$</div>
+      <div class="step">Giải ngược: $x_3=11\Rightarrow x_2=15\Rightarrow x_1=1-30-11=-40$</div>
+      <div class="step box key">Nghiệm duy nhất $(-40;\,15;\,11)$</div>
+    </div>
+    <div class="big" data-widget="elim" data-matrix="1 2 1 1; 2 5 1 6; -1 -4 2 2" data-mode="gauss"></div>
+  </div>
+  <aside class="tuhoc"><p>Thử lại nghiệm vào phương trình 3: $40-60+22=2$ ✓. Hãy luôn thử lại nghiệm.</p></aside>
+</section>
+
+<section class="slide" id="gauss-vd2" data-kind="vi-du" data-sec="1.2.3 Phương pháp Gauss">
+  <div class="head"><div class="eyebrow">1.2.3 · Ví dụ 2 (giáo trình, ví dụ 1.45 b, c)</div><h2>Hệ vô nghiệm và hệ vô số nghiệm</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>b)</b> $\begin{cases}x_1+2x_2-x_3=3\\ 4x_1+x_2+2x_3=1\\ 2x_1-3x_2+4x_3=2\end{cases}$</p>
+      <div data-widget="elim" data-matrix="1 2 -1 3; 4 1 2 1; 2 -3 4 2" data-mode="gauss"></div>
+      <div class="box warn tiny">Dòng cuối $(0\ 0\ 0\,|\,c\ne0)$: phương trình $0=c$ vô lý.</div>
+    </div>
+    <div class="stack small">
+      <p><b>c)</b> $\begin{cases}x_1+2x_2-x_3+x_4=2\\ 3x_1+6x_2-4x_3+2x_4=4\\ -x_1-2x_2+2x_3=0\end{cases}$</p>
+      <div data-widget="elim" data-matrix="1 2 -1 1 2; 3 6 -4 2 4; -1 -2 2 0 0" data-mode="gauss"></div>
+      <div class="box tip tiny" data-tag="Đọc nghiệm">Ẩn cơ sở $x_1,x_3$; ẩn tự do $x_2=c_2,\ x_4=c_4$. Nghiệm tổng quát $(4-2c_2-2c_4;\,c_2;\,2-c_4;\,c_4)$. Cho $c_2=1,c_4=0$: nghiệm riêng $(2;1;2;0)$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Nghiệm tổng quát là cách viết "mọi nghiệm"; nghiệm riêng là một nghiệm cụ thể khi gán giá trị cho tham số.</p></aside>
+</section>
+
+<!-- ============ 1.2.4 ============ -->
+<section class="slide" id="kronecker" data-kind="ly-thuyet" data-sec="1.2.4 Điều kiện có nghiệm">
+  <div class="head"><div class="eyebrow">1.2.4 · Điều kiện có nghiệm của hệ tổng quát</div><h2>Định lý Kronecker – Capelli: so sánh $r(A)$ và $r(\overline{A})$</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <div class="box key" data-tag="Định lý">Hệ $Ax=b$ có nghiệm $\iff r(A)=r(\overline{A})$.</div>
+      <table class="tbl">
+        <tr><th>Trường hợp</th><th>Kết luận</th></tr>
+        <tr><td>$r(A)\lt r(\overline{A})$</td><td>Vô nghiệm</td></tr>
+        <tr><td>$r(A)=r(\overline{A})=n$</td><td>Nghiệm duy nhất</td></tr>
+        <tr><td>$r(A)=r(\overline{A})=r\lt n$</td><td>Vô số nghiệm, $n-r$ ẩn tự do</td></tr>
+      </table>
+      <p class="muted">Ví dụ 2b: $r(A)=2,\ r(\overline{A})=3$. Ví dụ 2c: $r(A)=r(\overline{A})=2,\ n=4$ ⇒ 2 ẩn tự do.</p>
+    </div>
+    <div data-widget="kc" id="kc1"></div>
+  </div>
+  <aside class="tuhoc"><p>Nhập các bộ $(n,\ r(A),\ r(\overline{A}))$ của ví dụ vừa giải để thấy công cụ chạy theo định lý. Thử một bộ không hợp lệ (ví dụ $r(\overline A)=r(A)+2$) và giải thích vì sao không thể xảy ra.</p></aside>
+</section>
+
+<!-- ============ 1.2.5 ============ -->
+<section class="slide" id="thuan-nhat" data-kind="ly-thuyet" data-sec="1.2.5 Hệ thuần nhất">
+  <div class="head"><div class="eyebrow">1.2.5 · Hệ phương trình tuyến tính thuần nhất</div><h2>$Ax=0$ luôn có nghiệm — câu hỏi là có nghiệm khác 0 không</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box">Hệ thuần nhất: mọi $b_i=0$. Luôn có <b>nghiệm tầm thường</b> $(0,0,\dots,0)$, vì $r(A)=r(\overline{A})$.</div>
+      <div class="box key" data-tag="Định lý">
+        <ul><li>$r(A)=n$ ⇒ chỉ có nghiệm tầm thường.</li>
+          <li>$r(A)=r\lt n$ ⇒ có nghiệm không tầm thường; tập nghiệm $S$ là <b>không gian véctơ</b> với $\dim S=n-r$.</li>
+          <li>$A$ vuông: có nghiệm khác 0 $\iff\det A=0$.</li></ul></div>
+    </div>
+    <div class="stack small">
+      <div class="box tip" data-tag="Hệ nghiệm cơ bản">Một cơ sở của $S$ gồm $n-r$ nghiệm: lần lượt cho một ẩn tự do bằng 1, các ẩn tự do khác bằng 0.</div>
+      <div class="box" data-tag="Liên hệ nghiệm (định lý 1.22)">Nghiệm tổng quát của $Ax=b$ = <b>một nghiệm riêng</b> của nó + <b>nghiệm tổng quát</b> của hệ thuần nhất $Ax=0$.
+        <p class="muted">Ví dụ 2c: $(4-2c_2-2c_4;\,c_2;\,2-c_4;\,c_4)=(4;0;2;0)+c_2(-2;1;0;0)+c_4(-2;0;-1;1)$.</p></div>
+      <a class="xref" href="buoi5.html#co-so">Không gian nghiệm và cơ sở (Buổi 5)</a>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Không gian véctơ, cơ sở, số chiều sẽ học chính thức ở Buổi 5 — ở đây chỉ cần nhớ: số tham số tự do bằng $n-r$.</p></aside>
+</section>
+
+<section class="slide" id="thuan-nhat-vd" data-kind="vi-du" data-sec="1.2.5 Hệ thuần nhất">
+  <div class="head"><div class="eyebrow">1.2.5 · Ví dụ (giáo trình, ví dụ 1.48)</div><h2>Tìm hệ nghiệm cơ bản</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      $$\begin{cases}3x_1-3x_3+3x_4=0\\ x_1-x_2+x_3+2x_4=0\\ 2x_1+x_2-4x_3+x_4=0\\ x_1+2x_2-5x_3-x_4=0\end{cases}$$
+      <div class="step">$r(A)=2,\ n=4$ ⇒ $\dim S=2$; ẩn tự do $x_3,x_4$:
+        $\ x_1=x_3-x_4,\ x_2=2x_3+x_4$</div>
+      <div class="step">$x_3=1,x_4=0\Rightarrow\xi_1=(1;2;1;0)$<br>$x_3=0,x_4=1\Rightarrow\xi_2=(-1;1;0;1)$</div>
+      <div class="step box key">Hệ nghiệm cơ bản $\{\xi_1,\xi_2\}$; mọi nghiệm: $s_1\xi_1+s_2\xi_2$.</div>
+    </div>
+    <div data-widget="elim" data-matrix="3 0 -3 3 0; 1 -1 1 2 0; 2 1 -4 1 0; 1 2 -5 -1 0" data-mode="solve"></div>
+  </div>
+  <aside class="tuhoc"><p>Với hệ thuần nhất có thể bỏ cột 0 khi biến đổi (nó luôn bằng 0); công cụ giữ lại để bạn thấy nó không đổi.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="1.2.5 Hệ thuần nhất">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 3 phút</div><h2>Đọc số nghiệm từ hạng</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="3">
+      <p class="q">Hệ 3 phương trình, 5 ẩn có $r(A)=r(\overline{A})=3$. Hệ có</p>
+      <ol class="opts one"><li>nghiệm duy nhất</li><li>vô nghiệm</li><li>vô số nghiệm, phụ thuộc 2 tham số</li><li>vô số nghiệm, phụ thuộc 3 tham số</li></ol>
+      <p class="explain">$r=3\lt n=5$: số ẩn tự do $n-r=2$.</p>
+    </div>
+    <div class="quiz" data-widget="quiz" data-answer="2">
+      <p class="q">Hệ thuần nhất có ma trận hệ số vuông cấp 4 và $\det A=-3$. Hệ có</p>
+      <ol class="opts one"><li>vô số nghiệm</li><li>chỉ nghiệm tầm thường</li><li>vô nghiệm</li><li>chưa đủ dữ kiện</li></ol>
+      <p class="explain">$\det A\ne0\Rightarrow r(A)=4=n$ ⇒ chỉ có nghiệm $(0,0,0,0)$.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt-dang" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Luyện tập · Tiết 3 – 4</div><h2>Quy trình giải một hệ bất kỳ</h2></div>
+  <div class="flow">
+    <div class="n"><b>NHÌN</b>Vuông? $D$ dễ tính?</div><div class="a">→</div>
+    <div class="n"><b>CRAMER</b>Nếu vuông, $D\ne0$, cấp 2–3</div><div class="a">→</div>
+    <div class="n"><b>GAUSS</b>Mọi trường hợp còn lại</div><div class="a">→</div>
+    <div class="n"><b>KẾT LUẬN</b>So $r(A)$, $r(\overline{A})$, $n$</div><div class="a">→</div>
+    <div class="n"><b>THỬ LẠI</b>Thay nghiệm vào hệ</div>
+  </div>
+  <div class="cards" style="--n:4">
+    <div class="card"><h4>BT 1.21a</h4>Hệ $3\times3$, nghiệm duy nhất<a class="xref" href="#bt121a">Tới bài</a></div>
+    <div class="card"><h4>BT 1.21b</h4>Hệ $3\times3$ "trông bình thường"<a class="xref" href="#bt121b">Tới bài</a></div>
+    <div class="card"><h4>BT 1.21c</h4>Hệ $4\times4$, vô số nghiệm<a class="xref" href="#bt121c">Tới bài</a></div>
+    <div class="card"><h4>BT 1.23 · Thực tế</h4>Hệ không vuông; bài toán phân xưởng<a class="xref" href="#bt123">Tới bài</a></div>
+  </div>
+  <aside class="tuhoc"><p>Làm theo thứ tự 1.21a → b → c → 1.23; mỗi bài tự giải khoảng 10 phút trước khi xem lời giải.</p></aside>
+</section>
+
+<section class="slide" id="bt121a" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.21a</div><h2>Giải hệ bằng Gauss, kiểm tra bằng Cramer</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      $$\begin{cases}x_1+2x_2+3x_3=6\\ 2x_1+3x_2-4x_3=1\\ 7x_1-2x_2-5x_3=0\end{cases}$$
+      <div data-widget="elim" data-matrix="1 2 3 6; 2 3 -4 1; 7 -2 -5 0" data-mode="gauss"></div>
+    </div>
+    <div class="stack small">
+      <div class="step box">Cramer: $D=\begin{vmatrix}1 & 2 & 3\\ 2 & 3 & -4\\ 7 & -2 & -5\end{vmatrix}=-134\ne0$</div>
+      <div class="step box">$D_1=D_2=D_3=-134$ ⇒ $x_1=x_2=x_3=1$</div>
+      <div class="step box key">Nghiệm duy nhất $(1;\,1;\,1)$</div>
+      <div class="step box tip" data-tag="Nhận xét">Khi các hệ số "khó" (như $7,-2,-5$), Gauss tránh được định thức cấp 3 lớn — nhưng phải cẩn thận số học.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Mẹo nhẩm: tổng hệ số mỗi phương trình bằng vế phải ⇒ đoán ngay $(1;1;1)$ là nghiệm; định lý Cramer khẳng định đó là nghiệm duy nhất.</p></aside>
+</section>
+
+<section class="slide" id="bt121b" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.21b</div><h2>Hệ trông bình thường nhưng vô nghiệm</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      $$\begin{cases}x_1-4x_2+2x_3=7\\ 2x_1+x_2-x_3=-5\\ 3x_1-3x_2+x_3=3\end{cases}$$
+      <div data-widget="elim" data-matrix="1 -4 2 7; 2 1 -1 -5; 3 -3 1 3" data-mode="gauss"></div>
+    </div>
+    <div class="stack small">
+      <div class="step box">Cộng phương trình 1 và 2: $3x_1-3x_2+x_3=2$, mâu thuẫn với phương trình 3 ($=3$).</div>
+      <div class="step box key">$r(A)=2\lt r(\overline{A})=3$ ⇒ <b>hệ vô nghiệm</b>.</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Đáp số in trong giáo trình ghi hệ có vô số nghiệm; thay thử nghiệm đó vào phương trình 3 không thỏa. Kết luận đúng: vô nghiệm.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu hỏi mở rộng: sửa vế phải phương trình 3 thành bao nhiêu thì hệ có vô số nghiệm? (Thành 2.) Lưu ý: giáo trình in đáp số "vô số nghiệm" là chưa đúng — hệ vô nghiệm.</p></aside>
+</section>
+
+<section class="slide" id="bt121c" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.21c</div><h2>Hệ 4 ẩn có vô số nghiệm</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      $$\begin{cases}2x_1+2x_2+3x_3+2x_4=0\\ x_1-3x_2+5x_3-4x_4=3\\ 3x_1+x_2+11x_3+4x_4=5\\ x_1-5x_2+2x_3-10x_4=1\end{cases}$$
+      <div class="box key small">$r(A)=r(\overline{A})=3\lt4$: một ẩn tự do. Chọn $x_1=c$:
+        $$\left(c;\ -\tfrac{18}{19}c-\tfrac{20}{19};\ -\tfrac{7}{19}c+\tfrac{7}{19};\ \tfrac12c+\tfrac12\right)$$</div>
+    </div>
+    <div data-widget="elim" data-matrix="2 2 3 2 0; 1 -3 5 -4 3; 3 1 11 4 5; 1 -5 2 -10 1" data-mode="solve"></div>
+  </div>
+  <aside class="tuhoc"><p>Công cụ chọn ẩn tự do là $x_4$ nên cách viết khác lời giải tay: $(2c-1;\ -\frac{36}{19}c-\frac2{19};\ -\frac{14}{19}c+\frac{14}{19};\ c)$. Hai cách viết mô tả cùng một tập nghiệm — nghiệm tổng quát không duy nhất về hình thức.</p></aside>
+</section>
+
+<section class="slide" id="bt123" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">BT 1.23 (a, d)</div><h2>Hệ không vuông: Gauss vẫn giải được</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>a)</b> 4 phương trình, 3 ẩn</p>
+      $$\begin{cases}x_1-2x_2+3x_3=-12\\ 2x_1+x_2+x_3=1\\ 3x_1-x_2-2x_3=7\\ 2x_1+3x_2+2x_3=2\end{cases}$$
+      <div class="step box key">$r(A)=r(\overline{A})=3=n$ ⇒ nghiệm duy nhất $(1;\,2;\,-3)$</div>
+      <div class="step box tip tiny">"Phương pháp định thức": giải hệ Cramer gồm 3 phương trình có định thức con cấp 3 khác 0, rồi thử vào phương trình còn lại.</div>
+    </div>
+    <div class="stack small">
+      <p><b>d)</b> $\begin{cases}x_1-2x_2+4x_3-x_4=1\\ 3x_1+x_2-5x_3+x_4=1\\ x_1+5x_2-13x_3+3x_4=-1\\ 4x_1-x_2-x_3=3\end{cases}$</p>
+      <div data-widget="elim" data-matrix="1 -2 4 -1 1; 3 1 -5 1 1; 1 5 -13 3 -1; 4 -1 -1 0 3" data-mode="gauss"></div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu d: $r(A)=2,\ r(\overline{A})=3$ ⇒ vô nghiệm. Nếu tự làm câu b, c: giáo trình in sai — b) thực ra vô nghiệm; c) $x_4=1-\frac{11}{7}c_1$ (không phải $1-\frac17c_1$).</p></aside>
+</section>
+
+<section class="slide" id="bt-thuc-te" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Bài toán thực tế · nhóm</div><h2>Kế hoạch sản xuất dùng hết công suất ba phân xưởng</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p>Một xưởng may sản xuất áo (A), quần (Q), váy (V). Thời gian (giờ) mỗi sản phẩm cần ở từng công đoạn và quỹ thời gian một ngày:</p>
+      <table class="tbl">
+        <tr><th>Công đoạn</th><th class="c">A</th><th class="c">Q</th><th class="c">V</th><th class="c">Quỹ giờ</th></tr>
+        <tr><td>Cắt</td><td class="c">1</td><td class="c">2</td><td class="c">1</td><td class="c">60</td></tr>
+        <tr><td>May</td><td class="c">2</td><td class="c">1</td><td class="c">3</td><td class="c">85</td></tr>
+        <tr><td>Hoàn thiện</td><td class="c">1</td><td class="c">1</td><td class="c">2</td><td class="c">55</td></tr>
+      </table>
+      <p><b>Yêu cầu:</b> lập hệ, giải bằng hai cách, kết luận kế hoạch sản xuất.</p>
+      <div data-widget="timer" data-min="10" data-label="Nhóm" data-label-hv="Tự làm"></div>
+    </div>
+    <div class="stack small">
+      <button class="reveal-btn" data-for="tt-giai">Xem lời giải</button>
+      <div id="tt-giai" class="stack">
+        <p>$\begin{cases}x+2y+z=60\\ 2x+y+3z=85\\ x+y+2z=55\end{cases}$, $\ D=-2\ne0$ (hệ Cramer)</p>
+        <div data-widget="elim" data-matrix="1 2 1 60; 2 1 3 85; 1 1 2 55" data-mode="gauss"></div>
+        <div class="box eco">Mỗi ngày sản xuất 20 áo, 15 quần, 10 váy thì dùng vừa hết quỹ giờ.</div>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Gợi mở Chương 2: nếu biết lợi nhuận mỗi sản phẩm và chỉ yêu cầu "không vượt quá" quỹ giờ, bài toán trở thành quy hoạch tuyến tính.</p></aside>
+</section>
+
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 4</div><h2>Mọi hệ phương trình đều trả lời được bằng hạng</h2></div>
+  <div class="flow">
+    <div class="n"><b>LẬP</b>$Ax=b$, $\overline{A}=(A|b)$</div><div class="a">→</div>
+    <div class="n"><b>BIẾN ĐỔI</b>Gauss trên dòng của $\overline{A}$</div><div class="a">→</div>
+    <div class="n"><b>SO SÁNH</b>$r(A)$, $r(\overline{A})$, $n$</div><div class="a">→</div>
+    <div class="n"><b>VIẾT NGHIỆM</b>Duy nhất / tổng quát theo $n-r$ tham số</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Cramer</h4>Chỉ cho hệ vuông, $D\ne0$: $x_j=D_j/D$.</div>
+    <div class="card"><h4>Kronecker – Capelli</h4>Có nghiệm $\iff r(A)=r(\overline{A})$.</div>
+    <div class="card"><h4>Thuần nhất</h4>Luôn có nghiệm 0; $\dim S=n-r$; hệ nghiệm cơ bản gồm $n-r$ véctơ.</div>
+  </div>
+  <aside class="tuhoc"><p>Tự trả lời: hệ 4 phương trình 3 ẩn có thể có vô số nghiệm không? (Có, nếu $r(A)=r(\overline A)\lt3$.)</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 5</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>BT 1.21d, 1.23 (b, c).</li>
+        <li>Chuẩn bị chữa đầu Buổi 5: <b>BT 1.22</b> (tìm tham số để hệ có nghiệm), <b>BT 1.24a, 1.25a</b> (hệ thuần nhất).</li>
+        <li>Tự đặt một bài toán "cân bằng thị trường 2 mặt hàng" và giải.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình mục 1.3: Không gian véctơ (định nghĩa, độc lập tuyến tính).</li>
+        <li>Câu hỏi suy nghĩ: <i>Tập nghiệm của hệ thuần nhất có gì đặc biệt khi cộng hai nghiệm, hoặc nhân một nghiệm với một số?</i></li>
+      </ul></div>
+  </div>
+  <div class="box warn small" data-tag="Kiểm tra thường xuyên">Bài KTTX 30 phút (ma trận, định thức, hệ phương trình) — lịch cụ thể giảng viên thông báo; đề tham khảo ở Buổi 6.</div>
+  <div class="row"><a class="xref back" href="buoi3.html">Buổi 3</a><a class="xref" href="buoi5.html">Sang Buổi 5 · Không gian véctơ</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Câu hỏi suy nghĩ dẫn trực tiếp tới khái niệm không gian véctơ ở Buổi 5.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Toan kinh te (C10.KT06) - BAI GIANG TU HOC - phien ban 1.0
+
+CACH MO TREN MAY TINH:
+  1. Giai nen toan bo tep ZIP (chuot phai > Extract All / Giai nen tat ca).
+  2. Mo thu muc TKT_TuHoc, nhap dup tep index.html (nen dung Chrome hoac Edge).
+  Khong mo truc tiep ben trong tep ZIP - cong thuc toan se khong hien thi.
+
+TREN DIEN THOAI: mo duong link giang vien gui, chon "Them vao man hinh chinh".
+Huong dan day du: mo index.html > "Huong dan tu hoc".

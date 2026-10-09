@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong1" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 6 · Ôn tập Chương 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 1" data-unit="Buổi 6 · Luyện tập không gian véctơ, ôn tập chương" data-prev="buoi5.html" data-home="index.html">
+<div class="stage">
+
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 6">
+  <div class="num"><small>Chương 1 · Cơ sở của Toán kinh tế</small>Buổi 6</div>
+  <h1>Luyện tập không gian véctơ · Ôn tập Chương 1</h1>
+  <div class="meta"><span class="chip">4 tiết</span><span class="chip bt">Bài tập 4 tiết</span><span class="chip">Mục 1.3 · BT 1.9 – 1.18 · Ôn tập</span></div>
+  <div class="toc-mini">
+    <a href="#dang1"><span>Dạng 1</span>Biểu thị tuyến tính</a>
+    <a href="#dang2"><span>Dạng 2</span>Độc lập tuyến tính, hạng của hệ véctơ</a>
+    <a href="#dang3"><span>Dạng 3 – 4</span>Cơ sở, số chiều</a>
+    <a href="#dang5"><span>Dạng 5</span>Tọa độ, ma trận chuyển</a>
+    <a href="#so-do"><span>ÔN TẬP</span>Sơ đồ chương · Trò chơi · Đề tham khảo</a>
+    <a href="#chuong2"><span>TIẾP</span>Hướng tới Chương 2</a>
+  </div>
+  <aside class="tuhoc"><p>Cuối buổi có đề kiểm tra thường xuyên tham khảo (30 phút) — dành thời gian làm như thi thật.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 6</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Hệ thống hóa kiến thức toàn chương: ma trận – định thức – hệ phương trình – không gian véctơ.</li>
+      <li>Nắm vững mối liên hệ: hạng, định thức, khả nghịch, số nghiệm, độc lập tuyến tính.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Chứng tỏ một hệ véctơ ĐLTT; tìm cơ sở, số chiều của không gian con.</li>
+      <li>Tìm tọa độ của véctơ đối với một cơ sở; lập ma trận chuyển cơ sở.</li>
+      <li>Giải được đề kiểm tra tổng hợp trong 30 phút.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Tổng hợp:</b> tự lập sơ đồ tư duy chương, chỉ ra công cụ cho từng loại câu hỏi.</li>
+      <li><b>Tự đánh giá:</b> nhận diện sai lầm thường gặp của bản thân qua trò chơi ôn tập.</li>
+      <li><b>Hợp tác, trình bày:</b> nhóm trình bày một dạng bài trước lớp.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Lời giải các dạng 1 – 5; sơ đồ tư duy chương; kết quả trò chơi ôn tập và bài kiểm tra 30 phút.</span></div>
+  <aside class="tuhoc"><p>Buổi cuối chương: tự trình bày lời giải đầy đủ ra giấy, rồi đối chiếu để sửa lỗi.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 4 tiết × 45 phút</div><h2>Ba tiết luyện tập, một tiết ôn tập tổng hợp</h2></div>
+  <div class="plan">
+    <div class="p bt"><div class="t">Tiết 1<small>Bài tập</small></div><div class="c"><b>Dạng 1 · Dạng 2</b><span>Khởi động 5' · BT 1.9 15' · BT 1.10, 1.11, 1.12 25'</span></div><div class="m">Cặp đôi, lên bảng</div></div>
+    <div class="p bt"><div class="t">Tiết 2<small>Bài tập</small></div><div class="c"><b>Dạng 3 · Dạng 4</b><span>BT 1.14, 1.15 20' · BT 1.16 (a, b, d) 25'</span></div><div class="m">Nhóm, trình bày</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Dạng 5</b><span>BT 1.17 20' · BT 1.18 20' · chữa lỗi 5'</span></div><div class="m">Cá nhân, chữa chung</div></div>
+    <div class="p bt"><div class="t">Tiết 4<small>Ôn tập</small></div><div class="c"><b>Ôn tập chương</b><span>Sơ đồ 10' · trò chơi "Rung chuông vàng" 15' · sai lầm thường gặp 5' · đề KTTX tham khảo 15'</span></div><div class="m">Trò chơi, thảo luận</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · bảng tra cứu từ Buổi 5</div><h2>Câu hỏi về véctơ → bài toán về ma trận</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="2">
+      <p class="q">Muốn biết $\vec\beta$ có biểu thị tuyến tính qua $\vec\alpha_1,\vec\alpha_2,\vec\alpha_3$ không, ta</p>
+      <ol class="opts one"><li>tính định thức của ma trận dòng $\vec\alpha_1,\vec\alpha_2,\vec\alpha_3$</li><li>xét hệ có các cột $\vec\alpha_j$, cột tự do $\vec\beta$: có nghiệm hay không</li><li>tính hạng của $\{\vec\beta\}$</li><li>so sánh độ dài các véctơ</li></ol>
+      <p class="explain">Biểu thị tuyến tính $\iff$ hệ $r_1\vec\alpha_1+r_2\vec\alpha_2+r_3\vec\alpha_3=\vec\beta$ có nghiệm.</p>
+    </div>
+    <div class="quiz" data-widget="quiz" data-answer="4">
+      <p class="q">Hệ 3 véctơ trong $\mathbb R^3$ có ma trận dòng với $\det=0$. Khi đó hệ</p>
+      <ol class="opts one"><li>là cơ sở của $\mathbb R^3$</li><li>độc lập tuyến tính</li><li>có hạng bằng 3</li><li>phụ thuộc tuyến tính</li></ol>
+      <p class="explain">$\det=0\iff r\lt3\iff$ PTTT.</p>
+    </div>
+  </div>
+  <div class="row"><a class="xref back" href="buoi5.html#tong-ket">Bảng tra cứu đầy đủ (Buổi 5)</a></div>
+  <aside class="tuhoc"><p>Hai câu hỏi ôn hai "mẫu" lập ma trận: véctơ làm <b>cột</b> (giải hệ) và véctơ làm <b>dòng</b> (tính hạng).</p></aside>
+</section>
+
+<!-- ============ DẠNG 1 ============ -->
+<section class="slide" id="dang1" data-kind="bai-tap" data-sec="Dạng 1 – 2">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 1.9</div><h2>Biểu thị tuyến tính trong $\mathbb R^3$ và trong không gian đa thức</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>1.9.1)</b> $\vec\beta=(5;-2;1)$ qua $\vec\alpha_1=(2;0;3),\ \vec\alpha_2=(0;2;-1),\ \vec\alpha_3=(1;2;3)$</p>
+      <div class="box">Đã giải ở Buổi 5: $\vec\beta=4\vec\alpha_1+2\vec\alpha_2-3\vec\alpha_3$. <a class="xref back" href="buoi5.html#to-hop">Xem lại</a></div>
+      <p><b>1.9.2)</b> $\vec\beta=x^2-x+2$ qua $\vec\alpha_1=x-1,\ \vec\alpha_2=1,\ \vec\alpha_3=x^2+1$ trong $\mathbb R[x]$</p>
+    </div>
+    <div class="stack small">
+      <div class="step">Đặt $\vec\beta=r_1(x-1)+r_2\cdot1+r_3(x^2+1)=r_3x^2+r_1x+(-r_1+r_2+r_3)$</div>
+      <div class="step">Đồng nhất hệ số của $x^2,\ x,\ 1$:
+        $$\begin{cases}r_3=1\\ r_1=-1\\ -r_1+r_2+r_3=2\end{cases}\Rightarrow r_2=0$$</div>
+      <div class="step box key">$x^2-x+2=-\vec\alpha_1+0\cdot\vec\alpha_2+\vec\alpha_3$</div>
+      <div class="step box tip" data-tag="Nhận xét">Đa thức bậc $\le2$ "là" véctơ $(a_0;a_1;a_2)\in\mathbb R^3$ — mọi kỹ thuật trong $\mathbb R^n$ dùng lại được.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Phương pháp đồng nhất hệ số sẽ dùng lại ở BT 1.18.</p></aside>
+</section>
+
+<section class="slide" id="dang2" data-kind="bai-tap" data-sec="Dạng 1 – 2">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 1.10 và BT 1.12</div><h2>Lập luận về độc lập tuyến tính và hạng của hệ véctơ</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>1.10)</b> $\{\vec\alpha,\vec\beta\}$ ĐLTT, $\vec\gamma$ không biểu thị tuyến tính qua $\vec\alpha,\vec\beta$. Chứng tỏ $\{\vec\alpha,\vec\beta,\vec\gamma\}$ ĐLTT.</p>
+      <div class="step">Giả sử $r\vec\alpha+s\vec\beta+k\vec\gamma=\vec0$.</div>
+      <div class="step">Nếu $k\ne0$: $\vec\gamma=-\frac rk\vec\alpha-\frac sk\vec\beta$ — mâu thuẫn giả thiết. Vậy $k=0$.</div>
+      <div class="step">Khi đó $r\vec\alpha+s\vec\beta=\vec0$, mà $\{\vec\alpha,\vec\beta\}$ ĐLTT ⇒ $r=s=0$. ∎</div>
+    </div>
+    <div class="stack small">
+      <p><b>1.12)</b> $\{\vec\alpha_1,\vec\alpha_2\}$ ĐLTT. Tìm hạng của các hệ:</p>
+      <table class="tbl">
+        <tr><th>Hệ</th><th>Lý do</th><th class="c">Hạng</th></tr>
+        <tr><td>$\{\vec\alpha_1,\vec\alpha_2,\vec0\}$</td><td class="step">Chứa $\vec0$ ⇒ PTTT; hệ con tối đại $\{\vec\alpha_1,\vec\alpha_2\}$</td><td class="c step">2</td></tr>
+        <tr><td>$\{\vec\alpha_1,\vec\alpha_2,\vec\alpha_1-\vec\alpha_2\}$</td><td class="step">$\vec\alpha_1-\vec\alpha_2$ biểu thị qua $\vec\alpha_1,\vec\alpha_2$</td><td class="c step">2</td></tr>
+        <tr><td>$\{\vec\alpha_1,\vec\alpha_2,5\vec\alpha_1+4\vec\alpha_2,-\vec\alpha_2\}$</td><td class="step">Hai véctơ sau đều biểu thị qua $\vec\alpha_1,\vec\alpha_2$</td><td class="c step">2</td></tr>
+      </table>
+      <div class="box tip tiny" data-tag="Ghi nhớ">Hạng của hệ véctơ = số véctơ của hệ con ĐLTT tối đại.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>BT 1.11 đã chữa ở Buổi 5 (slide tiêu chuẩn thực hành).</p></aside>
+</section>
+
+<!-- ============ DẠNG 3 – 4 ============ -->
+<section class="slide" id="dang3" data-kind="bai-tap" data-sec="Dạng 3 – 4">
+  <div class="head"><div class="eyebrow">Dạng 3 · BT 1.14 và BT 1.15</div><h2>Hệ véctơ có là cơ sở không?</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>1.14)</b> Trong $\mathbb R^3$ (3 véctơ trong không gian 3 chiều ⇒ chỉ cần xét $\det$):</p>
+      <div class="step box">a) $(1;0;0),(0;1;1),(1;1;1)$: $\ \det=\begin{vmatrix}1 & 0 & 0\\ 0 & 1 & 1\\ 1 & 1 & 1\end{vmatrix}=0$ ⇒ <b class="pen">không là cơ sở</b> (vì $\vec\varepsilon_3=\vec\varepsilon_1+\vec\varepsilon_2$).</div>
+      <div class="step box">b) $(4;2;-1),(0;2;-1),(-2;0;1)$: $\ \det=8\ne0$ ⇒ <b>là cơ sở</b>.</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Giáo trình yêu cầu "chứng minh hệ a là cơ sở" — với số liệu in ra thì mệnh đề sai. Có thể dùng làm bài tập "tìm chỗ sai" hoặc sửa $\vec\varepsilon_3$ thành $(1;1;2)$.</div>
+    </div>
+    <div class="stack small">
+      <p><b>1.15)</b> Trong $\mathbb R^4$ (4 véctơ):</p>
+      <div class="step">a) $(1;0;3;0),(2;5;-1;7),(0;6;-1;2),(1;4;-2;5)$: hạng 4 ⇒ cơ sở.</div>
+      <div class="step">b) $(2;0;0;3),(0;2;1;-4),(-1;2;0;1),(0;5;3;-1)$: hạng 4 ⇒ cơ sở.</div>
+      <div class="step box tip" data-tag="Cách gọn">Giáo trình giải bằng "hệ sinh + ĐLTT" (giải hệ 4 ẩn tổng quát). Cách gọn: 4 véctơ trong $\mathbb R^4$ ⇒ chỉ cần chứng minh hạng bằng 4.</div>
+      <a class="xref" href="lab.html">Kiểm tra hạng bằng Phòng tính ma trận</a>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Làm 1.15a, 1.15b bằng biến đổi sơ cấp, rồi kiểm tra bằng Phòng tính ma trận.</p></aside>
+</section>
+
+<section class="slide" id="dang4" data-kind="bai-tap" data-sec="Dạng 3 – 4">
+  <div class="head"><div class="eyebrow">Dạng 4 · BT 1.16 (b, d)</div><h2>Cơ sở và số chiều của không gian con</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>b)</b> $W=\langle(1;-1;3),(2;1;0),(3;2;-1)\rangle$</p>
+      <div data-widget="elim" data-matrix="1 -1 3; 2 1 0; 3 2 -1" data-mode="rank" data-name="W"></div>
+      <div class="step box key">$\dim W=2$; cơ sở $\{(1;-1;3),(2;1;0)\}$</div>
+    </div>
+    <div class="stack small">
+      <p><b>d)</b> $F=\{(x_1;x_2;x_3;x_4)\in\mathbb R^4: x_1+x_2+x_3=0,\ x_1-x_2+x_4=0\}$</p>
+      <div class="step">$F$ là không gian nghiệm của hệ thuần nhất, $r(A)=2,\ n=4$ ⇒ $\dim F=2$.</div>
+      <div class="step">Ẩn tự do $x_1,x_2$: $\ x_3=-x_1-x_2,\ x_4=-x_1+x_2$</div>
+      <div class="step">$(x_1;x_2;-x_1-x_2;-x_1+x_2)=x_1(1;0;-1;-1)+x_2(0;1;-1;1)$</div>
+      <div class="step box key">Cơ sở $\{(1;0;-1;-1),(0;1;-1;1)\}$, $\ \dim F=2$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu d nối lại Buổi 4: không gian con cho bằng phương trình chính là không gian nghiệm; cơ sở là hệ nghiệm cơ bản. Lưu ý BT 1.16c: đề in trong giáo trình không khớp với lời giải mẫu — có thể bỏ qua.</p></aside>
+</section>
+
+<!-- ============ DẠNG 5 ============ -->
+<section class="slide" id="dang5" data-kind="bai-tap" data-sec="Dạng 5">
+  <div class="head"><div class="eyebrow">Dạng 5 · BT 1.17</div><h2>Ma trận chuyển giữa cơ sở chính tắc và cơ sở hoán vị</h2></div>
+  <div class="given">Trong $\mathbb R^4$: $(\varepsilon)$ chính tắc; $(\xi)$: $\vec\xi_1=(0;0;1;0),\ \vec\xi_2=(1;0;0;0),\ \vec\xi_3=(0;0;0;1),\ \vec\xi_4=(0;1;0;0)$.</div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="step">a) Cột $j$ = tọa độ của $\vec\xi_j$: $\ T=\begin{pmatrix}0 & 1 & 0 & 0\\ 0 & 0 & 0 & 1\\ 1 & 0 & 0 & 0\\ 0 & 0 & 1 & 0\end{pmatrix}$</div>
+      <div class="step">b) $\vec\alpha$ có tọa độ $y=(4;-3;0;5)$ đối với $(\xi)$ ⇒ $x=Ty=(-3;\,5;\,4;\,0)$</div>
+    </div>
+    <div class="stack small">
+      <div class="step">c) Ma trận chuyển từ $(\xi)$ sang $(\varepsilon)$: $\ T^{-1}=T^T=\begin{pmatrix}0 & 0 & 1 & 0\\ 1 & 0 & 0 & 0\\ 0 & 0 & 0 & 1\\ 0 & 1 & 0 & 0\end{pmatrix}$</div>
+      <div class="step">d) $\vec\beta=(3;-3;0;2)$: $\ y=T^{-1}x=(0;\,3;\,2;\,-3)$</div>
+      <div class="step box tip" data-tag="Thử lại">$0\vec\xi_1+3\vec\xi_2+2\vec\xi_3-3\vec\xi_4=(3;-3;0;2)$ ✓</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>$T$ là ma trận hoán vị nên $T^{-1}=T^T$ — một nhận xét thú vị.</p></aside>
+</section>
+
+<section class="slide" id="dang5b" data-kind="bai-tap" data-sec="Dạng 5">
+  <div class="head"><div class="eyebrow">Dạng 5 · BT 1.18</div><h2>Tọa độ trong không gian đa thức $\mathbb R_2[x]$</h2></div>
+  <div class="given">$f_1=1+2x+x^2,\ f_2=1-x-5x^2,\ f_3=-1+2x+6x^2,\ f=3+2x+x^2$. a) $\mathcal A=\{f_1,f_2,f_3\}$ là cơ sở? b) Ma trận chuyển từ $\mathcal E=\{1,x,x^2\}$ sang $\mathcal A$. c) Tọa độ của $f$ đối với $\mathcal A$.</div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="step">b) Cột = hệ số của $f_j$ theo $1,x,x^2$: $\ T=\begin{pmatrix}1 & 1 & -1\\ 2 & -1 & 2\\ 1 & -5 & 6\end{pmatrix}$</div>
+      <div class="step">a) $\det T=3\ne0$ ⇒ $f_1,f_2,f_3$ ĐLTT, 3 véctơ trong không gian 3 chiều ⇒ <b>cơ sở</b>.</div>
+    </div>
+    <div class="stack small">
+      <div class="step">c) Giải $Ty=(3;2;1)^T$:</div>
+      <div class="step" data-widget="elim" data-matrix="1 1 -1 3; 2 -1 2 2; 1 -5 6 1" data-mode="solve"></div>
+      <div class="step box key">$[f]_{\mathcal A}=\left(\tfrac{11}3;\,-\tfrac{20}3;\,-6\right)$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Thử lại hệ số tự do: $\frac{11}3-\frac{20}3+6=3$ ✓.</p></aside>
+</section>
+
+<!-- ============ ÔN TẬP ============ -->
+<section class="slide" id="so-do" data-kind="on-tap" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Ôn tập · Sơ đồ Chương 1</div><h2>Bốn khối kiến thức, một sợi chỉ chung: hạng</h2></div>
+  <div class="cards" style="--n:4">
+    <div class="card"><h4>Ma trận <small>Buổi 1</small></h4>Phép toán, nhân dòng × cột · Biến đổi sơ cấp · Hạng $r(A)$<a class="xref" href="buoi1.html#tong-ket">Mở</a></div>
+    <div class="card"><h4>Định thức <small>Buổi 2 – 3</small></h4>Sarrus, Laplace, tính chất · $A^{-1}=\frac1{\det A}A^*$ · Leontief<a class="xref" href="buoi2.html#tong-ket">Mở</a></div>
+    <div class="card"><h4>Hệ phương trình <small>Buổi 4 – 5</small></h4>Cramer · Gauss · Kronecker – Capelli · thuần nhất<a class="xref" href="buoi4.html#tong-ket">Mở</a></div>
+    <div class="card"><h4>Không gian véctơ <small>Buổi 5 – 6</small></h4>ĐLTT · cơ sở, số chiều · tọa độ, ma trận chuyển<a class="xref" href="buoi5.html#tong-ket">Mở</a></div>
+  </div>
+  <div class="box key" data-tag="Một định lý — nhiều cách nói">Với $A$ vuông cấp $n$, các mệnh đề sau <b>tương đương</b>:
+    $$\det A\ne0\iff r(A)=n\iff A\ \text{khả nghịch}$$ $$\iff Ax=b\ \text{có nghiệm duy nhất}\iff \text{các dòng (cột) của }A\ \text{ĐLTT}$$</div>
+  <aside class="tuhoc"><p>Đối chiếu sơ đồ tư duy bạn tự lập với slide này và bổ sung phần còn thiếu.</p></aside>
+</section>
+
+<section class="slide" id="sai-lam" data-kind="on-tap" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Ôn tập · Sai lầm thường gặp</div><h2>Tám lỗi làm mất điểm nhiều nhất</h2></div>
+  <div class="cards" style="--n:4">
+    <div class="card"><h4>1 <small>nhân ma trận</small></h4>Nhân khi không khớp cấp; coi $AB=BA$.</div>
+    <div class="card"><h4>2 <small>hằng đẳng thức</small></h4>$(A+B)^2=A^2+2AB+B^2$ — sai khi $AB\ne BA$.</div>
+    <div class="card"><h4>3 <small>định thức</small></h4>$\det(kA)=k\det A$ — đúng phải là $k^n\det A$.</div>
+    <div class="card"><h4>4 <small>phần bù</small></h4>Quên dấu $(-1)^{i+j}$; quên chuyển vị khi lập $A^*$.</div>
+    <div class="card"><h4>5 <small>phương trình ma trận</small></h4>Viết $X=B/A$, hoặc nhân $A^{-1}$ sai phía.</div>
+    <div class="card"><h4>6 <small>Gauss</small></h4>Biến đổi cột; quên biến đổi cột tự do.</div>
+    <div class="card"><h4>7 <small>biện luận</small></h4>Chia cho biểu thức chứa tham số khi chưa xét khác 0.</div>
+    <div class="card"><h4>8 <small>véctơ</small></h4>Nhầm véctơ làm dòng (tính hạng) với làm cột (giải hệ, tọa độ, ma trận chuyển).</div>
+  </div>
+  <aside class="tuhoc"><p>Mỗi lỗi gắn với một slide "Bẫy" ở các buổi trước — thử nhớ lại lỗi đó xuất hiện ở buổi nào.</p></aside>
+</section>
+
+<section class="slide" id="tro-choi" data-kind="on-tap" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Ôn tập · Trò chơi</div><h2>Rung chuông vàng — 10 câu, 30 giây mỗi câu</h2></div>
+  <div data-widget="game" data-sec="30">
+    <script type="application/json">[
+      {"q":"$A$ cấp $3\\times2$, $B$ cấp $2\\times4$. Ma trận $AB$ có cấp","opts":["$2\\times2$","$3\\times4$","$4\\times3$","Không xác định"],"a":1,"why":"Trong khớp ($2=2$), ngoài lấy: $3\\times4$."},
+      {"q":"$\\begin{vmatrix}2 & 5\\\\ 1 & 3\\end{vmatrix}=$","opts":["$1$","$11$","$-1$","$6$"],"a":0,"why":"$2\\cdot3-5\\cdot1=1$."},
+      {"q":"$A$ cấp 3, $\\det A=5$. Khi đó $\\det(2A)=$","opts":["$10$","$30$","$40$","$25$"],"a":2,"why":"$\\det(2A)=2^3\\cdot5=40$."},
+      {"q":"Phép biến đổi nào <b>làm đổi dấu</b> định thức?","opts":["$d_1\\to d_1+3d_2$","$d_1\\leftrightarrow d_3$","$d_2\\to 2d_2$","Chuyển vị"],"a":1,"why":"Đổi chỗ hai dòng làm định thức đổi dấu."},
+      {"q":"$(AB)^{-1}$ bằng","opts":["$A^{-1}B^{-1}$","$B^{-1}A^{-1}$","$\\dfrac{1}{AB}$","$A^{-1}+B^{-1}$"],"a":1,"why":"Nghịch đảo của tích: đảo thứ tự."},
+      {"q":"Hệ có $r(A)=2$, $r(\\overline{A})=3$. Hệ","opts":["có nghiệm duy nhất","vô số nghiệm","vô nghiệm","có đúng 2 nghiệm"],"a":2,"why":"Kronecker – Capelli: $r(A)\\ne r(\\overline A)$ ⇒ vô nghiệm."},
+      {"q":"Hệ thuần nhất 5 ẩn có $r(A)=3$. Số chiều không gian nghiệm là","opts":["$3$","$5$","$8$","$2$"],"a":3,"why":"$\\dim S=n-r=5-3=2$."},
+      {"q":"Hệ $\\{(1;2),(2;4)\\}$ trong $\\mathbb R^2$","opts":["độc lập tuyến tính","phụ thuộc tuyến tính","là cơ sở","là hệ sinh của $\\mathbb R^2$"],"a":1,"why":"$(2;4)=2(1;2)$: cùng phương."},
+      {"q":"Hệ 4 véctơ trong $\\mathbb R^3$","opts":["luôn ĐLTT","luôn PTTT","có thể là cơ sở","có hạng bằng 4"],"a":1,"why":"Hạng $\\le3\\lt4$ ⇒ PTTT."},
+      {"q":"Tọa độ của $\\vec w=(5;5)$ đối với cơ sở $\\vec u=(2;1),\\ \\vec v=(1;3)$ là","opts":["$(5;5)$","$(1;2)$","$(2;1)$","$(3;1)$"],"a":2,"why":"$2(2;1)+1(1;3)=(5;5)$."}
+    ]</script>
+  </div>
+  <aside class="tuhoc"><p>Chơi một mình: trả lời trong 30 giây mỗi câu; mục tiêu từ 8/10 trở lên. Câu nào sai, mở lại slide tương ứng để ôn.</p></aside>
+</section>
+
+<section class="slide" id="de-kttx" data-kind="kiem-tra" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Đề kiểm tra thường xuyên tham khảo · 30 phút · tự luận</div><h2>Ma trận – Định thức – Hệ phương trình</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box"><b>Câu 1 (3 điểm).</b> Cho $A=\begin{pmatrix}1 & -1 & 2\\ 0 & 3 & 1\end{pmatrix},\ B=\begin{pmatrix}2 & 1\\ -1 & 0\\ 1 & 4\end{pmatrix}$. a) Tính $AB$ và $BA$. b) Tính $\det(AB)$, $\det(BA)$; nhận xét.</div>
+      <div class="box"><b>Câu 2 (3 điểm).</b> Cho $C=\begin{pmatrix}1 & 2 & -1\\ 2 & 5 & 0\\ -1 & -2 & 2\end{pmatrix}$. Tính $\det C$ và tìm $C^{-1}$.</div>
+      <div class="box"><b>Câu 3 (4 điểm).</b> Giải và biện luận theo $m$: $\ \begin{cases}x+y+z=1\\ x+2y+3z=2\\ 2x+3y+mz=3\end{cases}$</div>
+      <div data-widget="timer" data-min="30" data-label="Làm bài"></div>
+    </div>
+    <div class="stack small">
+      <button class="reveal-btn" data-for="kttx-da">Xem đáp án và biểu điểm</button>
+      <div class="ans" id="kttx-da">
+        <p><b>Câu 1.</b> $AB=\begin{pmatrix}5 & 9\\ -2 & 4\end{pmatrix}$ (1đ); $BA=\begin{pmatrix}2 & 1 & 5\\ -1 & 1 & -2\\ 1 & 11 & 6\end{pmatrix}$ (1đ). $\det(AB)=38$; $\det(BA)=0$ vì $r(BA)\le2\lt3$ (1đ) — với ma trận không vuông, $\det(AB)\ne\det(BA)$.</p>
+        <p><b>Câu 2.</b> $\det C=1$ (1đ); $C^{-1}=\begin{pmatrix}10 & -2 & 5\\ -4 & 1 & -2\\ 1 & 0 & 1\end{pmatrix}$ (1,5đ); thử lại $CC^{-1}=I$ (0,5đ).</p>
+        <p><b>Câu 3.</b> $\det A=m-4$ (1đ). $m\ne4$: hệ Cramer, nghiệm duy nhất $(0;1;0)$ (1,5đ). $m=4$: phương trình 3 = phương trình 1 + phương trình 2, $r(A)=r(\overline A)=2$, nghiệm $(c;\,1-2c;\,c)$, $c\in\mathbb R$ (1,5đ).</p>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự làm trong 30 phút, không xem tài liệu, rồi tự chấm theo biểu điểm. Có thể đổi số liệu và dùng Phòng tính ma trận để tự tạo đề khác.</p></aside>
+</section>
+
+<section class="slide" id="chuong2" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Hướng tới Chương 2 · Quy hoạch tuyến tính và ứng dụng</div><h2>Chương 1 là "bộ đồ nghề" của Chương 2</h2></div>
+  <table class="tbl">
+    <tr><th>Chương 1</th><th>Dùng ở Chương 2</th></tr>
+    <tr><td>Hệ phương trình, phương pháp Gauss</td><td>Ràng buộc dạng chính tắc $Ax=b$; tìm phương án cực biên</td></tr>
+    <tr><td>Biến đổi sơ cấp, phần tử trụ</td><td>Phép xoay trong <b>thuật toán đơn hình</b></td></tr>
+    <tr><td>Độc lập tuyến tính, cơ sở</td><td>Phương án cực biên ↔ hệ véctơ cột ĐLTT; "biến cơ sở"</td></tr>
+    <tr><td>Tọa độ đối với cơ sở</td><td>Các hệ số $z_{jk}$ trong bảng đơn hình</td></tr>
+    <tr><td>Chuyển vị ma trận</td><td>Lập bài toán đối ngẫu</td></tr>
+  </table>
+  <div class="box eco small" data-tag="Kết nối">Bài toán phân xưởng ở Buổi 4 là "mầm" của quy hoạch tuyến tính: thêm hàm lợi nhuận cần tối đa và đổi "=" thành "≤".</div>
+  <aside class="tuhoc"><p>Câu hỏi mở: nếu xưởng may muốn lãi nhiều nhất thì nên sản xuất bao nhiêu? — đó là bài toán của Chương 2.</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau chương 1</div><h2>Hoàn thiện và chuẩn bị chương mới</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Hoàn thiện">
+      <ul class="small">
+        <li>Làm lại các bài trong đề KTTX tham khảo, tự chấm theo biểu điểm.</li>
+        <li>Hoàn thiện sơ đồ tư duy Chương 1, nộp kèm vở bài tập.</li>
+        <li>Luyện thêm với <a href="lab.html">Phòng tính ma trận</a>: tự ra đề, tự giải, đối chiếu.</li>
+      </ul></div>
+    <div class="box key" data-tag="Chuẩn bị Chương 2">
+      <ul class="small">
+        <li>Đọc giáo trình mục 2.1: Bài toán tối ưu tổng quát và phân loại.</li>
+        <li>Mỗi SV tìm một bài toán "tối đa lợi nhuận / tối thiểu chi phí" trong thực tế kế toán – kinh doanh.</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref back" href="buoi5.html">Buổi 5</a><a class="xref back" href="index.html">Trang chương</a></div>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>
