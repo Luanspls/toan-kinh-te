@@ -1,2 +1,2 @@
 # toan-kinh-te
-Bài giảng Toán kinh tế
+Tự học Toán kinh tế
