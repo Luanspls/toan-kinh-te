@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 3 · Phương pháp biến giả và bài toán đối ngẫu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 2" data-unit="Buổi 3 · Biến giả và bài toán đối ngẫu" data-prev="buoi2.html" data-next="buoi4.html" data-home="index.html" data-kt="c2b3" data-lab="Phòng tính QHTT">
+<div class="stage">
+
+<!-- ============ MỞ ĐẦU ============ -->
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 3">
+  <div class="num"><small>Chương 2 · Quy hoạch tuyến tính và ứng dụng</small>Buổi 3</div>
+  <h1>Phương pháp biến giả và cách lập bài toán đối ngẫu</h1>
+  <div class="meta"><span class="chip">4 tiết</span><span class="chip lt">Lý thuyết 1 tiết</span><span class="chip bt">Bài tập 3 tiết</span><span class="chip">Mục 2.1.4.3 – 2.2.1 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#bien-gia"><span>2.3.2</span>Bài toán M (biến giả)</a>
+    <a href="#vd-212"><span>VD 2.12</span>Bảng đơn hình hai dòng α, β</a>
+    <a href="#y-nghia-dn"><span>2.4</span>Ý nghĩa kinh tế của đối ngẫu</a>
+    <a href="#lap-dn"><span>2.4.1</span>Quy tắc lập bài toán đối ngẫu</a>
+    <a href="#bt-dang"><span>BT</span>Luyện tập: BT 2.14c, 2.15, 2.17, 2.18</a>
+  </div>
+  <aside class="tuhoc"><p>Buổi này hoàn thiện phương pháp đơn hình cho <b>mọi</b> bài toán (kể cả khi không có sẵn cơ sở đơn vị) và giới thiệu <b>bài toán đối ngẫu</b> — "mặt kia" của mỗi bài toán QHTT, có ý nghĩa kinh tế là giá trị của nguồn lực.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 3</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Giải thích được vai trò của biến giả và hệ số $M$; phân biệt biến phụ – biến giả.</li>
+      <li>Nêu được dấu hiệu bài toán gốc vô nghiệm khi giải bài toán M.</li>
+      <li>Phát biểu được định nghĩa cặp bài toán đối ngẫu và quy tắc Bảng 2.11.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Lập bài toán M, lập bảng đơn hình hai dòng $\alpha_j$, $\beta_j$ và giải đến cùng.</li>
+      <li>Lập bài toán đối ngẫu của bài toán QHTT bất kỳ (min hoặc max, đủ loại ràng buộc).</li>
+      <li>Ghép đúng các cặp điều kiện đối ngẫu.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Diễn giải kinh tế:</b> hiểu biến đối ngẫu là "giá" của nguồn lực.</li>
+      <li><b>Hệ thống hóa:</b> dùng bảng quy tắc thay vì học thuộc từng trường hợp.</li>
+      <li><b>Phản biện:</b> phát hiện lỗi in trong ví dụ giáo trình.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Giải đúng BT 2.14c, 2.15b, c; lập đúng đối ngẫu BT 2.17 a, c.</span></div>
+  <aside class="tuhoc"><p>Hai kỹ năng của buổi — giải bài toán M và lập bài toán đối ngẫu — đều có trong bài kiểm tra định kỳ 45 phút. Hãy luyện đến khi làm không cần nhìn bảng quy tắc.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 4 tiết × 45 phút</div><h2>Hoàn thiện đơn hình, mở cửa sang đối ngẫu</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Bài toán M · Ý nghĩa và quy tắc lập đối ngẫu</b><span>Khởi động 3' · biến giả, bảng α/β 17' · ý nghĩa kinh tế 8' · Bảng 2.11, Ví dụ 2.14 15'</span></div><div class="m">Làm mẫu, hệ thống hóa</div></div>
+    <div class="p bt"><div class="t">Tiết 2<small>Bài tập</small></div><div class="c"><b>Bài toán M</b><span>Ví dụ 2.12 (SV làm theo) · BT 2.5 (khẩu phần) · BT 2.14c</span></div><div class="m">Cá nhân, lên bảng</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Bài toán M (tiếp) · Bài max</b><span>BT 2.15b, 2.15c · dấu hiệu vô nghiệm</span></div><div class="m">Nhóm đôi</div></div>
+    <div class="p bt"><div class="t">Tiết 4<small>Bài tập</small></div><div class="c"><b>Lập bài toán đối ngẫu</b><span>BT 2.17a, c · BT 2.18a · tổng kết, giao nhiệm vụ</span></div><div class="m">Thi đua theo nhóm</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · Bài toán khẩu phần (BT 2.5)</div><h2>Không có sẵn cơ sở đơn vị thì bắt đầu từ đâu?</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      $$f=15x_1+12x_2+10x_3\to\min$$ $$\begin{cases}3x_1+4x_2+2x_3\ge160\\ x_1+2x_2+3x_3\ge140\\ x_j\ge0\end{cases}$$
+      <p class="small">Thêm biến phụ: $3x_1+4x_2+2x_3-x_4=160$, $x_1+2x_2+3x_3-x_5=140$. Phương án "chỉ dùng biến phụ" $x_4=-160$, $x_5=-140$ có được không?</p>
+    </div>
+    <div class="stack">
+      <div class="step box warn small" data-tag="Vấn đề">Cột của $x_4,x_5$ là $(-1;0)$, $(0;-1)$ — không phải cột đơn vị; phương án tương ứng âm ⇒ <b>không có PACB xuất phát</b>.</div>
+      <div class="step box key" data-tag="Ý tưởng">Thêm "biến tạm" $x_6,x_7\ge0$ có cột đơn vị: $\dots-x_4+x_6=160$, $\dots-x_5+x_7=140$ ⇒ có ngay PACB $x_6=160$, $x_7=140$. Nhưng phải <b>"phạt" thật nặng</b> để cuối cùng $x_6=x_7=0$.</div>
+      <div class="step box eco small" data-tag="Cách phạt">Cho biến tạm hệ số $M$ (số dương rất lớn) trong hàm mục tiêu min: $f+Mx_6+Mx_7\to\min$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ràng buộc "≥" khi trừ biến phụ cho cột $-1$, không dùng làm cơ sở được. Giải pháp: thêm biến "tạm" (biến giả) có cột đơn vị, rồi phạt nó bằng hệ số $M$ rất lớn để thuật toán tự đẩy nó về 0.</p></aside>
+</section>
+
+<!-- ============ BIẾN GIẢ ============ -->
+<section class="slide" id="bien-gia" data-kind="ly-thuyet" data-sec="2.3.2 Phương pháp biến giả">
+  <div class="head"><div class="eyebrow">2.3.2 · Tìm PACB xuất phát — phương pháp biến giả (bài toán M)</div><h2>Thêm biến giả vào những dòng chưa có cột đơn vị</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Bài toán M">Từ dạng chính tắc ($b\ge0$), ở mỗi dòng $i$ chưa có cột đơn vị thêm biến giả $x_{n+i}\ge0$:
+        $$\sum_j c_jx_j+M\sum x_{n+i}\to\min,\qquad \sum_j a_{ij}x_j+x_{n+i}=b_i$$</div>
+      <table class="tbl"><tr><th></th><th>Biến phụ</th><th>Biến giả</th></tr>
+        <tr><td>Mục đích</td><td>Đổi bất đẳng thức → đẳng thức</td><td>Tạo cơ sở đơn vị xuất phát</td></tr>
+        <tr><td>Hệ số trong $f$</td><td>$0$</td><td>$M$ (bài min)</td></tr>
+        <tr><td>Kết thúc</td><td>Có thể dương (có ý nghĩa)</td><td>Phải bằng 0</td></tr></table>
+    </div>
+    <div class="stack small">
+      <div class="box eco" data-tag="Định lý 2.15 (M đủ lớn)">(a) Bài toán gốc có phương án tối ưu $x^*$ ⇔ bài toán M có phương án tối ưu $(x^*,0)$. (b) Bài toán M tối ưu mà còn biến giả <b>dương</b> ⇒ bài toán gốc <b>không có phương án</b>.</div>
+      <div class="box key" data-tag="Bảng đơn hình hai dòng">$\Delta_j=\alpha_j+\beta_jM$: dòng $\alpha_j$ (phần không chứa $M$) và dòng $\beta_j$ (hệ số của $M$). So sánh: <b>xét $\beta_j$ trước</b>, chỉ khi $\beta_j$ bằng nhau mới xét $\alpha_j$.</div>
+      <div class="box tip tiny" data-tag="Mẹo">Biến giả ra khỏi cơ sở thì <b>bỏ luôn cột</b> của nó. Khi mọi biến giả đã ra, dòng $\beta$ toàn 0 — tiếp tục như đơn hình thường với dòng $\alpha$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ba điều cần nhớ: (1) chỉ thêm biến giả ở dòng chưa có cột đơn vị; (2) so sánh $\Delta_j=\alpha_j+\beta_jM$ bằng cách xét $\beta_j$ trước; (3) nếu bảng tối ưu còn biến giả dương thì bài toán gốc vô nghiệm.</p></aside>
+</section>
+
+<section class="slide" id="vd-212" data-kind="vi-du" data-sec="2.3.2 Phương pháp biến giả">
+  <div class="head"><div class="eyebrow">2.3.2 · Ví dụ 2.12 giáo trình</div><h2>$f=x_1+4x_2+2x_3\to\min$ — hai biến giả $x_7,x_8$</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 1 4 2 0 | 1 3 -2 1 <= 1 | -1 0 1 2 >= 5 | 1 -2 1 -1 = 2"></div>
+    <div class="stack small">
+      $$\begin{cases}x_1+3x_2-2x_3+x_4\le1\\ -x_1+x_3+2x_4\ge5\\ x_1-2x_2+x_3-x_4=2\\ x_j\ge0\end{cases}$$
+      <div class="step">Dòng 1 có biến phụ $x_5$ (cột đơn vị); dòng 2 trừ $x_6$, thêm biến giả $x_7$; dòng 3 thêm biến giả $x_8$.</div>
+      <div class="step">Bảng I: $\beta=(0;\,-2;\,2;\,1;\,0;\,-1)$ (chỉ cộng các dòng có $c_i=M$, trừ hệ số $M$ của $c_j$) ⇒ $\beta_3=2$ lớn nhất ⇒ $a_3$ vào; $\theta=\min\{\tfrac51;\tfrac21\}=2$ ⇒ $a_8$ ra.</div>
+      <div class="step box key" data-tag="Kết luận">$f_{\min}=6$ tại $x^*=(0;\,0;\,3;\,1)$, biến giả đã triệt tiêu.</div>
+      <div class="step box warn tiny" data-tag="Đính chính Bảng 2.10">Dòng $\alpha$ của bảng II đúng là $(4\ |\ 1;\,-8;\,0;\,-2;\,0;\,0)$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự lập bảng I: chỉ các dòng có biến giả ($c_i=M$) góp vào $\beta_j$: $\beta_1=0$, $\beta_2=-2$, $\beta_3=2$, $\beta_4=1$ ⇒ đưa $a_3$ vào. Đối chiếu từng bảng với công cụ. Lưu ý đính chính: dòng $\alpha$ của bảng II trong giáo trình in chưa đúng; đúng là $(4\,|\,1;-8;0;-2;0;0)$.</p></aside>
+</section>
+
+<section class="slide" id="khau-phan" data-kind="vi-du" data-sec="2.3.2 Phương pháp biến giả">
+  <div class="head"><div class="eyebrow">2.3.2 · Giải bài toán khẩu phần (BT 2.5)</div><h2>Biến giả rời cơ sở, rồi tối ưu như thường</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 15 12 10 | 3 4 2 >= 160 | 1 2 3 >= 140"></div>
+    <div class="stack small">
+      <div class="box key" data-tag="Kết quả">Mua 0 kg T1, <b>25 kg T2</b>, <b>30 kg T3</b>; chi phí nhỏ nhất <b>600</b> nghìn đồng.</div>
+      <div class="box eco" data-tag="Diễn giải">Biến phụ $x_4=x_5=0$: cả hai chất dinh dưỡng đạt <b>đúng</b> mức tối thiểu. Thức ăn T1 (đắt nhất so với lượng dinh dưỡng) không được chọn.</div>
+      <div class="box tip tiny" data-tag="Kiểm tra">$3\cdot0+4\cdot25+2\cdot30=160$ ✓; $0+2\cdot25+3\cdot30=140$ ✓; $f=12\cdot25+10\cdot30=600$ ✓.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Theo dõi dòng $\beta$: sau hai lần xoay hai biến giả rời cơ sở và dòng $\beta$ toàn 0. Luôn kiểm tra lại đáp số bằng cách thay vào ràng buộc. Câu hỏi để suy nghĩ: giá T1 giảm còn bao nhiêu thì nên mua T1? (Buổi 4 trả lời.)</p></aside>
+</section>
+
+<!-- ============ ĐỐI NGẪU ============ -->
+<section class="slide" id="y-nghia-dn" data-kind="ly-thuyet" data-sec="2.4.1 Bài toán đối ngẫu">
+  <div class="head"><div class="eyebrow">2.4 · Ý nghĩa kinh tế (Ví dụ 2.18)</div><h2>Bài toán của người muốn mua lại toàn bộ nguyên liệu</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box" data-tag="Người sản xuất (bài toán gốc)">$f=3x_1+5x_2\to\max$; $2x_1+x_2\le8$; $x_2\le4$; $x_1\le3$; $x\ge0$. Đáp số: lãi 26.</div>
+      <div class="box key" data-tag="Người mua nguyên liệu (bài toán đối ngẫu)">Trả giá $y_1,y_2,y_3$ cho một đơn vị nguyên liệu I, II, III. Để người sản xuất chịu bán, số tiền bán nguyên liệu làm ra một sản phẩm không ít hơn lãi của sản phẩm đó:
+        $$\begin{cases}2y_1+y_3\ge3&(\text{sản phẩm A})\\ y_1+y_2\ge5&(\text{sản phẩm B})\\ y_i\ge0\end{cases}\qquad g=8y_1+4y_2+3y_3\to\min$$</div>
+    </div>
+    <div class="stack small">
+      <div class="box eco" data-tag="Quan sát">Ma trận ràng buộc <b>chuyển vị</b>; vế phải ↔ hệ số mục tiêu; max ↔ min; "$\le$" ↔ "$\ge$".</div>
+      <div class="box tip" data-tag="Sẽ chứng minh ở Buổi 4">Giá trị nhỏ nhất của $g$ cũng bằng <b>26</b>, đạt tại $y^*=(\tfrac32;\,\tfrac72;\,0)$ — nguyên liệu III đang thừa nên "giá" bằng 0. $y^*$ gọi là <b>giá bóng</b> (giá ước định) của nguồn lực.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu chuyện đối ngẫu: người mua nguyên liệu muốn trả ít nhất (min), nhưng giá phải đủ hấp dẫn để người sản xuất không thiệt so với tự sản xuất. Nhận xét hình thức: ma trận chuyển vị, vế phải và hệ số mục tiêu đổi chỗ, max thành min.</p></aside>
+</section>
+
+<section class="slide" id="lap-dn" data-kind="ly-thuyet" data-sec="2.4.1 Bài toán đối ngẫu">
+  <div class="head"><div class="eyebrow">2.4.1 · Quy tắc lập bài toán đối ngẫu (Bảng 2.11)</div><h2>Mỗi ràng buộc ↔ một biến đối ngẫu; mỗi biến ↔ một ràng buộc</h2></div>
+  <div class="cols w64">
+    <table class="tbl small">
+      <tr><th>Bài toán gốc MIN ($f=cx$)</th><th>Bài toán đối ngẫu MAX ($g=yb$)</th></tr>
+      <tr><td>Ràng buộc $i$: $\sum_j a_{ij}x_j\ \ge b_i$</td><td>$y_i\ge0$</td></tr>
+      <tr><td>Ràng buộc $i$: $\sum_j a_{ij}x_j\ \le b_i$</td><td>$y_i\le0$</td></tr>
+      <tr><td>Ràng buộc $i$: $\sum_j a_{ij}x_j\ = b_i$</td><td>$y_i$ tùy ý</td></tr>
+      <tr><td>Biến $x_j\ge0$</td><td>$\sum_i a_{ij}y_i\le c_j$</td></tr>
+      <tr><td>Biến $x_j\le0$</td><td>$\sum_i a_{ij}y_i\ge c_j$</td></tr>
+      <tr><td>Biến $x_j$ tùy ý</td><td>$\sum_i a_{ij}y_i=c_j$</td></tr>
+    </table>
+    <div class="stack small">
+      <div class="box key" data-tag="Ba bước">(1) Đổi min ↔ max; hệ số mục tiêu mới là vế phải $b_i$. (2) Ma trận chuyển vị: cột $j$ của $A$ thành ràng buộc $j$, vế phải $c_j$. (3) Gán dấu theo bảng.</div>
+      <div class="box tip" data-tag="Mẹo nhớ: &quot;thuận – thuận&quot;">Với bài <b>min</b>, dạng "thuận" là ràng buộc $\ge$ và biến $\ge0$; với bài <b>max</b>, dạng thuận là ràng buộc $\le$ và biến $\ge0$. <b>Thuận ↔ thuận, ngược ↔ ngược, $=$ ↔ tùy ý.</b></div>
+      <div class="box eco tiny" data-tag="Đối xứng">Đối ngẫu của bài toán đối ngẫu là bài toán gốc. Gốc max: đọc bảng từ phải sang trái.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Mẹo "thuận – thuận": bài min thuận là "≥", bài max thuận là "≤", biến thuận là "≥ 0". Ràng buộc thuận ↔ biến đối ngẫu ≥ 0; biến thuận ↔ ràng buộc đối ngẫu thuận; đẳng thức ↔ biến tùy ý. Thử áp dụng cho Ví dụ 2.18 để kiểm tra.</p></aside>
+</section>
+
+<section class="slide" id="vd-214" data-kind="vi-du" data-sec="2.4.1 Bài toán đối ngẫu">
+  <div class="head"><div class="eyebrow">2.4.1 · Ví dụ 2.14 giáo trình (đã đính chính)</div><h2>Bấm vào từng dòng để thấy cặp điều kiện đối ngẫu</h2></div>
+  <div class="cols w64">
+    <div data-widget="dual" data-lp="min 1 2 0 3 | 1 3 0 4 >= 4 | -3 2 1 3 >= 3"></div>
+    <div class="stack small">
+      <div class="box warn" data-tag="Đính chính">Đề in "$x_1+3x_2+4x_3\ge4$" và "$x_1,x_2,x_3\ge0$"; theo lời giải (Ví dụ 2.15) đúng là $x_1+3x_2+4x_4\ge4$ và $x_1,\dots,x_4\ge0$. Dòng dấu của đối ngẫu: $y_1,y_2\ge0$ (không có $y_3$).</div>
+      <div class="box key" data-tag="Đối ngẫu">$g=4y_1+3y_2\to\max$; $y_1-3y_2\le1$; $3y_1+2y_2\le2$; $y_2\le0$; $4y_1+3y_2\le3$; $y_1,y_2\ge0$.</div>
+      <div class="box tip tiny" data-tag="Nhận xét">$y_2\le0$ và $y_2\ge0$ ⇒ $y_2=0$. Buổi 4 sẽ thấy $y^*=(\tfrac23;0)$, $g_{\max}=\tfrac83=f_{\min}$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự lập đối ngẫu ra giấy trước, sau đó bấm từng dòng trên công cụ để xem cặp điều kiện tương ứng. Ràng buộc $y_2\le0$ đến từ biến $x_3$ (cột $(0;1)$, hệ số $c_3=0$).</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="2.4.1 Bài toán đối ngẫu">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 4 phút</div><h2>Biến giả và lập đối ngẫu</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="2">
+      <p class="q small">Bài toán gốc: $f\to\min$, ràng buộc thứ 2 là $x_1-x_2+3x_3\le5$. Biến đối ngẫu $y_2$ thỏa:</p>
+      <ol class="opts"><li>$y_2\ge0$</li><li>$y_2\le0$</li><li>$y_2$ tùy ý</li><li>$y_2=0$</li></ol>
+      <p class="explain">Bài min, ràng buộc "$\le$" là dạng ngược ⇒ biến đối ngẫu $y_2\le0$.</p>
+    </div>
+    <ul class="tf" data-widget="tf">
+      <li data-ans="s" data-why="Biến giả có hệ số $M$ trong $f$; biến phụ có hệ số 0.">Biến giả và biến phụ đều có hệ số 0 trong hàm mục tiêu.</li>
+      <li data-ans="d" data-why="Định lý 2.15b.">Bảng tối ưu của bài toán M còn biến giả dương thì bài toán gốc không có phương án.</li>
+      <li data-ans="d" data-why="Mỗi ràng buộc chính ứng với một biến đối ngẫu.">Bài toán gốc có 3 ràng buộc chính, 5 biến thì đối ngẫu có 3 biến, 5 ràng buộc chính.</li>
+      <li data-ans="s" data-why="So sánh $\beta_j$ trước: $2M-100&gt;M+50$ khi $M$ đủ lớn.">Với $M$ rất lớn, $\Delta=M+50$ lớn hơn $\Delta=2M-100$.</li>
+    </ul>
+  </div>
+  <aside class="tuhoc"><p>Câu Đ/S cuối: so sánh $\alpha+\beta M$ luôn xét hệ số $\beta$ của $M$ trước.</p></aside>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt-dang" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Luyện tập · Tiết 2 – 4</div><h2>Ba dạng bài của buổi hôm nay</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Dạng 1 <small>BT 2.14c, 2.15b</small></h4><b>Bài toán M</b><span class="muted">Tận dụng cột đơn vị có sẵn; thêm biến giả cho dòng còn thiếu.</span><a class="xref" href="#bt-214c">Tới bài</a></div>
+    <div class="card"><h4>Dạng 2 <small>BT 2.15c</small></h4><b>Bài max có biến giả</b><span class="muted">Đổi về min, giải bài M, đổi dấu kết quả.</span><a class="xref" href="#bt-215c">Tới bài</a></div>
+    <div class="card"><h4>Dạng 3 <small>BT 2.17, 2.18</small></h4><b>Lập đối ngẫu</b><span class="muted">Ba bước, mẹo "thuận – thuận".</span><a class="xref" href="#bt-217">Tới bài</a></div>
+  </div>
+  <div class="box small" data-tag="Cách tổ chức" data-aud="gv">Dạng 1–2: cá nhân 10' → lên bảng → đối chiếu công cụ. Dạng 3: thi đua nhóm — mỗi nhóm lập đối ngẫu một câu BT 2.17, nhóm khác chấm.</div>
+  <div class="box small" data-tag="Cách tự luyện" data-aud="hv">Bài M dài: kẻ sẵn bảng có hai dòng $\alpha$, $\beta$. Đối chiếu từng bảng với công cụ; lập đối ngẫu xong thì so với công cụ đối ngẫu.</div>
+  <aside class="tuhoc"><p>Lưu ý BT 2.15a: đáp số đúng là $f_{\min}=\tfrac{11}{5}$ tại $(5;0;\tfrac{14}5;0;\tfrac25)$ (giáo trình in $\tfrac{33}5$).</p></aside>
+</section>
+
+<section class="slide" id="bt-214c" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 2.14c</div><h2>Đổi dấu dòng có vế phải âm — và nhận ra cột đơn vị mới</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 5 1 1 -8 7 7 | 0 4 0 2 0 1 = 6 | 0 3 1 4 -1 1 = -1 | -1 2 0 3 0 0 = 2"></div>
+    <div class="stack small">
+      <p>$f=5x_1+x_2+x_3-8x_4+7x_5+7x_6\to\min$; $4x_2+2x_4+x_6=6$; $3x_2+x_3+4x_4-x_5+x_6=-1$; $-x_1+2x_2+3x_4=2$.</p>
+      <div class="step">Dòng 2 nhân $-1$: $-3x_2-x_3-4x_4+x_5-x_6=1$ ⇒ cột $a_5$ là cột đơn vị.</div>
+      <div class="step">Dòng 1, 3 chưa có cột đơn vị ⇒ thêm hai biến giả $x_7$, $x_8$.</div>
+      <div class="step box key" data-tag="Kết luận">$f_{\min}=45$ tại $x^*=(1;\,\tfrac32;\,0;\,0;\,\tfrac{11}2;\,0)$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Thứ tự chuẩn bị: (1) làm vế phải không âm (nhân −1 nếu cần); (2) tìm cột đơn vị có sẵn; (3) chỉ thêm biến giả cho dòng còn thiếu. Ở đây đổi dấu dòng 2 làm xuất hiện cột đơn vị $a_5$.</p></aside>
+</section>
+
+<section class="slide" id="bt-215b" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 2.15b</div><h2>$f=x_1-3x_2-2x_3\to\min$, ba ràng buộc đẳng thức</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 1 -3 -2 0 | 1 1 2 1 = 10 | 0 2 3 1 = 16 | 0 2 4 3 = 20"></div>
+    <div class="stack small">
+      $$\begin{cases}x_1+x_2+2x_3+x_4=10\\ 2x_2+3x_3+x_4=16\\ 2x_2+4x_3+3x_4=20\\ x_j\ge0\end{cases}$$
+      <div class="step">Cột $a_1$ đơn vị ở dòng 1 ⇒ chỉ cần biến giả $x_5,x_6$ cho dòng 2, 3.</div>
+      <div class="step box key" data-tag="Kết luận">$f_{\min}=-20$ tại $x^*=(1;\,7;\,0;\,2)$ (4 lần xoay).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Bài dài, cần 5 bảng. Hãy kiên nhẫn và kiểm tra dòng $\alpha$, $\beta$ hai cách ở mỗi bảng. Đáp số: $f_{\min}=-20$ tại $(1;7;0;2)$.</p></aside>
+</section>
+
+<section class="slide" id="bt-215c" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 2.15c</div><h2>Bài toán max với đủ ba loại ràng buộc</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="max 4 -1 -2 | 2 -4 -1 <= 4 | 2 3 5 >= 3 | 1 2 1 = 1"></div>
+    <div class="stack small">
+      <p>$f=4x_1-x_2-2x_3\to\max$; $2x_1-4x_2-x_3\le4$; $2x_1+3x_2+5x_3\ge3$; $x_1+2x_2+x_3=1$.</p>
+      <div class="step">Giải $g=-4x_1+x_2+2x_3\to\min$: dòng 1 có biến phụ $x_4$; dòng 2 trừ $x_5$, thêm biến giả $x_6$; dòng 3 thêm biến giả $x_7$.</div>
+      <div class="step box key" data-tag="Kết luận">$g_{\min}=-2$ ⇒ $f_{\max}=2$ tại $x^*=(\tfrac23;\,0;\,\tfrac13)$.</div>
+      <div class="step box warn tiny" data-tag="Lỗi hay gặp">Quên đổi dấu kết quả: báo $f_{\max}=-2$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Quy trình an toàn cho bài max: đổi sang $g=-f\to\min$, giải bài M như thường, cuối cùng $f_{\max}=-g_{\min}$. Lỗi hay gặp nhất là quên đổi dấu ở bước cuối.</p></aside>
+</section>
+
+<section class="slide" id="bt-217" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 3 · BT 2.17 (a, c)</div><h2>Lập bài toán đối ngẫu</h2></div>
+  <div class="cols" style="font-size:.8em">
+    <div class="stack"><p class="small"><b>a)</b> $f=x_1-x_2+3x_3+2x_4\to\min$; $4x_1+2x_2-x_4=12$; $x_1+2x_2+x_3\ge2$; $-2x_1+x_2+x_4\le4$; $x_j\ge0$.</p>
+      <div data-widget="dual" data-an="1" data-lp="min 1 -1 3 2 | 4 2 0 -1 = 12 | 1 2 1 0 >= 2 | -2 1 0 1 <= 4"></div></div>
+    <div class="stack"><p class="small"><b>c)</b> $f=x_1-2x_2-3x_3\to\min$; $2x_1+x_2+4x_3\ge6$; $x_1+2x_2+x_3\le4$; $-3x_1+x_2+2x_3\le-2$; $4x_2+2x_3\ge1$; $x_1,x_2\ge0$, $x_3$ tùy ý.</p>
+      <div data-widget="dual" data-an="1" data-lp="min 1 -2 -3 | 2 1 4 >= 6 | 1 2 1 <= 4 | -3 1 2 <= -2 | 0 4 2 >= 1 | dau >=0 >=0 tuy"></div></div>
+  </div>
+  <aside class="tuhoc"><p>Lập ra giấy theo ba bước rồi so sánh với công cụ. Câu a: ràng buộc đẳng thức ⇒ $y_1$ tùy ý; "≤" trong bài min ⇒ $y_3\le0$. Câu c: biến $x_3$ tùy ý ⇒ ràng buộc tương ứng của đối ngẫu là đẳng thức.</p></aside>
+</section>
+
+<section class="slide" id="bt-218" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 1 + 3 · BT 2.18a và đính chính BT 2.18</div><h2>Giải bài toán BT 2.17a bằng đơn hình</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 1 -1 3 2 | 4 2 0 -1 = 12 | 1 2 1 0 >= 2 | -2 1 0 1 <= 4"></div>
+    <div class="stack small">
+      <div class="step box key" data-tag="BT 2.18a">$f_{\min}=-\tfrac92$ tại $x^*=(\tfrac12;\,5;\,0;\,0)$ — khớp giáo trình.</div>
+      <div class="step box warn" data-tag="Đính chính đáp số BT 2.18">
+        <ul><li><b>b)</b> Đề in không có điều kiện dấu cho $x_4$ ⇒ hàm mục tiêu không bị chặn; đáp số $\tfrac12$ đúng khi thêm $x_4\ge0$.</li>
+        <li><b>c)</b> $f_{\min}=-4$ tại $(2;0;2)$ (giáo trình in $\tfrac43$).</li>
+        <li><b>d)</b> Cần $x_3,x_4\ge0$ (đề in "tùy ý" làm hàm mục tiêu không bị chặn); khi đó $f_{\min}=-7$.</li></ul></div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Đáp số giáo trình của BT 2.18 b, c, d không khớp với đề in — xem đính chính. Hãy nhập đề in vào Phòng tính QHTT để tự kiểm chứng; đó là thói quen tốt khi tự học.</p></aside>
+</section>
+
+<!-- ============ TỔNG KẾT ============ -->
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 3</div><h2>Đơn hình cho mọi bài toán · Mỗi bài toán có một "bài toán đôi"</h2></div>
+  <div class="flow">
+    <div class="n"><b>CHUẨN BỊ</b>$b\ge0$, tìm cột đơn vị có sẵn</div><div class="a">→</div>
+    <div class="n"><b>BIẾN GIẢ</b>Dòng thiếu: thêm $x_{n+i}$, hệ số $M$</div><div class="a">→</div>
+    <div class="n"><b>BẢNG α/β</b>Xét $\beta$ trước, $\alpha$ sau</div><div class="a">→</div>
+    <div class="n"><b>KẾT LUẬN</b>Biến giả = 0: tối ưu; biến giả &gt; 0: vô nghiệm</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>1 · Bài toán M</h4>Biến giả chỉ để có PACB xuất phát; phải triệt tiêu ở phương án tối ưu.</div>
+    <div class="card"><h4>2 · Lập đối ngẫu</h4>min ↔ max; $A\to A^T$; $b\leftrightarrow c$; thuận ↔ thuận, $=$ ↔ tùy ý.</div>
+    <div class="card"><h4>3 · Ý nghĩa</h4>Biến đối ngẫu = giá ước định (giá bóng) của từng nguồn lực.</div>
+  </div>
+  <aside class="tuhoc"><p>Câu hỏi chuẩn bị Buổi 4: giải xong bài toán gốc, có cách nào suy ra ngay lời giải của bài toán đối ngẫu mà không phải giải lại?</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 4: Định lý đối ngẫu và ứng dụng</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>BT 2.15a (đáp số đúng $\tfrac{11}5$), 2.15d; BT 2.16 cho BT 2.5, 2.8.</li>
+        <li>Lập đối ngẫu BT 2.17 b, d; BT 2.19a.</li>
+        <li>Kiểm tra mọi bài bằng <a href="lab.html">Phòng tính QHTT</a> (mục Đơn hình, Đối ngẫu).</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình 2.4.2: Định lý đối ngẫu yếu, mạnh; định lý độ lệch bù; Ví dụ 2.15.</li>
+        <li>Giáo trình 2.4.4: Ứng dụng — tối ưu hóa sản xuất, kiểm tra phương án tối ưu.</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref" href="buoi4.html">Sang Buổi 4 · Định lý đối ngẫu và ứng dụng</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Bài kiểm tra định kỳ 45 phút diễn ra sau Buổi 4, gồm quy hoạch tuyến tính và đối ngẫu. Hoàn thành bài kiểm tra sau Buổi 3 trên hệ thống để tự đánh giá.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/qhtt.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/widgets-qhtt.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

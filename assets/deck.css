@@ -411,7 +411,45 @@ aside.tuhoc { display: none; }
   .tf .printkey { grid-column: 1 / -1; }
   .allsteps { display: block; }
   .w:has(.allsteps) > .out:not(.allsteps) { display: none; }
+  .w:has(> .allsteps) > .qh-note { display: none; }
   .katex-display { overflow: visible !important; }
   a { color: inherit; text-decoration: none; }
   a.xref { border-color: #999; color: #333; }
 }
+
+/* ---------- Công cụ Chương 2: quy hoạch tuyến tính ---------- */
+.qh-gbody { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; }
+svg.qh-plane { width: 100%; height: auto; max-width: 440px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 6px; }
+.qh-plane line, .qh-plane polygon, .qh-plane circle { vector-effect: non-scaling-stroke; }
+.qh-plane .gl { stroke: var(--grid); stroke-width: 1px; } .qh-plane .ax { stroke: var(--ink-2); stroke-width: 1.6px; }
+.qh-region { fill: color-mix(in srgb, var(--blue) 20%, transparent); stroke: var(--blue); stroke-width: 1.5px; }
+.qh-segment { stroke: var(--blue); stroke-width: 6px; }
+.qh-line { stroke-width: 2.2px; } .qh-level { stroke-width: 2.4px; stroke-dasharray: 7 5; } .qh-grad { stroke-width: 2.4px; }
+.qh-line.q0 { stroke: var(--pen); } .qh-line.q1 { stroke: var(--blue); } .qh-line.q2 { stroke: var(--ok); } .qh-line.q3 { stroke: #8a5cc2; }
+.qh-lab { font-family: var(--f-mono); font-weight: 600; } .qh-lab.q0 { fill: var(--pen); } .qh-lab.q1 { fill: var(--blue); } .qh-lab.q2 { fill: var(--ok); } .qh-lab.q3 { fill: #8a5cc2; }
+.qh-level { stroke: var(--pen); } .qh-grad { stroke: var(--ink); } .qh-arrowhead { fill: var(--ink); }
+.qh-pt { fill: var(--surface); stroke: var(--ink); stroke-width: 2px; } .qh-pt.opt { fill: var(--marker); stroke: var(--pen); }
+.qh-tick { fill: var(--ink-2); font-family: var(--f-mono); } .qh-vname { fill: var(--ink); font-weight: 700; font-family: var(--f-display); font-style: italic; }
+.qh-vtab .tbl { font-size: .72em; } .qh-best { background: var(--marker); color: var(--marker-ink); font-weight: 700; }
+.qh-concl { margin-top: .4em; font-size: .85em; }
+.qh-note { border-left: 3px solid var(--ok); padding-left: .6em; }
+table.qh-tab { font-size: .66em; width: auto; } .qh-tab th, .qh-tab td { padding: .2em .45em; white-space: nowrap; }
+.qh-tab td.qh-piv { background: var(--marker); color: var(--marker-ink); outline: 2.5px solid var(--pen); outline-offset: -3px; border-radius: 40%; font-weight: 700; }
+.qh-tab .qh-in { background: color-mix(in srgb, var(--blue) 14%, transparent); }
+.qh-tab tr.qh-out td { background: color-mix(in srgb, var(--pen) 9%, transparent); }
+.qh-tab tr.qh-out td.qh-piv { background: var(--marker); }
+.qh-tab tr.qh-d td { border-top: 2px solid var(--ink); font-weight: 600; }
+table.qh-ttab { width: auto; font-size: .86em; } .qh-ttab th { text-align: center; }
+.qh-cell { position: relative; min-width: 4.6em; height: 3.1em; padding: 0 !important; }
+.qh-cell .qx { position: absolute; left: .35em; top: .2em; font-weight: 700; font-size: 1.1em; }
+.qh-cell .qc { position: absolute; right: .3em; bottom: .15em; font-size: .78em; color: var(--ink-2); border-top: 1px solid var(--line); border-left: 1px solid var(--line); padding: 0 .25em; }
+.qh-cell .qd { position: absolute; right: .3em; top: .15em; font-size: .72em; color: var(--blue); }
+.qh-cell .qs { position: absolute; left: .35em; bottom: .1em; font-weight: 700; color: var(--pen); font-size: .9em; }
+.qh-cell.sel { background: var(--chip); } .qh-cell.now { outline: 2.5px solid var(--blue); outline-offset: -3px; }
+.qh-cell.cyc { background: color-mix(in srgb, var(--marker) 55%, transparent); } .qh-cell.enter { outline: 2.5px solid var(--pen); outline-offset: -3px; }
+.qh-dtab tr[data-p] { cursor: pointer; } .qh-dtab tr.qh-hl td { background: var(--marker); color: var(--marker-ink); }
+.qh-an tr[data-p]:not(.qh-show) td:first-child .katex { visibility: hidden; }
+.qh-an tr[data-p]:not(.qh-show) td:first-child { background: repeating-linear-gradient(-45deg, transparent 0 6px, var(--line) 6px 7px); }
+.qh-dtab td.tag { font-family: var(--f-mono); font-size: .75em; color: var(--ink-2); width: 2.5em; text-align: right; }
+tr.qh-ok td { background: color-mix(in srgb, var(--ok) 10%, transparent); }
+.deck.read .qh-gbody { grid-template-columns: 1fr; }

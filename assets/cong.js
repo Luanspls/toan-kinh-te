@@ -28,6 +28,13 @@
     return t;
   }
 
+  // Mã bài kiểm tra sau buổi: Chương 1 dùng b1…b6, các chương sau dùng c<số chương>b<số buổi>
+  const ktId = (ch, b) => (ch.so === 1 ? 'b' : 'c' + ch.so + 'b') + b.so;
+  function bestKT(bai) {
+    const v = ((ls.get('kt') || {})[bai] || []).filter(x => x.diem != null).map(x => x.diem);
+    return v.length ? Math.max.apply(null, v) : null;
+  }
+
   /* ---------- Trang chủ ---------- */
   function renderHome() {
     if (!$('chapters')) return;
@@ -55,9 +62,10 @@
           const s = sessStats(ch, b), pct = Math.round(s.seen / s.n * 100), done = s.seen >= s.n;
           return '<li><div class="n"><small>' + (b.tuan || 'Buổi') + '</small>' + String(b.so).padStart(2, '0') + '</div>' +
             '<div class="tt"><b>' + esc(b.ten) + '</b><span>' + (b.tiet ? b.tiet + ' tiết · ' : '') + b.slides + ' slide · ' + (b.kinds['bai-tap'] || 0) + ' bài tập</span></div>' +
-            '<div class="pg"><span class="pbar"><i style="width:' + pct + '%"></i></span>' + (s.seen ? pct + '% đã xem' + (s.q ? ' · trắc nghiệm ' + s.qok + '/' + s.q : '') : 'Chưa học') + '</div>' +
+            '<div class="pg"><span class="pbar"><i style="width:' + pct + '%"></i></span>' + (s.seen ? pct + '% đã xem' + (s.q ? ' · trắc nghiệm ' + s.qok + '/' + s.q : '') : 'Chưa học') +
+            (bestKT(ktId(ch, b)) != null ? '<br>Kiểm tra: <b>' + String(bestKT(ktId(ch, b))).replace('.', ',') + '</b>/10' : '') + '</div>' +
             '<a class="go' + (done ? ' done' : '') + '" href="' + ch.id + '/' + b.tep + '">' + (done ? 'Ôn lại' : s.seen ? 'Học tiếp' : 'Vào học') + '</a></li>';
-        }).join('') + '</ul><div class="links"><a class="xref" href="' + ch.id + '/index.html">Trang chương: lộ trình, bản đồ kiến thức</a><a class="xref" href="' + ch.id + '/lab.html">Phòng tính ma trận</a></div>';
+        }).join('') + '</ul><div class="links"><a class="xref" href="' + ch.id + '/index.html">Trang chương: lộ trình, bản đồ kiến thức</a><a class="xref" href="' + ch.id + '/kiem-tra.html">Kiểm tra – đánh giá</a><a class="xref" href="' + ch.id + '/lab.html">' + esc(ch.lab || 'Phòng tính') + '</a></div>';
       } else if (ch.de_cuong) {
         h += '<div class="outline">' + ch.de_cuong.map(m => '<div><small>' + m.muc + ' · ' + m.tuan + '</small><b>' + esc(m.ten) + '</b><ul>' + m.y.map(y => '<li>' + esc(y) + '</li>').join('') + '</ul></div>').join('') + '</div>';
       }
@@ -153,6 +161,7 @@
   });
 
   renderHome();
+  window.addEventListener('tkt:acct', () => { renderHome(); math($('chapters') || document.body); });
   initSearch();
   initTransfer();
   math(document.body);

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 4 · Định lý đối ngẫu và ứng dụng</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 2" data-unit="Buổi 4 · Định lý đối ngẫu và ứng dụng" data-prev="buoi3.html" data-next="buoi5.html" data-home="index.html" data-kt="c2b4" data-lab="Phòng tính QHTT">
+<div class="stage">
+
+<!-- ============ MỞ ĐẦU ============ -->
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 4">
+  <div class="num"><small>Chương 2 · Quy hoạch tuyến tính và ứng dụng</small>Buổi 4</div>
+  <h1>Định lý đối ngẫu, độ lệch bù và ý nghĩa kinh tế</h1>
+  <div class="meta"><span class="chip">4 tiết</span><span class="chip lt">Lý thuyết 2 tiết</span><span class="chip bt">Bài tập 2 tiết</span><span class="chip">Mục 2.2.2 – 2.2.3 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#dl-yeu-manh"><span>2.4.2</span>Định lý đối ngẫu yếu, mạnh</a>
+    <a href="#do-lech-bu"><span>2.4.2</span>Định lý độ lệch bù</a>
+    <a href="#doc-y"><span>2.4.3</span>Đọc lời giải đối ngẫu từ bảng cuối</a>
+    <a href="#gia-bong"><span>2.4.4</span>Giá bóng — ý nghĩa kinh tế</a>
+    <a href="#bt-dang"><span>BT</span>Luyện tập: BT 2.19, 2.21</a>
+    <a href="#on-tap-kt"><span>KT</span>Ôn tập kiểm tra định kỳ</a>
+  </div>
+  <aside class="tuhoc"><p>Buổi này trả lời hai câu hỏi: (1) giải xong bài toán gốc thì có ngay lời giải đối ngẫu không? (2) lời giải đối ngẫu nói gì với nhà quản lý? Sau buổi này là bài kiểm tra định kỳ 45 phút.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 4</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Phát biểu được định lý đối ngẫu yếu, mạnh và ba trường hợp của cặp bài toán đối ngẫu.</li>
+      <li>Phát biểu được định lý độ lệch bù.</li>
+      <li>Giải thích được ý nghĩa giá bóng (giá ước định) của nguồn lực.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Từ phương án tối ưu của bài toán gốc, tìm phương án tối ưu của bài toán đối ngẫu (độ lệch bù hoặc bảng cuối).</li>
+      <li>Kiểm tra một phương án cho trước có tối ưu hay không.</li>
+      <li>Dùng giá bóng để trả lời câu hỏi "có nên mua thêm nguồn lực?".</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Ra quyết định:</b> đọc lời giải đối ngẫu thành khuyến nghị kinh doanh.</li>
+      <li><b>Lập luận:</b> chứng minh tính tối ưu bằng cặp phương án đối ngẫu.</li>
+      <li><b>Tự đánh giá:</b> ôn tập, tự kiểm tra trước bài kiểm tra định kỳ.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Tìm đúng $y^*$ của Ví dụ 2.15, BT 2.21b; kiểm tra phương án BT 2.19; diễn giải giá bóng bài xưởng may.</span></div>
+  <aside class="tuhoc"><p>Điểm nhấn của buổi là <b>giá bóng</b>: con số cho biết thêm một đơn vị nguồn lực thì lãi tăng bao nhiêu — rất hữu ích khi lập dự toán, quyết định mua thêm nguyên liệu, thuê thêm giờ công.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 4 tiết × 45 phút</div><h2>Từ định lý đến quyết định kinh doanh</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Định lý đối ngẫu yếu, mạnh · Độ lệch bù</b><span>Khởi động 7' · đối ngẫu yếu, mạnh, 3 trường hợp 15' · độ lệch bù, Ví dụ 2.15 23'</span></div><div class="m">Vấn đáp, làm mẫu</div></div>
+    <div class="p lt"><div class="t">Tiết 2<small>Lý thuyết</small></div><div class="c"><b>Đọc $y^*$ từ bảng cuối · Giá bóng · Đơn hình đối ngẫu (giới thiệu)</b><span>Bảng cuối 12' · giá bóng, xưởng may 20' · đơn hình đối ngẫu 8' · kiểm tra nhanh 5'</span></div><div class="m">Tình huống kinh tế</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Tìm $y^*$ · Kiểm tra phương án</b><span>BT 2.21a, b · BT 2.19</span></div><div class="m">Cặp đôi</div></div>
+    <div class="p bt"><div class="t">Tiết 4<small>Bài tập</small></div><div class="c"><b>Giá bóng · Ôn tập kiểm tra</b><span>Câu hỏi quản lý (xưởng may) · ôn tập dạng bài KT định kỳ · tổng kết</span></div><div class="m">Nhóm, thảo luận</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · Ví dụ 2.1 và bài toán của người mua nguyên liệu</div><h2>Lãi của người sản xuất và tiền của người mua: ai "thắng"?</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box">Gốc: $f=3x_1+5x_2\to\max$; $2x_1+x_2\le8$; $x_2\le4$; $x_1\le3$.<br>Đối ngẫu: $g=8y_1+4y_2+3y_3\to\min$; $2y_1+y_3\ge3$; $y_1+y_2\ge5$; $y\ge0$.</div>
+      <table class="tbl"><tr><th>Phương án gốc $x$</th><th class="c">$f$</th><th>Phương án đối ngẫu $y$</th><th class="c">$g$</th></tr>
+        <tr><td>$(3;\,2)$</td><td class="c">19</td><td>$(2;\,4;\,0)$</td><td class="c">32</td></tr>
+        <tr><td>$(0;\,4)$</td><td class="c">20</td><td>$(5;\,0;\,0)$</td><td class="c">40</td></tr>
+        <tr><td>$(2;\,4)$</td><td class="c">26</td><td>$(\tfrac32;\,\tfrac72;\,0)$</td><td class="c">?</td></tr></table>
+      <div data-widget="timer" data-min="2" data-label="Tính g"></div>
+    </div>
+    <div class="stack small">
+      <div class="step box">Mọi giá trị $f$ đều <b>không vượt quá</b> mọi giá trị $g$: $19,20,26\le32,40$.</div>
+      <div class="step box key" data-tag="Phát hiện">$g(\tfrac32;\tfrac72;0)=12+14+0=26=f(2;4)$. Hai giá trị "gặp nhau" ⇒ cả hai phương án đều tối ưu!</div>
+      <div class="step box eco" data-tag="Ý nghĩa">Người mua trả đúng bằng lãi tối đa của người sản xuất: <b>giá trị của nguồn lực = giá trị nó tạo ra</b>.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Kiểm tra lại các phương án trong bảng thỏa ràng buộc. Quan sát quan trọng: mọi $f$ của bài max đều ≤ mọi $g$ của bài min; khi tìm được cặp $x,y$ với $f=g$ thì cả hai đều tối ưu — không cần giải thêm.</p></aside>
+</section>
+
+<!-- ============ ĐỊNH LÝ ĐỐI NGẪU ============ -->
+<section class="slide" id="dl-yeu-manh" data-kind="ly-thuyet" data-sec="2.4.2 Định lý đối ngẫu">
+  <div class="head"><div class="eyebrow">2.4.2 · Định lý đối ngẫu (gốc: $\min cx$, $Ax\ge b$, $x\ge0$ — đối ngẫu: $\max yb$, $yA\le c$, $y\ge0$)</div><h2>Đối ngẫu yếu, đối ngẫu mạnh</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Định lý 2.17 · Đối ngẫu yếu">Với mọi phương án $x$ của bài gốc (min) và $y$ của bài đối ngẫu (max): $$g(y)=yb\ \le\ f(x)=cx.$$ <span class="muted">Chứng minh: $yb\le y(Ax)=(yA)x\le cx$.</span></div>
+      <div class="box tip" data-tag="Hệ quả 2.5 – 2.6">Nếu $cx^*=y^*b$ thì $x^*$, $y^*$ đều tối ưu. Một bài không bị chặn ⇒ bài kia không có phương án.</div>
+      <div class="box eco" data-tag="Định lý 2.18 · Đối ngẫu mạnh">Nếu một bài toán có phương án tối ưu thì bài toán kia cũng có, và $$\min f=\max g.$$</div>
+    </div>
+    <div class="stack small">
+      <table class="tbl"><tr><th colspan="2">Chú ý 2.5 · Chỉ xảy ra một trong ba trường hợp</th></tr>
+        <tr><td>1</td><td>Cả hai bài toán đều <b>không có phương án</b>.</td></tr>
+        <tr><td>2</td><td>Cả hai đều có phương án ⇒ cả hai đều có phương án tối ưu, $\min f=\max g$.</td></tr>
+        <tr><td>3</td><td>Một bài có phương án, bài kia không ⇒ bài có phương án <b>không bị chặn</b>.</td></tr></table>
+      <div class="quiz" data-widget="quiz" data-answer="3">
+        <p class="q small">Bài gốc (min) có phương án $x^0$ với $f(x^0)=40$; đối ngẫu có phương án $y^0$ với $g(y^0)=35$. Khẳng định chắc chắn đúng:</p>
+        <ol class="opts"><li>$f_{\min}=40$</li><li>$g_{\max}=35$</li><li>$35\le f_{\min}=g_{\max}\le40$</li><li>Đối ngẫu không bị chặn</li></ol>
+        <p class="explain">Cả hai có phương án ⇒ có tối ưu và bằng nhau; đối ngẫu yếu cho cận dưới 35, cận trên 40.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ghi nhớ: (1) bài min luôn "ở trên" bài max (đối ngẫu yếu); (2) khi tối ưu, hai giá trị bằng nhau (đối ngẫu mạnh). Câu trắc nghiệm minh họa cách dùng đối ngẫu yếu để chặn giá trị tối ưu.</p></aside>
+</section>
+
+<section class="slide" id="do-lech-bu" data-kind="ly-thuyet" data-sec="2.4.2 Định lý đối ngẫu">
+  <div class="head"><div class="eyebrow">2.4.2 · Định lý 2.19 · Độ lệch bù</div><h2>Trong mỗi cặp điều kiện đối ngẫu: một lỏng thì kia chặt</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Định lý độ lệch bù">Cặp phương án $x^*$, $y^*$ tối ưu ⇔
+        $$x_j^*\Big(c_j-\sum_i a_{ij}y_i^*\Big)=0\ \ \forall j,\qquad y_i^*\Big(\sum_j a_{ij}x_j^*-b_i\Big)=0\ \ \forall i.$$</div>
+      <div class="box tip" data-tag="Dùng trong thực hành">
+        <ul><li>$x_j^*&gt;0$ ⇒ ràng buộc $j$ của đối ngẫu thỏa <b>chặt</b> (dấu "=").</li>
+        <li>Ràng buộc $i$ của bài gốc thỏa <b>lỏng</b> ⇒ $y_i^*=0$.</li></ul></div>
+    </div>
+    <div class="stack small">
+      <div class="box eco" data-tag="Đọc theo kinh tế (Ví dụ 2.18)">
+        <ul><li>Nguyên liệu <b>còn thừa</b> (ràng buộc lỏng) ⇒ giá bóng bằng 0: mua thêm không làm tăng lãi.</li>
+        <li>Sản phẩm <b>được sản xuất</b> ($x_j&gt;0$) ⇒ giá trị nguồn lực nó dùng <b>đúng bằng</b> lãi của nó.</li>
+        <li>Nếu giá trị nguồn lực dùng cho sản phẩm $j$ <b>lớn hơn</b> lãi $c_j$ ⇒ không sản xuất sản phẩm đó.</li></ul></div>
+      <div class="box key" data-tag="Quy trình tìm y* từ x*">(1) Liệt kê $x_j^*&gt;0$ → các phương trình chặt; (2) ràng buộc gốc lỏng → $y_i=0$; (3) giải hệ; (4) <b>thử lại</b> $y^*$ là phương án đối ngẫu.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Quy trình 4 bước tìm $y^*$ từ $x^*$ là dạng bài rất hay ra thi. Đừng bỏ bước thử lại: nếu $y$ tìm được vi phạm một ràng buộc đối ngẫu thì $x$ đã cho không tối ưu.</p></aside>
+</section>
+
+<section class="slide" id="vd-215" data-kind="vi-du" data-sec="2.4.2 Định lý đối ngẫu">
+  <div class="head"><div class="eyebrow">2.4.2 · Ví dụ 2.15 giáo trình</div><h2>Biết $x^*$, suy ra $y^*$ bằng độ lệch bù</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 1 2 0 3 | 1 3 0 4 >= 4 | -3 2 1 3 >= 3"></div>
+    <div class="stack small">
+      <p>Gốc (đã đính chính): $f=x_1+2x_2+3x_4\to\min$; $x_1+3x_2+4x_4\ge4$; $-3x_1+2x_2+x_3+3x_4\ge3$; $x\ge0$.</p>
+      <div class="step">Đơn hình: $x^*=(0;\,\tfrac43;\,\tfrac13;\,0)$, $f_{\min}=\tfrac83$.</div>
+      <div class="step">$x_2^*,x_3^*&gt;0$ ⇒ ràng buộc 2, 3 của đối ngẫu chặt: $3y_1+2y_2=2$, $y_2=0$.</div>
+      <div class="step">⇒ $y^*=(\tfrac23;\,0)$. Thử lại: $y_1-3y_2=\tfrac23\le1$ ✓, $4y_1+3y_2=\tfrac83\le3$ ✓.</div>
+      <div class="step box key" data-tag="Kết luận">$g_{\max}=4\cdot\tfrac23+0=\tfrac83=f_{\min}$ ✓</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Thực hiện đủ 4 bước: tìm $x^*$ (đơn hình) → các $x_j^*&gt;0$ cho phương trình chặt → giải → thử lại. Kết quả $g_{\max}=f_{\min}=\tfrac83$ xác nhận đối ngẫu mạnh.</p></aside>
+</section>
+
+<section class="slide" id="doc-y" data-kind="ly-thuyet" data-sec="2.4.3 Đọc lời giải đối ngẫu">
+  <div class="head"><div class="eyebrow">2.4.3 · Chú ý 2.6 · Đọc $y^*$ ngay trên bảng đơn hình cuối</div><h2>$y^*=c_B B^{-1}$ nằm sẵn trong dòng $\Delta$</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Quy tắc (bài toán min)">Gọi $a_{j_i}$ là cột từng là <b>cột đơn vị ở dòng $i$</b> trong bảng I. Ở bảng cuối:
+        $$y_i^*=\Delta_{j_i}+c_{j_i}.$$ Nếu cột đó là $-e_i$ (biến phụ của ràng buộc "$\ge$"): $y_i^*=-(\Delta_{j_i}+c_{j_i})$.</div>
+      <div class="box tip" data-tag="Ví dụ 2.15">Dòng 1: biến phụ $x_5$ (cột $-e_1$), $\Delta_5=-\tfrac23$ ⇒ $y_1=\tfrac23$. Dòng 2: $x_3$ (cột $e_2$), $\Delta_3=0$, $c_3=0$ ⇒ $y_2=0$. ✓</div>
+    </div>
+    <div class="stack small">
+      <div class="box eco" data-tag="Bài max có ràng buộc &quot;≤&quot; (giải −f → min)">Giá bóng của nguồn lực $i$: $$y_i^*=-\Delta(\text{biến phụ thứ } i)\ \text{ở bảng cuối}.$$</div>
+      <div class="box" data-tag="Ví dụ 2.1">Bảng cuối: $\Delta_3=-\tfrac32$, $\Delta_4=-\tfrac72$, $\Delta_5=0$ ⇒ $y^*=(\tfrac32;\,\tfrac72;\,0)$ — đúng như khởi động, không cần giải đối ngẫu!</div>
+      <div class="box plain tiny" data-tag="Đọc thêm: đơn hình đối ngẫu (Lemke, 1954)">Xuất phát từ bảng có mọi $\Delta_j\le0$ nhưng có $x_i&lt;0$ ("giả phương án"): loại dòng có $x_r$ âm nhất, chọn cột theo $\min\{\Delta_j/t_{rj}: t_{rj}&lt;0\}$. Dùng cho tái tối ưu khi đổi $b$ hoặc thêm ràng buộc (Ví dụ 2.16, 2.17).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Mẹo nhanh nhất cho bài max sản xuất (ràng buộc "≤"): giá bóng = <b>−Δ của biến phụ</b> ở bảng cuối (khi giải $-f\to\min$). Mở lại bảng cuối của Ví dụ 2.1 ở Buổi 2 để tự kiểm tra. Phương pháp đơn hình đối ngẫu là phần đọc thêm.</p></aside>
+</section>
+
+<section class="slide" id="gia-bong" data-kind="ly-thuyet" data-sec="2.4.4 Ý nghĩa kinh tế">
+  <div class="head"><div class="eyebrow">2.4.4 · Giá bóng (giá ước định) của nguồn lực</div><h2>Thêm 1 đơn vị nguồn lực $i$ thì lãi tối ưu tăng $y_i^*$</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <p>Ví dụ 2.1 với nguyên liệu II tăng từ 4 lên <b>5</b>:</p>
+      <div id="gb-dt" data-widget="lpgraph" data-table="0" data-lp="max 3 5 | 2 1 <= 8 | 0 1 <= 5 | 1 0 <= 3"></div>
+    </div>
+    <div class="stack small">
+      <div class="step box">Lãi tối ưu mới: $f_{\max}=29{,}5$ tại $(1{,}5;\,5)$ — tăng $3{,}5=y_2^*$ ✓.</div>
+      <div class="step box key" data-tag="Ý nghĩa">$y_i^*$ = mức tăng lãi tối ưu khi nguồn lực $i$ tăng 1 đơn vị (trong một phạm vi nhất định, khi cơ sở tối ưu chưa đổi).</div>
+      <div class="step box eco" data-tag="Quyết định">
+        <ul><li>Nguyên liệu II: chỉ mua thêm nếu giá <b>dưới 3,5</b>/đơn vị.</li><li>Nguyên liệu III ($y_3^*=0$): đang thừa — không mua thêm; có thể bán bớt phần thừa.</li><li>Nguyên liệu I: đáng giá 1,5/đơn vị với doanh nghiệp.</li></ul></div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Giá bóng trả lời câu hỏi: "trả tối đa bao nhiêu cho một đơn vị nguồn lực bổ sung?" Nguồn lực đang thừa có giá bóng bằng 0. Lưu ý giá bóng chỉ đúng trong một phạm vi thay đổi nhỏ của nguồn lực.</p></aside>
+</section>
+
+<section class="slide" id="xuong-may" data-kind="vi-du" data-sec="2.4.4 Ý nghĩa kinh tế">
+  <div class="head"><div class="eyebrow">2.4.4 · Ví dụ bổ sung · Xưởng may</div><h2>Bảng cuối cho cả kế hoạch sản xuất lẫn giá trị của giờ công</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <table class="tbl"><tr><th>Giờ / sản phẩm</th><th class="c">Sơ mi</th><th class="c">Quần âu</th><th class="c">Áo khoác</th><th class="c">Quỹ giờ</th></tr>
+        <tr><td>Cắt</td><td class="c">1</td><td class="c">2</td><td class="c">1</td><td class="c">60</td></tr>
+        <tr><td>May</td><td class="c">2</td><td class="c">1</td><td class="c">3</td><td class="c">85</td></tr>
+        <tr><td>Hoàn thiện</td><td class="c">1</td><td class="c">1</td><td class="c">2</td><td class="c">55</td></tr>
+        <tr><th>Lãi (nghìn đ)</th><td class="c">40</td><td class="c">30</td><td class="c">60</td><td></td></tr></table>
+      <div data-widget="simplex" data-canon="1" data-lp="max 40 30 60 | 1 2 1 <= 60 | 2 1 3 <= 85 | 1 1 2 <= 55"></div>
+    </div>
+    <div class="stack small">
+      <div class="step box key" data-tag="Kế hoạch tối ưu">20 sơ mi, 15 quần, 10 áo khoác; lãi <b>1 850</b> nghìn đồng; cả ba khâu dùng hết quỹ giờ.</div>
+      <div class="step box eco" data-tag="Giá bóng">$y^*=(5;\,15;\,5)$: một giờ <b>may</b> thêm đáng 15 nghìn, giờ cắt và hoàn thiện đáng 5 nghìn. Kiểm tra: $60\cdot5+85\cdot15+55\cdot5=1850$ ✓.</div>
+      <div class="step box tip" data-tag="Câu hỏi quản lý">Thuê thêm thợ may làm ngoài giờ giá 12 nghìn/giờ có lợi không? <b>Có</b> (12 &lt; 15). Giá 18 nghìn/giờ? <b>Không</b>.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Bấm "Kết quả" trên công cụ, đọc Δ của ba biến phụ ở bảng cuối ($-5;-15;-5$) ⇒ giá bóng $(5;15;5)$. Khâu may có giá bóng cao nhất: đó là "nút thắt cổ chai" của xưởng — nơi đáng đầu tư mở rộng nhất.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="2.4.4 Ý nghĩa kinh tế">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 4 phút</div><h2>Định lý đối ngẫu và giá bóng</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="1">
+      <p class="q small">Bài max sản xuất có $x^*=(0;\,6;\,2)$. Theo độ lệch bù, các ràng buộc nào của bài đối ngẫu phải thỏa chặt?</p>
+      <ol class="opts one"><li>Ràng buộc thứ 2 và thứ 3</li><li>Ràng buộc thứ 1</li><li>Tất cả các ràng buộc</li><li>Không ràng buộc nào</li></ol>
+      <p class="explain">$x_2^*,x_3^*&gt;0$ ⇒ ràng buộc đối ngẫu thứ 2, 3 chặt.</p>
+    </div>
+    <ul class="tf" data-widget="tf">
+      <li data-ans="d" data-why="Ràng buộc lỏng ⇒ $y_i^*=0$.">Nguyên liệu còn thừa ở phương án tối ưu thì giá bóng của nó bằng 0.</li>
+      <li data-ans="s" data-why="Đối ngẫu yếu: với bài gốc min, $g(y)\le f(x)$ — đối ngẫu cho cận DƯỚI.">Bài gốc min: mọi phương án đối ngẫu cho một cận trên của $f_{\min}$.</li>
+      <li data-ans="d" data-why="Đối ngẫu mạnh.">Nếu bài gốc có phương án tối ưu thì $\min f=\max g$.</li>
+      <li data-ans="s" data-why="Chỉ mua khi giá thấp hơn giá bóng 15.">Giá bóng giờ may là 15 nghìn: nên thuê thêm với giá 20 nghìn/giờ.</li>
+    </ul>
+  </div>
+  <aside class="tuhoc"><p>Nhớ chiều bất đẳng thức: bài min luôn ở trên bài max. Với bài gốc min, phương án đối ngẫu cho cận dưới; với bài gốc max, phương án đối ngẫu cho cận trên.</p></aside>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt-dang" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Luyện tập · Tiết 3 – 4</div><h2>Ba dạng bài của buổi hôm nay</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Dạng 1 <small>BT 2.21</small></h4><b>Tìm $y^*$ từ $x^*$</b><span class="muted">Độ lệch bù hoặc đọc từ bảng cuối; luôn thử lại.</span><a class="xref" href="#bt-221">Tới bài</a></div>
+    <div class="card"><h4>Dạng 2 <small>BT 2.19</small></h4><b>Kiểm tra phương án tối ưu</b><span class="muted">Giả sử $x^0$ tối ưu → tìm $y$ → $y$ có là phương án?</span><a class="xref" href="#bt-219">Tới bài</a></div>
+    <div class="card"><h4>Dạng 3 <small>Bổ sung</small></h4><b>Giá bóng, quyết định</b><span class="muted">So sánh giá thị trường với giá bóng.</span><a class="xref" href="#bt-gia-bong">Tới bài</a></div>
+  </div>
+  <div class="box small" data-tag="Cách tổ chức" data-aud="gv">Dạng 1–2: cặp đôi, 1 cặp trình bày. Dạng 3: nhóm thảo luận 7', đại diện trả lời như "tư vấn cho giám đốc".</div>
+  <div class="box small" data-tag="Cách tự luyện" data-aud="hv">Viết lời giải đầy đủ bốn bước; kiểm tra $f(x^*)=g(y^*)$ ở cuối mỗi bài.</div>
+  <aside class="tuhoc"><p>Mỗi bài kết thúc bằng việc kiểm tra $f(x^*)=g(y^*)$ — nếu bằng nhau thì chắc chắn đúng. BT 2.20 (đơn hình đối ngẫu) dành cho bạn muốn tìm hiểu thêm.</p></aside>
+</section>
+
+<section class="slide" id="bt-221" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 2.21 (a, b) với $\lambda=1$, $\beta=6$</div><h2>Giải bài toán gốc, đọc ngay lời giải đối ngẫu</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-lp="min 1 1 1 1 0 0 | 1 0 0 -1 0 -2 = 2 | 0 1 0 1 -3 1 = 4 | 0 0 1 2 -5 6 = 6"></div>
+    <div class="stack small">
+      <p>$f=x_1+x_2+x_3+x_4\to\min$; $x_1-x_4-2x_6=2$; $x_2+x_4-3x_5+x_6=4$; $x_3+2x_4-5x_5+6x_6=6$; $x\ge0$.</p>
+      <div class="step box key" data-tag="a)">$f_{\min}=7$ tại $x^*=(4;\,3;\,0;\,0;\,0;\,1)$.</div>
+      <div class="step"><b>b) Cách 1 — độ lệch bù:</b> $x_1,x_2,x_6&gt;0$ ⇒ $y_1=1$, $y_2=1$, $-2y_1+y_2+6y_3=0$ ⇒ $y_3=\tfrac16$.</div>
+      <div class="step"><b>Cách 2 — bảng cuối:</b> cơ sở bảng I là $a_1,a_2,a_3$: $y_i=\Delta_i+c_i$: $(0+1;\ 0+1;\ -\tfrac56+1)=(1;\,1;\,\tfrac16)$.</div>
+      <div class="step box tip" data-tag="Thử lại">$g=2\cdot1+4\cdot1+6\cdot\tfrac16=7=f_{\min}$ ✓</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>So sánh hai cách: độ lệch bù (cần giải hệ) và đọc từ bảng cuối (chỉ cần cộng). Câu c, d, e của bài này (tham số $\lambda$, $\beta$) là bài nâng cao — thử sức nếu bạn muốn đạt điểm cao.</p></aside>
+</section>
+
+<section class="slide" id="bt-219" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 2.19</div><h2>$x^0=(2;0;0;8;6)$ có tối ưu không?</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p>$f=3x_1+9x_2-2x_3+x_4-4x_5\to\min$; $-x_1+5x_2-3x_3+x_4-2x_5=-6$; $3x_1-4x_2+2x_3-x_4+x_5=4$; $4x_1-x_3+2x_4-3x_5\ge2$; $x\ge0$.</p>
+      <div class="step">a) Đối ngẫu: $g=-6y_1+4y_2+2y_3\to\max$; năm ràng buộc "$\le$" theo các cột; $y_1,y_2$ tùy ý, $y_3\ge0$.</div>
+      <div class="step">$x^0$ thỏa chặt hai đẳng thức, ràng buộc 3: $8+16-18=6&gt;2$ (lỏng) ⇒ $x^0$ là phương án; có 4 tọa độ dương (kể cả biến phụ) &gt; 3 ⇒ <b>không là PACB</b>.</div>
+      <div class="step">Giả sử $x^0$ tối ưu: $x_1,x_4,x_5&gt;0$ ⇒ $-y_1+3y_2+4y_3=3$; $y_1-y_2+2y_3=1$; $-2y_1+y_2-3y_3=-4$; ràng buộc 3 lỏng ⇒ $y_3=0$.</div>
+    </div>
+    <div class="stack small">
+      <div class="step">Giải: $y^*=(3;\,2;\,0)$. Thử lại hai ràng buộc còn lại: $5y_1-4y_2=7\le9$ ✓; $-3y_1+2y_2-y_3=-5\le-2$ ✓.</div>
+      <div class="step box key" data-tag="Kết luận">$y^*$ là phương án đối ngẫu, $g(y^*)=-18+8=-10=f(x^0)$ ⇒ $x^0$ <b>tối ưu</b> (dù không phải PACB). PACB tối ưu: $(\tfrac32;0;0;\tfrac{11}2;5)$.</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Tập phương án tối ưu: $x=(t;\,0;\,0;\,5t-2;\,2t+2)$ với $t\ge\tfrac32$ (từ $4t+2(5t-2)-3(2t+2)\ge2$); giáo trình in "$x_1&gt;\tfrac{12}5$" là chưa đúng.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ý tưởng kiểm tra: <b>giả sử</b> $x^0$ tối ưu, dùng độ lệch bù tìm $y$; nếu $y$ là phương án đối ngẫu và $f(x^0)=g(y)$ thì $x^0$ tối ưu thật. Bài này cho thấy phương án tối ưu không nhất thiết là PACB. Xem đính chính về tập phương án tối ưu.</p></aside>
+</section>
+
+<section class="slide" id="bt-gia-bong" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 3 · Tư vấn cho giám đốc (bài khẩu phần BT 2.5)</div><h2>Giá bóng trong bài toán chi phí</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <p>$f=15x_1+12x_2+10x_3\to\min$; $3x_1+4x_2+2x_3\ge160$ (D1); $x_1+2x_2+3x_3\ge140$ (D2). Đáp số: $x^*=(0;25;30)$, $f_{\min}=600$.</p>
+      <ol>
+        <li>Lập đối ngẫu, tìm $y^*$ bằng độ lệch bù.</li>
+        <li>Nếu nhu cầu D2 tăng thêm 1 đơn vị, chi phí tăng bao nhiêu?</li>
+        <li>Giá T1 phải giảm xuống dưới bao nhiêu thì mới đáng mua T1?</li>
+      </ol>
+      <div data-widget="timer" data-min="7" data-label="Thảo luận nhóm"></div>
+    </div>
+    <div class="stack small">
+      <div class="step">1) $g=160y_1+140y_2\to\max$; $3y_1+y_2\le15$; $4y_1+2y_2\le12$; $2y_1+3y_2\le10$; $y\ge0$. $x_2,x_3&gt;0$ ⇒ $4y_1+2y_2=12$, $2y_1+3y_2=10$ ⇒ $y^*=(2;\,2)$; thử lại $3\cdot2+2=8\le15$ ✓; $g=600$ ✓.</div>
+      <div class="step">2) $y_2^*=2$: chi phí tăng khoảng <b>2 nghìn đồng</b>.</div>
+      <div class="step box eco" data-tag="3)">Giá trị dinh dưỡng của 1 kg T1 theo giá bóng: $3y_1+y_2=8$. T1 chỉ đáng mua khi giá <b>dưới 8 nghìn đồng/kg</b> (hiện 15).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Câu 3 minh họa điều kiện (1) của Ví dụ 2.18: sản phẩm (ở đây là loại thức ăn) chỉ được chọn khi chi phí của nó không vượt quá "giá trị" tính theo giá bóng. Đây là tư duy chi phí cơ hội trong kế toán quản trị.</p></aside>
+</section>
+
+<section class="slide" id="on-tap-kt" data-kind="on-tap" data-sec="Ôn tập">
+  <div class="head"><div class="eyebrow">Ôn tập · Kiểm tra định kỳ 45 phút (QHTT và đối ngẫu)</div><h2>Năm dạng bài cần thành thạo</h2></div>
+  <table class="tbl small">
+    <tr><th>#</th><th>Dạng bài</th><th>Kỹ năng then chốt</th><th>Xem lại</th></tr>
+    <tr><td>1</td><td>Lập mô hình QHTT từ bài toán kinh tế</td><td>Biến, mục tiêu, ràng buộc, dấu "$\le$/$\ge$"</td><td><a href="buoi1.html#bt-mo-hinh">Buổi 1</a></td></tr>
+    <tr><td>2</td><td>Giải bằng đồ thị (2 biến)</td><td>Miền phương án, đường mức, đỉnh</td><td><a href="buoi1.html#do-thi-vd">Buổi 1</a></td></tr>
+    <tr><td>3</td><td>Đơn hình (có thể có biến giả)</td><td>Bảng, cột/hàng xoay, $\alpha/\beta$, kết luận</td><td><a href="buoi2.html#thuat-toan">Buổi 2</a>, <a href="buoi3.html#bien-gia">Buổi 3</a></td></tr>
+    <tr><td>4</td><td>Lập bài toán đối ngẫu</td><td>Bảng 2.11, "thuận – thuận"</td><td><a href="buoi3.html#lap-dn">Buổi 3</a></td></tr>
+    <tr><td>5</td><td>Tìm $y^*$ / kiểm tra phương án / giá bóng</td><td>Độ lệch bù, thử lại, diễn giải</td><td><a href="#do-lech-bu">Buổi 4</a></td></tr>
+  </table>
+  <div class="box tip small" data-tag="Lời khuyên">Giữ phân số; ghi rõ cột xoay, hàng xoay; luôn <b>kết luận</b> đầy đủ (phương án, giá trị tối ưu, ý nghĩa). Làm bài <a href="kiem-tra.html#c2dk">Kiểm tra định kỳ thử</a> trên hệ thống.</div>
+  <aside class="tuhoc"><p>Trước bài kiểm tra định kỳ: rà lại năm dạng bài trong bảng, làm bài <b>Kiểm tra định kỳ thử</b> trên hệ thống (có giới hạn thời gian như thật) và xem lại các câu sai.</p></aside>
+</section>
+
+<!-- ============ TỔNG KẾT ============ -->
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 4</div><h2>Hai bài toán, một đáp số — và một bảng giá cho nguồn lực</h2></div>
+  <div class="flow">
+    <div class="n"><b>YẾU</b>$g(y)\le f(x)$ (gốc min)</div><div class="a">→</div>
+    <div class="n"><b>MẠNH</b>$\min f=\max g$</div><div class="a">→</div>
+    <div class="n"><b>ĐỘ LỆCH BÙ</b>$x_j&gt;0$ ⇒ chặt; lỏng ⇒ $y_i=0$</div><div class="a">→</div>
+    <div class="n"><b>GIÁ BÓNG</b>$y_i^*$ = giá trị biên của nguồn lực $i$</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>1 · Tìm $y^*$</h4>Độ lệch bù (giải hệ, thử lại) hoặc đọc dòng $\Delta$ của bảng cuối.</div>
+    <div class="card"><h4>2 · Kiểm tra $x^0$</h4>Giả sử tối ưu → tìm $y$ → $y$ khả thi và $f=g$ ⇒ tối ưu.</div>
+    <div class="card"><h4>3 · Quyết định</h4>Mua thêm nguồn lực khi giá &lt; giá bóng; nguồn lực thừa có giá bóng 0.</div>
+  </div>
+  <aside class="tuhoc"><p>Buổi 5 chuyển sang bài toán vận tải — một bài toán QHTT đặc biệt có thuật toán riêng rất gọn (phương pháp thế vị), xây dựng từ chính ý tưởng đối ngẫu của buổi hôm nay.</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Kiểm tra định kỳ và chuẩn bị Buổi 5: Bài toán vận tải</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>BT 2.21c (tìm $\lambda$ để $x^*$ vẫn tối ưu); tìm $y^*$ cho BT 2.14a, 2.15b.</li>
+        <li>Xưởng may: giá bóng có thay đổi nếu quỹ giờ may tăng lên 100 giờ? Kiểm tra bằng <a href="lab.html">Phòng tính QHTT</a>.</li>
+        <li>Làm bài kiểm tra sau Buổi 4 và bài <a href="kiem-tra.html#c2dk">Kiểm tra định kỳ thử</a>.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình 2.5.1: Bài toán vận tải — khái niệm, tính chất, ô chọn, chu trình.</li>
+        <li>Giáo trình 2.5.2: Phương án cực biên xuất phát — cước phí nhỏ nhất, Vogel.</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref" href="buoi5.html">Sang Buổi 5 · Bài toán vận tải</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Chuẩn bị kỹ cho bài kiểm tra định kỳ: làm lại các ví dụ chính không nhìn lời giải, làm bài kiểm tra thử trên hệ thống.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/qhtt.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/widgets-qhtt.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

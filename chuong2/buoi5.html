@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 5 · Bài toán vận tải và phương pháp thế vị</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 2" data-unit="Buổi 5 · Bài toán vận tải" data-prev="buoi4.html" data-next="buoi6.html" data-home="index.html" data-kt="c2b5" data-lab="Phòng tính QHTT">
+<div class="stage">
+
+<!-- ============ MỞ ĐẦU ============ -->
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 5">
+  <div class="num"><small>Chương 2 · Quy hoạch tuyến tính và ứng dụng</small>Buổi 5</div>
+  <h1>Bài toán vận tải: phương án xuất phát và phương pháp thế vị</h1>
+  <div class="meta"><span class="chip">3 tiết</span><span class="chip lt">Lý thuyết 2 tiết</span><span class="chip bt">Bài tập 1 tiết</span><span class="chip">Mục 2.3.1 – 2.3.2 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#mo-hinh-vt"><span>2.5.1</span>Mô hình và tính chất</a>
+    <a href="#o-chon"><span>2.5.1</span>Ô chọn, chu trình</a>
+    <a href="#pa-xuat-phat"><span>2.5.2</span>Cước phí nhỏ nhất, Vogel</a>
+    <a href="#the-vi"><span>2.5.3</span>Phương pháp thế vị</a>
+    <a href="#bt-224a"><span>BT</span>Luyện tập: BT 2.24a</a>
+  </div>
+  <aside class="tuhoc"><p>Bài toán vận tải là ứng dụng thực tế nhất của quy hoạch tuyến tính: điều phối hàng từ kho đến cửa hàng, phân công lao động… Thuật toán thế vị chỉ cần cộng trừ trên một bảng — rất phù hợp để làm tay.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 5</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Phát biểu được bài toán vận tải, điều kiện cân bằng thu phát, tính chất có phương án tối ưu.</li>
+      <li>Hiểu khái niệm ô chọn, chu trình, PACB ($m+n-1$ ô chọn không tạo chu trình).</li>
+      <li>Hiểu cơ sở của phương pháp thế vị (thế vị = biến đối ngẫu).</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Lập phương án xuất phát bằng phương pháp cước phí nhỏ nhất và Vogel.</li>
+      <li>Tính thế vị, ước lượng; tìm chu trình, điều chỉnh phương án.</li>
+      <li>Xử lý phương án suy biến bằng ô chọn 0.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Mô hình hóa logistics:</b> nhận ra bài toán vận tải trong tình huống thực tế.</li>
+      <li><b>Tính toán có hệ thống:</b> trình bày bảng vận tải rõ ràng.</li>
+      <li><b>Tự kiểm tra:</b> kiểm tra cân bằng hàng, cột sau mỗi bước.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Lập phương án xuất phát và giải Ví dụ 2.21 bằng thế vị; giải BT 2.24a ($f_{\min}=82$).</span></div>
+  <aside class="tuhoc"><p>Bài toán vận tải thường có một câu trong đề thi kết thúc học phần. Mục tiêu là giải trọn vẹn một bài 3×4 hoặc 4×5 trong khoảng 20 phút.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 3 tiết × 45 phút</div><h2>Từ bảng cước phí đến phương án vận chuyển tối ưu</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Mô hình · Tính chất · Phương án xuất phát</b><span>Khởi động 5' · mô hình, cân bằng 10' · ô chọn, chu trình 10' · cước phí nhỏ nhất, Vogel, Ví dụ 2.21 20'</span></div><div class="m">Làm mẫu trên bảng</div></div>
+    <div class="p lt"><div class="t">Tiết 2<small>Lý thuyết</small></div><div class="c"><b>Phương pháp thế vị</b><span>Cơ sở (đối ngẫu) 8' · thuật toán 10' · Ví dụ 2.21 đến tối ưu 22' · kiểm tra nhanh 5'</span></div><div class="m">Công cụ từng bước</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>BT 2.24a</b><span>Cả lớp làm, 2 SV lên bảng (phương án xuất phát / thế vị) · tổng kết</span></div><div class="m">Cá nhân, lên bảng</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · Nhắc lại Ví dụ 2.6 (Buổi 1)</div><h2>2 kho, 3 cửa hàng: 6 biến, 5 ràng buộc — cần bảng đơn hình lớn?</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <table class="tbl"><tr><th>Cước phí</th><th class="c">T1 (130)</th><th class="c">T2 (200)</th><th class="c">T3 (90)</th></tr>
+        <tr><td>P1 (170)</td><td class="c">25</td><td class="c">18</td><td class="c">40</td></tr>
+        <tr><td>P2 (250)</td><td class="c">32</td><td class="c">52</td><td class="c">14</td></tr></table>
+      <p>Thử phân phối "theo trực giác": tuyến rẻ nhất trước. Tổng chi phí bao nhiêu?</p>
+      <div data-widget="timer" data-min="3" data-label="Thử phân phối"></div>
+    </div>
+    <div class="stack small">
+      <div class="step box">Tuyến rẻ nhất $(2,3)$: 14 → chở 90. Tiếp $(1,2)$: 18 → chở 170 (hết kho P1). Còn T2 thiếu 30, T1 cần 130: lấy từ P2.</div>
+      <div class="step box key" data-tag="Phương án">$x_{12}=170$, $x_{21}=130$, $x_{22}=30$, $x_{23}=90$: $f=3060+4160+1560+1260=10\,040$.</div>
+      <div class="step box eco" data-tag="Câu hỏi">Đây đã là chi phí nhỏ nhất chưa? Phương pháp "tuyến rẻ nhất trước" chính là <b>phương pháp cước phí nhỏ nhất</b> — cho phương án tốt, nhưng chưa chắc tối ưu. Cần cách <b>kiểm tra và cải tiến</b> ⇒ thế vị.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự phân phối thử theo trực giác trước khi xem bước. Cách "ưu tiên tuyến rẻ nhất" chính là phương pháp cước phí nhỏ nhất. Hãy nhập bài này vào Phòng tính QHTT (mục Vận tải) để kiểm tra phương án có tối ưu không.</p></aside>
+</section>
+
+<!-- ============ MÔ HÌNH ============ -->
+<section class="slide" id="mo-hinh-vt" data-kind="ly-thuyet" data-sec="2.5.1 Bài toán vận tải">
+  <div class="head"><div class="eyebrow">2.5.1 · Bài toán vận tải</div><h2>$m$ điểm phát, $n$ điểm thu, cước phí $c_{ij}$</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Mô hình">$$f=\sum_{i=1}^m\sum_{j=1}^n c_{ij}x_{ij}\to\min\quad\begin{cases}\sum_j x_{ij}=a_i & (\text{phát hết})\\ \sum_i x_{ij}=b_j & (\text{thu đủ})\\ x_{ij}\ge0\end{cases}$$</div>
+      <div class="box tip" data-tag="Điều kiện cân bằng thu phát">$\sum a_i=\sum b_j$. Nếu phát &gt; thu: thêm <b>điểm thu giả</b> (tồn kho) nhận phần dư, cước 0. Nếu phát &lt; thu: thêm <b>điểm phát giả</b> (ghi nợ), cước 0.</div>
+    </div>
+    <div class="stack small">
+      <div class="box eco" data-tag="Định lý 2.25 – 2.26">Bài toán cân bằng thu phát <b>luôn có phương án tối ưu</b>. Ma trận ràng buộc có hạng $m+n-1$ ⇒ PACB có <b>không quá $m+n-1$</b> ô dương.</div>
+      <table class="tbl"><tr><th>Phát \ Thu</th><th class="c">$b_1$</th><th class="c">…</th><th class="c">$b_n$</th></tr>
+        <tr><td>$a_1$</td><td class="c"><span class="muted">$x_{11}$</span> <sub>$c_{11}$</sub></td><td class="c">…</td><td class="c"><span class="muted">$x_{1n}$</span> <sub>$c_{1n}$</sub></td></tr>
+        <tr><td>$a_m$</td><td class="c"><span class="muted">$x_{m1}$</span> <sub>$c_{m1}$</sub></td><td class="c">…</td><td class="c"><span class="muted">$x_{mn}$</span> <sub>$c_{mn}$</sub></td></tr></table>
+      <p class="muted">Bảng vận tải: lượng hàng ghi góc trên trái, cước phí góc dưới phải mỗi ô.</p>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Luôn kiểm tra cân bằng thu phát đầu tiên. Nếu không cân bằng, thêm điểm giả với cước phí 0 — lượng hàng ở điểm giả cho biết hàng tồn kho (thu giả) hay nhu cầu không được đáp ứng (phát giả).</p></aside>
+</section>
+
+<section class="slide" id="o-chon" data-kind="ly-thuyet" data-sec="2.5.1 Bài toán vận tải">
+  <div class="head"><div class="eyebrow">2.5.1 · Định nghĩa 2.16 · Ô chọn và chu trình</div><h2>PACB = $m+n-1$ ô chọn không tạo thành chu trình</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <div class="box key" data-tag="Khái niệm">
+        <ul><li><b>Ô chọn:</b> ô có $x_{ij}&gt;0$ (hoặc ô chọn 0 bổ sung); ô còn lại là <b>ô loại</b>.</li>
+        <li><b>Chu trình:</b> dãy ô khép kín, hai ô liên tiếp cùng hàng hoặc cùng cột, đổi hướng ở mỗi ô (không có 3 ô liên tiếp thẳng hàng). Số ô chẵn, ít nhất 4.</li></ul></div>
+      <div class="box eco" data-tag="Hệ quả 2.9 · Định lý 2.28">$x$ là PACB ⇔ tập ô chọn không chứa chu trình. Thêm một ô loại vào $m+n-1$ ô chọn ⇒ có <b>đúng một</b> chu trình.</div>
+      <div class="box warn tiny" data-tag="Suy biến">Nếu số ô chọn &lt; $m+n-1$: bổ sung <b>ô chọn 0</b> (ghi $x_{ij}=0$) sao cho không tạo chu trình.</div>
+    </div>
+    <svg viewBox="0 0 320 210" class="fig" role="img" aria-label="Chu trình trên bảng vận tải">
+      <g stroke="var(--line,#ccc)" stroke-width="1" fill="none">
+        <rect x="10" y="10" width="300" height="190"/>
+        <line x1="70" y1="10" x2="70" y2="200"/><line x1="130" y1="10" x2="130" y2="200"/><line x1="190" y1="10" x2="190" y2="200"/><line x1="250" y1="10" x2="250" y2="200"/>
+        <line x1="10" y1="57" x2="310" y2="57"/><line x1="10" y1="105" x2="310" y2="105"/><line x1="10" y1="152" x2="310" y2="152"/>
+      </g>
+      <polyline points="40,33 160,33 160,128 280,128 280,176 40,176 40,33" fill="none" stroke="var(--pen,#c0392b)" stroke-width="3"/>
+      <g font-size="15" font-weight="700" text-anchor="middle">
+        <circle cx="40" cy="33" r="13" fill="var(--marker,#ffe66d)"/><text x="40" y="38">+</text>
+        <circle cx="160" cy="33" r="13" fill="#fff" stroke="var(--pen,#c0392b)"/><text x="160" y="38">−</text>
+        <circle cx="160" cy="128" r="13" fill="#fff" stroke="var(--pen,#c0392b)"/><text x="160" y="133">+</text>
+        <circle cx="280" cy="128" r="13" fill="#fff" stroke="var(--pen,#c0392b)"/><text x="280" y="133">−</text>
+        <circle cx="280" cy="176" r="13" fill="#fff" stroke="var(--pen,#c0392b)"/><text x="280" y="181">+</text>
+        <circle cx="40" cy="176" r="13" fill="#fff" stroke="var(--pen,#c0392b)"/><text x="40" y="181">−</text>
+      </g>
+      <text x="40" y="70" font-size="11" text-anchor="middle">ô đưa vào</text>
+    </svg>
+  </div>
+  <aside class="tuhoc"><p>Chu trình bắt đầu từ ô mới đưa vào, mỗi lần rẽ 90° tại một ô chọn rồi quay về ô đầu. Đánh dấu xen kẽ "+", "−" bắt đầu bằng "+" ở ô đưa vào: cộng thêm hàng ở ô "+", bớt ở ô "−" thì tổng mỗi hàng, cột không đổi.</p></aside>
+</section>
+
+<section class="slide" id="pa-xuat-phat" data-kind="ly-thuyet" data-sec="2.5.2 Phương án xuất phát">
+  <div class="head"><div class="eyebrow">2.5.2 · Tìm phương án cực biên xuất phát</div><h2>Hai phương pháp "chọn ô — phân phối tối đa — xóa"</h2></div>
+  <div class="cols">
+    <div class="box key small" data-tag="Phương pháp cước phí nhỏ nhất">
+      <ol><li>Chọn ô $(p,q)$ có $c_{pq}$ nhỏ nhất trong các ô chưa xóa.</li><li>Phân phối tối đa: $x_{pq}=\min\{a_p,b_q\}$ (theo lượng còn lại).</li><li>Trừ lượng đã phân phối; <b>xóa hàng hoặc cột</b> đã hết hàng/đủ hàng.</li><li>Lặp lại đến khi xóa hết.</li></ol></div>
+    <div class="box key small" data-tag="Phương pháp Vogel (chênh lệch)">
+      <ol><li>Mỗi hàng, cột: <b>chênh lệch</b> = cước nhỏ nhì − cước nhỏ nhất.</li><li>Chọn hàng/cột có chênh lệch <b>lớn nhất</b>; trong đó chọn ô cước nhỏ nhất.</li><li>Phân phối tối đa, xóa, tính lại chênh lệch.</li></ol>
+      <p class="muted">Thường cho phương án tốt hơn (gần tối ưu hơn), tính toán nhiều hơn.</p></div>
+  </div>
+  <div class="box warn small" data-tag="Lưu ý">Mỗi lần chỉ xóa <b>một</b> hàng hoặc <b>một</b> cột. Nếu cùng lúc hàng hết và cột đủ: xóa một, dòng còn lại giữ lượng 0 — sẽ sinh <b>ô chọn 0</b> để đủ $m+n-1$ ô chọn. Ô của điểm giả (cước 0) chọn <b>sau cùng</b>.</div>
+  <aside class="tuhoc"><p>Cả hai phương pháp đều "chọn ô → phân phối tối đa → xóa hàng hoặc cột". Khác nhau ở cách chọn ô. Kết quả phải có đúng $m+n-1$ ô chọn (kể cả ô chọn 0) và không tạo chu trình.</p></aside>
+</section>
+
+<section class="slide" id="vd-221" data-kind="vi-du" data-sec="2.5.2 Phương án xuất phát">
+  <div class="head"><div class="eyebrow">2.5.2 · Ví dụ 2.21 · Phương pháp cước phí nhỏ nhất</div><h2>4 điểm phát, 5 điểm thu — bấm "Bước tiếp" theo từng lần phân phối</h2></div>
+  <div class="cols w64">
+    <div data-widget="transport" data-a="70 45 35 60" data-b="20 40 55 60 35" data-c="5 6 1 4 9; 4 7 3 2 7; 3 3 5 8 2; 7 1 4 4 5"></div>
+    <div class="stack small">
+      <div class="box tip" data-tag="Thứ tự chọn">$c_{13}=1$: 55 · $c_{42}=1$: 40 · $c_{24}=2$: 45 · $c_{35}=2$: 35 · $c_{14}=4$: 15 · $c_{41}$: 20.</div>
+      <div class="box key" data-tag="Kết quả">Phương án xuất phát $f=455$ — chỉ 6 ô dương &lt; $m+n-1=8$ ⇒ suy biến, bổ sung <b>2 ô chọn 0</b>.</div>
+      <div class="box eco tiny" data-tag="So sánh Vogel (Ví dụ 2.22)">Vogel cho phương án tốt hơn: giáo trình được $f=420$ (đã tối ưu). Khi có chênh lệch bằng nhau, cách chọn khác nhau có thể cho phương án khác (công cụ được 425).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Làm song song trên giấy, mỗi lần bấm "Bước tiếp" đối chiếu một ô. Chú ý bước phân phối ô $(3,5)$: hàng 3 hết hàng đúng lúc cột 5 đủ hàng — đây là nguyên nhân xuất hiện ô chọn 0.</p></aside>
+</section>
+
+<!-- ============ THẾ VỊ ============ -->
+<section class="slide" id="the-vi" data-kind="ly-thuyet" data-sec="2.5.3 Phương pháp thế vị">
+  <div class="head"><div class="eyebrow">2.5.3 · Phương pháp thế vị</div><h2>Thế vị $u_i$, $v_j$ chính là biến của bài toán đối ngẫu</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box" data-tag="Đối ngẫu của bài toán vận tải">$\sum a_iu_i+\sum b_jv_j\to\max$, $\ u_i+v_j\le c_{ij}$ ($u,v$ tùy ý).</div>
+      <div class="box key" data-tag="Ước lượng">$$\Delta_{ij}=u_i+v_j-c_{ij},\qquad u_i+v_j=c_{ij}\ \text{tại ô chọn}.$$ Chọn $u_1=0$ rồi tính lần lượt các thế vị còn lại.</div>
+      <div class="box eco" data-tag="Định lý 2.29 · Dấu hiệu tối ưu">Mọi $\Delta_{ij}\le0$ ⇒ phương án tối ưu (vì $(u,v)$ là phương án đối ngẫu thỏa độ lệch bù).</div>
+    </div>
+    <div class="stack small">
+      <div class="box key" data-tag="Thuật toán (Định lý 2.30)">
+        <ol><li>PACB xuất phát, đủ $m+n-1$ ô chọn.</li><li>Tính $u_i,v_j$ từ ô chọn; tính $\Delta_{ij}$ ở ô loại.</li><li>Mọi $\Delta_{ij}\le0$ ⇒ <b>dừng, tối ưu</b>.</li><li>Đưa ô $(r,k)$ có $\Delta$ <b>lớn nhất</b> vào; lập chu trình, đánh dấu $+,-,+,\dots$ từ ô $(r,k)$.</li><li>$\theta=\min$ lượng hàng ở các ô "$-$"; cộng $\theta$ ở ô "+", trừ $\theta$ ở ô "−"; ô "−" đạt min rời khỏi tập ô chọn.</li><li>Quay lại bước 2. Chi phí giảm $\theta\,\Delta_{rk}$.</li></ol></div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Quy trình lặp: thế vị → ước lượng → (nếu có Δ dương) chu trình → điều chỉnh θ. Mỗi vòng chi phí giảm đúng $\theta\cdot\Delta_{rk}$ — dùng để tự kiểm tra kết quả.</p></aside>
+</section>
+
+<section class="slide" id="vd-223" data-kind="vi-du" data-sec="2.5.3 Phương pháp thế vị">
+  <div class="head"><div class="eyebrow">2.5.3 · Ví dụ 2.21 (tiếp) · Giải bằng thế vị</div><h2>Từ 455 về 420 sau hai lần điều chỉnh</h2></div>
+  <div class="cols w64">
+    <div data-widget="transport" data-start="the" data-a="70 45 35 60" data-b="20 40 55 60 35" data-c="5 6 1 4 9; 4 7 3 2 7; 3 3 5 8 2; 7 1 4 4 5"></div>
+    <div class="stack small">
+      <div class="step">Vòng 1: tính $u_i,v_j$ với $u_1=0$; ô có $\Delta$ dương lớn nhất được đưa vào, lập chu trình, điều chỉnh.</div>
+      <div class="step">Vòng 2: lại có $\Delta&gt;0$ ⇒ điều chỉnh tiếp.</div>
+      <div class="step box key" data-tag="Kết luận">Vòng 3: mọi $\Delta_{ij}\le0$ ⇒ tối ưu, $f_{\min}=420$.</div>
+      <div class="step box eco tiny" data-tag="Đối chiếu giáo trình">Ví dụ 2.23 xuất phát từ một PACB khác (Bảng 2.17, $f=495$, 8 ô dương) và tới 420 sau 1 lần điều chỉnh. Bài toán có thể có nhiều phương án tối ưu cùng chi phí 420.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ở mỗi vòng, tự tính thế vị và ước lượng trước khi bấm "Bước tiếp". Kiểm tra: chi phí mới = chi phí cũ − θ·Δ của ô đưa vào. Giáo trình xuất phát từ phương án khác (495) nhưng đáp số cuối cùng giống nhau: 420.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="2.5.3 Phương pháp thế vị">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 4 phút</div><h2>Bài toán vận tải</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="2">
+      <p class="q small">Bài toán 3 điểm phát, 4 điểm thu (cân bằng). Một PACB không suy biến có bao nhiêu ô chọn?</p>
+      <ol class="opts"><li>12</li><li>6</li><li>7</li><li>4</li></ol>
+      <p class="explain">$m+n-1=3+4-1=6$.</p>
+    </div>
+    <ul class="tf" data-widget="tf">
+      <li data-ans="d" data-why="Định lý 2.25.">Bài toán vận tải cân bằng thu phát luôn có phương án tối ưu.</li>
+      <li data-ans="s" data-why="Tổng phát 100 &lt; tổng thu 120 ⇒ thêm điểm PHÁT giả 20.">Tổng phát 100, tổng thu 120: thêm điểm thu giả nhận 20.</li>
+      <li data-ans="d" data-why="$\Delta_{ij}=u_i+v_j-c_{ij}=2+5-6=1&gt;0$.">Ô loại có $c=6$, $u_i=2$, $v_j=5$: ước lượng bằng 1, phương án chưa tối ưu.</li>
+      <li data-ans="s" data-why="θ là min ở các ô mang dấu &quot;−&quot;.">θ là lượng hàng nhỏ nhất ở các ô mang dấu "+" của chu trình.</li>
+    </ul>
+  </div>
+  <aside class="tuhoc"><p>Hay nhầm: phát ít hơn thu thì thêm điểm <b>phát</b> giả (ghi nợ); phát nhiều hơn thu thì thêm điểm <b>thu</b> giả (tồn kho).</p></aside>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt-224a" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Luyện tập · Tiết 3 · BT 2.24a</div><h2>Giải bài toán vận tải 4 × 3</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <table class="tbl"><tr><th>Phát \ Thu</th><th class="c">12</th><th class="c">8</th><th class="c">5</th></tr>
+        <tr><td>6</td><td class="c">3</td><td class="c">4</td><td class="c">2</td></tr>
+        <tr><td>8</td><td class="c">5</td><td class="c">7</td><td class="c">3</td></tr>
+        <tr><td>7</td><td class="c">4</td><td class="c">2</td><td class="c">5</td></tr>
+        <tr><td>4</td><td class="c">7</td><td class="c">5</td><td class="c">3</td></tr></table>
+      <div class="step">Cân bằng: $6+8+7+4=25=12+8+5$ ✓; cần $4+3-1=6$ ô chọn.</div>
+      <div class="step box key" data-tag="Đáp số">$f_{\min}=82$ với $x_{11}=6$, $x_{21}=6$, $x_{23}=2$, $x_{32}=7$, $x_{42}=1$, $x_{43}=3$.</div>
+      <div class="step box tip tiny" data-tag="Thử lại">$18+30+6+14+5+9=82$ ✓</div>
+    </div>
+    <div data-widget="transport" data-a="6 8 7 4" data-b="12 8 5" data-c="3 4 2; 5 7 3; 4 2 5; 7 5 3"></div>
+  </div>
+  <aside class="tuhoc"><p>Làm trọn bài trên giấy (phương án xuất phát → thế vị → điều chỉnh) rồi mới đối chiếu với công cụ. Nếu phương án tối ưu của bạn khác nhưng chi phí vẫn là 82 thì vẫn đúng — bài toán có thể có nhiều phương án tối ưu.</p></aside>
+</section>
+
+<!-- ============ TỔNG KẾT ============ -->
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 5</div><h2>Bốn bước giải bài toán vận tải</h2></div>
+  <div class="flow">
+    <div class="n"><b>CÂN BẰNG</b>Thêm điểm giả nếu cần (cước 0)</div><div class="a">→</div>
+    <div class="n"><b>XUẤT PHÁT</b>Cước phí nhỏ nhất / Vogel; đủ $m+n-1$ ô</div><div class="a">→</div>
+    <div class="n"><b>THẾ VỊ</b>$u_1=0$; $\Delta_{ij}=u_i+v_j-c_{ij}$</div><div class="a">→</div>
+    <div class="n"><b>ĐIỀU CHỈNH</b>Chu trình, θ = min ô "−"; lặp</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>1 · PACB</h4>$m+n-1$ ô chọn không tạo chu trình; thiếu thì thêm ô chọn 0.</div>
+    <div class="card"><h4>2 · Tối ưu</h4>Mọi $\Delta_{ij}\le0$ (bài min). Thế vị là phương án đối ngẫu.</div>
+    <div class="card"><h4>3 · Tự kiểm tra</h4>Tổng hàng, cột không đổi; $f$ giảm đúng $\theta\Delta$.</div>
+  </div>
+  <aside class="tuhoc"><p>Buổi 6 sẽ luyện các dạng đặc biệt: không cân bằng thu phát, ô cấm, bài toán phân phối (max) — và tổng kết toàn chương.</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 6: Các dạng đặc biệt và tổng kết chương</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>Giải lại Ví dụ 2.21 bằng Vogel rồi thế vị.</li>
+        <li>BT 2.24 b, c, d (lưu ý đính chính đáp số b, c — xem trang chương).</li>
+        <li>Kiểm tra phương án ở slide khởi động có tối ưu không — dùng <a href="lab.html">Phòng tính QHTT</a>.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình Ví dụ 2.24 (không cân bằng), 2.26 (ô cấm).</li>
+        <li>Giáo trình 2.5.4: Bài toán phân phối nguồn lực lao động (Ví dụ 2.25).</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref" href="buoi6.html">Sang Buổi 6 · Các dạng đặc biệt và tổng kết</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Đáp số đã kiểm chứng của BT 2.24: b) 57 (giáo trình in 38), c) 215 (giáo trình in 175), d) 800.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/qhtt.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/widgets-qhtt.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

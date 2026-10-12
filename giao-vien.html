@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Theo dõi lớp · Toán kinh tế</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="lib/katex/katex.min.css">
+<link rel="stylesheet" href="assets/deck.css">
+<style>
+  html, body { height: auto; }
+  body { overflow: auto; background: var(--paper); }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 20px 16px 64px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .wrap > *, #gv-app > * { min-width: 0; }
+  .k { font-family: var(--f-mono); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--pen); }
+  h1 { font-family: var(--f-display); font-size: clamp(26px, 4vw, 40px); margin: 4px 0; }
+  .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: end; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+  .btn { font-size: 13.5px; padding: 6px 11px; }
+  .muted { color: var(--ink-2); } .small { font-size: 13px; } .pen { color: var(--pen); }
+  #gv-login form { background: var(--surface); border: 2px solid var(--ink); border-radius: 10px; padding: 18px; max-width: 420px; display: grid; gap: 10px; }
+  #gv-login input { font: 16px var(--f-body); padding: 9px 10px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); }
+  #gv-msg { color: var(--pen); min-height: 1.2em; }
+  .stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 800px) { .stats { grid-template-columns: 1fr 1fr; } }
+  .stat { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .stat b { display: block; font-family: var(--f-display); font-size: 28px; }
+  .stat span { font-size: 12.5px; color: var(--ink-2); }
+  .tools { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: 12px; font-size: 14px; }
+  .tools select, .tools input { font: 14px var(--f-body); padding: 5px 8px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; border-bottom: 2px solid var(--ink); }
+  .tabs button { font: 600 14px var(--f-body); border: 2px solid transparent; border-bottom: 0; background: none; color: var(--ink-2); padding: 7px 12px; border-radius: 6px 6px 0 0; cursor: pointer; }
+  .tabs button.on { border-color: var(--ink); background: var(--surface); color: var(--ink); margin-bottom: -2px; }
+  .tblwrap { overflow-x: auto; }
+  table.gv { font-size: 13px; white-space: nowrap; }
+  table.gv td, table.gv th { padding: .3em .45em; }
+  table.gv td.warn { white-space: normal; min-width: 160px; color: var(--pen); font-size: 12px; }
+  .mb { display: inline-block; width: 46px; height: 8px; background: var(--grid); border-radius: 4px; overflow: hidden; vertical-align: middle; }
+  .mb i { display: block; height: 100%; background: var(--ok); }
+  td.sc.g { color: var(--ok); font-weight: 700; } td.sc.m { color: var(--blue); } td.sc.b { color: var(--bad); font-weight: 700; }
+  tr.kho td { background: color-mix(in srgb, var(--bad) 10%, transparent); } tr.de td { background: color-mix(in srgb, var(--ok) 8%, transparent); }
+  .tcard { background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; }
+  .tcard h3 { margin: 0; font-family: var(--f-display); } .tcard h3 small { font: 400 13px var(--f-body); color: var(--ink-2); }
+  .tstat { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; margin: 6px 0; }
+  .hist { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; height: 110px; align-items: end; }
+  .hist div { display: grid; grid-template-rows: 1fr auto auto; height: 100%; text-align: center; font-size: 11px; color: var(--ink-2); }
+  .hist i { align-self: end; display: block; background: var(--blue); border-radius: 3px 3px 0 0; min-height: 1px; }
+  .hist b { color: var(--ink); }
+  #gv-detail .panel { background: var(--surface); border: 2px solid var(--ink); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; }
+  #gv-detail h3 { margin: 0; font-family: var(--f-display); font-size: 22px; } #gv-detail h3 small { font: 400 14px var(--f-mono); color: var(--ink-2); }
+  #gv-detail .close { justify-self: end; }
+  #gv-detail table { font-size: 13px; }
+  .kq-q { background: var(--paper); border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; margin-bottom: 8px; font-size: 15px; }
+  .kq-q header { display: flex; gap: 8px; align-items: center; } .kq-q .tag { font: 11px var(--f-mono); color: var(--ink-2); } .kq-q .mark { margin-left: auto; font-weight: 700; }
+  .kq-q.dung { border-color: var(--ok); } .kq-q.sai { border-color: var(--bad); } .kq-q.mot-phan { border-color: var(--blue); }
+  .kq-opts { display: grid; gap: 4px; } .op { display: flex; gap: 6px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); }
+  .op.khoa { border-color: var(--ok); } .op.sai { border-color: var(--bad); } .op b { font-family: var(--f-mono); }
+  .kq-ds { border-collapse: collapse; } .kq-ds td, .kq-ds th { border-bottom: 1px solid var(--line); padding: 3px 6px; } .kq-ds tr.no { background: color-mix(in srgb, var(--bad) 10%, transparent); }
+  .kq-so .key { color: var(--ok); margin-left: 10px; } .kq-giai { font-size: 14px; } .kq-stem { overflow-x: auto; }
+  .card-rule { background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 18px; max-width: 900px; line-height: 1.6; }
+  .themebtn { position: fixed; right: 14px; bottom: 14px; z-index: 5; background: var(--surface); border-color: var(--line); }
+</style>
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<script src="assets/khoa-hoc.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div><div class="k">Toán kinh tế · Dành cho giảng viên</div><h1 id="gv-title">Theo dõi tự học và đánh giá quá trình</h1></div>
+    <div><a class="xref back" href="index.html">Cổng học tập</a> <button class="btn" data-a="logout">Thoát</button></div>
+  </div>
+  <section id="gv-login">
+    <form id="gv-form" autocomplete="on">
+      <b>Mật khẩu giảng viên</b>
+      <input name="mk" type="password" required autocomplete="current-password" placeholder="mat_khau_gv trong trang tính CauHinh">
+      <button class="btn primary" type="submit">Xem dữ liệu lớp</button>
+      <span class="muted small">Mật khẩu chỉ được giữ trong phiên trình duyệt này. Trang không lưu dữ liệu sinh viên trên máy.</span>
+    </form>
+    <p id="gv-msg" role="alert"></p>
+  </section>
+  <section id="gv-app" hidden>
+    <div id="gv-head"></div>
+    <div id="gv-detail" hidden></div>
+    <div id="gv-body" style="margin-top:12px"></div>
+  </section>
+</div>
+<template id="tpl-cach-tinh">
+  <div class="card-rule">
+    <h3>Điểm quá trình đề xuất (thang 10)</h3>
+    <p>$$\text{ĐQT}=\frac{w_1\cdot X+w_2\cdot \overline{K}_{\text{buổi}}+w_3\cdot K_{\text{chương}}}{w_1+w_2+w_3}$$</p>
+    <ul>
+      <li>$X$: điểm <b>xem nội dung</b> = (trung bình % slide đã xem của các buổi) ÷ 10.</li>
+      <li>$\overline K_{\text{buổi}}$: trung bình <b>điểm cao nhất</b> của các bài Kiểm tra sau buổi; bài chưa làm tính 0.</li>
+      <li>$K_{\text{chương}}$: điểm bài Kiểm tra chương (cao nhất nếu cho nhiều lượt); chưa làm tính 0.</li>
+      <li>Trọng số hiện tại: {{W}}. Sửa trong trang tính <b>CauHinh</b>; bài có cột "Tính điểm" = FALSE trong <b>BaiKiemTra</b> không được tính.</li>
+    </ul>
+    <p class="muted">Đây là <b>cơ sở tham khảo</b> cho điểm kiểm tra thường xuyên/chuyên cần, không thay thế bài kiểm tra tự luận theo CTMH (KTTX 30 phút, KTĐK 45 phút). Giảng viên quyết định cách quy đổi theo quy chế đào tạo của trường. Luyện tập và thời gian học được thống kê để nhận xét thái độ học tập, không tính vào ĐQT.</p>
+  </div>
+</template>
+<button class="ib themebtn" type="button" id="themeBtn" aria-label="Đổi giao diện sáng tối"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 000 16z" fill="currentColor"/></svg></button>
+<script src="lib/katex/katex.min.js"></script>
+<script src="lib/katex/auto-render.min.js"></script>
+<script src="assets/linalg.js"></script>
+<script src="assets/qhtt.js"></script>
+<script src="assets/kiemtra-core.js"></script>
+<script src="chuong1/ngan-hang.js"></script>
+<script src="chuong2/ngan-hang.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/kiemtra.js"></script>
+<script src="assets/giaovien.js"></script>
+<script>
+document.getElementById('themeBtn').addEventListener('click', function () {
+  var r = document.documentElement, dark = r.getAttribute('data-theme') === 'dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  var t = dark ? 'light' : 'dark'; r.setAttribute('data-theme', t); try { localStorage.setItem('tkt-theme', t); } catch (e) {}
+});
+</script>
+</body>
+</html>

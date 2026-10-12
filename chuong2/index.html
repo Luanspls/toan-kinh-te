@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Toán kinh tế · Chương 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<style>
+  /* Trang chương: một trang vở dài, lề đỏ bên trái, các khối kiến thức theo ô li */
+  html, body { height: auto; }
+  body { overflow: auto; background-color: var(--paper);
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-block: 28px 64px; padding-inline: 16px; }
+  .sheet { position: relative; padding-left: 28px; display: grid; gap: 44px; }
+  .sheet::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--pen); }
+  .k { font-family: var(--f-mono); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--pen); }
+  h1 { font-family: var(--f-display); font-size: clamp(34px, 6vw, 64px); line-height: 1.02; margin: 6px 0 10px; letter-spacing: -.015em; text-wrap: balance; }
+  h1 span { color: var(--pen); }
+  h2.sec { font-family: var(--f-display); font-size: clamp(24px, 3.2vw, 32px); margin: 0 0 4px; text-wrap: balance; }
+  .lead { font-size: 17px; line-height: 1.6; max-width: 66ch; color: var(--ink-2); margin: 0; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .cta a { text-decoration: none; font-weight: 600; font-size: 15px; padding: 10px 16px; border-radius: 6px; border: 2px solid var(--ink); color: var(--ink); background: var(--surface); }
+  .cta a.main { background: var(--ink); color: var(--surface); }
+  .cta a:hover { border-color: var(--blue); color: var(--blue); }
+  .cta a.main:hover { background: var(--blue); color: #fff; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: 14px; color: var(--ink-2); }
+  .facts b { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* Lộ trình 6 buổi */
+  .route { display: grid; gap: 10px; }
+  .bu { display: grid; grid-template-columns: 92px minmax(0, 1fr) 210px; gap: 18px; align-items: start; background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .bu .n { font-family: var(--f-display); font-weight: 700; font-size: 40px; line-height: 1; color: var(--pen); }
+  .bu .n small { display: block; font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; color: var(--ink-2); text-transform: uppercase; margin-bottom: 4px; }
+  .bu h3 { font-family: var(--f-display); font-size: 20px; margin: 0 0 4px; }
+  .bu p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+  .bu .mt { margin-top: 6px; font-size: 13.5px; color: var(--ink); }
+  .bu .mt b { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; color: var(--pen); margin-right: 6px; }
+  .bu .side { display: grid; gap: 10px; justify-items: start; }
+  .tiet { display: flex; gap: 4px; }
+  .tiet i { width: 22px; height: 22px; border: 2px solid; border-radius: 3px; display: grid; place-items: center; font: 600 10px var(--f-mono); font-style: normal; }
+  .tiet i.l { border-color: var(--blue); color: var(--blue); }
+  .tiet i.b { border-color: var(--pen); color: var(--pen); background: color-mix(in srgb, var(--pen) 10%, transparent); }
+  .bu .open { text-decoration: none; font-weight: 600; font-size: 14px; color: var(--surface); background: var(--ink); padding: 7px 12px; border-radius: 6px; }
+  .bu .open:hover { background: var(--blue); }
+  .bu .links { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; font-size: 13px; }
+  .bu .links a { color: var(--blue); text-decoration: none; border-bottom: 1px dotted var(--blue); }
+  .legend { display: flex; gap: 16px; font-size: 13px; color: var(--ink-2); align-items: center; flex-wrap: wrap; }
+  .legend .tiet i { width: 16px; height: 16px; }
+  @media (max-width: 760px) { .bu { grid-template-columns: 1fr; gap: 8px; } .bu .n { font-size: 30px; } }
+
+  /* Bản đồ kiến thức */
+  .map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+  .node { background: var(--surface); border: 2px solid var(--ink); border-radius: 8px; padding: 12px 14px; display: grid; gap: 6px; align-content: start; position: relative; margin-right: 26px; }
+  .node:last-child { margin-right: 0; }
+  .node:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 18px; color: var(--pen); font-weight: 700; font-size: 20px; }
+  .node h3 { margin: 0; font-family: var(--f-display); font-size: 19px; }
+  .node .when { font-family: var(--f-mono); font-size: 11px; color: var(--pen); letter-spacing: .06em; text-transform: uppercase; }
+  .node ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; font-size: 14px; }
+  .node a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--line); }
+  .node a:hover { color: var(--blue); border-color: var(--blue); }
+  .thread { margin-top: 14px; background: var(--surface); border: 2px dashed var(--pen); border-radius: 8px; padding: 12px 16px; font-size: 15px; overflow-x: auto; }
+  .thread .k { display: block; margin-bottom: 4px; }
+  @media (max-width: 900px) { .map { grid-template-columns: 1fr 1fr; gap: 14px; } .node { margin-right: 0; } .node::after { display: none; } }
+  @media (max-width: 520px) { .map { grid-template-columns: 1fr; } }
+
+  /* Mục tiêu, cấu trúc */
+  .tri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .tri > div { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .tri h3 { margin: 0 0 6px; font-family: var(--f-display); font-size: 18px; }
+  .tri ul { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.55; display: grid; gap: 4px; }
+  .tri li::marker { color: var(--pen); }
+  @media (max-width: 820px) { .tri { grid-template-columns: 1fr; } }
+  .flowline { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 14px; }
+  .flowline span { background: var(--surface); border: 1.5px solid var(--ink); border-radius: 999px; padding: 5px 12px; }
+  .flowline em { font-style: normal; color: var(--pen); font-weight: 700; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+  @media (max-width: 820px) { .two { grid-template-columns: 1fr; } }
+  table.tbl { font-size: 14px; }
+  .tblwrap { overflow-x: auto; }
+  details.err { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 12px 16px; }
+  details.err summary { cursor: pointer; font-weight: 700; font-size: 16px; }
+  details.err[open] summary { margin-bottom: 10px; }
+  .refs { font-size: 14.5px; line-height: 1.6; margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+  footer { font-size: 13px; color: var(--ink-2); border-top: 1.5px solid var(--line); padding-top: 12px; }
+  .pg { font-size: 12.5px; color: var(--ink-2); display: flex; align-items: center; }
+  .pg.done .ptxt::after { content: " ✓"; color: var(--ok); font-weight: 700; }
+  .themebtn { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 5; background: var(--surface); }
+</style>
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+  <header>
+    <div class="k">Toán kinh tế · Mã C10.KT06 · Cao đẳng Kế toán</div>
+    <h1>Chương 2 · <span>Quy hoạch tuyến tính</span> và ứng dụng</h1>
+    <p class="lead" data-aud="hv">Bài giảng tự học theo 6 buổi: lập mô hình bài toán tối ưu trong sản xuất – kinh doanh, phương pháp đồ thị, phương pháp đơn hình, bài toán đối ngẫu (giá bóng của nguồn lực) và bài toán vận tải. Mỗi buổi có lộ trình tự học, công cụ tính từng bước (đồ thị, bảng đơn hình, bảng vận tải), bài tập có lời giải và câu hỏi tự kiểm tra.</p>
+    <p class="lead" data-aud="gv">Bài giảng điện tử theo từng buổi học 3 – 4 tiết: mô hình QHTT, phương pháp đồ thị, đơn hình (kể cả biến giả), đối ngẫu và bài toán vận tải. Mỗi buổi mở đầu bằng mục tiêu về kiến thức, kỹ năng, năng lực; các công cụ đồ thị, đơn hình, đối ngẫu, vận tải chạy từng bước bằng phân số chính xác để chiếu và đối chiếu bài làm của sinh viên.</p>
+    <div class="cta" data-aud="gv"><a class="main" href="buoi1.html">Trình chiếu Buổi 1</a><a href="kiem-tra.html">Ngân hàng câu hỏi, tạo đề</a><a href="lab.html">Phòng tính QHTT</a><a href="#lo-trinh">Xem lộ trình 6 buổi</a></div>
+    <div class="cta" data-aud="hv"><a class="main" href="buoi1.html" data-resume>Bắt đầu học Buổi 1</a><a href="kiem-tra.html">Kiểm tra – đánh giá</a><a href="lab.html">Phòng tính QHTT</a><a href="#lo-trinh">Lộ trình 6 buổi</a><a href="../index.html">← Cổng học tập</a></div>
+    <div data-acct data-aud="hv" style="margin-top:12px"></div>
+    <div class="facts"><span><b>22</b> giờ</span><span><b>8</b> lý thuyết</span><span><b>14</b> bài tập, thảo luận</span><span><b>6</b> buổi</span><span><b>111</b> slide</span><span><b>10</b> loại công cụ tương tác</span></div>
+  </header>
+
+  <section id="lo-trinh">
+    <div class="k">Lộ trình</div>
+    <h2 class="sec">Sáu buổi học, phân bổ đúng 22 giờ của chương trình</h2>
+    <div class="legend"><span class="tiet"><i class="l">L</i></span> Tiết lý thuyết <span class="tiet"><i class="b">B</i></span> Tiết bài tập, thảo luận</div>
+    <div class="route" style="margin-top:12px">
+      <article class="bu">
+        <div class="n"><small>4 tiết</small>01</div>
+        <div><h3>Bài toán QHTT: mô hình, các dạng và phương pháp đồ thị</h3>
+          <p>2.1.1 – 2.1.2 · Bài toán tối ưu · Quy trình mô hình hóa · Mô hình sản xuất, khẩu phần, cắt vật liệu, vận tải · Dạng tổng quát, chính tắc, chuẩn tắc · Biến đổi dạng · Phương pháp đồ thị. BT 2.1 – 2.13.</p>
+          <p class="mt"><b>TRỌNG TÂM</b>Lập mô hình: biến, mục tiêu, ràng buộc ("≤" nguồn lực, "≥" yêu cầu).</p>
+          <div class="links"><a href="buoi1.html#khoi-dong">Khởi động: kế hoạch sản xuất</a><a href="buoi1.html#bien-doi-vd">Đưa về dạng chính tắc</a><a href="buoi1.html#do-thi-vd">Kéo đường mức</a><a href="buoi1.html#ba-kha-nang">Các khả năng</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="l">L</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi1.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi1.html" data-total="24"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>4 tiết</small>02</div>
+        <div><h3>Tính chất bài toán QHTT và phương pháp đơn hình</h3>
+          <p>Tập lồi, phương án cực biên · Định lý tồn tại, đặc trưng PACB · Ước lượng $\Delta_j$, dấu hiệu tối ưu · Bảng đơn hình, thuật toán 6 bước · Bài toán max. BT 2.11, 2.14 (a, b, d).</p>
+          <p class="mt"><b>TRỌNG TÂM</b>Lập và biến đổi bảng đơn hình chính xác.</p>
+          <div class="links"><a href="buoi2.html#pacb-vd">Tìm mọi PACB</a><a href="buoi2.html#bang-don-hinh">Bảng đơn hình</a><a href="buoi2.html#vd-max">Đơn hình đi qua các đỉnh</a><a href="buoi2.html#bt-kha-nang">Không bị chặn, vô số PATU</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="b">B</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi2.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi2.html" data-total="21"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>4 tiết</small>03</div>
+        <div><h3>Phương pháp biến giả và cách lập bài toán đối ngẫu</h3>
+          <p>Bài toán M, bảng hai dòng $\alpha_j,\beta_j$ · Dấu hiệu vô nghiệm · Ý nghĩa kinh tế của đối ngẫu · Quy tắc lập đối ngẫu (Bảng 2.11). BT 2.5, 2.14c, 2.15, 2.17, 2.18.</p>
+          <p class="mt"><b>TRỌNG TÂM</b>Giải bài toán M; lập đối ngẫu theo mẹo "thuận – thuận".</p>
+          <div class="links"><a href="buoi3.html#vd-212">Bảng α, β</a><a href="buoi3.html#y-nghia-dn">Người mua nguyên liệu</a><a href="buoi3.html#lap-dn">Bảng quy tắc</a><a href="buoi3.html#bt-217">Tự lập đối ngẫu</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="b">B</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi3.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi3.html" data-total="19"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>4 tiết</small>04</div>
+        <div><h3>Định lý đối ngẫu, độ lệch bù và ý nghĩa kinh tế</h3>
+          <p>Đối ngẫu yếu, mạnh · Độ lệch bù · Đọc $y^*$ từ bảng cuối · Giá bóng, quyết định mua thêm nguồn lực · Đơn hình đối ngẫu (đọc thêm) · Ôn tập kiểm tra định kỳ. BT 2.19, 2.21.</p>
+          <p class="mt"><b>ỨNG DỤNG</b>Giá bóng: thêm 1 đơn vị nguồn lực thì lãi tăng bao nhiêu.</p>
+          <div class="links"><a href="buoi4.html#khoi-dong">Ai "thắng"?</a><a href="buoi4.html#do-lech-bu">Độ lệch bù</a><a href="buoi4.html#gia-bong">Giá bóng trên đồ thị</a><a href="buoi4.html#xuong-may">Xưởng may</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="l">L</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi4.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi4.html" data-total="18"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>3 tiết</small>05</div>
+        <div><h3>Bài toán vận tải: phương án xuất phát và thế vị</h3>
+          <p>Mô hình, cân bằng thu phát · Ô chọn, chu trình · Cước phí nhỏ nhất, Vogel · Phương pháp thế vị (thế vị = biến đối ngẫu). Ví dụ 2.21, BT 2.24a.</p>
+          <p class="mt"><b>TRỌNG TÂM</b>Giải trọn bài vận tải: xuất phát → thế vị → chu trình.</p>
+          <div class="links"><a href="buoi5.html#o-chon">Chu trình</a><a href="buoi5.html#vd-221">Phân phối từng ô</a><a href="buoi5.html#vd-223">Thế vị từng vòng</a></div></div>
+        <div class="side"><div class="tiet"><i class="l">L</i><i class="l">L</i><i class="b">B</i></div><a class="open" href="buoi5.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi5.html" data-total="14"></div></div>
+      </article>
+      <article class="bu">
+        <div class="n"><small>3 tiết</small>06</div>
+        <div><h3>Vận tải đặc biệt · Ôn tập chương</h3>
+          <p>Không cân bằng thu phát · Ô cấm · Bài toán phân phối (max) · BT 2.24d, 2.25, 2.27 · Sơ đồ chương · 8 sai lầm · Rung chuông vàng · Đề kiểm tra định kỳ 45 phút tham khảo.</p>
+          <p class="mt"><b>KẾT NỐI</b>Tổng kết học phần, định hướng thi kết thúc.</p>
+          <div class="links"><a href="buoi6.html#o-cam">Ô cấm</a><a href="buoi6.html#phan-phoi">Phân phối lao động</a><a href="buoi6.html#tro-choi">Rung chuông vàng</a><a href="buoi6.html#de-ktdk">Đề KTĐK tham khảo</a></div></div>
+        <div class="side"><div class="tiet"><i class="b">B</i><i class="b">B</i><i class="b">B</i></div><a class="open" href="buoi6.html"><span data-aud="gv">Trình chiếu</span><span data-aud="hv">Vào học</span></a><div class="pg" data-aud="hv" data-prog="buoi6.html" data-total="15"></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="ban-do">
+    <div class="k">Bản đồ kiến thức</div>
+    <h2 class="sec">Một bài toán tối ưu — bốn khối kiến thức nối tiếp nhau</h2>
+    <div class="map" style="margin-top:12px">
+      <div class="node"><span class="when">Buổi 1</span><h3>Mô hình QHTT</h3><ul>
+        <li><a href="buoi1.html#quy-trinh">Quy trình 4 bước</a></li><li><a href="buoi1.html#dang-bai-toan">Ba dạng bài toán</a></li><li><a href="buoi1.html#bien-doi">Biến đổi dạng</a></li><li><a href="buoi1.html#do-thi">Phương pháp đồ thị</a></li></ul></div>
+      <div class="node"><span class="when">Buổi 2 – 3</span><h3>Đơn hình</h3><ul>
+        <li><a href="buoi2.html#dinh-ly-pacb">Phương án cực biên</a></li><li><a href="buoi2.html#y-tuong">Ước lượng $\Delta_j$</a></li><li><a href="buoi2.html#thuat-toan">Thuật toán 6 bước</a></li><li><a href="buoi3.html#bien-gia">Biến giả $M$</a></li></ul></div>
+      <div class="node"><span class="when">Buổi 3 – 4</span><h3>Đối ngẫu</h3><ul>
+        <li><a href="buoi3.html#lap-dn">Lập đối ngẫu</a></li><li><a href="buoi4.html#dl-yeu-manh">$\min f=\max g$</a></li><li><a href="buoi4.html#do-lech-bu">Độ lệch bù</a></li><li><a href="buoi4.html#gia-bong">Giá bóng</a></li></ul></div>
+      <div class="node"><span class="when">Buổi 5 – 6</span><h3>Vận tải</h3><ul>
+        <li><a href="buoi5.html#mo-hinh-vt">Cân bằng thu phát</a></li><li><a href="buoi5.html#pa-xuat-phat">Phương án xuất phát</a></li><li><a href="buoi5.html#the-vi">Thế vị</a></li><li><a href="buoi6.html#o-cam">Ô cấm, phân phối</a></li></ul></div>
+    </div>
+    <div class="thread"><span class="k">Sợi chỉ xuyên suốt</span>Tối ưu (nếu có) đạt tại một phương án cực biên · đơn hình và thế vị đi từ PACB này sang PACB tốt hơn · dấu hiệu tối ưu $\Delta\le0$ nghĩa là đã có phương án đối ngẫu khả thi · khi tối ưu: $\min f=\max g$.</div>
+  </section>
+
+  <section id="muc-tieu">
+    <div class="k">Mục tiêu chương (theo chương trình môn học)</div>
+    <h2 class="sec">Người học đạt được gì sau 22 giờ?</h2>
+    <div class="tri" style="margin-top:12px">
+      <div><h3>Kiến thức</h3><ul>
+        <li>Trình bày được bài toán quy hoạch tuyến tính, các dạng của bài toán và tính chất của tập phương án.</li>
+        <li>Hiểu phương pháp đồ thị, phương pháp đơn hình (kể cả biến giả), bài toán đối ngẫu và các định lý đối ngẫu.</li>
+        <li>Hiểu nội dung, đặc điểm và phương pháp giải bài toán vận tải, các dạng đặc biệt.</li></ul></div>
+      <div><h3>Kỹ năng</h3><ul>
+        <li>Lập mô hình QHTT cho các bài toán kinh tế; đưa về dạng chính tắc, chuẩn tắc.</li>
+        <li>Giải bài toán QHTT bằng đồ thị, đơn hình; lập và giải bài toán đối ngẫu.</li>
+        <li>Giải bài toán vận tải bằng phương pháp thế vị (cân bằng, không cân bằng, ô cấm, max).</li></ul></div>
+      <div><h3>Năng lực tự chủ và trách nhiệm</h3><ul>
+        <li>Vận dụng mô hình tối ưu để đề xuất phương án sản xuất, phân bổ nguồn lực, vận chuyển.</li>
+        <li>Diễn giải lời giải đối ngẫu (giá bóng) thành khuyến nghị quản lý.</li>
+        <li>Tự kiểm tra kết quả, phản biện số liệu; hợp tác nhóm khi giải bài toán lớn.</li></ul></div>
+    </div>
+  </section>
+
+  <section id="cach-dung">
+    <div class="k">Cấu trúc và cách sử dụng</div>
+    <h2 class="sec">Mỗi buổi đi theo cùng một nhịp</h2>
+    <div class="flowline" style="margin-top:12px"><span data-aud="gv">Mục tiêu bài dạy</span><span data-aud="hv">Mục tiêu bài học</span><em>→</em><span data-aud="gv">Tiến trình theo tiết</span><span data-aud="hv">Lộ trình tự học</span><em>→</em><span>Khởi động (tình huống kinh tế)</span><em>→</em><span>Nội dung cô đọng</span><em>→</em><span>Kiểm tra nhanh</span><em>→</em><span>Luyện tập theo dạng</span><em>→</em><span>Tổng kết</span><em>→</em><span>Nhiệm vụ, liên kết buổi sau</span></div>
+    <div class="two" style="margin-top:16px">
+      <div class="tblwrap"><table class="tbl">
+        <tr><th>Phím</th><th>Chức năng</th></tr>
+        <tr><td><kbd>→</kbd> <kbd>Space</kbd></td><td>Hiện bước tiếp theo / sang slide sau</td></tr>
+        <tr><td><kbd>←</kbd></td><td>Ẩn bước vừa hiện / về slide trước</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Mục lục buổi học, liên kết sang buổi khác</td></tr>
+        <tr data-aud="gv"><td><kbd>N</kbd></td><td>Ghi chú giảng viên (câu hỏi gợi mở, lỗi hay gặp, đáp số)</td></tr>
+        <tr data-aud="hv"><td><kbd>N</kbd></td><td>Gợi ý tự học (mẹo, lỗi hay gặp, đáp số để tự kiểm tra)</td></tr>
+        <tr><td><kbd>F</kbd> · <kbd>R</kbd> · <kbd>T</kbd></td><td>Toàn màn hình · Chế độ đọc (cuộn) · Giao diện sáng/tối</td></tr>
+      </table></div>
+      <div class="tblwrap"><table class="tbl">
+        <tr><th>Công cụ tương tác</th><th>Ở đâu</th></tr>
+        <tr><td>Đồ thị miền phương án, kéo đường mức, bảng các đỉnh</td><td><a href="buoi1.html#do-thi-vd">B1</a>, <a href="buoi4.html#gia-bong">B4</a></td></tr>
+        <tr><td>Đưa về dạng chính tắc, chuẩn tắc; tìm mọi PACB</td><td><a href="buoi1.html#bien-doi-vd">B1</a>, <a href="buoi2.html#pacb-vd">B2</a></td></tr>
+        <tr><td>Bảng đơn hình từng bước (kể cả bảng α, β của bài toán M)</td><td>B2 – B4, <a href="lab.html">Phòng tính</a></td></tr>
+        <tr><td>Lập đối ngẫu, ghép cặp điều kiện (chế độ tự lập rồi mở)</td><td><a href="buoi3.html#vd-214">B3</a>, <a href="buoi3.html#bt-217">B3</a></td></tr>
+        <tr><td>Bảng vận tải: phân phối từng ô, thế vị, chu trình; trắc nghiệm, đúng/sai, đồng hồ, trò chơi</td><td><a href="buoi5.html#vd-221">B5</a>, <a href="buoi6.html#tro-choi">B6</a></td></tr>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="dinh-chinh">
+    <div class="k"><span data-aud="gv">Ghi chú cho giảng viên</span><span data-aud="hv">Lưu ý khi dùng giáo trình</span></div>
+    <h2 class="sec">Đính chính trong giáo trình Chương 2</h2>
+    <p class="lead">Mọi ví dụ, bài tập của chương đã được giải lại bằng phân số chính xác và đối chiếu bằng một bộ giải độc lập. Các chỗ sau trong giáo trình in khác kết quả đúng; slide tương ứng đã ghi chú.<span data-aud="hv"> Khi tự làm bài tập trong giáo trình, hãy đối chiếu với bảng này.</span></p>
+    <details class="err" style="margin-top:12px" open>
+      <summary>17 vị trí cần lưu ý</summary>
+      <div class="tblwrap"><table class="tbl">
+        <tr><th>Vị trí</th><th>Giáo trình in</th><th>Kết quả đúng</th><th>Slide</th></tr>
+        <tr><td>BT 2.3 (hướng dẫn)</td><td>Các ràng buộc giờ máy dùng "$=$"</td><td>"$\le$" (quỹ giờ là giới hạn trên)</td><td><a href="buoi1.html#bt-mo-hinh-2">B1</a></td></tr>
+        <tr><td>BT 2.4 (hướng dẫn)</td><td>"$=45$; $=80$; $=50$"</td><td>$\ge90$; $\ge80$; $\ge50$</td><td><a href="buoi1.html#bt-mo-hinh-2">B1</a></td></tr>
+        <tr><td>BT 2.6</td><td>Tổng vải 1.000 m</td><td>Với số liệu in, bài toán vô nghiệm (1.500 bộ cần hơn 5.000 m vải); hợp lý là 10.000 m</td><td>—</td></tr>
+        <tr><td>BT 2.7 (hướng dẫn)</td><td>Ràng buộc cánh B "$\ge500$"</td><td>$\ge5000$</td><td><a href="buoi1.html#mo-hinh-cat-van-tai">B1</a></td></tr>
+        <tr><td>BT 2.13a</td><td>Tập phương án rỗng</td><td>Đề in: $f_{\max}=21$ tại $(3;1)$; "rỗng" chỉ đúng khi ràng buộc 3 là "$\ge12$"</td><td><a href="buoi1.html#bt-do-thi-2">B1</a></td></tr>
+        <tr><td>BT 2.13b</td><td>Không bị chặn trên</td><td>Đề in: $f_{\max}=2$ (vô số PATU); "không bị chặn" đúng với bài min</td><td><a href="buoi1.html#bt-do-thi-2">B1</a></td></tr>
+        <tr><td>Bảng 2.8 (Ví dụ 2.11)</td><td>$t_{32}=2$</td><td>Theo đề $t_{32}=1$ ($\Delta_2=-3$); kết quả tối ưu không đổi</td><td><a href="buoi2.html#vd-211">B2 (ghi chú)</a></td></tr>
+        <tr><td>Bảng 2.10 (II), Ví dụ 2.12</td><td>Dòng $\alpha$ in sai</td><td>$(4\,|\,1;-8;0;-2;0;0)$</td><td><a href="buoi3.html#vd-212">B3</a></td></tr>
+        <tr><td>Ví dụ 2.14</td><td>"$x_1+3x_2+4x_3\ge4$", "$x_1,x_2,x_3\ge0$", "$y_1,y_2,y_3\ge0$"</td><td>$x_1+3x_2+4x_4\ge4$; $x_1,\dots,x_4\ge0$; $y_1,y_2\ge0$</td><td><a href="buoi3.html#vd-214">B3</a></td></tr>
+        <tr><td>BT 2.15a</td><td>$f_{\min}=\tfrac{33}5$</td><td>$f_{\min}=\tfrac{11}5$ tại $(5;0;\tfrac{14}5;0;\tfrac25)$</td><td><a href="buoi3.html#bt-dang">B3</a></td></tr>
+        <tr><td>BT 2.18 b, c, d</td><td>$\tfrac12$; $\tfrac43$; $-7$</td><td>b) cần $x_4\ge0$; c) $f_{\min}=-4$ tại $(2;0;2)$; d) cần $x_3,x_4\ge0$</td><td><a href="buoi3.html#bt-218">B3</a></td></tr>
+        <tr><td>Mục 2.4.4 (tái tối ưu)</td><td>"$(0,0,8,4,3)$", "$f_{\max}=5$"</td><td>Phương án $(0;\tfrac92;\tfrac32;\tfrac12;0)$, $f_{\min}=5$</td><td>—</td></tr>
+        <tr><td>BT 2.19</td><td>Tập PATU với $x_1&gt;\tfrac{12}5$</td><td>$x=(t;0;0;5t-2;2t+2)$, $t\ge\tfrac32$</td><td><a href="buoi4.html#bt-219">B4</a></td></tr>
+        <tr><td>BT 2.23a (hướng dẫn)</td><td>Tập phương án rỗng</td><td>Tập phương án khác rỗng (vd. $(12;0;0)$); lý do là hàm mục tiêu không bị chặn</td><td>—</td></tr>
+        <tr><td>BT 2.24 b, c</td><td>$38$; $175$</td><td>b) $57$ (phương án in có chi phí 62); c) $215$</td><td><a href="buoi5.html#nhiem-vu">B5</a></td></tr>
+        <tr><td>BT 2.25d</td><td>$215$</td><td>$105$ (phương án in có chi phí 220)</td><td><a href="buoi6.html#bt-224d">B6</a></td></tr>
+        <tr><td>Ví dụ 2.25</td><td>"chọn ô (1, 5)"</td><td>Ô $(1,3)$</td><td><a href="buoi6.html#phan-phoi">B6</a></td></tr>
+      </table></div>
+    </details>
+  </section>
+
+  <section id="tai-lieu">
+    <div class="k">Học liệu</div>
+    <h2 class="sec">Tài liệu tham khảo</h2>
+    <ol class="refs" style="margin-top:10px">
+      <li>Nguyễn Cao Luận (chủ biên), Hoàng Văn Linh, <i>Toán kinh tế</i>, NXB Đại học Thái Nguyên, 2021 — tài liệu học tập chính (Chương 2).</li>
+      <li>Nguyễn Quang Dong, Ngô Văn Thứ, Hoàng Đình Tuấn, <i>Toán kinh tế</i>, NXB Thống kê, 2006.</li>
+      <li>Trần Túc, <i>Quy hoạch tuyến tính</i>, NXB Đại học Kinh tế Quốc dân, 2001; <i>Bài tập quy hoạch tuyến tính</i>, NXB Khoa học và Kỹ thuật, 2001.</li>
+      <li>Chương trình môn học Toán kinh tế (C10.KT06), Trường Cao đẳng Sư phạm Lạng Sơn, 2024.</li>
+    </ol>
+  </section>
+
+  <footer>Bài giảng điện tử Chương 2 · Toán kinh tế · Trình độ cao đẳng, ngành Kế toán. Mở được không cần Internet (công thức dùng thư viện KaTeX đi kèm trong thư mục <code>lib</code>; phông chữ tự thay thế khi ngoại tuyến).</footer>
+</div>
+</div>
+<button class="ib themebtn" type="button" id="themeBtn" aria-label="Đổi giao diện sáng tối" title="Sáng / tối"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 000 16z" fill="currentColor"/></svg></button>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/deck.js"></script>
+<script>
+document.getElementById('themeBtn').addEventListener('click', function () {
+  var r = document.documentElement;
+  var dark = r.getAttribute('data-theme') === 'dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  var t = dark ? 'light' : 'dark'; r.setAttribute('data-theme', t);
+  try { localStorage.setItem('tkt-theme', t); } catch (e) {}
+});
+</script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

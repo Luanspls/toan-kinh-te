@@ -1,4 +1,4 @@
-Toan kinh te (C10.KT06) - BAI GIANG TU HOC - phien ban 1.0
+Toan kinh te (C10.KT06) - BAI GIANG TU HOC - phien ban 1.1
 
 CACH MO TREN MAY TINH:
   1. Giai nen toan bo tep ZIP (chuot phai > Extract All / Giai nen tat ca).

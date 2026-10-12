@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 1 · Bài toán quy hoạch tuyến tính</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 2" data-unit="Buổi 1 · Bài toán quy hoạch tuyến tính" data-next="buoi2.html" data-home="index.html" data-kt="c2b1" data-lab="Phòng tính QHTT">
+<div class="stage">
+
+<!-- ============ MỞ ĐẦU ============ -->
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 1">
+  <div class="num"><small>Chương 2 · Quy hoạch tuyến tính và ứng dụng</small>Buổi 1</div>
+  <h1>Bài toán quy hoạch tuyến tính: mô hình, các dạng và phương pháp đồ thị</h1>
+  <div class="meta"><span class="chip">4 tiết</span><span class="chip lt">Lý thuyết 2 tiết</span><span class="chip bt">Bài tập 2 tiết</span><span class="chip">Mục 2.1.1 – 2.1.2 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#dinh-nghia"><span>2.1.1</span>Bài toán tối ưu tổng quát</a>
+    <a href="#mo-hinh-san-xuat"><span>2.1.2.1</span>Một số mô hình thực tế</a>
+    <a href="#dang-bai-toan"><span>2.1.2.2</span>Phân loại dạng bài toán</a>
+    <a href="#bien-doi"><span>2.1.2.4</span>Biến đổi dạng bài toán</a>
+    <a href="#do-thi"><span>2.1.2.3</span>Phương pháp đồ thị</a>
+    <a href="#bt-dang"><span>BT</span>Luyện tập: BT 2.1 – 2.13</a>
+  </div>
+  <aside class="tuhoc"><p>Chương 2 trả lời câu hỏi mà mọi nhà quản lý gặp hằng ngày: <b>với nguồn lực có hạn, làm thế nào để lãi nhiều nhất (hoặc chi phí ít nhất)?</b> Bài kiểm tra định kỳ 45 phút của học phần gồm quy hoạch tuyến tính và bài toán đối ngẫu.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 1</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Phát biểu được bài toán tối ưu, bài toán QHTT: biến quyết định, hàm mục tiêu, ràng buộc, phương án, phương án tối ưu.</li>
+      <li>Phân biệt được dạng tổng quát, dạng chính tắc, dạng chuẩn tắc.</li>
+      <li>Hiểu ý nghĩa hình học: miền phương án, đường mức.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Lập mô hình QHTT cho bài toán sản xuất, khẩu phần, cắt vật liệu, vận tải.</li>
+      <li>Đưa bài toán về dạng chính tắc, chuẩn tắc.</li>
+      <li>Giải bài toán hai biến bằng phương pháp đồ thị; nhận ra ba khả năng của kết quả.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Mô hình hóa:</b> chuyển một tình huống sản xuất – kinh doanh thành bài toán QHTT.</li>
+      <li><b>Phản biện:</b> kiểm tra lại mô hình, đáp số (kể cả đáp số in trong giáo trình).</li>
+      <li><b>Tự chủ:</b> dùng Phòng tính QHTT để tự kiểm tra lời giải.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Lập đúng mô hình BT 2.2, 2.5; đưa BT 2.9 về dạng chính tắc; giải BT 2.12 bằng đồ thị.</span></div>
+  <aside class="tuhoc"><p>Kỹ năng quan trọng nhất của buổi này là <b>lập mô hình</b>: đề thi tự luận thường có câu "hãy lập bài toán quy hoạch tuyến tính". Học xong, quay lại slide này tự đánh giá từng mục.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 4 tiết × 45 phút</div><h2>Từ tình huống kinh tế đến bài toán và lời giải bằng hình vẽ</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Khởi động · Bài toán tối ưu · Mô hình hóa · 3 mô hình thực tế</b><span>Kế hoạch sản xuất 7' · định nghĩa 8' · quy trình 4 bước 5' · sản xuất, khẩu phần, cắt vật liệu, vận tải 25'</span></div><div class="m">Vấn đáp, làm mẫu</div></div>
+    <div class="p lt"><div class="t">Tiết 2<small>Lý thuyết</small></div><div class="c"><b>Các dạng bài toán · Biến đổi dạng · Phương pháp đồ thị</b><span>Dạng tổng quát, chính tắc, chuẩn tắc 10' · biến đổi 10' · đồ thị và ba khả năng 20' · kiểm tra nhanh 5'</span></div><div class="m">Công cụ đồ thị tương tác</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Lập mô hình</b><span>BT 2.2, 2.5 · BT 2.3, 2.8 (có đính chính)</span></div><div class="m">Cặp đôi, lên bảng</div></div>
+    <div class="p bt"><div class="t">Tiết 4<small>Bài tập</small></div><div class="c"><b>Biến đổi dạng · Đồ thị</b><span>BT 2.9, 2.10 · BT 2.12, 2.13 · tổng kết, giao nhiệm vụ</span></div><div class="m">Nhóm 4 người</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · Ví dụ 2.1 giáo trình</div><h2>Sản xuất bao nhiêu sản phẩm mỗi loại để lãi nhiều nhất?</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <table class="tbl">
+        <tr><th>Nguyên liệu dùng cho 1 sản phẩm</th><th class="c">I</th><th class="c">II</th><th class="c">III</th><th class="c">Lãi</th></tr>
+        <tr><td>Sản phẩm A</td><td class="c">2</td><td class="c">0</td><td class="c">1</td><td class="c">3</td></tr>
+        <tr><td>Sản phẩm B</td><td class="c">1</td><td class="c">1</td><td class="c">0</td><td class="c">5</td></tr>
+        <tr><th>Dự trữ</th><td class="c">8</td><td class="c">4</td><td class="c">3</td><td></td></tr>
+      </table>
+      <p class="small"><b>Thử:</b> sản xuất 3 A và 2 B có được không? Lãi bao nhiêu? Có phương án nào lãi hơn?</p>
+      <div data-widget="timer" data-min="3" data-label="Thử phương án"></div>
+    </div>
+    <div class="stack">
+      <div class="step box small">(3 A, 2 B): nguyên liệu I dùng $2\cdot3+2=8\le8$ ✓, II dùng $2\le4$ ✓, III dùng $3\le3$ ✓ — lãi $3\cdot3+5\cdot2=19$.</div>
+      <div class="step box small">(2 A, 4 B): I: $8\le8$, II: $4\le4$, III: $2\le3$ ✓ — lãi $6+20=\boxed{26}$. Liệu đã lớn nhất?</div>
+      <div class="step box key" data-tag="Mô hình">Gọi $x_1, x_2$ là số sản phẩm A, B:
+        $$f=3x_1+5x_2\to\max\quad\text{với}\quad\begin{cases}2x_1+x_2\le 8\\ x_2\le 4\\ x_1\le 3\\ x_1,x_2\ge0\end{cases}$$</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Hãy tự thử thêm vài phương án (như (3; 0), (0; 4), (3; 2)) và tính lãi trước khi xem các bước. Câu hỏi then chốt: <b>làm sao biết chắc lãi đã lớn nhất?</b> — đó là lý do cần quy hoạch tuyến tính. Đáp số: lãi lớn nhất 26 tại (2; 4).</p></aside>
+</section>
+
+<!-- ============ 2.1.1 BÀI TOÁN TỐI ƯU ============ -->
+<section class="slide" id="dinh-nghia" data-kind="ly-thuyet" data-sec="2.1.1 Bài toán tối ưu">
+  <div class="head"><div class="eyebrow">2.1.1 · Bài toán tối ưu tổng quát</div><h2>Tìm phương án làm hàm mục tiêu lớn nhất (nhỏ nhất)</h2></div>
+  <div class="cols">
+    <div class="stack">
+      <div class="box key" data-tag="Định nghĩa">Tìm $x=(x_1,\dots,x_n)$ để
+        $$f(x)\to\max\ (\min)\quad\text{thỏa mãn}\quad g_i(x)\ (\le,=,\ge)\ b_i,\ i=1,\dots,m$$</div>
+      <ul class="small">
+        <li>$x_j$: <b>biến quyết định</b>; $f$: <b>hàm mục tiêu</b>; $g_i$: hàm ràng buộc.</li>
+        <li>Điểm thỏa mọi ràng buộc: <b>phương án</b>; tập các phương án $D$: <b>miền ràng buộc</b>.</li>
+        <li>$x^*\in D$ với $f(x^*)\ge f(x)$ (bài max) mọi $x\in D$: <b>phương án tối ưu</b>; $f(x^*)$: giá trị tối ưu.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <div class="box key small" data-tag="Quy hoạch tuyến tính (QHTT)">Hàm mục tiêu và <b>mọi</b> hàm ràng buộc đều là hàm <b>tuyến tính</b> (bậc nhất): $f(x)=c_1x_1+\dots+c_nx_n$.</div>
+      <div class="box plain small" data-tag="Đọc thêm: các lớp bài toán tối ưu">Quy hoạch phi tuyến (có hàm không tuyến tính), quy hoạch nguyên (biến chỉ nhận giá trị nguyên), quy hoạch động (nhiều giai đoạn), quy hoạch đa mục tiêu…</div>
+      <div class="quiz" data-widget="quiz" data-answer="3">
+        <p class="q small">Bài toán nào là bài toán QHTT?</p>
+        <ol class="opts"><li>$x_1x_2\to\max$, $x_1+x_2\le4$</li><li>$x_1^2+x_2\to\min$, $x_1\ge1$</li><li>$2x_1-x_2\to\max$, $x_1+3x_2\le6$, $x\ge0$</li><li>$\sqrt{x_1}+x_2\to\max$, $x_1\le9$</li></ol>
+        <p class="explain">Chỉ phương án C có hàm mục tiêu và ràng buộc đều bậc nhất.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ghi nhớ cặp khái niệm: <b>phương án</b> (thỏa mọi ràng buộc) và <b>phương án tối ưu</b> (phương án tốt nhất theo hàm mục tiêu). Một bài toán có thể có nhiều phương án nhưng không có phương án tối ưu.</p></aside>
+</section>
+
+<section class="slide" id="quy-trinh" data-kind="ly-thuyet" data-sec="2.1.1 Bài toán tối ưu">
+  <div class="head"><div class="eyebrow">2.1.1 · Phương pháp mô hình hóa toán học</div><h2>Bốn bước từ vấn đề thực tế đến quyết định</h2></div>
+  <div class="flow">
+    <div class="n"><b>B1 · ĐỊNH TÍNH</b>Hiểu vấn đề: yếu tố nào quan trọng, mục tiêu là gì, bị giới hạn bởi gì?</div><div class="a">→</div>
+    <div class="n"><b>B2 · MÔ HÌNH TOÁN</b>Đặt biến, viết hàm mục tiêu và các ràng buộc</div><div class="a">→</div>
+    <div class="n"><b>B3 · GIẢI</b>Chọn phương pháp (đồ thị, đơn hình, phần mềm)</div><div class="a">→</div>
+    <div class="n"><b>B4 · KIỂM ĐỊNH</b>Kết quả có hợp lý không? Nếu không: xem lại số liệu, mô hình</div>
+  </div>
+  <div class="cols">
+    <div class="box key" data-tag="Ba câu hỏi khi lập mô hình">
+      <ol class="small"><li><b>Quyết định cái gì?</b> → biến $x_j$ (ghi rõ đơn vị).</li><li><b>Muốn gì?</b> → hàm mục tiêu: lãi → max, chi phí → min.</li><li><b>Bị giới hạn bởi gì?</b> → ràng buộc: nguồn lực "$\le$", yêu cầu tối thiểu "$\ge$", cân bằng "$=$".</li></ol>
+      <p class="small"><b>Đừng quên:</b> ràng buộc dấu $x_j\ge0$ (số lượng không âm).</p></div>
+    <div class="box warn small" data-tag="Lỗi hay gặp">
+      <ul><li>Đặt biến là "loại sản phẩm" thay vì "<b>số lượng</b> sản phẩm".</li><li>Viết ràng buộc theo <b>dòng</b> của bảng số liệu trong khi phải theo <b>cột</b> (hoặc ngược lại).</li><li>Dùng "$=$" cho nguồn lực có hạn — đúng phải là "$\le$" (không bắt buộc dùng hết).</li></ul></div>
+  </div>
+  <aside class="tuhoc"><p>Mỗi khi gặp bài toán lời văn, hãy viết ra giấy câu trả lời cho ba câu hỏi: quyết định gì (biến), muốn gì (mục tiêu), bị giới hạn bởi gì (ràng buộc). Lỗi phổ biến nhất là dùng "=" cho nguồn lực có hạn — đúng phải là "≤".</p></aside>
+</section>
+
+<!-- ============ 2.1.2.1 MÔ HÌNH THỰC TẾ ============ -->
+<section class="slide" id="mo-hinh-san-xuat" data-kind="ly-thuyet" data-sec="2.1.2.1 Mô hình thực tế">
+  <div class="head"><div class="eyebrow">2.1.2.1 · Mô hình 1 — Lập kế hoạch sản xuất (phân bổ nguồn lực)</div><h2>Nguồn lực có hạn, chọn mức sản xuất để lãi lớn nhất</h2></div>
+  <div class="cols w64">
+    <div class="stack">
+      <p class="small">$n$ sản phẩm, $m$ loại nguồn lực. $a_{ij}$: lượng nguồn lực $i$ cho 1 đơn vị sản phẩm $j$; $b_i$: lượng nguồn lực $i$ hiện có; $c_j$: lãi một đơn vị sản phẩm $j$.</p>
+      <div class="box key" data-tag="Mô hình tổng quát">
+        $$f=\sum_{j=1}^n c_jx_j\to\max\quad\text{với}\quad\begin{cases}\displaystyle\sum_{j=1}^n a_{ij}x_j\le b_i,& i=1,\dots,m\\ x_j\ge 0,& j=1,\dots,n\end{cases}$$</div>
+      <div class="box eco small" data-tag="Đọc theo kinh tế">Mỗi dòng ràng buộc: "<b>lượng nguồn lực $i$ tiêu hao ≤ lượng hiện có</b>". Ma trận $A=(a_{ij})$ là bảng định mức — đúng như ma trận ở Chương 1.</div>
+    </div>
+    <div class="stack">
+      <div class="box small" data-tag="Đối chiếu Ví dụ 2.1">
+        <table class="tbl"><tr><th>Mô hình</th><th>Ví dụ 2.1</th></tr><tr><td>$n,\ m$</td><td>2 sản phẩm, 3 nguyên liệu</td></tr><tr><td>$c$</td><td>$(3;\,5)$</td></tr><tr><td>$b$</td><td>$(8;\,4;\,3)$</td></tr><tr><td>$A$</td><td>$\begin{pmatrix}2&1\\0&1\\1&0\end{pmatrix}$</td></tr></table></div>
+      <p class="small muted">Các mô hình phân bổ khác: phân bổ vốn đầu tư (Ví dụ 2.2), phân bổ đất nông nghiệp (Ví dụ 2.3), phân công lao động.</p>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Bảng số liệu trong giáo trình có khi xếp sản phẩm theo dòng, có khi theo cột. Mẹo: mỗi ràng buộc ứng với <b>một nguồn lực</b>, mỗi biến ứng với <b>một sản phẩm</b> — viết đúng theo nguyên tắc này thì không sợ nhầm.</p></aside>
+</section>
+
+<section class="slide" id="mo-hinh-khau-phan" data-kind="vi-du" data-sec="2.1.2.1 Mô hình thực tế">
+  <div class="head"><div class="eyebrow">2.1.2.1 · Mô hình 2 — Bài toán khẩu phần (BT 2.5)</div><h2>Đủ dinh dưỡng với chi phí nhỏ nhất</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <table class="tbl"><tr><th>Trong 1 kg</th><th class="c">D1</th><th class="c">D2</th><th class="c">Giá (nghìn đ)</th></tr>
+        <tr><td>Thức ăn T1</td><td class="c">3</td><td class="c">1</td><td class="c">15</td></tr>
+        <tr><td>Thức ăn T2</td><td class="c">4</td><td class="c">2</td><td class="c">12</td></tr>
+        <tr><td>Thức ăn T3</td><td class="c">2</td><td class="c">3</td><td class="c">10</td></tr>
+        <tr><th>Nhu cầu tối thiểu</th><td class="c">160</td><td class="c">140</td><td></td></tr></table>
+      <p class="small">Mua bao nhiêu kg mỗi loại để đủ dinh dưỡng cho một bữa với chi phí nhỏ nhất?</p>
+    </div>
+    <div class="stack">
+      <div class="step small"><b>Biến:</b> $x_1,x_2,x_3$ là số kg T1, T2, T3 cần mua.</div>
+      <div class="step small"><b>Mục tiêu:</b> chi phí $f=15x_1+12x_2+10x_3\to\min$.</div>
+      <div class="step box key" data-tag="Ràng buộc">$$\begin{cases}3x_1+4x_2+2x_3\ge160 & (\text{D1})\\ x_1+2x_2+3x_3\ge140 & (\text{D2})\\ x_1,x_2,x_3\ge0\end{cases}$$</div>
+      <div class="step box eco small" data-tag="So với mô hình sản xuất">Mục tiêu <b>min</b>, ràng buộc "<b>≥</b>" (yêu cầu tối thiểu) — đối xứng với mô hình sản xuất (max, "≤"). Đáp số (giải ở Buổi 3): mua 25 kg T2, 30 kg T3, chi phí 600 nghìn đồng.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Hãy tự lập mô hình trước khi xem các bước. Nhận xét quan trọng: bài khẩu phần là "min + ≥", bài sản xuất là "max + ≤" — cặp này sẽ gặp lại ở bài toán đối ngẫu (Buổi 3).</p></aside>
+</section>
+
+<section class="slide" id="mo-hinh-cat-van-tai" data-kind="vi-du" data-sec="2.1.2.1 Mô hình thực tế">
+  <div class="head"><div class="eyebrow">2.1.2.1 · Mô hình 3, 4 — Cắt vật liệu (BT 2.7) · Vận tải (Ví dụ 2.6)</div><h2>Biến có thể là "số lần cắt theo mẫu" hay "lượng hàng trên tuyến"</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <table class="tbl"><tr><th>Cánh quạt</th><th class="c">I</th><th class="c">II</th><th class="c">III</th><th class="c">IV</th><th class="c">V</th><th class="c">VI</th><th class="c">Cần</th></tr>
+        <tr><td>A</td><td class="c">2</td><td class="c">1</td><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">4000</td></tr>
+        <tr><td>B</td><td class="c">0</td><td class="c">1</td><td class="c">0</td><td class="c">2</td><td class="c">1</td><td class="c">0</td><td class="c">5000</td></tr>
+        <tr><td>C</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">0</td><td class="c">2</td><td class="c">3</td><td class="c">3000</td></tr></table>
+      <div class="step">$x_j$: số tấm tôn cắt theo mẫu $j$; $f=x_1+\dots+x_6\to\min$
+        $$\begin{cases}2x_1+x_2+x_3\ge4000\\ x_2+2x_4+x_5\ge 5000\\ x_3+2x_5+3x_6\ge3000\\ x_j\ge0\end{cases}$$</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Hướng dẫn BT 2.7 in "$\ge500$" ở ràng buộc thứ hai; đúng theo đề là $\ge5000$.</div>
+    </div>
+    <div class="stack small">
+      <table class="tbl"><tr><th>Cước phí</th><th class="c">T1</th><th class="c">T2</th><th class="c">T3</th><th class="c">Phát</th></tr>
+        <tr><td>Kho P1</td><td class="c">25</td><td class="c">18</td><td class="c">40</td><td class="c">170</td></tr>
+        <tr><td>Kho P2</td><td class="c">32</td><td class="c">52</td><td class="c">14</td><td class="c">250</td></tr>
+        <tr><th>Thu</th><td class="c">130</td><td class="c">200</td><td class="c">90</td><td></td></tr></table>
+      <div class="step">$x_{ij}$: lượng hàng từ kho $P_i$ đến $T_j$. $f=25x_{11}+18x_{12}+40x_{13}+32x_{21}+52x_{22}+14x_{23}\to\min$
+        $$\begin{cases}x_{11}+x_{12}+x_{13}=170,\ \ x_{21}+x_{22}+x_{23}=250\\ x_{11}+x_{21}=130,\ \ x_{12}+x_{22}=200,\ \ x_{13}+x_{23}=90\\ x_{ij}\ge0\end{cases}$$</div>
+      <div class="step box eco tiny" data-tag="Sẽ học">Bài toán vận tải có phương pháp giải riêng (thế vị) — Buổi 5, 6.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Hai mô hình này cho thấy biến không nhất thiết là "số sản phẩm": có thể là <b>số lần cắt theo một mẫu</b> hay <b>lượng hàng trên một tuyến đường</b>. Lưu ý đính chính BT 2.7: ràng buộc cánh B là $\ge 5000$, không phải 500.</p></aside>
+</section>
+
+<!-- ============ 2.1.2.2 DẠNG BÀI TOÁN ============ -->
+<section class="slide" id="dang-bai-toan" data-kind="ly-thuyet" data-sec="2.1.2.2 Các dạng bài toán">
+  <div class="head"><div class="eyebrow">2.1.2.2 · Phân loại dạng bài toán QHTT</div><h2>Ba dạng: tổng quát, chính tắc, chuẩn tắc</h2></div>
+  <table class="tbl small">
+    <tr><th>Dạng</th><th>Ràng buộc chính</th><th>Ràng buộc dấu</th><th>Dùng để</th></tr>
+    <tr><td><b>Tổng quát</b></td><td>Lẫn lộn $\le,\ \ge,\ =$</td><td>$x_j\ge0$, $x_j\le0$ hoặc tùy ý</td><td>Mô tả bài toán thực tế</td></tr>
+    <tr><td><b>Chính tắc</b></td><td>Chỉ có đẳng thức $=$</td><td>Mọi $x_j\ge0$</td><td>Phương pháp đơn hình (Buổi 2)</td></tr>
+    <tr><td><b>Chuẩn tắc</b></td><td>Bài min: chỉ "$\ge$"; bài max: chỉ "$\le$"</td><td>Mọi $x_j\ge0$</td><td>Lập bài toán đối ngẫu (Buổi 3)</td></tr>
+  </table>
+  <div class="cols">
+    <div class="box key small" data-tag="Dạng chính tắc — dạng ma trận">$$cx\to\min\ (\max),\qquad Ax=b,\qquad x\ge0$$ $A=(a_{ij})_{m\times n}$: ma trận ràng buộc; $b$: cột vế phải; $c$: dòng hệ số mục tiêu. Dạng véctơ: $x_1a_1+x_2a_2+\dots+x_na_n=b$ ($a_j$: cột $j$ của $A$).</div>
+    <div class="box tip small" data-tag="Thuật ngữ">Phương án thỏa <b>chặt</b> ràng buộc $i$ nếu xảy ra dấu "$=$", thỏa <b>lỏng</b> nếu dấu bất đẳng thức là thực sự ($<$ hoặc $>$). Khái niệm này dùng lại ở phương án cực biên và định lý độ lệch bù.</div>
+  </div>
+  <aside class="tuhoc"><p>Tự kiểm tra: Ví dụ 2.1 (sản xuất) ở dạng nào? (Chuẩn tắc.) Bài khẩu phần? (Chuẩn tắc.) Bài vận tải? (Chính tắc.) Dạng chính tắc dùng cho phương pháp đơn hình, dạng chuẩn tắc thuận tiện khi lập bài toán đối ngẫu.</p></aside>
+</section>
+
+<section class="slide" id="bien-doi" data-kind="ly-thuyet" data-sec="2.1.2.4 Biến đổi dạng">
+  <div class="head"><div class="eyebrow">2.1.2.4 · Biến đổi dạng bài toán</div><h2>Sáu phép biến đổi đưa mọi bài toán về dạng mong muốn</h2></div>
+  <div class="cards" style="--n:3;font-size:.86em">
+    <div class="card"><h4>"$\le$" → "$=$" <small>biến phụ</small></h4>$\sum a_{ij}x_j\le b_i\iff\sum a_{ij}x_j+x_{n+i}=b_i$, $x_{n+i}\ge0$<span class="muted">$x_{n+i}$: phần nguồn lực còn thừa.</span></div>
+    <div class="card"><h4>"$\ge$" → "$=$" <small>biến phụ</small></h4>$\sum a_{ij}x_j\ge b_i\iff\sum a_{ij}x_j-x_{n+i}=b_i$, $x_{n+i}\ge0$<span class="muted">Biến phụ mang dấu <b>trừ</b>.</span></div>
+    <div class="card"><h4>Biến $x_j\le0$</h4>Đặt $x_j=-x'_j$ với $x'_j\ge0$.<span class="muted">Thay vào mọi chỗ có $x_j$.</span></div>
+    <div class="card"><h4>Biến $x_j$ tùy ý</h4>Đặt $x_j=x_j^+-x_j^-$ với $x_j^+,x_j^-\ge0$.<span class="muted">Một biến thành hai biến.</span></div>
+    <div class="card"><h4>Đổi chiều bất đẳng thức</h4>$\sum a_{ij}x_j\ge b_i\iff\sum(-a_{ij})x_j\le-b_i$<span class="muted">Đẳng thức = hai bất đẳng thức ngược chiều.</span></div>
+    <div class="card"><h4>Đổi max ↔ min</h4>$f\to\max\iff g=-f\to\min$, $f_{\max}=-g_{\min}$.<span class="muted">Phương án tối ưu không đổi.</span></div>
+  </div>
+  <div class="box warn tiny" data-tag="Lưu ý">Biến phụ có hệ số <b>0</b> trong hàm mục tiêu (không ảnh hưởng lãi, chi phí). Kết luận bài toán gốc chỉ ghi các biến gốc.</div>
+  <aside class="tuhoc"><p>Ý nghĩa kinh tế của biến phụ: với ràng buộc nguồn lực "≤", biến phụ là <b>lượng nguồn lực còn thừa</b>; với ràng buộc yêu cầu "≥", là <b>phần vượt yêu cầu</b>. Nhớ dấu: "≤" cộng biến phụ, "≥" trừ biến phụ.</p></aside>
+</section>
+
+<section class="slide" id="bien-doi-vd" data-kind="vi-du" data-sec="2.1.2.4 Biến đổi dạng">
+  <div class="head"><div class="eyebrow">2.1.2.4 · Ví dụ 2.7 giáo trình</div><h2>Đưa về dạng chính tắc và dạng chuẩn tắc</h2></div>
+  <div class="cols" style="font-size:.88em">
+    <div data-widget="canon" data-lp="min 2 -1 1 | 1 3 -1 = 6 | 1 -2 0 >= 3 | 2 1 -4 <= 12 | dau >=0 >=0 tuy"></div>
+    <div data-widget="canon" data-to="chuan-tac" data-lp="min 2 -1 1 | 1 3 -1 = 6 | 1 -2 0 >= 3 | 2 1 -4 <= 12 | dau >=0 >=0 tuy"></div>
+  </div>
+  <aside class="tuhoc"><p>Tự làm ra giấy trước rồi so sánh. Chú ý biến $x_3$ không ràng buộc dấu được thay bằng $x_3^+-x_3^-$ ở <b>mọi</b> chỗ (cả hàm mục tiêu). Với dạng chuẩn tắc của bài min, mọi ràng buộc phải là "≥": ràng buộc "≤" nhân −1, đẳng thức tách thành hai.</p></aside>
+</section>
+
+<!-- ============ 2.1.2.3 PHƯƠNG PHÁP ĐỒ THỊ ============ -->
+<section class="slide" id="do-thi" data-kind="ly-thuyet" data-sec="2.1.2.3 Phương pháp đồ thị">
+  <div class="head"><div class="eyebrow">2.1.2.3 · Phương pháp đồ thị (hình học)</div><h2>Bài toán hai biến: nhìn thấy miền phương án và điểm tối ưu</h2></div>
+  <div class="cols w64">
+    <div class="stack">
+      <div class="box key small" data-tag="Ý tưởng">
+        <ul><li>Mỗi ràng buộc $a_{i1}x_1+a_{i2}x_2\le b_i$ là một <b>nửa mặt phẳng</b>; miền phương án $D$ là phần giao — một <b>đa giác lồi</b> (có thể không bị chặn).</li>
+        <li>Các <b>đường mức</b> $c_1x_1+c_2x_2=\alpha$ song song nhau; dịch theo hướng véctơ $c=(c_1;c_2)$ thì $\alpha$ <b>tăng</b>.</li></ul></div>
+      <div class="flow small">
+        <div class="n"><b>B1</b>Vẽ các đường thẳng ràng buộc, xác định miền $D$</div><div class="a">→</div>
+        <div class="n"><b>B2</b>Vẽ một đường mức và véctơ $c$</div><div class="a">→</div>
+        <div class="n"><b>B3</b>Tịnh tiến đường mức theo hướng $c$ (bài max) đến điểm cuối cùng còn chạm $D$</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="box tip tiny" data-tag="Mẹo xác định nửa mặt phẳng">Thay điểm $O(0;0)$ vào: nếu thỏa bất đẳng thức thì phần chứa $O$ là phần được giữ.</div>
+      <div class="box eco tiny" data-tag="Kết quả quan trọng">Nếu có phương án tối ưu thì có một <b>đỉnh</b> của $D$ là phương án tối ưu ⇒ có thể so sánh giá trị $f$ tại các đỉnh (đỉnh = <b>phương án cực biên</b>, Buổi 2).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Bài max: dịch đường mức <b>theo</b> hướng véctơ $c$; bài min: dịch <b>ngược</b> hướng $c$. Kết luận then chốt: phương án tối ưu (nếu có) luôn đạt tại một đỉnh — ý tưởng này dẫn đến phương pháp đơn hình.</p></aside>
+</section>
+
+<section class="slide" id="do-thi-vd" data-kind="vi-du" data-sec="2.1.2.3 Phương pháp đồ thị">
+  <div class="head"><div class="eyebrow">2.1.2.3 · Ví dụ 2.10 giáo trình</div><h2>$f=3x_1+5x_2\to\max$: kéo đường mức đến đỉnh cuối cùng</h2></div>
+  <div class="big" id="dt-vd" data-widget="lpgraph" data-lp="max 3 5 | 2 1 <= 8 | 0 1 <= 4 | 1 0 <= 3"></div>
+  <aside class="tuhoc"><p>Kéo thanh trượt "Kéo đường mức" từ trái sang phải và quan sát đường nét đứt đỏ quét qua miền phương án. Điểm cuối cùng còn chạm miền là phương án tối ưu $(2;4)$, $f_{\max}=26$ — giáo trình gọi là đỉnh $N$. Bảng bên dưới so sánh $f$ tại mọi đỉnh.</p></aside>
+</section>
+
+<section class="slide" id="ba-kha-nang" data-kind="vi-du" data-sec="2.1.2.3 Phương pháp đồ thị">
+  <div class="head"><div class="eyebrow">2.1.2.3 · Các khả năng của bài toán QHTT</div><h2>Tối ưu (một hoặc vô số) · Không bị chặn · Vô nghiệm</h2></div>
+  <div class="cols">
+    <div class="stack"><p class="small"><b>BT 2.13c:</b> $f=x_1+x_2\to\max$, $1\le x_1+x_2\le3$, $x\ge0$ — đường mức song song một cạnh:</p>
+      <div id="dt-vo-so" data-widget="lpgraph" data-table="0" data-lp="max 1 1 | 1 1 >= 1 | 1 1 <= 3"></div></div>
+    <div class="stack"><p class="small"><b>Không bị chặn:</b> $f=-4x_1+2x_2\to\min$, $-2x_1+x_2\le1$, $x_1-3x_2\le3$, $x\ge0$:</p>
+      <div id="dt-kbc" data-widget="lpgraph" data-table="0" data-lp="min -4 2 | -2 1 <= 1 | 1 -3 <= 3"></div></div>
+  </div>
+  <div class="box key small" data-tag="Kết luận chung">Bài toán QHTT chỉ có thể: (1) có phương án tối ưu (duy nhất hoặc vô số); (2) <b>không bị chặn</b> — có phương án nhưng $f$ tăng (giảm) mãi; (3) <b>vô nghiệm</b> — tập phương án rỗng.</div>
+  <aside class="tuhoc"><p>Ba khả năng cần nhớ: có phương án tối ưu (một hoặc vô số), hàm mục tiêu không bị chặn, tập phương án rỗng. Nếu đường mức song song với một cạnh của miền ở vị trí tối ưu thì mọi điểm trên cạnh đó đều tối ưu.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="2.1.2.3 Phương pháp đồ thị">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 4 phút</div><h2>Bạn đã nắm được chưa?</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="2">
+      <p class="q">Bài toán nào ở <b>dạng chính tắc</b>?</p>
+      <ol class="opts one"><li>$f=x_1+x_2\to\min$, $x_1+2x_2\ge4$, $x\ge0$</li><li>$f=x_1-x_2\to\max$, $x_1+x_2+x_3=5$, $x_1-x_3=1$, $x_1,x_2,x_3\ge0$</li><li>$f=2x_1\to\min$, $x_1+x_2=3$, $x_1\ge0$, $x_2$ tùy ý</li><li>$f=x_1\to\max$, $x_1+x_2\le 2$, $x\ge0$</li></ol>
+      <p class="explain">Chính tắc: mọi ràng buộc chính là đẳng thức <b>và</b> mọi biến không âm. Phương án C có $x_2$ tùy ý.</p>
+    </div>
+    <ul class="tf" data-widget="tf">
+      <li data-ans="s" data-why="Ràng buộc &quot;≥&quot; phải TRỪ biến phụ: $x_1+x_2-x_3=4$.">Đưa $x_1+x_2\ge4$ về đẳng thức: $x_1+x_2+x_3=4$, $x_3\ge0$.</li>
+      <li data-ans="d" data-why="Nếu có phương án tối ưu thì có một đỉnh tối ưu.">Phương pháp đồ thị: chỉ cần so sánh $f$ tại các đỉnh của miền phương án (khi miền bị chặn).</li>
+      <li data-ans="s" data-why="Bài min: tịnh tiến ngược hướng $c$ để $f$ giảm.">Bài toán min: tịnh tiến đường mức theo hướng véctơ $c$.</li>
+      <li data-ans="d" data-why="$f\to\max\iff -f\to\min$ và $f_{\max}=-(-f)_{\min}$.">$f\to\max$ tương đương $-f\to\min$, cùng phương án tối ưu.</li>
+    </ul>
+  </div>
+  <aside class="tuhoc"><p>Câu Đ/S đầu tiên là lỗi phổ biến nhất khi đưa về dạng chính tắc: ràng buộc "≥" phải <b>trừ</b> biến phụ.</p></aside>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt-dang" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Luyện tập · Tiết 3 – 4</div><h2>Ba dạng bài của buổi hôm nay</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Dạng 1 <small>BT 2.1 – 2.8</small></h4><b>Lập mô hình QHTT</b><span class="muted">Ba câu hỏi: biến, mục tiêu, ràng buộc. Kiểm tra đơn vị.</span><a class="xref" href="#bt-mo-hinh">Tới bài</a></div>
+    <div class="card"><h4>Dạng 2 <small>BT 2.9, 2.10</small></h4><b>Biến đổi dạng</b><span class="muted">Biến phụ (dấu ±), biến tùy ý, biến ≤ 0.</span><a class="xref" href="#bt-bien-doi">Tới bài</a></div>
+    <div class="card"><h4>Dạng 3 <small>BT 2.12, 2.13</small></h4><b>Phương pháp đồ thị</b><span class="muted">Vẽ miền, đường mức; xét đủ ba khả năng.</span><a class="xref" href="#bt-do-thi">Tới bài</a></div>
+  </div>
+  <div class="box small" data-tag="Cách tổ chức" data-aud="gv">Dạng 1: cặp đôi 5' → 1 cặp lên bảng → lớp nhận xét. Dạng 2, 3: nhóm 4 người, mỗi nhóm một câu, trình bày 3'.</div>
+  <div class="box small" data-tag="Cách tự luyện" data-aud="hv">Mỗi bài: tự làm 5–10 phút ra giấy → hiện lời giải từng bước để đối chiếu → kiểm tra lại bằng Phòng tính QHTT.</div>
+  <aside class="tuhoc"><p>BT 2.4 và 2.6 trong giáo trình có số liệu cần đính chính — xem bảng "Đính chính" ở trang chương trước khi làm.</p></aside>
+</section>
+
+<section class="slide" id="bt-mo-hinh" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 2.2</div><h2>Xưởng mộc: sản xuất bao nhiêu ghế mỗi loại?</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <table class="tbl small"><tr><th>Ghế</th><th class="c">Đánh bóng</th><th class="c">Đánh màu</th><th class="c">Véc-ni</th><th class="c">Bọc nệm</th><th class="c">Lãi</th></tr>
+        <tr><td>A</td><td class="c">1,0</td><td class="c">0,5</td><td class="c">0,7</td><td class="c">0</td><td class="c">100</td></tr>
+        <tr><td>B</td><td class="c">1,2</td><td class="c">0,5</td><td class="c">0,7</td><td class="c">0</td><td class="c">130</td></tr>
+        <tr><td>C</td><td class="c">0,7</td><td class="c">0,3</td><td class="c">0,3</td><td class="c">0,7</td><td class="c">80</td></tr>
+        <tr><th>Giờ/tháng</th><td class="c">600</td><td class="c">300</td><td class="c">300</td><td class="c">140</td><td></td></tr></table>
+      <p class="small muted">Thời gian tính bằng giờ cho một ghế; lãi tính bằng nghìn đồng.</p>
+    </div>
+    <div class="stack">
+      <div class="step small"><b>Biến:</b> $x_1,x_2,x_3$ — số ghế A, B, C sản xuất trong tháng.</div>
+      <div class="step small"><b>Mục tiêu:</b> $f=100x_1+130x_2+80x_3\to\max$</div>
+      <div class="step box key" data-tag="Ràng buộc: mỗi nguyên công một dòng">$$\begin{cases}x_1+1{,}2x_2+0{,}7x_3\le600\\ 0{,}5x_1+0{,}5x_2+0{,}3x_3\le300\\ 0{,}7x_1+0{,}7x_2+0{,}3x_3\le300\\ 0{,}7x_3\le140\\ x_1,x_2,x_3\ge0\end{cases}$$</div>
+      <div class="step box tip small" data-tag="Kiểm định">Ràng buộc bọc nệm chỉ có ghế C. Lời giải (Phòng tính): $x\approx(0;\,342{,}9;\,200)$ — số lẻ: thực tế làm tròn và kiểm tra lại ràng buộc, hoặc dùng quy hoạch nguyên.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Mỗi nguyên công là một ràng buộc "≤" (giờ dùng không vượt quá giờ có). Lời giải tối ưu $(0;\ 2400/7;\ 200)$ có số lẻ — trong thực tế cần làm tròn rồi kiểm tra lại các ràng buộc.</p></aside>
+</section>
+
+<section class="slide" id="bt-mo-hinh-2" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 2.3 và BT 2.8</div><h2>Đọc kỹ đề: "không vượt quá" hay "ít nhất"?</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>BT 2.3.</b> Sản phẩm A, B gia công trên 4 máy; thời gian (giờ) trên máy I–IV: A: 2; 4; 3; 1 — B: 0,25; 2; 1; 4. Quỹ giờ máy: 45; 100; 300; 50. Lãi: A 600 đ, B 4000 đ.</p>
+      <div class="step">$f=600x_1+4000x_2\to\max$ $$\begin{cases}2x_1+0{,}25x_2\le45\\ 4x_1+2x_2\le100\\ 3x_1+x_2\le300\\ x_1+4x_2\le50\\ x_1,x_2\ge0\end{cases}$$</div>
+      <div class="step box warn tiny" data-tag="Đính chính">Hướng dẫn giáo trình viết các ràng buộc bằng dấu "$=$"; quỹ giờ máy là giới hạn trên nên phải là "$\le$".</div>
+    </div>
+    <div class="stack small">
+      <p><b>BT 2.8.</b> Nhà máy Vĩnh Phúc cung cấp <b>tối đa</b> 100 tấn, Bình Dương tối đa 140 tấn; kho Hà Nội, TP HCM, Cần Thơ cần <b>từ</b> 100, 60, 80 tấn trở lên. Cước (trăm nghìn/tấn): VP: 5; 7; 9 — BD: 8; 7; 10.</p>
+      <div class="step">$f=5x_{11}+7x_{12}+9x_{13}+8x_{21}+7x_{22}+10x_{23}\to\min$ $$\begin{cases}x_{11}+x_{12}+x_{13}\le100,\quad x_{21}+x_{22}+x_{23}\le140\\ x_{11}+x_{21}\ge100,\ \ x_{12}+x_{22}\ge60,\ \ x_{13}+x_{23}\ge80\\ x_{ij}\ge0\end{cases}$$</div>
+      <div class="step box tip tiny" data-tag="Kiểm định">Tổng cung 240 = tổng cầu 240 nên mọi ràng buộc sẽ thỏa chặt. Lời giải: $f_{\min}=1720$ (trăm nghìn đồng).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Từ khóa quyết định chiều bất đẳng thức: "tối đa", "không vượt quá" → "≤"; "ít nhất", "từ … trở lên" → "≥". Hướng dẫn BT 2.3 và 2.4 trong giáo trình ghi dấu "=" là chưa đúng (BT 2.4 đúng là $0{,}3x_1+0{,}3x_2\ge90$; $0{,}2x_1+0{,}4x_2\ge80$; $0{,}3x_1+0{,}2x_2\ge50$).</p></aside>
+</section>
+
+<section class="slide" id="bt-bien-doi" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 2.9b và BT 2.10a</div><h2>Đưa về dạng chính tắc và dạng chuẩn tắc</h2></div>
+  <div class="cols" style="font-size:.84em">
+    <div class="stack"><p class="small"><b>BT 2.9b</b> — về dạng chính tắc:</p>
+      <div data-widget="canon" data-lp="max 2 -1 0 | -1 -2 1 <= 2 | 2 -1 -2 >= 2 | 1 1 1 = 4"></div></div>
+    <div class="stack"><p class="small"><b>BT 2.10a</b> — về dạng chuẩn tắc ($x_2$ tùy ý):</p>
+      <div data-widget="canon" data-to="chuan-tac" data-lp="max 2 -1 0 | 1 -2 1 <= 2 | 2 -2 -1 >= 3 | 1 1 1 = 4 | dau >=0 tuy >=0"></div></div>
+  </div>
+  <aside class="tuhoc"><p>Làm ra giấy trước. Với bài <b>max</b>, dạng chuẩn tắc cần mọi ràng buộc là "≤": ràng buộc "≥" nhân −1; đẳng thức tách thành hai bất đẳng thức "≤". Đừng quên thay biến tùy ý $x_2=x_2^+-x_2^-$ ở cả hàm mục tiêu.</p></aside>
+</section>
+
+<section class="slide" id="bt-do-thi" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 3 · BT 2.12 (b, d)</div><h2>Giải bằng phương pháp đồ thị</h2></div>
+  <div class="cols">
+    <div class="stack"><p class="small"><b>b)</b> $f=2x_1+5x_2\to\max$, $2x_1+x_2\le4$, $-x_1+x_2\le1$, $x_1+2x_2\le10$, $x\ge0$.</p>
+      <div id="dt-212b" data-widget="lpgraph" data-table="0" data-lp="max 2 5 | 2 1 <= 4 | -1 1 <= 1 | 1 2 <= 10"></div></div>
+    <div class="stack"><p class="small"><b>d)</b> $f=3x_1+2x_2\to\max$, $x_1+2x_2\le3$, $x_1-5x_2\le1$, $-x_1+x_2\le9$, $x\ge0$.</p>
+      <div id="dt-212d" data-widget="lpgraph" data-table="0" data-lp="max 3 2 | 1 2 <= 3 | 1 -5 <= 1 | -1 1 <= 9"></div></div>
+  </div>
+  <aside class="tuhoc"><p>Đáp số: b) $f_{\max}=12$ tại $(1;2)$ — ràng buộc thứ ba không ảnh hưởng; d) $f_{\max}=55/7$ tại $(17/7;\,2/7)$. Khi đỉnh có tọa độ phân số, xác định đỉnh bằng hình vẽ rồi <b>giải hệ hai phương trình</b> để có tọa độ chính xác.</p></aside>
+</section>
+
+<section class="slide" id="bt-do-thi-2" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 3 · BT 2.13 (a, b) · Kiểm định đáp số</div><h2>Khi đáp số giáo trình không khớp với đề in</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <p><b>a)</b> $f=5x_1+6x_2\to\max$, $x_1\le3$, $x_2\le1$, $2x_1+3x_2\le12$, $x\ge0$. Giáo trình: "vô nghiệm do tập phương án rỗng".</p>
+      <div class="step">Điểm $O(0;0)$ thỏa mọi ràng buộc ⇒ tập phương án <b>không rỗng</b>. Giải đúng đề in: $f_{\max}=21$ tại $(3;1)$.</div>
+      <div class="step box warn" data-tag="Đính chính">Đáp số "tập phương án rỗng" đúng khi ràng buộc thứ ba là $2x_1+3x_2\ge12$ (vì $2\cdot3+3\cdot1=9<12$).</div>
+    </div>
+    <div class="stack small">
+      <p><b>b)</b> $f=-4x_1+2x_2\to\max$, $-2x_1+x_2\le1$, $x_1-3x_2\le3$, $x\ge0$. Giáo trình: "không bị chặn trên".</p>
+      <div class="step">Từ ràng buộc 1: $x_2\le1+2x_1$ ⇒ $f=-4x_1+2x_2\le-4x_1+2+4x_1=2$. Vậy $f$ <b>bị chặn</b>, $f_{\max}=2$ đạt trên cả tia $x_2=1+2x_1$ — vô số phương án tối ưu.</div>
+      <div class="step box warn" data-tag="Đính chính">Đáp số "không bị chặn" đúng nếu bài toán là $f\to\min$ (xem đồ thị ở slide <a href="#ba-kha-nang">các khả năng</a>).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Thói quen tốt: luôn <b>thử lại</b> đáp số với đề bài. Ở câu a, chỉ cần thấy điểm $O(0;0)$ thỏa mọi ràng buộc là biết tập phương án không rỗng. Hãy nhập hai đề này vào Phòng tính QHTT để tự kiểm chứng.</p></aside>
+</section>
+
+<!-- ============ TỔNG KẾT ============ -->
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 1</div><h2>Ba điều cần mang theo sang buổi sau</h2></div>
+  <div class="flow">
+    <div class="n"><b>MÔ HÌNH</b>Biến · mục tiêu · ràng buộc · $x\ge0$</div><div class="a">→</div>
+    <div class="n"><b>DẠNG</b>Tổng quát → chính tắc (biến phụ, $x^+-x^-$)</div><div class="a">→</div>
+    <div class="n"><b>ĐỒ THỊ</b>Miền lồi, đường mức, tối ưu tại đỉnh</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>1 · Lập mô hình</h4>Nguồn lực có hạn: "$\le$"; yêu cầu tối thiểu: "$\ge$"; cân bằng: "$=$".</div>
+    <div class="card"><h4>2 · Biến đổi dạng</h4>"$\le$" cộng biến phụ, "$\ge$" trừ biến phụ; biến phụ có hệ số 0 trong $f$.</div>
+    <div class="card"><h4>3 · Kết quả có thể</h4>Tối ưu duy nhất / vô số · không bị chặn · vô nghiệm. Tối ưu (nếu có) đạt tại một đỉnh.</div>
+  </div>
+  <aside class="tuhoc"><p>Tự tóm tắt buổi học ra giấy rồi so sánh với slide. Câu hỏi để suy nghĩ trước Buổi 2: bài toán 3 biến trở lên không vẽ được — làm sao "đi" từ đỉnh này sang đỉnh khác tốt hơn?</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 2: Phương pháp đơn hình</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>Lập mô hình BT 2.1, 2.4 (có đính chính), 2.6 (xem đính chính số liệu); hoàn thiện BT 2.9, 2.10.</li>
+        <li>Giải bằng đồ thị BT 2.12 (a, c), 2.13 (c, d); kiểm tra bằng <a href="lab.html">Phòng tính QHTT</a>.</li>
+        <li>Tự đặt một bài toán sản xuất 2 sản phẩm của một cơ sở quen thuộc và giải bằng đồ thị.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình 2.2.3: Tính chất của bài toán QHTT (tập lồi, phương án cực biên).</li>
+        <li>Giáo trình 2.3.2: Phương pháp đơn hình — bảng đơn hình.</li>
+        <li>Ôn Chương 1: hệ véctơ độc lập tuyến tính, biến đổi sơ cấp trên dòng.</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref" href="buoi2.html">Sang Buổi 2 · Tính chất và phương pháp đơn hình</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Ôn lại phép biến đổi sơ cấp trên dòng (Chương 1, Buổi 1): bước biến đổi của phương pháp đơn hình chính là khử Gauss quanh một "phần tử trục".</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/qhtt.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/widgets-qhtt.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

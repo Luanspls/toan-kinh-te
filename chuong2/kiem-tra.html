@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kiểm tra – đánh giá · Chương 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<style>
+  html, body { height: auto; }
+  body { overflow: auto; background-color: var(--paper);
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding-block: 24px 72px; padding-inline: 16px; }
+  .sheet { position: relative; padding-left: 28px; display: grid; gap: 32px; }
+  .sheet::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--pen); }
+  @media (max-width: 520px) { .sheet { padding-left: 14px; } }
+  .k { font-family: var(--f-mono); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--pen); }
+  h1 { font-family: var(--f-display); font-size: clamp(30px, 5vw, 48px); line-height: 1.06; margin: 6px 0 10px; text-wrap: balance; }
+  h2.sec { font-family: var(--f-display); font-size: clamp(22px, 3vw, 28px); margin: 0 0 6px; }
+  .lead { font-size: 16px; line-height: 1.6; color: var(--ink-2); margin: 0 0 12px; max-width: 70ch; }
+  nav.top { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .acct { margin-top: 12px; }
+  .btn { font-size: 14px; padding: 7px 12px; text-decoration: none; display: inline-block; }
+  .muted { color: var(--ink-2); }
+  .tblwrap { overflow-x: auto; }
+  table.tbl { font-size: 14px; }
+
+  /* Danh sách bài */
+  .kq-group { margin-bottom: 28px; }
+  .kq-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .kq-card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; }
+  .kq-card.focus { border: 2px solid var(--pen); box-shadow: var(--shadow); }
+  .kq-card h3 { margin: 0; font-family: var(--f-display); font-size: 18px; }
+  .kq-card .meta { margin: 0; font-size: 13px; color: var(--ink-2); }
+  .kq-stat { display: flex; gap: 10px; align-items: baseline; font-size: 13px; color: var(--ink-2); }
+  .kq-stat b { font-family: var(--f-display); font-size: 30px; color: var(--ink); }
+  .kq-act { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kq-hist { font-size: 13px; overflow-x: auto; }
+  .kq-note { background: var(--surface); border: 1.5px dashed var(--blue); border-radius: 8px; padding: 10px 14px; font-size: 14.5px; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .kq-note.warn { border-color: var(--pen); }
+  .kq-note.ok { border-color: var(--ok); color: var(--ok); }
+
+  /* Làm bài */
+  .kq-bar { position: sticky; top: 0; z-index: 10; background: var(--surface); border: 2px solid var(--ink); border-radius: 10px; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-bottom: 14px; box-shadow: var(--shadow); }
+  .kq-bar > div:first-child { display: grid; font-size: 14px; flex: 1 1 200px; } .kq-bar span { color: var(--ink-2); font-size: 12.5px; }
+  .kq-nav { display: flex; flex-wrap: wrap; gap: 4px; }
+  .kq-nav a { width: 28px; height: 28px; display: grid; place-items: center; border: 1.5px solid var(--line); border-radius: 6px; font: 600 12px var(--f-mono); color: var(--ink); text-decoration: none; }
+  .kq-nav a.xong { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .kq-time { font: 700 18px var(--f-mono); font-variant-numeric: tabular-nums; }
+  .kq-time.gap { color: var(--pen); }
+  .kq-form, .kq-review { display: grid; gap: 14px; }
+  .kq-q { background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 16px; display: grid; gap: 10px; scroll-margin-top: 90px; font-size: 16px; line-height: 1.55; }
+  .kq-q header { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+  .kq-q header b { font-family: var(--f-display); font-size: 17px; }
+  .kq-q .tag { font: 500 11px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+  .kq-q .mark { margin-left: auto; font-weight: 700; font-size: 14px; }
+  .kq-q.dung { border-color: var(--ok); } .kq-q.dung .mark { color: var(--ok); }
+  .kq-q.sai { border-color: var(--bad); } .kq-q.sai .mark { color: var(--bad); }
+  .kq-q.mot-phan { border-color: var(--blue); } .kq-q.mot-phan .mark { color: var(--blue); }
+  .kq-q.loi-so .kq-so input { border-color: var(--bad); }
+  .kq-stem { overflow-x: auto; overflow-y: hidden; }
+  .kq-stem .tbl { margin: 8px 0; font-size: 14px; width: auto; }
+  .kq-opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  @media (max-width: 640px) { .kq-opts { grid-template-columns: 1fr; } }
+  .op { display: flex; gap: 8px; align-items: baseline; border: 1.5px solid var(--line); border-radius: 8px; padding: 8px 10px; cursor: pointer; overflow-x: auto; }
+  .op:hover { border-color: var(--blue); }
+  .op input { flex: none; accent-color: var(--ink); }
+  .op b { font-family: var(--f-mono); color: var(--blue); }
+  .op.chon { border-color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, var(--surface)); }
+  .op.khoa { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--surface)); }
+  .op.sai { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 10%, var(--surface)); }
+  .kq-ds { border-collapse: collapse; width: 100%; font-size: 15px; }
+  .kq-ds th, .kq-ds td { border-bottom: 1px solid var(--line); padding: 6px; text-align: left; vertical-align: middle; }
+  .kq-ds th { font: 500 11px var(--f-mono); text-transform: uppercase; color: var(--ink-2); }
+  .kq-ds .c { text-align: center; width: 54px; }
+  .kq-ds input { width: 20px; height: 20px; accent-color: var(--ink); }
+  .kq-ds tr.ok td:last-child { color: var(--ok); } .kq-ds tr.no { background: color-mix(in srgb, var(--bad) 8%, transparent); }
+  .kq-so { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+  .kq-so input { font: 17px var(--f-mono); padding: 7px 10px; width: 10em; border: 1.5px solid var(--ink); border-radius: 6px; background: var(--paper); color: var(--ink); }
+  .kq-so .hint { font-size: 12.5px; color: var(--ink-2); }
+  .kq-so .key { color: var(--ok); }
+  .kq-giai { border-left: 3px solid var(--ok); padding-left: 10px; font-size: 15px; }
+  .kq-giai summary { cursor: pointer; font-weight: 600; color: var(--ok); }
+  .kq-foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+  .kq-count { font-size: 14px; color: var(--ink-2); flex: 1; }
+  .kq-result { background: var(--surface); border: 2px solid var(--ink); border-radius: 10px; padding: 16px 18px; display: grid; gap: 12px; margin-bottom: 20px; }
+  .kq-score { display: flex; gap: 14px; align-items: center; }
+  .kq-score b { font-family: var(--f-display); font-size: 64px; line-height: 1; color: var(--pen); }
+  .kq-score span { color: var(--ink-2); font-size: 14px; }
+
+  /* Giảng viên */
+  #kt-gv { border-top: 2px dashed var(--pen); padding-top: 18px; display: grid; gap: 10px; }
+  .kq-bank details { background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; }
+  .kq-bank summary { cursor: pointer; }
+  .kq-bank .tbl { font-size: 13px; margin-top: 8px; }
+  .kq-sample td { background: var(--paper); }
+  .kq-print-form { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; font-size: 14px; }
+  .kq-print-form label { display: grid; gap: 4px; font-weight: 600; }
+  .kq-print-form select, .kq-print-form input { font: 15px var(--f-body); padding: 6px 8px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+  .pt-head { display: grid; grid-template-columns: 1.2fr 1.6fr .8fr; gap: 10px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 8px; font-size: 14px; }
+  .c { text-align: center; }
+  .kq-print .kq-q { border: 0; padding: 4px 0; border-radius: 0; }
+  .kq-print { display: none; }
+  footer { font-size: 13px; color: var(--ink-2); border-top: 1.5px solid var(--line); padding-top: 12px; }
+  .themebtn { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 5; background: var(--surface); border-color: var(--line); }
+  @media print {
+    body { background: #fff !important; }
+    .themebtn, nav.top, .acct, .kq-act, .kq-bar, .kq-foot, .kq-note, .xref { display: none !important; }
+    body.in-de .sheet > *:not(#kt-gv), body.in-de #kt-gv > *:not(#pt-out) { display: none !important; }
+    body.in-de .kq-print { display: block; }
+    body.in-de .sheet { padding-left: 0; } body.in-de .sheet::before { display: none; }
+    .pt-page { break-after: page; font-size: 12pt; }
+    .kq-print .kq-q { break-inside: avoid; }
+    .kq-print .op { border: 0; padding: 2px 4px; } .kq-print .op input, .kq-print .kq-ds input { display: none; }
+    .kq-print .kq-ds td.c::before { content: "☐"; }
+    .kq-q { break-inside: avoid; }
+  }
+</style>
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+  <header>
+    <nav class="top"><a class="xref back" href="index.html">Trang chương</a><a class="xref back" href="../index.html" data-aud="hv">Cổng học tập</a><a class="xref back" href="buoi1.html">Buổi 1</a></nav>
+    <div class="k">Toán kinh tế · Chương 2 · Kiểm tra – đánh giá</div>
+    <h1>Tự kiểm tra sau mỗi buổi, đánh giá cả chương</h1>
+    <p class="lead" data-aud="hv">Mỗi bài gồm câu trắc nghiệm, câu Đúng/Sai (4 ý) và câu trả lời ngắn. Số liệu được sinh riêng cho từng lượt làm, nên bạn có thể làm lại để luyện tập mà không "học thuộc đáp án". Sau khi nộp, xem lời giải và mở lại đúng slide cần ôn.</p>
+    <p class="lead" data-aud="gv">Bản giảng viên: phía dưới danh sách bài có bảng đặc tả, toàn bộ ngân hàng câu hỏi (xem biến thể kèm đáp án) và công cụ tạo đề in nhiều mã đề.</p>
+    <div data-acct></div>
+  </header>
+  <main id="kt-app" aria-live="polite"></main>
+  <section id="kt-gv" data-aud="gv"></section>
+  <footer>Ngân hàng câu hỏi Chương 2 theo chuẩn đầu ra của CTMH C10.KT06. Mức độ: Nhận biết · Thông hiểu · Vận dụng · Vận dụng cao.</footer>
+</div>
+</div>
+<button class="ib themebtn" type="button" id="themeBtn" aria-label="Đổi giao diện sáng tối" title="Sáng / tối"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 000 16z" fill="currentColor"/></svg></button>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/qhtt.js"></script>
+<script src="../assets/kiemtra-core.js"></script>
+<script src="ngan-hang.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/kiemtra.js"></script>
+<script>
+document.getElementById('themeBtn').addEventListener('click', function () {
+  var r = document.documentElement;
+  var dark = r.getAttribute('data-theme') === 'dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  var t = dark ? 'light' : 'dark'; r.setAttribute('data-theme', t);
+  try { localStorage.setItem('tkt-theme', t); } catch (e) {}
+});
+</script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

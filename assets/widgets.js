@@ -71,7 +71,8 @@
         bx.appendChild(b);
       });
       li.appendChild(bx);
-      li.appendChild(h('span', 'printkey', '→ <b>' + (ans === 'd' ? 'Đúng' : 'Sai') + '</b>. ' + (why || '')));
+      const pk = h('span', 'printkey', '→ <b>' + (ans === 'd' ? 'Đúng' : 'Sai') + '</b>. ' + (why || ''));
+      li.appendChild(pk); if (window.TKT && TKT.renderMath) TKT.renderMath(pk);   // đáp án in ra PDF cũng hiển thị công thức
     });
   };
 

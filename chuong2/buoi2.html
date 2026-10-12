@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 2 · Tính chất bài toán QHTT và phương pháp đơn hình</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 2" data-unit="Buổi 2 · Phương pháp đơn hình" data-prev="buoi1.html" data-next="buoi3.html" data-home="index.html" data-kt="c2b2" data-lab="Phòng tính QHTT">
+<div class="stage">
+
+<!-- ============ MỞ ĐẦU ============ -->
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 2">
+  <div class="num"><small>Chương 2 · Quy hoạch tuyến tính và ứng dụng</small>Buổi 2</div>
+  <h1>Tính chất của bài toán QHTT và phương pháp đơn hình</h1>
+  <div class="meta"><span class="chip">4 tiết</span><span class="chip lt">Lý thuyết 1 tiết</span><span class="chip bt">Bài tập 3 tiết</span><span class="chip">Mục 2.1.3 – 2.1.4.2 · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#tap-loi"><span>2.2.3</span>Tập lồi, phương án cực biên</a>
+    <a href="#dinh-ly-pacb"><span>2.2.3</span>Các định lý cơ bản</a>
+    <a href="#y-tuong"><span>2.3.2</span>Ý tưởng phương pháp đơn hình</a>
+    <a href="#bang-don-hinh"><span>2.3.2</span>Bảng đơn hình</a>
+    <a href="#thuat-toan"><span>2.3.2</span>Thuật toán 6 bước</a>
+    <a href="#bt-dang"><span>BT</span>Luyện tập: BT 2.11, 2.14</a>
+  </div>
+  <aside class="tuhoc"><p>Buổi này là "trái tim" của Chương 2: <b>phương pháp đơn hình</b> giải được bài toán QHTT với bất kỳ số biến nào. Bạn sẽ dùng lại phép biến đổi sơ cấp trên dòng đã học ở Chương 1.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 2</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Nêu được khái niệm tập lồi, phương án cực biên (PACB), cơ sở, PACB suy biến.</li>
+      <li>Phát biểu được các định lý: tồn tại PACB tối ưu; đặc trưng PACB qua hệ cột độc lập tuyến tính.</li>
+      <li>Hiểu ý nghĩa ước lượng $\Delta_j$, dấu hiệu tối ưu, dấu hiệu không bị chặn.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Tìm và kiểm tra phương án cực biên của bài toán dạng chính tắc.</li>
+      <li>Lập bảng đơn hình, chọn cột xoay, hàng xoay, biến đổi bảng chính xác.</li>
+      <li>Kết luận đúng một trong ba khả năng; giải được bài toán max.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Tính toán cẩn thận:</b> biến đổi bảng với phân số, tự kiểm tra $\Delta_j$ hai cách.</li>
+      <li><b>Liên hệ:</b> nhìn bảng đơn hình như "đi qua các đỉnh" của đồ thị Buổi 1.</li>
+      <li><b>Tự chủ:</b> dùng công cụ đơn hình từng bước để tự chữa bài.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Tìm đúng PACB BT 2.11; giải đúng BT 2.14 a, b, d bằng bảng đơn hình; giải lại Ví dụ 2.1 (bài max) bằng đơn hình.</span></div>
+  <aside class="tuhoc"><p>Kỹ năng then chốt của buổi: <b>lập và biến đổi bảng đơn hình chính xác</b>. Khi tự luyện, luôn ghi rõ cột xoay, hàng xoay, phần tử trục ở mỗi bảng.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 4 tiết × 45 phút</div><h2>Từ "đỉnh của đa giác" đến bảng đơn hình</h2></div>
+  <div class="plan">
+    <div class="p lt"><div class="t">Tiết 1<small>Lý thuyết</small></div><div class="c"><b>Tính chất bài toán QHTT · Ý tưởng và bảng đơn hình</b><span>Khởi động 5' · tập lồi, PACB, các định lý 12' · ước lượng, dấu hiệu tối ưu 10' · bảng và thuật toán 15'</span></div><div class="m">Trực quan → hình thức</div></div>
+    <div class="p bt"><div class="t">Tiết 2<small>Bài tập</small></div><div class="c"><b>PACB · Làm mẫu đơn hình</b><span>VD 2.9 · BT 2.11 · Ví dụ 2.11 (GV làm mẫu, SV làm theo)</span></div><div class="m">Làm mẫu, cặp đôi</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Bài tập</small></div><div class="c"><b>Đơn hình cơ bản</b><span>BT 2.14a, 2.14d · bài max: Ví dụ 2.1 bằng đơn hình</span></div><div class="m">Lên bảng, nhận xét chéo</div></div>
+    <div class="p bt"><div class="t">Tiết 4<small>Bài tập</small></div><div class="c"><b>Bài lớn hơn · Các khả năng</b><span>BT 2.14b · bài không bị chặn · vô số PATU · tổng kết</span></div><div class="m">Nhóm 4 người</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · Từ Buổi 1</div><h2>Không vẽ được thì tìm đỉnh tối ưu thế nào?</h2></div>
+  <div class="cols w46">
+    <div class="stack">
+      <div class="box key small" data-tag="Điều đã biết">Nếu bài toán có phương án tối ưu thì có một <b>đỉnh</b> của miền phương án là tối ưu (Ví dụ 2.10: đỉnh $(2;4)$, $f_{\max}=26$).</div>
+      <p class="small"><b>Thử nghĩ:</b> bài toán có $n=20$ biến, $m=10$ ràng buộc đẳng thức. Mỗi đỉnh ứng với cách chọn 10 biến "được dương". Có bao nhiêu cách chọn?</p>
+      <div data-widget="timer" data-min="2" data-label="Ước lượng"></div>
+    </div>
+    <div class="stack">
+      <div class="step box small">$C_{20}^{10}=184\,756$ cách — duyệt hết mọi đỉnh là quá tốn công.</div>
+      <div class="step box key" data-tag="Ý tưởng Dantzig (1947)">Bắt đầu từ <b>một đỉnh</b>; nếu chưa tối ưu thì sang <b>đỉnh kề tốt hơn</b>; lặp lại cho đến khi không còn đỉnh kề nào tốt hơn. Đó là <b>phương pháp đơn hình</b>.</div>
+      <div class="step box eco small" data-tag="Ứng dụng">Các phần mềm tối ưu (Excel Solver, phần mềm lập kế hoạch sản xuất, điều phối vận tải) đều dùng ý tưởng này cho bài toán hàng nghìn biến.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Số cách chọn rất lớn nên không thể thử mọi đỉnh. Phương pháp đơn hình chỉ đi qua một dãy đỉnh, mỗi lần một đỉnh tốt hơn — thường chỉ vài bước là xong.</p></aside>
+</section>
+
+<!-- ============ TÍNH CHẤT ============ -->
+<section class="slide" id="tap-loi" data-kind="ly-thuyet" data-sec="2.2.3 Tính chất bài toán QHTT">
+  <div class="head"><div class="eyebrow">2.2.3 · Tập lồi và phương án cực biên</div><h2>Đỉnh của miền phương án = phương án cực biên</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box key" data-tag="Tập lồi">$M$ lồi nếu với mọi $x,y\in M$, cả <b>đoạn thẳng</b> $\lambda x+(1-\lambda)y$, $0\le\lambda\le1$ nằm trong $M$. Tập phương án của bài toán QHTT luôn là tập lồi (giao của các nửa không gian).</div>
+      <div class="box key" data-tag="Điểm cực biên">$x\in M$ là điểm cực biên nếu $x$ <b>không</b> nằm "bên trong" đoạn thẳng nào nối hai điểm khác nhau của $M$: $x=\lambda x^1+(1-\lambda)x^2$, $0&lt;\lambda&lt;1$ ⇒ $x^1=x^2=x$.</div>
+      <p>Điểm cực biên của tập phương án gọi là <b>phương án cực biên</b> (PACB) — chính là các <b>đỉnh</b> ở phương pháp đồ thị.</p>
+    </div>
+    <div class="stack small">
+      <svg viewBox="0 0 300 200" class="fig" role="img" aria-label="Tập lồi và tập không lồi">
+        <polygon points="20,170 40,60 120,30 160,110 110,180" fill="var(--hl-blue,#dbe7ff)" stroke="currentColor" stroke-width="2"/>
+        <line x1="45" y1="150" x2="125" y2="60" stroke="var(--pen,#c0392b)" stroke-width="2.5" stroke-dasharray="5 4"/>
+        <circle cx="120" cy="30" r="5" fill="var(--pen,#c0392b)"/><text x="126" y="26" font-size="13">đỉnh</text>
+        <text x="40" y="196" font-size="13">lồi</text>
+        <path d="M190,170 L200,40 L240,110 L285,40 L280,170 Z" fill="var(--hl-yellow,#fff2c2)" stroke="currentColor" stroke-width="2"/>
+        <line x1="210" y1="60" x2="275" y2="60" stroke="var(--pen,#c0392b)" stroke-width="2.5" stroke-dasharray="5 4"/>
+        <text x="205" y="196" font-size="13">không lồi</text>
+      </svg>
+      <div class="box tip" data-tag="Nhận biết PACB">$x$ là PACB khi và chỉ khi $x$ thỏa <b>chặt</b> $n$ ràng buộc (kể cả ràng buộc dấu) mà hệ các ràng buộc chặt đó độc lập tuyến tính. Trong $\mathbb R^2$: đỉnh là giao của 2 đường biên.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Hình dung: tập lồi là tập "không có chỗ lõm" — nối hai điểm bất kỳ, đoạn nối nằm trọn trong tập. Phương án cực biên là "góc nhọn" của tập: không nằm giữa hai phương án khác.</p></aside>
+</section>
+
+<section class="slide" id="dinh-ly-pacb" data-kind="ly-thuyet" data-sec="2.2.3 Tính chất bài toán QHTT">
+  <div class="head"><div class="eyebrow">2.2.3 · Các định lý cơ bản (bài toán dạng chính tắc $Ax=b$, $x\ge0$, hạng $A=m$)</div><h2>Chỉ cần tìm phương án tối ưu trong hữu hạn PACB</h2></div>
+  <div class="cards" style="--n:4;font-size:.86em">
+    <div class="card"><h4>Định lý 2.4 – 2.5 <small>tồn tại</small></h4>Nếu bài toán có phương án tối ưu thì có ít nhất <b>một PACB tối ưu</b>.</div>
+    <div class="card"><h4>Định lý 2.6 <small>đặc trưng PACB</small></h4>Phương án $x$ là PACB ⇔ hệ các <b>cột $a_j$ ứng với $x_j&gt;0$</b> độc lập tuyến tính.</div>
+    <div class="card"><h4>Hệ quả 2.3</h4>PACB có <b>tối đa $m$</b> tọa độ dương; số PACB <b>hữu hạn</b> (không quá $C_n^m$).</div>
+    <div class="card"><h4>Định lý 2.7</h4>Nếu có hai phương án tối ưu khác nhau thì có <b>vô số</b> phương án tối ưu (cả đoạn nối hai phương án).</div>
+  </div>
+  <div class="cols">
+    <div class="box key small" data-tag="Cơ sở, suy biến">$m$ cột độc lập tuyến tính $\{a_{j_1},\dots,a_{j_m}\}$ chứa các cột ứng với $x_j&gt;0$ là một <b>cơ sở</b> của PACB; $x_{j_i}$: biến cơ sở. PACB có <b>đủ $m$</b> tọa độ dương: <b>không suy biến</b>; ít hơn $m$: <b>suy biến</b>.</div>
+    <div class="box tip small" data-tag="Cách tìm PACB">Cho $n-m$ biến bằng 0, giải hệ $m$ phương trình còn lại. Nhận nếu nghiệm <b>duy nhất</b> và <b>không âm</b>.</div>
+  </div>
+  <aside class="tuhoc"><p>Định lý 2.6 nối Chương 2 với Chương 1: kiểm tra một phương án có phải PACB hay không chính là kiểm tra hệ véctơ cột (ứng với tọa độ dương) có độc lập tuyến tính không — dùng hạng ma trận hoặc định thức.</p></aside>
+</section>
+
+<section class="slide" id="pacb-vd" data-kind="vi-du" data-sec="2.2.3 Tính chất bài toán QHTT">
+  <div class="head"><div class="eyebrow">2.2.3 · Ví dụ 2.9 giáo trình</div><h2>Tìm mọi PACB: $x_1+x_2+x_3+x_4=6$, $-x_2+2x_3+x_4=4$, $x\ge0$</h2></div>
+  <div class="cols w64">
+    <div data-widget="pacb" data-a="1 1 1 1; 0 -1 2 1" data-b="6 4"></div>
+    <div class="stack small">
+      <p>$n=4$, $m=2$ ⇒ mỗi PACB có ít nhất $n-m=2$ tọa độ bằng 0: xét $C_4^2=6$ cặp biến cơ sở.</p>
+      <div class="box key" data-tag="Kết quả">4 PACB, đều không suy biến: $(0;1;0;5)$, $(4;0;2;0)$, $(2;0;0;4)$, $(0;\tfrac83;\tfrac{10}3;0)$.</div>
+      <div class="box warn tiny" data-tag="Vì sao loại?">Cơ sở $\{a_1,a_2\}$ cho $x_2=-4&lt;0$; cơ sở $\{a_3,a_4\}$ cho $x_4=-8&lt;0$ — nghiệm âm, không phải phương án.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Mỗi dòng của bảng ứng với một cách chọn 2 biến cơ sở (2 biến còn lại bằng 0). Hãy tự giải 2–3 hệ rồi đối chiếu. Một nghiệm có tọa độ âm thì không phải phương án nên bị loại.</p></aside>
+</section>
+
+<!-- ============ PHƯƠNG PHÁP ĐƠN HÌNH ============ -->
+<section class="slide" id="y-tuong" data-kind="ly-thuyet" data-sec="2.3.2 Phương pháp đơn hình">
+  <div class="head"><div class="eyebrow">2.3.2 · Cơ sở lý luận · bài toán $cx\to\min$, $Ax=b$, $x\ge0$</div><h2>Ước lượng $\Delta_j$ cho biết có nên đưa $x_j$ vào cơ sở</h2></div>
+  <div class="cols w64">
+    <div class="stack small">
+      <div class="box key" data-tag="Bài toán chuẩn">Dạng chính tắc với $b\ge0$ và $A$ chứa sẵn $m$ cột đơn vị. Khi đó PACB xuất phát: biến cơ sở = $b_i$, các biến khác = 0; tọa độ $t_{ij}=a_{ij}$.</div>
+      <div class="box key" data-tag="Ước lượng của biến xⱼ">$$\Delta_j=\sum_{i=1}^m c_i\,t_{ij}-c_j\qquad(c_i:\text{hệ số mục tiêu của biến cơ sở dòng } i)$$ Biến cơ sở luôn có $\Delta_j=0$.</div>
+      <p>Khi tăng biến ngoài cơ sở $x_k$ thêm 1 đơn vị (các biến cơ sở điều chỉnh theo), $f$ <b>giảm</b> đúng $\Delta_k$.</p>
+    </div>
+    <div class="stack small">
+      <div class="box eco" data-tag="Định lý 2.10 · Dấu hiệu tối ưu">Mọi $\Delta_j\le0$ ⇒ PACB đang xét <b>tối ưu</b>.</div>
+      <div class="box warn" data-tag="Định lý 2.13 · Không bị chặn">Có $\Delta_k&gt;0$ mà mọi $t_{ik}\le0$ ⇒ $f$ <b>không bị chặn dưới</b>, bài toán không có phương án tối ưu.</div>
+      <div class="box tip" data-tag="Định lý 2.14 · Cải tiến">Có $\Delta_k&gt;0$ và có $t_{ik}&gt;0$ ⇒ xây dựng được PACB mới tốt hơn: $f$ giảm $\theta\,\Delta_k$ với $\theta=\min\limits_{t_{ik}&gt;0}\dfrac{x_i}{t_{ik}}$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Hiểu nôm na: $\Delta_k&gt;0$ nghĩa là "đưa $x_k$ vào sẽ làm $f$ giảm" — còn cải thiện được. Khi mọi $\Delta_j\le0$ thì không còn cách nào giảm $f$: đã tối ưu. Chú ý giáo trình dùng quy ước bài toán <b>min</b>.</p></aside>
+</section>
+
+<section class="slide" id="bang-don-hinh" data-kind="ly-thuyet" data-sec="2.3.2 Phương pháp đơn hình">
+  <div class="head"><div class="eyebrow">2.3.2 · Bảng đơn hình (Bảng 2.7)</div><h2>Mọi thông tin của một PACB trên một bảng</h2></div>
+  <div class="cols w64">
+    <table class="tbl small">
+      <tr><th>Cơ sở</th><th class="c">$c_i$</th><th class="c">$x_i$</th><th class="c">$a_1$ <small>($c_1$)</small></th><th class="c">…</th><th class="c">$a_k$ <small>($c_k$)</small></th><th class="c">…</th><th class="c">$a_n$ <small>($c_n$)</small></th><th class="c">$\theta_i$</th></tr>
+      <tr><td>$a_{j_1}$</td><td class="c">$c_{j_1}$</td><td class="c">$x_1$</td><td class="c">$t_{11}$</td><td class="c">…</td><td class="c">$t_{1k}$</td><td class="c">…</td><td class="c">$t_{1n}$</td><td class="c">$x_1/t_{1k}$</td></tr>
+      <tr><td>$a_{j_r}$</td><td class="c">$c_{j_r}$</td><td class="c">$x_r$</td><td class="c">$t_{r1}$</td><td class="c">…</td><td class="c" style="outline:2px solid var(--pen);font-weight:700">$t_{rk}$</td><td class="c">…</td><td class="c">$t_{rn}$</td><td class="c">min ⇐</td></tr>
+      <tr><td>$a_{j_m}$</td><td class="c">$c_{j_m}$</td><td class="c">$x_m$</td><td class="c">$t_{m1}$</td><td class="c">…</td><td class="c">$t_{mk}$</td><td class="c">…</td><td class="c">$t_{mn}$</td><td class="c"></td></tr>
+      <tr><th colspan="2">$f$, $\Delta_j$</th><td class="c">$f(x)$</td><td class="c">$\Delta_1$</td><td class="c">…</td><td class="c">$\Delta_k$ max ⇑</td><td class="c">…</td><td class="c">$\Delta_n$</td><td></td></tr>
+    </table>
+    <div class="stack small">
+      <div class="box key" data-tag="Quy tắc biến đổi (xoay quanh phần tử trục)">
+        <ol><li><b>Cột xoay</b> $k$: $\Delta_k=\max\{\Delta_j&gt;0\}$.</li><li><b>Hàng xoay</b> $r$: $\theta_r=\min\{x_i/t_{ik}: t_{ik}&gt;0\}$.</li><li>Dòng $r$ mới = dòng $r$ cũ chia $t_{rk}$.</li><li>Dòng $i$ mới = dòng $i$ cũ $-\,t_{ik}\times$ dòng $r$ mới (kể cả dòng $\Delta$).</li></ol></div>
+      <div class="box tip tiny" data-tag="Chính là Chương 1">Bước 3–4 là phép khử Gauss – Jordan quanh phần tử trục: cột $k$ trở thành cột đơn vị. Kiểm tra lại: tính $\Delta_j$ theo công thức, so với dòng $\Delta$ biến đổi.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Cách tự kiểm tra: tính $\Delta_j$ ở bảng mới theo công thức $\sum c_it_{ij}-c_j$, so với kết quả biến đổi dòng. Nếu khác nhau là đã tính sai ở đâu đó.</p></aside>
+</section>
+
+<section class="slide" id="thuat-toan" data-kind="ly-thuyet" data-sec="2.3.2 Phương pháp đơn hình">
+  <div class="head"><div class="eyebrow">2.3.2 · Thuật toán đơn hình (bài toán min)</div><h2>Sáu bước, lặp đến khi dừng</h2></div>
+  <div class="flow small">
+    <div class="n"><b>B1</b>Bảng xuất phát: cơ sở đơn vị, tính $\Delta_j$, $f$</div><div class="a">→</div>
+    <div class="n"><b>B2</b>Mọi $\Delta_j\le0$? Có → <b>tối ưu</b>, dừng</div><div class="a">→</div>
+    <div class="n"><b>B3</b>Có $\Delta_k&gt;0$, cột $k$ toàn $\le0$? Có → <b>không bị chặn</b>, dừng</div><div class="a">→</div>
+    <div class="n"><b>B4</b>Chọn cột xoay $\Delta_k$ lớn nhất</div><div class="a">→</div>
+    <div class="n"><b>B5</b>Chọn hàng xoay $\theta$ nhỏ nhất</div><div class="a">→</div>
+    <div class="n"><b>B6</b>Biến đổi bảng, quay lại B2</div>
+  </div>
+  <div class="cols">
+    <div class="box key small" data-tag="Bài toán max">Đổi $g=-f\to\min$ (đổi dấu mọi $c_j$), giải, rồi $f_{\max}=-g_{\min}$. <span class="muted">(Cách khác: giữ nguyên $c_j$, dấu hiệu tối ưu thành mọi $\Delta_j\ge0$, chọn $\Delta_k$ âm nhất.)</span></div>
+    <div class="box warn small" data-tag="Đọc kết quả">Phương án tối ưu: biến cơ sở = cột $x_i$, biến ngoài cơ sở = 0. Nếu có <b>biến ngoài cơ sở mà $\Delta_j=0$</b> ở bảng tối ưu ⇒ thường có vô số phương án tối ưu.</div>
+  </div>
+  <aside class="tuhoc"><p>Thuộc lòng 6 bước này. Với bài toán max, cách an toàn nhất là đổi sang $g=-f\to\min$ để dùng đúng một quy tắc dấu. Khi hai tỉ số $\theta$ bằng nhau, chọn dòng có chỉ số biến cơ sở nhỏ hơn.</p></aside>
+</section>
+
+<section class="slide" id="vd-211" data-kind="vi-du" data-sec="2.3.2 Phương pháp đơn hình">
+  <div class="head"><div class="eyebrow">2.3.2 · Ví dụ 2.11 giáo trình · GV làm mẫu</div><h2>$f=3x_2+2x_3-x_5\to\min$ — bài toán chuẩn, cơ sở $\{a_1,a_5,a_3\}$</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      $$\begin{cases}x_1-3x_2-4x_4-2x_6=6\\ 2x_2+4x_4+x_5+3x_6=5\\ x_2+x_3+2x_6=1\\ x_j\ge0\end{cases}$$
+      <div class="box tip" data-tag="Tự làm trước">Ghi bảng I: cột $x_i=(6;5;1)$, $c_i=(0;-1;2)$. Tính $\Delta_2=0\cdot(-3)+(-1)\cdot2+2\cdot1-3=-3$. Tính tiếp $\Delta_4,\Delta_6$.</div>
+      <div class="box key" data-tag="Đáp số">$x^*=(7;\,0;\,0;\,0;\,\tfrac72;\,\tfrac12)$, $f_{\min}=-\tfrac72$ (sau 1 lần xoay).</div>
+    </div>
+    <div data-widget="simplex" data-lp="min 0 3 2 0 -1 0 | 1 -3 0 -4 0 -2 = 6 | 0 2 0 4 1 3 = 5 | 0 1 1 0 0 2 = 1"></div>
+  </div>
+  <aside class="tuhoc"><p>Tự lập bảng I ra giấy, tính dòng $\Delta$, rồi bấm "Bước tiếp" trên công cụ để đối chiếu. Ở bảng I chỉ có $\Delta_6=1&gt;0$ nên $a_6$ vào cơ sở; tỉ số nhỏ nhất ở dòng $a_3$ ($1/2$) nên $a_3$ ra. Bảng II có mọi $\Delta_j\le0$: tối ưu.</p></aside>
+</section>
+
+<section class="slide" id="vd-max" data-kind="vi-du" data-sec="2.3.2 Phương pháp đơn hình">
+  <div class="head"><div class="eyebrow">2.3.2 · Ví dụ 2.1 giải bằng đơn hình</div><h2>Bảng đơn hình đi qua các đỉnh $O\to(0;4)\to(2;4)$</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="max 3 5 | 2 1 <= 8 | 0 1 <= 4 | 1 0 <= 3"></div>
+    <div class="stack small">
+      <div class="box key" data-tag="Chuẩn bị">Thêm biến phụ $x_3,x_4,x_5$ (nguyên liệu còn thừa) ⇒ cơ sở đơn vị sẵn có. Giải $g=-3x_1-5x_2\to\min$.</div>
+      <div class="box eco" data-tag="Đối chiếu đồ thị">Bảng I: đỉnh $O(0;0)$, $g=0$ · Bảng II: $x_2$ vào, đỉnh $(0;4)$, $g=-20$ · Bảng III: $x_1$ vào, đỉnh $(2;4)$, $g=-26$ ⇒ $f_{\max}=26$.</div>
+      <div class="box tip" data-tag="Đọc thêm từ bảng cuối">Biến phụ $x_5=1$: nguyên liệu III còn thừa 1 đơn vị; $x_3=x_4=0$: nguyên liệu I, II dùng hết.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>So sánh với đồ thị ở Buổi 1: mỗi bảng đơn hình ứng với một đỉnh, mỗi lần xoay là đi sang một đỉnh kề tốt hơn. Biến phụ trong bảng cuối cho biết nguyên liệu nào còn thừa.</p></aside>
+</section>
+
+<section class="slide" id="kiem-tra-nhanh" data-kind="kiem-tra" data-sec="2.3.2 Phương pháp đơn hình">
+  <div class="head"><div class="eyebrow">Kiểm tra nhanh · 4 phút</div><h2>Đọc bảng đơn hình</h2></div>
+  <div class="cols">
+    <div class="quiz" data-widget="quiz" data-answer="3">
+      <p class="q small">Bài toán min, bảng có $\Delta=(0;\,0;\,2;\,-1;\,5)$ và cột $a_5$ là $(-1;\,3;\,2)$ với $x_i=(4;\,6;\,8)$. Phần tử trục là?</p>
+      <ol class="opts"><li>$-1$ (dòng 1)</li><li>$2$ (dòng 3)</li><li>$3$ (dòng 2)</li><li>Không có — bài toán không bị chặn</li></ol>
+      <p class="explain">Cột xoay $a_5$ ($\Delta_5=5$ lớn nhất). $\theta$: dòng 2: $6/3=2$; dòng 3: $8/2=4$; dòng 1 có $t&lt;0$ bỏ qua ⇒ trục $3$.</p>
+    </div>
+    <ul class="tf" data-widget="tf">
+      <li data-ans="d" data-why="Định lý 2.10.">Bài toán min: mọi $\Delta_j\le0$ thì PACB đang xét là tối ưu.</li>
+      <li data-ans="s" data-why="Cần mọi $t_{ik}\le 0$ trong cột có $\Delta_k&gt;0$; nếu còn $t_{ik}&gt;0$ thì xoay tiếp.">Chỉ cần có $\Delta_k&gt;0$ là kết luận bài toán không bị chặn.</li>
+      <li data-ans="d" data-why="Tối đa $m$ tọa độ dương (Hệ quả 2.3).">PACB của bài toán có 3 ràng buộc đẳng thức có nhiều nhất 3 tọa độ dương.</li>
+      <li data-ans="s" data-why="Chọn tỉ số $\theta$ NHỎ nhất để phương án mới không âm.">Hàng xoay là hàng có tỉ số $x_i/t_{ik}$ lớn nhất.</li>
+    </ul>
+  </div>
+  <aside class="tuhoc"><p>Câu trắc nghiệm có bẫy: phần tử âm trong cột xoay <b>không</b> được dùng để tính $\theta$. Hàng xoay luôn là hàng có tỉ số nhỏ nhất (để mọi biến vẫn không âm).</p></aside>
+</section>
+
+<!-- ============ LUYỆN TẬP ============ -->
+<section class="slide" id="bt-dang" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Luyện tập · Tiết 2 – 4</div><h2>Ba dạng bài của buổi hôm nay</h2></div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>Dạng 1 <small>BT 2.11</small></h4><b>Tìm, kiểm tra PACB</b><span class="muted">Cho $n-m$ biến bằng 0, giải hệ; kiểm tra không âm, độc lập tuyến tính.</span><a class="xref" href="#bt-pacb">Tới bài</a></div>
+    <div class="card"><h4>Dạng 2 <small>BT 2.14 a, d</small></h4><b>Đơn hình — bài toán chuẩn</b><span class="muted">Thêm biến phụ, lập bảng, xoay đến khi dừng.</span><a class="xref" href="#bt-214a">Tới bài</a></div>
+    <div class="card"><h4>Dạng 3 <small>BT 2.14b · BT 2.13</small></h4><b>Bài lớn, các khả năng</b><span class="muted">Nhận ra cơ sở sẵn có; không bị chặn; vô số PATU.</span><a class="xref" href="#bt-214b">Tới bài</a></div>
+  </div>
+  <div class="box small" data-tag="Cách tổ chức" data-aud="gv">Mỗi bài: SV làm cá nhân 8–10' → 1 SV lên bảng → GV mở công cụ đơn hình từng bước để cả lớp đối chiếu từng bảng.</div>
+  <div class="box small" data-tag="Cách tự luyện" data-aud="hv">Làm ra giấy đầy đủ các bảng → dùng công cụ "Bước tiếp" để đối chiếu <b>từng bảng</b> (không chỉ đáp số) → ghi lại lỗi sai.</div>
+  <aside class="tuhoc"><p>BT 2.14c cần kỹ thuật biến giả (Buổi 3). Khi đối chiếu, so sánh từng bảng chứ không chỉ đáp số: sai ở bảng nào thì sửa từ bảng đó.</p></aside>
+</section>
+
+<section class="slide" id="bt-pacb" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 1 · BT 2.11 (a, b)</div><h2>Tìm các phương án cực biên không suy biến</h2></div>
+  <div class="cols">
+    <div class="stack"><p class="small"><b>a)</b> $x_1-x_2-x_3=1$, $x_1+x_2+x_3=3$, $x\ge0$.</p>
+      <div data-widget="pacb" data-a="1 -1 -1; 1 1 1" data-b="1 3"></div></div>
+    <div class="stack"><p class="small"><b>b)</b> $x_1+x_2+x_3=10$, $2x_1-x_2+3x_3=14$, $x\ge0$.</p>
+      <div data-widget="pacb" data-a="1 1 1; 2 -1 3" data-b="10 14"></div></div>
+  </div>
+  <aside class="tuhoc"><p>Đáp số: a) $(2;1;0)$ và $(2;0;1)$ — chú ý hai cột $a_2,a_3$ trùng nhau nên phụ thuộc tuyến tính, không tạo được cơ sở. b) $(0;4;6)$ và $(8;2;0)$.</p></aside>
+</section>
+
+<section class="slide" id="bt-214a" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 2.14a</div><h2>$f=-10x_1-30x_2\to\min$; $2x_1+x_2\le12$, $-x_1+4x_2\le2$, $5x_1+8x_2\le26$</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min -10 -30 | 2 1 <= 12 | -1 4 <= 2 | 5 8 <= 26"></div>
+    <div class="stack small">
+      <div class="step">Thêm biến phụ $x_3,x_4,x_5$ ⇒ cơ sở $\{a_3,a_4,a_5\}$, $x^0=(0;0;12;2;26)$, $f=0$.</div>
+      <div class="step">Bảng I: $\Delta_1=10$, $\Delta_2=30$ ⇒ $a_2$ vào; $\theta=\min\{12;\ \tfrac24;\ \tfrac{26}8\}=\tfrac12$ ⇒ $a_4$ ra.</div>
+      <div class="step">Bảng II: còn $\Delta_1=\tfrac{35}{2}&gt;0$ ⇒ $a_1$ vào, $a_5$ ra.</div>
+      <div class="step box key" data-tag="Kết luận">$f_{\min}=-70$ tại $x^*=\left(\tfrac{22}7;\ \tfrac97\right)$ (khớp giáo trình).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Giữ nguyên phân số trong suốt quá trình (không làm tròn thập phân) để kết quả chính xác. Mỗi bước, tự tính $\theta$ trước rồi mới bấm công cụ.</p></aside>
+</section>
+
+<section class="slide" id="bt-214d" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 2 · BT 2.14d</div><h2>Vế phải âm: nhân $-1$ trước khi thêm biến phụ</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 2 -3 | 1 -1 >= -2 | -2 7 <= 6 | -4 -1 >= -3"></div>
+    <div class="stack small">
+      <p>$f=2x_1-3x_2\to\min$; $x_1-x_2\ge-2$; $-2x_1+7x_2\le6$; $-4x_1-x_2\ge-3$; $x\ge0$.</p>
+      <div class="step">Nhân $-1$: $-x_1+x_2\le2$ và $4x_1+x_2\le3$ ⇒ cả ba ràng buộc là "$\le$" với vế phải không âm ⇒ ba biến phụ tạo cơ sở đơn vị.</div>
+      <div class="step box key" data-tag="Kết luận">$f_{\min}=-\tfrac{18}7$ tại $x^*=\left(0;\ \tfrac67\right)$.</div>
+      <div class="step box warn tiny" data-tag="Lỗi hay gặp">Thêm biến phụ trừ cho "$\ge$" khi vế phải âm ⇒ cột $(-1)$, không phải cột đơn vị — phải đổi dấu cả dòng.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Điều kiện để lập bảng xuất phát là vế phải $b_i\ge0$ và có đủ cột đơn vị. Ràng buộc "$\ge$" với vế phải âm, sau khi nhân $-1$, trở thành "$\le$" với vế phải dương — rất tiện.</p></aside>
+</section>
+
+<section class="slide" id="bt-214b" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 3 · BT 2.14b</div><h2>Nhận ra cơ sở đơn vị có sẵn trong ràng buộc</h2></div>
+  <div class="cols w64">
+    <div data-widget="simplex" data-canon="1" data-lp="min 2 1 4 5 -6 | 2 0 -2 1 4 = 115 | 5 1 1 0 0 = 50 | -1 0 3 0 5 <= 30"></div>
+    <div class="stack small">
+      <p>$f=2x_1+x_2+4x_3+5x_4-6x_5\to\min$; $2x_1-2x_3+x_4+4x_5=115$; $5x_1+x_2+x_3=50$; $-x_1+3x_3+5x_5\le30$.</p>
+      <div class="step">Cột $a_4$ chỉ có ở dòng 1, $a_2$ chỉ có ở dòng 2 (hệ số 1), thêm $x_6$ cho dòng 3 ⇒ cơ sở $\{a_4,a_2,a_6\}$ có sẵn, <b>không cần biến giả</b>.</div>
+      <div class="step box key" data-tag="Kết luận">Sau 2 lần xoay: $f_{\min}=287$ tại $x^*=(10;\,0;\,0;\,63;\,8)$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Trước khi thêm biến, luôn tìm xem ma trận ràng buộc đã có sẵn cột đơn vị nào (một hệ số 1, các hệ số khác trong cột bằng 0). Biến cơ sở có hệ số $c_j\ne0$ vẫn dùng được, chỉ cần ghi đúng $c_i$ vào bảng.</p></aside>
+</section>
+
+<section class="slide" id="bt-kha-nang" data-kind="bai-tap" data-sec="Luyện tập">
+  <div class="head"><div class="eyebrow">Dạng 3 · Các khả năng trên bảng đơn hình</div><h2>Không bị chặn và vô số phương án tối ưu</h2></div>
+  <div class="cols">
+    <div class="stack"><p class="small"><b>(i)</b> $f=-4x_1+2x_2\to\min$; $-2x_1+x_2\le1$; $x_1-3x_2\le3$ (đã gặp ở Buổi 1):</p>
+      <div data-widget="simplex" data-canon="1" data-lp="min -4 2 | -2 1 <= 1 | 1 -3 <= 3"></div></div>
+    <div class="stack"><p class="small"><b>(ii)</b> BT 2.13c: $f=x_1+x_2\to\max$; $x_1+x_2\ge1$; $x_1+x_2\le3$:</p>
+      <div data-widget="simplex" data-canon="1" data-lp="max 1 1 | 1 1 >= 1 | 1 1 <= 3"></div></div>
+  </div>
+  <aside class="tuhoc"><p>(i) Dấu hiệu không bị chặn: có cột với $\Delta_k&gt;0$ nhưng mọi phần tử trong cột đều $\le0$. (ii) Dấu hiệu vô số phương án tối ưu: ở bảng tối ưu có biến <b>ngoài cơ sở</b> mà $\Delta_j=0$. Bài (ii) có ràng buộc "≥" nên công cụ thêm biến giả $M$ — sẽ học ở Buổi 3.</p></aside>
+</section>
+
+<!-- ============ TỔNG KẾT ============ -->
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết buổi 2</div><h2>Phương pháp đơn hình trong một trang</h2></div>
+  <div class="flow">
+    <div class="n"><b>PACB</b>Đỉnh; cột ứng với $x_j&gt;0$ độc lập tuyến tính</div><div class="a">→</div>
+    <div class="n"><b>BẢNG</b>Cơ sở đơn vị, $\Delta_j=\sum c_it_{ij}-c_j$</div><div class="a">→</div>
+    <div class="n"><b>XOAY</b>Cột $\Delta$ max, hàng $\theta$ min, khử quanh trục</div><div class="a">→</div>
+    <div class="n"><b>DỪNG</b>Tối ưu / không bị chặn</div>
+  </div>
+  <div class="cards" style="--n:3">
+    <div class="card"><h4>1 · Tồn tại</h4>Có phương án tối ưu ⇒ có PACB tối ưu; số PACB hữu hạn.</div>
+    <div class="card"><h4>2 · Dấu hiệu (bài min)</h4>Mọi $\Delta_j\le0$: tối ưu. $\Delta_k&gt;0$, cột $k$ toàn $\le0$: không bị chặn.</div>
+    <div class="card"><h4>3 · Bài max</h4>Giải $g=-f\to\min$, $f_{\max}=-g_{\min}$.</div>
+  </div>
+  <aside class="tuhoc"><p>Câu hỏi chuẩn bị cho Buổi 3: nếu ràng buộc là "≥" hoặc "=", ma trận không có sẵn cột đơn vị — làm sao có bảng xuất phát?</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Chuẩn bị cho Buổi 3: Biến giả và bài toán đối ngẫu</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>BT 2.11 c, d (câu d: chứng tỏ không có PACB không suy biến).</li>
+        <li>Giải bằng đơn hình BT 2.16 cho các mô hình đã lập ở BT 2.2, 2.5 (BT 2.5 cần biến giả — thử trước).</li>
+        <li>Giải lại BT 2.12 b, d bằng đơn hình và so sánh với đồ thị. Kiểm tra bằng <a href="lab.html">Phòng tính QHTT</a>.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc trước">
+      <ul class="small">
+        <li>Giáo trình 2.3.2: Tìm phương án cực biên xuất phát — phương pháp biến giả (bài toán M), Ví dụ 2.12.</li>
+        <li>Giáo trình 2.4.1: Định nghĩa bài toán đối ngẫu, Bảng 2.11.</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref" href="buoi3.html">Sang Buổi 3 · Biến giả và bài toán đối ngẫu</a><a class="xref back" href="index.html">Trang chương</a></div>
+  <aside class="tuhoc"><p>Hoàn thành bài kiểm tra sau Buổi 2 trên hệ thống trước khi sang Buổi 3.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/qhtt.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/widgets-qhtt.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

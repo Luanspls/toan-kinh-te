@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="vi" data-mode="hv" data-chapter="chuong2" data-portal="../index.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buổi 6 · Các dạng đặc biệt của bài toán vận tải và ôn tập chương</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<script src="../assets/khoa-hoc.js"></script>
+</head>
+<body>
+<main class="deck" data-course="Toán kinh tế · Chương 2" data-unit="Buổi 6 · Vận tải đặc biệt và ôn tập" data-prev="buoi5.html" data-home="index.html" data-kt="c2b6" data-lab="Phòng tính QHTT">
+<div class="stage">
+
+<!-- ============ MỞ ĐẦU ============ -->
+<section class="slide cover" id="bia" data-kind="bia" data-sec="Mở đầu" data-title="Bìa buổi 6">
+  <div class="num"><small>Chương 2 · Quy hoạch tuyến tính và ứng dụng</small>Buổi 6</div>
+  <h1>Các dạng đặc biệt của bài toán vận tải · Ôn tập Chương 2</h1>
+  <div class="meta"><span class="chip">3 tiết</span><span class="chip bt">Bài tập 3 tiết</span><span class="chip">Mục 2.3.3 · Ôn tập chương · CTMH C10.KT06</span></div>
+  <div class="toc-mini">
+    <a href="#khong-can-bang"><span>Dạng 1</span>Không cân bằng thu phát</a>
+    <a href="#o-cam"><span>Dạng 2</span>Bài toán có ô cấm</a>
+    <a href="#phan-phoi"><span>Dạng 3</span>Bài toán phân phối (max)</a>
+    <a href="#so-do"><span>Ôn tập</span>Sơ đồ chương, sai lầm, trò chơi</a>
+    <a href="#de-ktdk"><span>KT</span>Đề kiểm tra tham khảo</a>
+  </div>
+  <aside class="tuhoc"><p>Buổi cuối của Chương 2 và của học phần: luyện các dạng đặc biệt của bài toán vận tải, sau đó ôn tập toàn chương bằng sơ đồ, danh sách sai lầm thường gặp, trò chơi và một đề kiểm tra tham khảo có đáp án.</p></aside>
+</section>
+
+<section class="slide" id="muc-tieu" data-kind="muc-tieu" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Mục tiêu bài dạy · Buổi 6</div><h2>Sau buổi học, người học có thể…</h2></div>
+  <div class="obj">
+    <div><h3><i>KT</i>Kiến thức</h3><ul>
+      <li>Biết cách đưa bài toán không cân bằng về cân bằng (điểm phát giả, thu giả).</li>
+      <li>Hiểu cách mô hình hóa ô cấm bằng cước $M$ và bài toán phân phối (max).</li>
+      <li>Hệ thống được kiến thức Chương 2.</li></ul></div>
+    <div><h3><i>KN</i>Kỹ năng</h3><ul>
+      <li>Giải bài toán vận tải không cân bằng, có ô cấm.</li>
+      <li>Giải bài toán phân phối nguồn lực (max) bằng phương pháp thế vị điều chỉnh.</li>
+      <li>Làm trọn một đề kiểm tra 45 phút đúng thời gian.</li></ul></div>
+    <div><h3><i>NL</i>Năng lực thể hiện</h3><ul>
+      <li><b>Mô hình hóa:</b> chuyển yêu cầu thực tế (bắt buộc, cấm, tối đa năng suất) thành dữ liệu bảng.</li>
+      <li><b>Diễn giải:</b> đọc lượng hàng ở điểm giả thành tồn kho, thiếu hàng.</li>
+      <li><b>Tự đánh giá:</b> tự chấm theo biểu điểm, lập kế hoạch ôn thi.</li></ul></div>
+  </div>
+  <div class="evidence"><b>Minh chứng</b><span>Giải đúng Ví dụ 2.24, 2.26, 2.25; BT 2.24d, 2.27; hoàn thành đề kiểm tra tham khảo ≥ 5 điểm.</span></div>
+  <aside class="tuhoc"><p>Mục tiêu cuối cùng của buổi: tự làm trọn đề kiểm tra tham khảo trong 45 phút và đạt từ 5 điểm trở lên theo biểu điểm.</p></aside>
+</section>
+
+<section class="slide" id="tien-trinh" data-kind="tien-trinh" data-aud="gv" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Tiến trình buổi học · 3 tiết × 45 phút</div><h2>Ba dạng đặc biệt, rồi nhìn lại cả chương</h2></div>
+  <div class="plan">
+    <div class="p bt"><div class="t">Tiết 1<small>Bài tập</small></div><div class="c"><b>Không cân bằng · Ô cấm</b><span>Khởi động 5' · Ví dụ 2.24 (15') · Ví dụ 2.26 (15') · BT 2.25a (10')</span></div><div class="m">Cá nhân, lên bảng</div></div>
+    <div class="p bt"><div class="t">Tiết 2<small>Bài tập</small></div><div class="c"><b>Bài toán phân phối (max) · Luyện tập</b><span>Ví dụ 2.25 (15') · BT 2.27 (15') · BT 2.24d (15')</span></div><div class="m">Nhóm 4 người</div></div>
+    <div class="p bt"><div class="t">Tiết 3<small>Ôn tập</small></div><div class="c"><b>Ôn tập chương</b><span>Sơ đồ 8' · sai lầm 7' · trò chơi 15' · đề tham khảo, định hướng thi 15'</span></div><div class="m">Trò chơi, thảo luận</div></div>
+  </div>
+</section>
+
+<section class="slide" id="khoi-dong" data-kind="khoi-dong" data-sec="Mở đầu">
+  <div class="head"><div class="eyebrow">Khởi động · 3 câu hỏi nhanh</div><h2>Thực tế hiếm khi "cân bằng" và "tự do"</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box">1. Hai kho có 20 và 30 tấn; ba cửa hàng cần 15, 25, 12 tấn. Có giao đủ cho mọi cửa hàng được không?</div>
+      <div class="box">2. Cửa hàng T2 là khách hàng ưu tiên, <b>phải</b> nhận đủ hàng. Ghi yêu cầu này vào bảng thế nào?</div>
+      <div class="box">3. Phân công 50 công nhân vào 4 công việc để <b>năng suất lớn nhất</b>: khác gì bài toán vận tải?</div>
+      <div data-widget="timer" data-min="3" data-label="Thảo luận"></div>
+    </div>
+    <div class="stack small">
+      <div class="step box key" data-tag="1">Tổng phát 50 &lt; tổng thu 52 ⇒ thiếu 2 tấn: thêm <b>điểm phát giả</b> 2 tấn, cước 0 (Dạng 1).</div>
+      <div class="step box key" data-tag="2">Cấm điểm phát giả giao cho T2: cước ô đó là $M$ rất lớn — <b>ô cấm</b> (Dạng 2).</div>
+      <div class="step box key" data-tag="3">Mục tiêu <b>max</b>: chọn ô năng suất lớn nhất; tối ưu khi mọi $\Delta_{ij}\ge0$ (Dạng 3).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Ba câu hỏi ứng với ba dạng đặc biệt của buổi: không cân bằng (Ví dụ 2.24), ô cấm (Ví dụ 2.26), bài toán phân phối max (Ví dụ 2.25).</p></aside>
+</section>
+
+<!-- ============ DẠNG 1 ============ -->
+<section class="slide" id="khong-can-bang" data-kind="bai-tap" data-sec="Dạng 1 – 2">
+  <div class="head"><div class="eyebrow">Dạng 1 · Ví dụ 2.24 · Không cân bằng thu phát</div><h2>Phát 50 &lt; thu 52: thêm điểm phát giả 2 tấn</h2></div>
+  <div class="cols w64">
+    <div data-widget="transport" data-a="20 30" data-b="15 25 12" data-c="3 5 2; 1 4 4"></div>
+    <div class="stack small">
+      <div class="step">Bảng cước: P1: 3, 5, 2 · P2: 1, 4, 4. Thêm hàng phát giả $P_3$ (2 tấn), cước 0. Ô của điểm giả được phân phối <b>sau cùng</b>.</div>
+      <div class="step box key" data-tag="Kết quả">$x_{12}=8$, $x_{13}=12$, $x_{21}=15$, $x_{22}=15$, hàng giả $x_{32}=2$; $f_{\min}=139$.</div>
+      <div class="step box eco" data-tag="Diễn giải">$x_{32}=2$: cửa hàng T2 <b>thiếu 2 tấn</b> (nhận 23/25). Nếu T2 không chấp nhận thiếu hàng ⇒ Dạng 2.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Lượng hàng ở điểm giả có ý nghĩa thực tế: ở hàng phát giả là <b>nhu cầu không được đáp ứng</b>; ở cột thu giả là <b>hàng tồn kho</b>. Luôn diễn giải điều này trong kết luận.</p></aside>
+</section>
+
+<section class="slide" id="o-cam" data-kind="bai-tap" data-sec="Dạng 1 – 2">
+  <div class="head"><div class="eyebrow">Dạng 2 · Ví dụ 2.26 · Bài toán có ô cấm</div><h2>T2 phải nhận đủ hàng: cấm ô (phát giả, T2) bằng cước $M$</h2></div>
+  <div class="cols w64">
+    <div data-widget="transport" data-a="20 30 2" data-b="15 25 12" data-c="3 5 2; 1 4 4; 0 M 0"></div>
+    <div class="stack small">
+      <div class="step">Ô cấm $(i,j)$: cước $c_{ij}=M$ (rất lớn) ⇒ phương án tối ưu không chở hàng qua ô đó. Bài phân phối (max): năng suất ô cấm $=-M$.</div>
+      <div class="step">Thế vị, ước lượng có chứa $M$: so sánh như bài toán M (xét hệ số của $M$ trước).</div>
+      <div class="step box key" data-tag="Kết quả">$x_{12}=8$, $x_{13}=12$, $x_{21}=13$, $x_{22}=17$, $x_{31}=2$ (T1 thiếu 2); $f_{\min}=145$.</div>
+      <div class="step box eco tiny" data-tag="Giá của yêu cầu">Bắt buộc T2 đủ hàng làm chi phí tăng $145-139=6$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Cách ghi ô cấm: cước $M$ (bài min) hoặc năng suất $-M$ (bài max). Chênh lệch chi phí giữa bài có ô cấm và bài không có ô cấm (145 − 139 = 6) chính là "giá" của yêu cầu ưu tiên.</p></aside>
+</section>
+
+<!-- ============ DẠNG 3 ============ -->
+<section class="slide" id="phan-phoi" data-kind="bai-tap" data-sec="Dạng 3 · Phân phối">
+  <div class="head"><div class="eyebrow">Dạng 3 · Ví dụ 2.25 · Bài toán phân phối nguồn lực (max)</div><h2>50 công nhân, 3 nhóm, 4 công việc — năng suất lớn nhất</h2></div>
+  <div class="cols w64">
+    <div data-widget="transport" data-sense="max" data-a="15 18 17" data-b="10 12 8 20" data-c="2 3 5 2; 3 4 3 1; 5 1 4 4"></div>
+    <div class="stack small">
+      <div class="box key" data-tag="Điều chỉnh so với bài min">
+        <ul><li>Phương án xuất phát: chọn ô <b>năng suất lớn nhất</b>.</li><li>Tối ưu khi mọi $\Delta_{ij}\ge0$.</li><li>Đưa vào ô có $\Delta_{ij}$ <b>âm nhất</b>.</li></ul></div>
+      <div class="step box" data-tag="Kết quả">$x_{13}=8$, $x_{14}=7$, $x_{21}=6$, $x_{22}=12$, $x_{31}=4$, $x_{34}=13$; $f_{\max}=192$.</div>
+      <div class="step box warn tiny" data-tag="Lỗi in">Giáo trình viết "chọn ô (1, 5)" — đúng là ô $(1,3)$ (năng suất 5).</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Bài toán phân phối (max) giải như bài vận tải, chỉ đổi chiều: chọn ô năng suất lớn nhất, tối ưu khi mọi Δ ≥ 0, đưa vào ô có Δ âm nhất. Cách khác an toàn: đổi dấu toàn bộ năng suất rồi giải bài min.</p></aside>
+</section>
+
+<section class="slide" id="bt-227" data-kind="bai-tap" data-sec="Dạng 3 · Phân phối">
+  <div class="head"><div class="eyebrow">Dạng 3 · BT 2.27 · Đội làm rau</div><h2>Phân công 23 lao động để năng suất cao nhất</h2></div>
+  <div class="cols w46">
+    <div class="stack small">
+      <table class="tbl"><tr><th>Lao động</th><th class="c">Hái rau (3)</th><th class="c">Làm cỏ (8)</th><th class="c">Trồng rau (12)</th></tr>
+        <tr><td>A (10)</td><td class="c">2</td><td class="c">10</td><td class="c">9</td></tr>
+        <tr><td>B (10)</td><td class="c">1,7</td><td class="c">9</td><td class="c">9</td></tr>
+        <tr><td>C (3)</td><td class="c">1,6</td><td class="c">8</td><td class="c">10</td></tr></table>
+      <div class="step">Cân bằng: $10+10+3=23=3+8+12$ ✓. Bài phân phối (max).</div>
+      <div class="step box key" data-tag="Đáp số">$f_{\max}=196{,}7$. Một phương án tối ưu: A: 2 người hái rau, 8 người làm cỏ; B: 1 người hái rau, 9 người trồng rau; C: 3 người trồng rau.</div>
+    </div>
+    <div data-widget="transport" data-sense="max" data-a="10 10 3" data-b="3 8 12" data-c="2 10 9; 1.7 9 9; 1.6 8 10"></div>
+  </div>
+  <aside class="tuhoc"><p>Đáp số $f_{\max}=196{,}7$; phương án tối ưu có thể không duy nhất. Nhận xét kiểu "lợi thế so sánh": mỗi nhóm nên làm việc mà mình có năng suất tương đối cao nhất.</p></aside>
+</section>
+
+<section class="slide" id="bt-224d" data-kind="bai-tap" data-sec="Dạng 3 · Phân phối">
+  <div class="head"><div class="eyebrow">Luyện tập tổng hợp · BT 2.24d và BT 2.25</div><h2>Bài 4 × 5 và các bài không cân bằng</h2></div>
+  <div class="cols w64">
+    <div data-widget="transport" data-a="30 20 40 60" data-b="30 20 25 35 40" data-c="13 7 6 2 12; 5 1 10 5 11; 10 5 3 7 14; 6 3 2 11 10"></div>
+    <div class="stack small">
+      <div class="box key" data-tag="BT 2.24d">$f_{\min}=800$ (cước phí nhỏ nhất cho 885, ba lần điều chỉnh).</div>
+      <table class="tbl"><tr><th>BT 2.25</th><th>Cân bằng</th><th class="c">$f_{\min}$</th></tr>
+        <tr><td>a</td><td>phát 170 &gt; thu 120: thu giả 50</td><td class="c">270</td></tr>
+        <tr><td>b</td><td>phát 210 &gt; thu 190: thu giả 20</td><td class="c">915</td></tr>
+        <tr><td>c</td><td>phát 80 &lt; thu 85: phát giả 5</td><td class="c">180</td></tr>
+        <tr><td>d</td><td>phát 55 &gt; thu 50: thu giả 5</td><td class="c"><b>105</b></td></tr></table>
+      <div class="box warn tiny" data-tag="Đính chính BT 2.25d">Giáo trình in 215; phương án in trong sách có chi phí 220. Đáp số đúng $f_{\min}=105$.</div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Mỗi câu của BT 2.25: kiểm tra cân bằng → thêm điểm giả → giải → diễn giải lượng hàng ở điểm giả. Lưu ý đáp số BT 2.25d trong giáo trình chưa đúng (đúng là 105).</p></aside>
+</section>
+
+<!-- ============ ÔN TẬP CHƯƠNG ============ -->
+<section class="slide" id="so-do" data-kind="on-tap" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Ôn tập · Sơ đồ Chương 2</div><h2>Một bài toán tối ưu — bốn công cụ giải và một "bài toán đôi"</h2></div>
+  <div class="cards" style="--n:4">
+    <div class="card"><h4>Mô hình <small>Buổi 1</small></h4>Biến, mục tiêu, ràng buộc · dạng tổng quát / chính tắc / chuẩn tắc · đồ thị<a class="xref" href="buoi1.html#tong-ket">Mở</a></div>
+    <div class="card"><h4>Đơn hình <small>Buổi 2 – 3</small></h4>PACB · bảng, $\Delta_j$ · xoay · biến giả $M$ · ba khả năng<a class="xref" href="buoi2.html#tong-ket">Mở</a></div>
+    <div class="card"><h4>Đối ngẫu <small>Buổi 3 – 4</small></h4>Bảng 2.11 · đối ngẫu yếu, mạnh · độ lệch bù · giá bóng<a class="xref" href="buoi4.html#tong-ket">Mở</a></div>
+    <div class="card"><h4>Vận tải <small>Buổi 5 – 6</small></h4>Cân bằng · cước phí nhỏ nhất, Vogel · thế vị · ô cấm, phân phối<a class="xref" href="buoi5.html#tong-ket">Mở</a></div>
+  </div>
+  <div class="box key" data-tag="Sợi chỉ chung">Tối ưu (nếu có) đạt tại một <b>phương án cực biên</b> (đỉnh) · đơn hình và thế vị đi từ PACB này sang PACB tốt hơn · dấu hiệu tối ưu $\Delta\le0$ chính là "phương án đối ngẫu khả thi" · khi tối ưu: $\min f=\max g$.</div>
+  <aside class="tuhoc"><p>Đối chiếu sơ đồ tư duy bạn tự lập với slide này và bổ sung phần còn thiếu. Sợi chỉ chung nối mọi phần là: phương án cực biên — ước lượng Δ — đối ngẫu.</p></aside>
+</section>
+
+<section class="slide" id="sai-lam" data-kind="on-tap" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Ôn tập · Sai lầm thường gặp</div><h2>Tám lỗi làm mất điểm nhiều nhất</h2></div>
+  <div class="cards" style="--n:4">
+    <div class="card"><h4>1 <small>lập mô hình</small></h4>Dùng "$=$" cho nguồn lực có hạn; quên $x_j\ge0$; nhầm dòng – cột của bảng số liệu.</div>
+    <div class="card"><h4>2 <small>biến phụ</small></h4>Ràng buộc "$\ge$" lại <b>cộng</b> biến phụ; quên đổi dấu dòng có vế phải âm.</div>
+    <div class="card"><h4>3 <small>hàng xoay</small></h4>Tính $\theta$ cả với $t_{ik}\le0$; chọn $\theta$ lớn nhất.</div>
+    <div class="card"><h4>4 <small>bài max</small></h4>Giải $-f\to\min$ nhưng quên đổi dấu kết quả: $f_{\max}=-g_{\min}$.</div>
+    <div class="card"><h4>5 <small>bài toán M</small></h4>So sánh $\alpha+\beta M$ bằng $\alpha$; kết luận tối ưu khi biến giả còn dương.</div>
+    <div class="card"><h4>6 <small>lập đối ngẫu</small></h4>Sai dấu biến đối ngẫu (min: "$\le$" ↔ $y\le0$); quên chuyển vị.</div>
+    <div class="card"><h4>7 <small>độ lệch bù</small></h4>Không thử lại $y^*$; nhầm chiều đối ngẫu yếu.</div>
+    <div class="card"><h4>8 <small>vận tải</small></h4>Không kiểm tra cân bằng; thiếu ô chọn 0; đánh dấu chu trình sai (θ lấy ở ô "+").</div>
+  </div>
+  <aside class="tuhoc"><p>Mỗi lỗi gắn với một slide "Lỗi hay gặp" ở các buổi trước — thử nhớ lại và mở lại slide đó.</p></aside>
+</section>
+
+<section class="slide" id="tro-choi" data-kind="on-tap" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Ôn tập · Trò chơi</div><h2>Rung chuông vàng — 10 câu, 30 giây mỗi câu</h2></div>
+  <div data-widget="game" data-sec="30">
+    <script type="application/json">[
+      {"q":"Ràng buộc $3x_1+2x_2\\ge12$ đưa về đẳng thức là","opts":["$3x_1+2x_2+x_3=12$","$3x_1+2x_2-x_3=12$","$-3x_1-2x_2=12$","$3x_1+2x_2=12$"],"a":1,"why":"\"$\\ge$\" trừ biến phụ $x_3\\ge0$."},
+      {"q":"Bài max hai biến giải bằng đồ thị: tịnh tiến đường mức","opts":["ngược hướng véctơ $c$","theo hướng véctơ $c$","song song trục $Ox_1$","về gốc tọa độ"],"a":1,"why":"Theo hướng $c$ thì giá trị $f$ tăng."},
+      {"q":"Bài toán min, bảng đơn hình có mọi $\\Delta_j\\le0$. Kết luận","opts":["chưa tối ưu","phương án đang xét tối ưu","không bị chặn","vô nghiệm"],"a":1,"why":"Định lý 2.10 — dấu hiệu tối ưu."},
+      {"q":"Cột xoay có $\\Delta_k=4$, các $t_{ik}$: $2,-1,4$; $x_i$: $6,3,8$. Hàng xoay là","opts":["dòng 1","dòng 2","dòng 3","không có (không bị chặn)"],"a":2,"why":"Bỏ dòng 2 (phần tử âm); $\\theta$: dòng 1: $6/2=3$, dòng 3: $8/4=2$ ⇒ dòng 3."},
+      {"q":"Bảng tối ưu của bài toán M còn biến giả bằng 5. Bài toán gốc","opts":["có phương án tối ưu","không bị chặn","không có phương án","có vô số phương án tối ưu"],"a":2,"why":"Định lý 2.15b."},
+      {"q":"Bài gốc min có ràng buộc thứ 2 là đẳng thức. Biến đối ngẫu $y_2$","opts":["$\\ge0$","$\\le0$","tùy ý","$=0$"],"a":2,"why":"Đẳng thức ↔ biến tùy ý."},
+      {"q":"Gốc min có phương án với $f=50$; đối ngẫu có phương án với $g=44$. Khi đó","opts":["$f_{\\min}\\le44$","$44\\le f_{\\min}\\le50$","$f_{\\min}\\ge50$","$f_{\\min}=47$"],"a":1,"why":"Đối ngẫu yếu + đối ngẫu mạnh."},
+      {"q":"Ở phương án tối ưu, nguyên liệu II còn thừa 3 đơn vị. Giá bóng $y_2^*$ bằng","opts":["$3$","$0$","$-3$","không xác định"],"a":1,"why":"Độ lệch bù: ràng buộc lỏng ⇒ $y_2^*=0$."},
+      {"q":"Bài vận tải 4 điểm phát, 5 điểm thu. PACB không suy biến có số ô chọn","opts":["$20$","$9$","$8$","$5$"],"a":2,"why":"$m+n-1=8$."},
+      {"q":"Ô loại có $u_i=3$, $v_j=4$, $c_{ij}=5$ (bài min). Ước lượng và kết luận","opts":["$\\Delta=2$: chưa tối ưu","$\\Delta=-2$: tốt","$\\Delta=12$","$\\Delta=0$"],"a":0,"why":"$3+4-5=2$, dương ⇒ đưa ô này vào."}
+    ]</script>
+  </div>
+  <aside class="tuhoc"><p>Chơi một mình: trả lời trong 30 giây mỗi câu; mục tiêu từ 8/10 trở lên. Câu nào sai, mở lại slide tương ứng để ôn.</p></aside>
+</section>
+
+<section class="slide" id="de-ktdk" data-kind="kiem-tra" data-sec="Ôn tập chương">
+  <div class="head"><div class="eyebrow">Đề kiểm tra định kỳ tham khảo · 45 phút · tự luận</div><h2>Quy hoạch tuyến tính và bài toán đối ngẫu</h2></div>
+  <div class="cols">
+    <div class="stack small">
+      <div class="box"><b>Câu 1 (3 điểm).</b> Một cơ sở sản xuất hai sản phẩm A, B. Mỗi sản phẩm A cần 2 giờ máy và 1 giờ công; mỗi sản phẩm B cần 1 giờ máy và 1 giờ công. Mỗi tuần có 100 giờ máy, 60 giờ công; thị trường chỉ tiêu thụ tối đa 40 sản phẩm B. Lãi: A 3, B 2 (trăm nghìn đồng). a) Lập mô hình. b) Giải bằng phương pháp đồ thị.</div>
+      <div class="box"><b>Câu 2 (4 điểm).</b> Giải bằng phương pháp đơn hình: $f=5x_1+4x_2+3x_3\to\max$; $2x_1+3x_2+x_3\le5$; $4x_1+x_2+2x_3\le11$; $3x_1+4x_2+2x_3\le8$; $x_j\ge0$.</div>
+      <div class="box"><b>Câu 3 (3 điểm).</b> a) Lập bài toán đối ngẫu của bài toán ở Câu 2. b) Dùng định lý độ lệch bù tìm phương án tối ưu của bài toán đối ngẫu. c) Nêu ý nghĩa của $y_2^*$ nếu ràng buộc 2 là lượng nguyên liệu.</div>
+      <div data-widget="timer" data-min="45" data-label="Làm bài"></div>
+    </div>
+    <div class="stack small">
+      <button class="reveal-btn" data-for="ktdk-da">Xem đáp án và biểu điểm</button>
+      <div class="ans" id="ktdk-da">
+        <p><b>Câu 1.</b> a) $f=3x_1+2x_2\to\max$; $2x_1+x_2\le100$; $x_1+x_2\le60$; $x_2\le40$; $x_1,x_2\ge0$ (1,5đ). b) Đỉnh: $(0;0)$, $(50;0)$, $(40;20)$, $(20;40)$, $(0;40)$ (1đ); $f_{\max}=160$ tại $(40;20)$: 40 A, 20 B, lãi 16 triệu đồng (0,5đ).</p>
+        <p><b>Câu 2.</b> Thêm biến phụ $x_4,x_5,x_6$, bảng I đúng (1đ). Xoay 1: $x_1$ vào, $x_4$ ra ($\theta=\tfrac52$) (1đ). Xoay 2: $x_3$ vào, $x_6$ ra (1đ). Bảng tối ưu: $x^*=(2;0;1)$, $f_{\max}=13$ (1đ).</p>
+        <p><b>Câu 3.</b> a) $g=5y_1+11y_2+8y_3\to\min$; $2y_1+4y_2+3y_3\ge5$; $3y_1+y_2+4y_3\ge4$; $y_1+2y_2+2y_3\ge3$; $y\ge0$ (1đ). b) $x_1,x_3&gt;0$ ⇒ ràng buộc 1, 3 chặt; ràng buộc 2 gốc lỏng ($10&lt;11$) ⇒ $y_2=0$; giải được $y^*=(1;0;1)$, thử lại, $g=13$ (1,5đ). c) $y_2^*=0$: nguyên liệu 2 còn thừa 1 đơn vị, mua thêm không làm tăng lãi (0,5đ).</p>
+      </div>
+    </div>
+  </div>
+  <aside class="tuhoc"><p>Tự làm trong 45 phút, không xem tài liệu, rồi tự chấm theo biểu điểm. Sau đó làm bài <a href="kiem-tra.html#c2dk">Kiểm tra định kỳ thử</a> trên hệ thống (đề ngẫu nhiên, chấm tự động).</p></aside>
+</section>
+
+<section class="slide" id="tong-ket" data-kind="tong-ket" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Tổng kết học phần · Hướng tới thi kết thúc (tự luận 60 phút)</div><h2>Hai chương — một mạch: từ ma trận đến quyết định tối ưu</h2></div>
+  <table class="tbl small">
+    <tr><th>Chương 1 — công cụ</th><th>Chương 2 — ứng dụng</th></tr>
+    <tr><td>Hệ phương trình, phương pháp Gauss</td><td>Phương án cực biên, bảng đơn hình (phép xoay = khử Gauss)</td></tr>
+    <tr><td>Độc lập tuyến tính, cơ sở, tọa độ</td><td>PACB ↔ cột ĐLTT; $t_{ij}$ là tọa độ của $a_j$ theo cơ sở</td></tr>
+    <tr><td>Chuyển vị ma trận</td><td>Lập bài toán đối ngẫu</td></tr>
+    <tr><td>Hạng ma trận</td><td>Bài toán vận tải: hạng $m+n-1$ ⇒ số ô chọn</td></tr>
+  </table>
+  <div class="box key small" data-tag="Chuẩn bị thi">Ôn theo trang chương: làm lại các bài kiểm tra cuối buổi (luyện tập không giới hạn), bài kiểm tra cuối chương; mỗi dạng bài làm lại ít nhất một bài không nhìn lời giải.</div>
+  <aside class="tuhoc"><p>Kế hoạch ôn thi gợi ý: mỗi ngày một dạng bài; làm bài luyện tập trên hệ thống đến khi đạt ≥ 8 điểm; cuối cùng làm bài kiểm tra cuối chương có giới hạn thời gian.</p></aside>
+</section>
+
+<section class="slide" id="nhiem-vu" data-kind="nhiem-vu" data-sec="Tổng kết">
+  <div class="head"><div class="eyebrow">Nhiệm vụ sau buổi học</div><h2>Hoàn thành Chương 2</h2></div>
+  <div class="cols">
+    <div class="box" data-tag="Bài về nhà">
+      <ul class="small">
+        <li>BT 2.25 b, c, d; BT 2.26, 2.28 (bài toán phân phối) — kiểm tra bằng <a href="lab.html">Phòng tính QHTT</a>.</li>
+        <li>Làm bài kiểm tra sau Buổi 6 và <a href="kiem-tra.html#c2">bài kiểm tra cuối Chương 2</a>.</li>
+        <li>Lập sơ đồ tư duy toàn học phần (Chương 1 + Chương 2) trên 1 trang A4.</li>
+      </ul></div>
+    <div class="box key" data-tag="Đọc thêm">
+      <ul class="small">
+        <li>Giáo trình 2.5.4: Bài toán vận tải có hạn chế khả năng thông qua (Ví dụ 2.27).</li>
+        <li>Giải bài toán QHTT bằng Excel Solver (Data → Solver, chọn Simplex LP) — tự kiểm tra các bài lớn.</li>
+      </ul></div>
+  </div>
+  <div class="row"><a class="xref" href="index.html">Trang Chương 2</a><a class="xref back" href="buoi1.html">Về Buổi 1</a></div>
+  <aside class="tuhoc"><p>Hoàn thành bài kiểm tra cuối Chương 2 trên hệ thống — đây là cơ sở để giáo viên đánh giá quá trình tự học của bạn.</p></aside>
+</section>
+
+</div>
+</main>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="../assets/linalg.js"></script>
+<script src="../assets/qhtt.js"></script>
+<script src="../assets/widgets.js"></script>
+<script src="../assets/widgets-qhtt.js"></script>
+<script src="../assets/deck.js"></script>
+<script src="../assets/taikhoan.js"></script>
+<script src="../assets/pwa.js"></script>
+</body>
+</html>

@@ -74,6 +74,9 @@
     markSeen(id, n) {
       const k = 'seen:' + this.page(); const d = this.seen(); d.ids[id] = 1; d.n = n; d.at = Date.now(); this.write(k, d);
     },
+    addTime(sec) {
+      const k = 'seen:' + this.page(); const d = this.seen(); d.t = (d.t || 0) + sec; d.at = Date.now(); this.write(k, d);
+    },
     answer(key, ok) {
       const k = 'quiz:' + this.page(); const d = this.quiz(); if (key in d) return; d[key] = ok ? 1 : 0; this.write(k, d);
     },
@@ -122,6 +125,10 @@
     const deck = document.querySelector('.deck');
     if (!deck) { initPage(); return; }
     const stage = deck.querySelector('.stage');
+    // Mã bài "Kiểm tra sau buổi" và tên Phòng tính của chương (khai báo trên <main class="deck">, mặc định theo Chương 1)
+    const buoiMatch = fileName().match(/^buoi(\d+)\.html$/);
+    const ktId = deck.dataset.kt || (buoiMatch ? 'b' + buoiMatch[1] : null);
+    const labName = deck.dataset.lab || 'Phòng tính ma trận';
 
     /* --- Lộ trình tự học (chỉ bản người học): thay cho slide tiến trình theo tiết --- */
     let tietInfo = '';
@@ -136,7 +143,8 @@
           '<li><b>Lý thuyết:</b> đọc slide, thao tác các công cụ, mở <b>Gợi ý</b> (phím <kbd>N</kbd>) khi cần.</li>' +
           '<li><b>Ví dụ, bài tập:</b> chép đề ra giấy, tự làm trước; sau đó hiện lời giải <b>từng bước</b> để đối chiếu.</li>' +
           '<li><b>Kiểm tra nhanh:</b> trả lời hết rồi mới đọc giải thích; câu sai thì mở lại slide lý thuyết.</li>' +
-          '<li><b>Tổng kết:</b> tự tóm tắt bằng lời của mình, làm phần nhiệm vụ.</li></ol>' +
+          '<li><b>Tổng kết:</b> tự tóm tắt bằng lời của mình, làm phần nhiệm vụ.</li>' +
+          (ktId ? '<li><b>Tự đánh giá:</b> làm <a href="kiem-tra.html#' + ktId + '">Kiểm tra sau buổi</a> (10 câu, tối đa 3 lượt).</li>' : '') + '</ol>' +
           '<p class="tiny muted">Dấu ✓ cho biết slide đã xem. Tiến độ chỉ lưu trên thiết bị này.</p></div></div>';
         tt.after(ls);
       }
@@ -216,7 +224,8 @@
     links += '<a href="' + meta.home + '">Trang chương</a>';
     if (meta.prev) links += '<a href="' + meta.prev + '">← Buổi trước</a>';
     if (meta.next) links += '<a href="' + meta.next + '">Buổi sau →</a>';
-    links += '<a href="lab.html">Phòng tính ma trận</a>';
+    if (ktId) links += '<a href="kiem-tra.html#' + ktId + '">Kiểm tra sau buổi</a>';
+    links += '<a href="lab.html">' + labName + '</a>';
     drawer.innerHTML = '<header><div class="k">' + meta.course + '</div><h3>' + meta.unit + '</h3>' + (HV ? '<div class="pstat"></div>' : '') + '</header><nav>' + navHtml + '</nav><div class="links">' + links + '</div>' +
       '<div class="links keys"><span><kbd>→</kbd>/<kbd>Space</kbd> tiến · <kbd>←</kbd> lùi · <kbd>M</kbd> mục lục · <kbd>N</kbd> ' + (HV ? 'gợi ý' : 'ghi chú') + ' · <kbd>F</kbd> toàn màn hình · <kbd>R</kbd> chế độ đọc · <kbd>T</kbd> sáng/tối</span></div>';
     document.body.appendChild(drawer);
@@ -263,6 +272,12 @@
         refreshProgress();
       }, 2500);
     }
+    // Thời gian học thực sự: chỉ cộng khi trang đang hiển thị và có thao tác trong 2 phút gần nhất
+    let lastAct = Date.now();
+    ['keydown', 'pointerdown', 'wheel', 'touchstart', 'scroll'].forEach(ev => window.addEventListener(ev, () => { lastAct = Date.now(); }, { passive: true, capture: true }));
+    if (!PRINT) setInterval(() => {
+      if (document.visibilityState === 'visible' && Date.now() - lastAct < 120000) progress.addTime(15);
+    }, 15000);
     document.addEventListener('tkt:answer', e => {
       const s = e.target.closest('section.slide'); if (!s) return;
       const ws = Array.from(s.querySelectorAll('[data-widget]')); const w = e.target.closest('[data-widget]');
