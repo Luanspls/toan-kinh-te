@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Xưởng Hình học</title>
+<meta name="description" content="Môi trường hình học động cho học sinh THPT: dựng hình, kéo thả, dự đoán, kiểm nghiệm giả thuyết bằng phản ví dụ, quỹ tích, thử thách dựng hình và thang gợi ý chứng minh.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap">
+<link rel="stylesheet" href="../lib/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/deck.css">
+<style>
+  html, body { height: auto; }
+  body { overflow: auto; background: var(--paper); }
+  .app { max-width: 1480px; margin: 0 auto; padding: 14px 16px 28px; display: grid; gap: 12px; }
+  .top { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: flex-end; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+  .top .k, .k { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--pen); }
+  .top h1 { font-family: var(--f-display); font-size: clamp(24px, 3.4vw, 34px); margin: 2px 0 0; line-height: 1.1; }
+  .acts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .acts .btn, .btn.sm { font-size: 13.5px; padding: 6px 10px; }
+  .work { display: grid; grid-template-columns: 96px minmax(0, 1fr) 380px; gap: 12px; align-items: start; }
+  /* Thanh công cụ */
+  .tools { display: grid; grid-template-columns: 1fr; gap: 4px; position: sticky; top: 10px; max-height: calc(100vh - 20px); overflow-y: auto; padding-right: 2px; }
+  .tool { display: grid; justify-items: center; gap: 2px; padding: 6px 2px 5px; border: 1.5px solid var(--line); border-radius: 7px; background: var(--surface); color: var(--ink); cursor: pointer; font-size: 11px; line-height: 1.15; text-align: center; }
+  .tool svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .tool svg .f { fill: currentColor; stroke: none; } .tool svg .pf { fill: var(--pen); stroke: none; }
+  .tool svg .pen { fill: var(--pen); stroke: none; } .tool svg .pen-l { stroke: var(--pen); }
+  .tool svg .dash { stroke-dasharray: 2.5 2.5; } .tool svg .thin { stroke-width: 1.3; }
+  .tool:hover { border-color: var(--blue); color: var(--blue); }
+  .tool.on { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .tool.on svg .pen, .tool.on svg .pf { fill: var(--marker); } .tool.on svg .pen-l { stroke: var(--marker); }
+  /* Bảng vẽ */
+  .boardwrap { position: relative; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--surface); height: min(76vh, 760px); min-height: 380px; }
+  #board { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; }
+  .status { position: absolute; left: 10px; right: 120px; top: 8px; font-size: 13.5px; color: var(--ink-2); background: color-mix(in srgb, var(--surface) 88%, transparent); padding: 5px 9px; border-radius: 6px; border: 1px solid var(--line); pointer-events: none; }
+  .status b { color: var(--ink); }
+  .zoom { position: absolute; right: 8px; top: 8px; display: flex; gap: 4px; }
+  .zoom button, .ib { width: 30px; height: 30px; border-radius: 6px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font-size: 15px; line-height: 1; padding: 0; display: inline-grid; place-items: center; }
+  .zoom button:hover, .ib:hover { border-color: var(--blue); color: var(--blue); }
+  .ib.on { background: var(--pen); color: #fff; border-color: var(--pen); }
+  .legend { position: absolute; left: 10px; bottom: 8px; font-size: 12px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 12px; pointer-events: none; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: -1px; margin-right: 4px; }
+  /* Đồ họa SVG */
+  .g-grid { stroke: var(--grid); stroke-width: 1; }
+  .g-axis { stroke: var(--ink-2); stroke-width: 1.3; }
+  .tick { font: 11px var(--f-mono); fill: var(--ink-2); text-anchor: middle; }
+  .o-l { stroke: var(--ink); stroke-width: 2; fill: none; }
+  .o-l.aux { stroke: var(--ink-2); stroke-width: 1.3; stroke-dasharray: 6 5; }
+  .o-l.c-pen { stroke: var(--pen); } .o-l.c-blue { stroke: var(--blue); } .o-l.c-ok { stroke: var(--ok); }
+  .o-l.hov { stroke-width: 3.4; }
+  .halo { stroke: var(--marker); stroke-width: 9; fill: none; opacity: .9; }
+  .halo-p { fill: var(--marker); }
+  .o-locus { stroke: var(--pen); stroke-width: 3; fill: none; opacity: .85; stroke-linejoin: round; }
+  .o-trace { stroke: var(--pen); stroke-width: 2; fill: none; opacity: .5; stroke-linecap: round; stroke-linejoin: round; }
+  .p { fill: var(--ink); stroke: var(--surface); stroke-width: 1.5; }
+  .p.free { fill: var(--blue); }
+  .p.glider { fill: var(--surface); stroke: var(--blue); stroke-width: 2.6; }
+  .p.c-pen { fill: var(--pen); } .p.c-blue { fill: var(--blue); } .p.c-ok { fill: var(--ok); }
+  .p.glider.c-pen { fill: var(--surface); stroke: var(--pen); } .p.glider.c-blue { fill: var(--surface); stroke: var(--blue); }
+  .p.free.c-pen { fill: var(--pen); }
+  .p.hov { stroke: var(--marker); stroke-width: 3; }
+  .lbl { font: 600 14.5px var(--f-body); fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
+  .mlbl { font: 500 12.5px var(--f-mono); fill: var(--blue); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+  .mlbl.sel { fill: var(--pen); }
+  .arc { fill: none; stroke: var(--blue); stroke-width: 1.8; } .arc.sel { stroke: var(--pen); stroke-width: 3; }
+  /* Bảng bên */
+  .side { background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; display: grid; grid-template-rows: auto minmax(0, 1fr); max-height: min(76vh, 760px); min-height: 380px; overflow: hidden; }
+  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1.5px solid var(--line); }
+  .tabs button { border: 0; background: transparent; padding: 10px 6px; font: 600 14px var(--f-body); color: var(--ink-2); cursor: pointer; border-bottom: 3px solid transparent; }
+  .tabs button.on { color: var(--ink); border-bottom-color: var(--pen); }
+  .tabp { overflow-y: auto; padding: 12px 14px 18px; font-size: 14.5px; line-height: 1.55; }
+  .tabp[hidden] { display: none; }
+  .tabp p { margin: .4em 0; }
+  .hint { font-size: 13px; color: var(--ink-2); }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 2px; }
+  details.menu { border: 1.5px dashed var(--line); border-radius: 8px; padding: 6px 10px; margin-bottom: 10px; }
+  details.menu summary { cursor: pointer; font-weight: 600; color: var(--blue); }
+  .mgroup { margin: 8px 0 4px; display: grid; gap: 5px; }
+  .mlist { display: grid; gap: 5px; }
+  .mbtn { text-align: left; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 7px; padding: 6px 9px; cursor: pointer; font: 600 14px var(--f-body); }
+  .mbtn small { display: block; font: 500 11px var(--f-mono); color: var(--pen); letter-spacing: .04em; }
+  .mbtn:hover { border-color: var(--blue); } .mbtn.on { border-color: var(--ink); background: var(--chip); }
+  .mis h3 { font-family: var(--f-display); font-size: 22px; margin: 2px 0 4px; line-height: 1.2; }
+  .bstep { border-top: 1.5px solid var(--line); padding-top: 8px; margin-top: 10px; }
+  .bstep h4 { margin: 0 0 4px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .bstep h4 span { font: 600 12px var(--f-mono); color: var(--pen); border: 1.5px solid var(--pen); border-radius: 999px; width: 22px; height: 22px; display: inline-grid; place-items: center; flex: none; }
+  .bstep ul { margin: 4px 0; padding-left: 20px; display: grid; gap: 3px; }
+  .goal { font-weight: 600; font-size: 15.5px; }
+  .opts { display: grid; gap: 5px; margin: 6px 0; }
+  .opt { text-align: left; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 7px; padding: 6px 10px; cursor: pointer; font: 14px var(--f-body); }
+  .opt:hover:not([disabled]) { border-color: var(--blue); }
+  .opt[disabled] { cursor: default; }
+  .opt.right { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, var(--surface)); }
+  .opt.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 12%, var(--surface)); }
+  .fb { font-size: 13.5px; }
+  .hintc { background: var(--chip); border-left: 3px solid var(--blue); padding: 6px 9px; border-radius: 0 6px 6px 0; }
+  details.proof { margin-top: 8px; border: 1.5px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+  details.proof summary { cursor: pointer; font-weight: 600; color: var(--pen); }
+  details.proof > div { padding-top: 6px; }
+  .cycle { padding-left: 20px; display: grid; gap: 3px; }
+  .v { font-weight: 700; } .v.good { color: var(--ok); } .v.bad { color: var(--bad); } .v.warn { color: #b26a00; }
+  :root[data-theme="dark"] .v.warn { color: #ffc46b; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .v.warn { color: #ffc46b; } }
+  .vd { font-size: 13.5px; }
+  .lst { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
+  .lst li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; border: 1px solid var(--line); border-radius: 7px; padding: 5px 8px; font-size: 13.5px; cursor: pointer; }
+  .lst li.given { background: var(--paper); }
+  .lst li.empty { display: block; color: var(--ink-2); cursor: default; border-style: dashed; }
+  .lst .vl { grid-column: 1; font: 12px var(--f-mono); color: var(--ink-2); }
+  .lst .bs { grid-column: 2; grid-row: 1 / span 2; display: flex; gap: 3px; align-items: center; }
+  .lst .ib { width: 26px; height: 26px; font-size: 13px; }
+  #checklist li { display: block; cursor: default; }
+  #checklist .hd { display: flex; align-items: center; gap: 6px; }
+  #checklist .hd b { flex: 1; }
+  .st { flex: none; width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; font-weight: 700; font-size: 13px; color: #fff; }
+  .st.ok { background: var(--ok); } .st.no { background: var(--bad); } .st.na { background: var(--ink-2); }
+  select.sel { width: 100%; font: 14px var(--f-body); padding: 6px 8px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); }
+  footer { font-size: 12.5px; color: var(--ink-2); }
+  @media (max-width: 1180px) { .work { grid-template-columns: 88px minmax(0, 1fr); } .side { grid-column: 1 / -1; max-height: none; } }
+  @media (max-width: 700px) {
+    .work { grid-template-columns: minmax(0, 1fr); }
+    .tools { position: static; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 70px; overflow-x: auto; overflow-y: hidden; max-height: none; padding-bottom: 4px; }
+    .boardwrap { height: 62vh; min-height: 320px; }
+    .acts .btn { font-size: 12.5px; padding: 5px 8px; }
+    .top .k { font-size: 10.5px; }
+    .status { right: 10px; top: auto; bottom: 8px; }
+    .zoom { top: 8px; }
+    .legend { display: none; }
+  }
+</style>
+<meta name="theme-color" content="#1b2a4a">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div><div class="k">Phòng thí nghiệm hình học · Trung học phổ thông</div><h1>Xưởng Hình học</h1></div>
+    <div class="acts" role="toolbar" aria-label="Thao tác chung">
+      <button class="btn" type="button" id="undoBtn" title="Hoàn tác (Ctrl+Z)">↶ Hoàn tác</button>
+      <button class="btn on" type="button" id="gridBtn">Lưới</button>
+      <button class="btn" type="button" id="axesBtn">Trục tọa độ</button>
+      <button class="btn" type="button" id="clearTr">Xóa vết</button>
+      <button class="btn" type="button" id="saveBtn">Lưu tệp</button>
+      <button class="btn" type="button" id="openBtn">Mở tệp</button>
+      <button class="btn" type="button" id="linkBtn">Liên kết</button>
+      <button class="btn" type="button" id="themeBtn" aria-label="Đổi giao diện sáng tối" title="Sáng / tối"><svg viewBox="0 0 24 24" width="16" height="16" style="vertical-align:-3px" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 000 16z" fill="currentColor"/></svg></button>
+      <a class="xref back" href="DE-XUAT.md" style="font-size:13px;align-self:center">Đề xuất</a>
+      <input type="file" id="fileIn" accept=".json,application/json" hidden>
+    </div>
+  </header>
+
+  <div class="work">
+    <nav class="tools" id="tools" aria-label="Công cụ dựng hình"></nav>
+    <div class="boardwrap">
+      <svg id="board" role="img" aria-label="Bảng vẽ hình học động"></svg>
+      <div class="status" id="status" aria-live="polite"></div>
+      <div class="zoom"><button type="button" id="zin" aria-label="Phóng to">+</button><button type="button" id="zout" aria-label="Thu nhỏ">−</button><button type="button" id="zfit" aria-label="Vừa khung" title="Vừa khung">⤢</button></div>
+      <div class="legend"><span><i style="background:var(--blue)"></i>điểm tự do (kéo được)</span><span><i style="border:2.5px solid var(--blue);box-sizing:border-box"></i>điểm thuộc đường</span><span><i style="background:var(--ink)"></i>điểm phụ thuộc</span></div>
+    </div>
+    <aside class="side">
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" data-tab="bt" class="on" aria-selected="true">Bài toán</button>
+        <button type="button" role="tab" data-tab="gt" aria-selected="false">Giả thuyết</button>
+        <button type="button" role="tab" data-tab="dh" aria-selected="false">Dựng hình</button>
+      </div>
+      <div class="tabp" id="tab-bt" role="tabpanel"></div>
+      <div class="tabp" id="tab-gt" role="tabpanel" hidden>
+        <p>Một mệnh đề hình học chỉ đáng tin khi nó đúng với <b>mọi</b> hình, không chỉ hình em đang thấy. Công cụ biến đổi ngẫu nhiên các điểm tự do và điểm thuộc đường <b>300 lần</b>, rồi báo giả thuyết đứng vững hay bị phản ví dụ bác bỏ.</p>
+        <label for="rel" class="hint">Quan hệ cần kiểm nghiệm</label>
+        <select id="rel" class="sel"></select>
+        <div class="row"><button class="btn primary sm" type="button" id="relGo">Chọn đối tượng trên hình</button></div>
+        <p class="hint">Ký hiệu trực tiếp: <b style="color:var(--ok)">✓</b> đúng ở hình hiện tại, <b style="color:var(--bad)">✗</b> sai ở hình hiện tại — kéo hình và quan sát.</p>
+        <ul class="lst" id="checklist"></ul>
+      </div>
+      <div class="tabp" id="tab-dh" role="tabpanel" hidden>
+        <p class="hint">Các bước dựng theo thứ tự phụ thuộc. Khi đang dùng một công cụ, có thể nhấp vào dòng trong danh sách thay cho nhấp trên hình. ▶ cho điểm tự chạy trên đường, ∴ bật vết.</p>
+        <ul class="lst" id="objlist"></ul>
+      </div>
+    </aside>
+  </div>
+  <footer>Xưởng Hình học · bản mẫu 0.1 · chạy hoàn toàn trên trình duyệt, không cần Internet sau khi tải. Xem <a href="DE-XUAT.md">đề xuất và cơ sở sư phạm</a>.</footer>
+</div>
+<script src="../lib/katex/katex.min.js"></script>
+<script src="../lib/katex/auto-render.min.js"></script>
+<script src="bai-toan.js"></script>
+<script src="hinh-hoc.js"></script>
+</body>
+</html>
